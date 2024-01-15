@@ -125,13 +125,13 @@ export default function AviosReminderPage() {
         <span className="italic">all</span> retailers!
       </p>
 
-      <h3>Why haven't Avios appeared in my account a purchase?</h3>
+      <h3>Why haven&apos;t Avios appeared in my account a purchase?</h3>
 
       <p>
-        Please make sure that you aren't blocking cookies! These are important
-        to ensure that BA and the retailer can link the purchase to your
-        account. This won't resolve missing Avios for existing purchases, but BA
-        offer the ability to claim for missing Avios{" "}
+        Please make sure that you aren&apos;t blocking cookies! These are
+        important to ensure that BA and the retailer can link the purchase to
+        your account. This won&apos;t resolve missing Avios for existing
+        purchases, but BA offer the ability to claim for missing Avios{" "}
         <Link href="https://www.shopping.ba.com/my-account/missing-avios">
           here
         </Link>
@@ -139,10 +139,10 @@ export default function AviosReminderPage() {
       </p>
 
       <p>
-        If that doesn't solve your issue for future purchases, BA offer more
-        suggestions under the "How can we help?" section on their{" "}
+        If that doesn&apos;t solve your issue for future purchases, BA offer
+        more suggestions under the &quot;How can we help?&quot; section on their{" "}
         <Link href="https://www.shopping.ba.com/collect/how-it-works">
-          "How it works" page
+          &quote;How it works&quote; page
         </Link>
         .
       </p>
