@@ -125,7 +125,7 @@ export default function AviosReminderPage() {
         <span className="italic">all</span> retailers!
       </p>
 
-      <h3>Why haven&apos;t Avios appeared in my account a purchase?</h3>
+      <h3>Why haven&apos;t Avios appeared in my account after a purchase?</h3>
 
       <p>
         Please make sure that you aren&apos;t blocking cookies! These are
