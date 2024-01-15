@@ -15,7 +15,7 @@ function AppCell({ name }: AppCellProps) {
     <Link href={`/apps/${nameAsFilePath}`}>
       <Image
         alt={`${name} logo`}
-        className="hover:scale-105 transition-transform"
+        className="hover:scale-105 transition-transform rounded-[25%]"
         height={MAX_IMAGE_WIDTH}
         src={`/apps/${nameAsFilePath}/logo.png`}
         width={MAX_IMAGE_WIDTH}
@@ -31,6 +31,7 @@ export default function Apps() {
       <PageTitle>Our Apps</PageTitle>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 sm:mt-16">
         <AppCell name="Avios Reminder"></AppCell>
+        <AppCell name="Krushme"></AppCell>
       </div>
     </PageLayout>
   );

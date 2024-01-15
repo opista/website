@@ -14,7 +14,7 @@ export default function AviosReminderPage() {
       <div className="flex flex-col sm:flex-row items-center">
         <Image
           alt="Avios Reminder logo"
-          className="my-0 mb-2 sm:mr-2"
+          className="my-0 mb-2 sm:mb-0 sm:mr-2"
           height={isBelowSm ? 40 : 70}
           src="/apps/avios-reminder/logo.png"
           width={isBelowSm ? 40 : 70}
