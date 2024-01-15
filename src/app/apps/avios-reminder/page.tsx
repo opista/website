@@ -142,7 +142,7 @@ export default function AviosReminderPage() {
         If that doesn&apos;t solve your issue for future purchases, BA offer
         more suggestions under the &quot;How can we help?&quot; section on their{" "}
         <Link href="https://www.shopping.ba.com/collect/how-it-works">
-          &quote;How it works&quote; page
+          &quot;How it works&quot; page
         </Link>
         .
       </p>
