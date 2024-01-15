@@ -16,7 +16,7 @@ export default function Logo({
     >
       <span
         className={clsx(
-          "font-black tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 text-xl",
+          "font-black tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600",
           className
         )}
       >
