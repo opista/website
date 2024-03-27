@@ -146,6 +146,78 @@ export default function AviosReminderPage() {
         </Link>
         .
       </p>
+
+      <h2 id="updates">Updates</h2>
+
+      <h3>1.5.0 - 2024-03-20</h3>
+
+      <ul>
+        <li>
+          Increases cookie lifetime. Once a reward has been activated, it
+          won&apos;t be re-activated for another 5 days.
+        </li>
+        <li>Displays multiple offes per website if they exist</li>
+      </ul>
+
+      <h3>1.4.0 - 2024-03-07</h3>
+
+      <ul>
+        <li>Introduces better retailer source</li>
+        <li>Code optimisations</li>
+      </ul>
+
+      <h3>1.3.0 - 2024-01-07</h3>
+
+      <ul>
+        <li>Improves domain identification</li>
+        <li>Automatically applies for Avios on websites where possible</li>
+        <li>Auto-focuses search input when opening popup</li>
+      </ul>
+
+      <h3>1.2.0 - 2023-09-16</h3>
+
+      <ul>
+        <li>Code optimisations</li>
+      </ul>
+
+      <h3>1.1.5 - 2023-09-14</h3>
+
+      <ul>
+        <li>Fix issue with incorrect URL when clicking popup link</li>
+      </ul>
+
+      <h3>1.1.4 - 2023-09-11</h3>
+
+      <ul>
+        <li>Bug fix: API endpoint has changed</li>
+        <li>
+          Bug fix: Retailer list is fetched on installation/update, rather than
+          on every page load
+        </li>
+      </ul>
+
+      <h3>1.1.3 - 2023-08-15</h3>
+
+      <ul>
+        <li>Bug fix: API endpoint has changed</li>
+        <li>
+          Bug fix: Retailer list is fetched on installation/update, rather than
+          on every page load
+        </li>
+      </ul>
+
+      <h3>1.1.2 - 2022-07-28</h3>
+
+      <ul>
+        <li>Upgrade chrome extension to latest manifest version</li>
+      </ul>
+
+      <h3>1.1.0 - 2020-12-15</h3>
+
+      <ul>
+        <li>Added popup to search through existing list of retailer deals</li>
+        <li>Bug fix: Fixes URL that BA changed</li>
+      </ul>
     </PageLayout>
   );
 }
