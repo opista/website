@@ -32,6 +32,7 @@ export default function Apps() {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 sm:mt-16">
         <AppCell name="Avios Reminder"></AppCell>
         <AppCell name="Krushme"></AppCell>
+        <AppCell name="SVN Blamer"></AppCell>
       </div>
     </PageLayout>
   );

@@ -56,7 +56,7 @@ export default function AviosReminderPage() {
         </li>
         <li>
           <p>
-            <span className="font-bold">Krushem Coverage Kingdom-Wi:de</span>{" "}
+            <span className="font-bold">Krushem Coverage Kingdom-Wide:</span>{" "}
             From John o&apos; Groats to Land&apos;s End, we monitor every KFC
             outlet. You&apos;ll always know where your next Krushem treat
             awaits!
