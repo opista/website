@@ -126,17 +126,11 @@ export default function SvnBlamerPage() {
         </li>
       </ul>
 
-      <div className="text-center">
-        <LinkButton
-          className="mx-1"
-          href="https://marketplace.visualstudio.com/items?itemName=beaugust.blamer-vs"
-        >
+      <div className="text-center grid gap-2 grid-cols-1 sm:grid-cols-2">
+        <LinkButton href="https://marketplace.visualstudio.com/items?itemName=beaugust.blamer-vs">
           Try SVN Blamer on VS Code Marketplace
         </LinkButton>
-        <LinkButton
-          className="mx-1"
-          href="https://open-vsx.org/extension/beaugust/blamer-vs"
-        >
+        <LinkButton href="https://open-vsx.org/extension/beaugust/blamer-vs">
           Try SVN Blamer on VSX Open Registry
         </LinkButton>
       </div>
