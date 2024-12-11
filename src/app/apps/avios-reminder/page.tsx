@@ -149,6 +149,20 @@ export default function AviosReminderPage() {
 
       <h2 id="updates">Updates</h2>
 
+      <h3>1.6.0 - 2024-11-04</h3>
+
+      <ul>
+        <li>Introduces &quot;minimised&quot; tab to be less intrusive</li>
+        <ul>
+          <li>Position of tab is maintained across websites</li>
+          <li>
+            Closing a popup will prevent the tab & popup from appearing again on
+            that website until the browser is closed
+          </li>
+        </ul>
+        <li>Resolves bug with CSP Issue on Chrome 130+</li>
+      </ul>
+
       <h3>1.5.0 - 2024-03-20</h3>
 
       <ul>
