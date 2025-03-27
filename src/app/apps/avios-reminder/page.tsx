@@ -85,7 +85,7 @@ export default function AviosReminderPage() {
           </p>
         </li>
         <Image
-          alt="An image demonstrating a notification alerting the user that they can earn Avios and need to click through to the BA Shopping website"
+          alt="An image demonstrating a notification alerting the user that they can earn Avios and need to click through to the Avios website"
           className="mx-auto"
           height={280}
           src="/apps/avios-reminder/screenshot-2.png"
@@ -112,42 +112,36 @@ export default function AviosReminderPage() {
 
       <p>No! Your personal data is never sent to us.</p>
 
-      <h3>Why don&apos;t all websites appear in the extension?</h3>
-
-      <p>
-        We use British Airways&apos; data for display participating retailers.
-        We have no control over which retailers are displayed. You can read more
-        about that on{" "}
-        <Link href="https://www.shopping.ba.com/collection-reminder#why-do-i-not-get-a-reminder-for-all-brands">
-          BA&apos;s own FAQs
-        </Link>
-        . We are looking into alternative methods to list{" "}
-        <span className="italic">all</span> retailers!
-      </p>
-
       <h3>Why haven&apos;t Avios appeared in my account after a purchase?</h3>
 
       <p>
         Please make sure that you aren&apos;t blocking cookies! These are
-        important to ensure that BA and the retailer can link the purchase to
+        important to ensure that Avios and the retailer can link the purchase to
         your account. This won&apos;t resolve missing Avios for existing
-        purchases, but BA offer the ability to claim for missing Avios{" "}
-        <Link href="https://www.shopping.ba.com/my-account/missing-avios">
+        purchases, but Avios offer the ability to claim for missing Avios{" "}
+        <Link href="https://shopping.ba.com/my-account/missing-avios/">
           here
         </Link>
         .
       </p>
 
       <p>
-        If that doesn&apos;t solve your issue for future purchases, BA offer
-        more suggestions under the &quot;How can we help?&quot; section on their{" "}
-        <Link href="https://www.shopping.ba.com/collect/how-it-works">
-          &quot;How it works&quot; page
+        If that doesn&apos;t solve your issue for future purchases, Avios offer
+        more suggestions on their{" "}
+        <Link href="https://www.avios.com/en-GB/help">
+          &quot;Help&quot; page
         </Link>
         .
       </p>
 
       <h2 id="updates">Updates</h2>
+
+      <h3>1.6.1 - 2025-03-27</h3>
+
+      <ul>
+        <li>Migrates from BA URLs to Avios</li>
+        <li>Small styling tweaks</li>
+      </ul>
 
       <h3>1.6.0 - 2024-11-04</h3>
 
