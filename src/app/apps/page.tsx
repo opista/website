@@ -11,7 +11,7 @@ type AppCellProps = {
 };
 
 const AppCell = ({ app }: AppCellProps) => {
-  const { logo, title, url } = app;
+  const { slug, title, url } = app;
 
   return (
     <Link href={url}>
@@ -19,7 +19,7 @@ const AppCell = ({ app }: AppCellProps) => {
         alt={`${title} logo`}
         className="hover:scale-105 transition-transform rounded-[25%]"
         height={MAX_IMAGE_WIDTH}
-        src={logo}
+        src={`/apps/${slug}/logo.png`}
         width={MAX_IMAGE_WIDTH}
       />
       <p className="text-center mt-2 sm:mt-4 font-bold">{title}</p>

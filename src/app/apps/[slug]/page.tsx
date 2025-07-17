@@ -9,7 +9,7 @@ type AppPageParams = {
   slug: string;
 };
 
-export async function getStaticParams() {
+export async function generateStaticParams() {
   return getAllAppPageSlugs();
 }
 
@@ -31,7 +31,7 @@ export default async function AppPage({ params }: { params: AppPageParams }) {
             className="my-0"
             fill
             sizes="(max-width: 640px) 40px, 70px"
-            src={post.logo}
+            src={`/apps/${post.slug}/logo.png`}
           />
         </div>
         <PageTitle className="mb-0">{post.title}</PageTitle>
