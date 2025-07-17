@@ -4,7 +4,6 @@ import { join } from "path";
 
 export type AppPageContent = {
   content: string;
-  logo: string;
   slug: string;
   title: string;
   url: string;
@@ -19,7 +18,6 @@ export const getAppPageContentBySlug = (slug: string): AppPageContent => {
 
   return {
     content,
-    logo: `/apps/${slug}/logo.png`,
     slug,
     url: `/apps/${slug}`,
     ...data,
