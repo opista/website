@@ -1,13 +1,13 @@
 import PageLayout from "@/components/page-layout";
 import PageTitle from "@/components/page-title";
-import { AppPageContent, getAllAppPages } from "@/lib/api/apps";
+import { PageContent, getAppPagesAndContent } from "@/lib/pages";
 import Image from "next/image";
 import Link from "next/link";
 
 const MAX_IMAGE_WIDTH = 300;
 
 type AppCellProps = {
-  app: AppPageContent;
+  app: PageContent;
 };
 
 const AppCell = ({ app }: AppCellProps) => {
@@ -28,7 +28,7 @@ const AppCell = ({ app }: AppCellProps) => {
 };
 
 export default async function Apps() {
-  const apps = await getAllAppPages();
+  const apps = await getAppPagesAndContent("apps");
 
   return (
     <PageLayout>

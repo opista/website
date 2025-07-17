@@ -1,5 +1,5 @@
 import PageLayout from "@/components/page-layout";
-import { getAllAppPageSlugs, getAppPageContentBySlug } from "@/lib/api/apps";
+import { getAllPageSlugs, getPageContentBySlug } from "@/lib/pages";
 import { serialize } from "next-mdx-remote-client/serialize";
 import PageTitle from "@/components/page-title";
 import Image from "next/image";
@@ -10,11 +10,11 @@ type AppPageParams = {
 };
 
 export async function generateStaticParams() {
-  return getAllAppPageSlugs();
+  return getAllPageSlugs("apps");
 }
 
 async function getPageContent(params: AppPageParams) {
-  const post = getAppPageContentBySlug(params.slug);
+  const post = getPageContentBySlug("apps", params.slug);
   const source = await serialize({ source: post.content });
   return { post, source };
 }
