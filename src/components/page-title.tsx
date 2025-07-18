@@ -1,14 +1,17 @@
+import { toSlug } from "@/util/to-slug";
 import clsx from "clsx";
+import slugify from "slugify";
 
-type Props = {
-  children?: React.ReactNode;
+type PageTitleProps = {
+  children: string;
   className?: string;
 };
 
-export default function PageTitle({ children, className }: Props) {
+export const PageTitle = ({ children, className }: PageTitleProps) => {
+  const slug = toSlug(children);
   return (
-    <h1 className={clsx("text-3xl sm:text-7xl font-bold", className)}>
+    <h1 className={clsx("text-3xl sm:text-7xl font-bold", className)} id={slug}>
       {children}
     </h1>
   );
-}
+};

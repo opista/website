@@ -1,5 +1,5 @@
 import PageLayout from "@/components/page-layout";
-import PageTitle from "@/components/page-title";
+import { PageTitle } from "@/components/page-title";
 import { PageContent, getAppPagesAndContent } from "@/lib/pages";
 import Image from "next/image";
 import Link from "next/link";

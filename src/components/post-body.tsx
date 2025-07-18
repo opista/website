@@ -2,12 +2,15 @@
 
 import { hydrate } from "next-mdx-remote-client";
 
-import Link from "next/link";
 import PostHeading, { PostHeadingProps } from "./post-heading";
 import PostImage from "./post-image";
 import LinkButton from "./link-button";
+import { PageContent } from "@/lib/pages";
+import TableOfContents from "./table-of-contents";
+import { Link } from "./link";
 
 type Props = {
+  page: PageContent;
   source: any;
 };
 
@@ -24,14 +27,15 @@ const headings = Array(6)
     };
   }, {});
 
-const components = {
-  a: Link,
-  ...headings,
-  PostImage,
-  LinkButton,
-};
+export default function PostBody({ page, source }: Props) {
+  const components = {
+    a: Link,
+    ...headings,
+    PostImage,
+    LinkButton,
+    TOC: () => <TableOfContents content={page.content} />,
+  };
 
-export default function PostBody({ source }: Props) {
   const { content } = hydrate({ ...source, components });
   return <div className="mx-auto max-w-prose snap-y markdown">{content}</div>;
 }
