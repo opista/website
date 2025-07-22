@@ -1,9 +1,8 @@
-import PageLayout from "@/components/page-layout";
+import { PageLayout } from "@/components/page-layout";
 import { getAllPageSlugs, getPageContentBySlug } from "@/lib/pages";
-import { serialize } from "next-mdx-remote-client/serialize";
-import { PageTitle } from "@/components/page-title";
 import Image from "next/image";
-import PostBody from "@/components/post-body";
+import { PostBody } from "@/components/post-body";
+import { Heading } from "@/components/heading";
 
 type AppPageParams = {
   slug: string;
@@ -13,14 +12,8 @@ export async function generateStaticParams() {
   return getAllPageSlugs("apps");
 }
 
-async function getPageContent(params: AppPageParams) {
-  const page = getPageContentBySlug("apps", params.slug);
-  const source = await serialize({ source: page.content });
-  return { page, source };
-}
-
 export default async function AppPage({ params }: { params: AppPageParams }) {
-  const { page, source } = await getPageContent(params);
+  const page = getPageContentBySlug("apps", params.slug);
 
   return (
     <PageLayout className="prose dark:prose-invert" tag="article">
@@ -34,9 +27,11 @@ export default async function AppPage({ params }: { params: AppPageParams }) {
             src={`/apps/${page.slug}/logo.png`}
           />
         </div>
-        <PageTitle className="mb-0">{page.title}</PageTitle>
+        <Heading className="mb-0" level="h1">
+          {page.title}
+        </Heading>
       </div>
-      <PostBody page={page} source={source} />
+      <PostBody page={page} />
     </PageLayout>
   );
 }

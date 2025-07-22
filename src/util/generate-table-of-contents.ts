@@ -1,5 +1,3 @@
-import { SerializeResult } from "next-mdx-remote-client";
-import slugify from "slugify";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkMdx from "remark-mdx";

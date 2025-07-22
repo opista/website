@@ -1,5 +1,5 @@
-import Logo from "@/components/logo";
-import SiteLinks from "@/components/site-links";
+import { Logo } from "@/components/logo";
+import { SiteLinks } from "@/components/site-links";
 
 export default function Home() {
   return (

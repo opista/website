@@ -2,27 +2,29 @@ import {
   TOCItem,
   generateTableOfContents,
 } from "@/util/generate-table-of-contents";
-import PostHeading from "./post-heading";
 import { toSlug } from "@/util/to-slug";
 import { Link } from "./link";
+import { Heading } from "./heading";
 
 type TableOfContentsProps = {
   content: string;
 };
 
-const Table = ({ headings }: { headings: TOCItem[] }) => (
+const HeadingGroup = ({ headings }: { headings: TOCItem[] }) => (
   <ul className="list-none m-0 pl-4">
     {headings.map((heading) => (
       <li key={heading.slug}>
         <Link href={`#${heading.slug}`}>{heading.title}</Link>
 
-        {heading.children.length > 0 && <Table headings={heading.children} />}
+        {heading.children.length > 0 && (
+          <HeadingGroup headings={heading.children} />
+        )}
       </li>
     ))}
   </ul>
 );
 
-export default function TableOfContents({ content }: TableOfContentsProps) {
+export const TableOfContents = ({ content }: TableOfContentsProps) => {
   const componentTitle = "Table of Contents";
   const headings = generateTableOfContents(content);
 
@@ -35,12 +37,12 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
 
   return (
     <>
-      <PostHeading className="mt-0 mb-1" level="h2">
+      <Heading className="mt-0 mb-1" level="h2" link>
         {componentTitle}
-      </PostHeading>
+      </Heading>
       <div className="border-l-2 border-pink-400">
-        <Table headings={[baseHeading, ...headings]} />
+        <HeadingGroup headings={[baseHeading, ...headings]} />
       </div>
     </>
   );
-}
+};

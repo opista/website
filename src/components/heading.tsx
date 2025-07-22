@@ -1,37 +1,55 @@
 import clsx from "clsx";
-import React, { ElementType, HTMLProps } from "react";
+import { HTMLProps } from "react";
+import { LinkIcon } from "./icons/link-icon";
+import { toSlug } from "@/util/to-slug";
 
 type HeadingTags = keyof Pick<
   JSX.IntrinsicElements,
   "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 >;
 
-const fontSize = {
-  h1: "text-3xl",
-  h2: "text-2xl",
-  h3: "text-xl",
-  h4: "text-md",
-  h5: "text-sm",
-  h6: "text-xs",
+const levelClasses = {
+  h1: "text-3xl sm:text-7xl font-bold",
+  h2: "text-2xl font-semibold",
+  h3: "text-xl font-semibold",
+  h4: "text-md font-semibold",
+  h5: "text-sm font-semibold",
+  h6: "text-xs font-semibold",
 };
 
-type Props = HTMLProps<HTMLHeadingElement> & {
-  level?: HeadingTags;
-  as?: ElementType;
+export type HeadingProps = HTMLProps<HTMLHeadingElement> & {
+  level: HeadingTags;
+  link?: boolean;
 };
 
-export default function Heading({
-  level = "h1",
-  as: Comp = level,
-  ...rest
-}: Props) {
-  const props: HTMLProps<HTMLHeadingElement> = {
-    ...rest,
-    className: clsx(
-      `${fontSize[level]} font-semibold text-slate-800 dark:text-neutral-300`,
-      rest.className
-    ),
-  };
+export const Heading = ({
+  level: Comp,
+  link = false,
+  children,
+  className,
+  ...props
+}: HeadingProps) => {
+  const slug = toSlug(Array.isArray(children) ? children[0] : children);
 
-  return <Comp {...props} />;
-}
+  return (
+    <Comp
+      {...props}
+      className={clsx(
+        "scroll-mt-20 relative flex items-center gap-4",
+        levelClasses[Comp],
+        className
+      )}
+      id={slug}
+    >
+      {children}
+      {link && (
+        <a
+          href={`#${slug}`}
+          className="hidden sm:block md:absolute -left-6 top-1/2 md:-translate-y-1/2 hover:text-pink-600"
+        >
+          <LinkIcon />
+        </a>
+      )}
+    </Comp>
+  );
+};

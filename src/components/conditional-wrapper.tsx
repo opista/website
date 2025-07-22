@@ -1,13 +1,11 @@
-type Props = {
+type ConditionalWrapperProps = {
   children: React.ReactNode;
   condition: boolean;
   wrapper: (children: React.ReactNode) => React.ReactNode;
 };
 
-export default function ConditionalWrapper({
+export const ConditionalWrapper = ({
   children,
   condition,
   wrapper,
-}: Props) {
-  return condition ? wrapper(children) : children;
-}
+}: ConditionalWrapperProps) => (condition ? wrapper(children) : children);

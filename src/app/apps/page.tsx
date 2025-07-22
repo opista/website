@@ -1,5 +1,5 @@
-import PageLayout from "@/components/page-layout";
-import { PageTitle } from "@/components/page-title";
+import { Heading } from "@/components/heading";
+import { PageLayout } from "@/components/page-layout";
 import { PageContent, getAppPagesAndContent } from "@/lib/pages";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,7 +32,7 @@ export default async function Apps() {
 
   return (
     <PageLayout>
-      <PageTitle>Our Apps</PageTitle>
+      <Heading level="h1">Our Apps</Heading>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 sm:mt-16">
         {apps.map((app) => (
           <AppCell key={app.slug} app={app} />
