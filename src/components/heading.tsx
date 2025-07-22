@@ -34,18 +34,14 @@ export const Heading = ({
   return (
     <Comp
       {...props}
-      className={clsx(
-        "scroll-mt-20 relative flex items-center gap-4",
-        levelClasses[Comp],
-        className
-      )}
+      className={clsx("scroll-mt-20 relative", levelClasses[Comp], className)}
       id={slug}
     >
       {children}
       {link && (
         <a
           href={`#${slug}`}
-          className="hidden sm:block md:absolute -left-6 top-1/2 md:-translate-y-1/2 hover:text-pink-600"
+          className="hidden md:block md:absolute -left-6 top-1/2 md:-translate-y-1/2 hover:text-pink-600"
         >
           <LinkIcon />
         </a>
