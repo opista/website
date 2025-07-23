@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from "fs";
+import { readFileSync, readdirSync, statSync } from "fs";
 import matter from "gray-matter";
 import { join } from "path";
 
@@ -6,6 +6,7 @@ type Directory = "apps" | "posts";
 
 export type PageContent = {
   content: string;
+  lastUpdated: Date;
   slug: string;
   title: string;
   url: string;
@@ -19,10 +20,12 @@ export const getPageContentBySlug = (
 ): PageContent => {
   const fullPath = join(contentDirectory, directory, `${slug}.mdx`);
   const fileContents = readFileSync(fullPath, "utf8");
+  const fileStats = statSync(fullPath);
   const { content, data } = matter(fileContents);
 
   return {
     content,
+    lastUpdated: fileStats.mtime,
     slug,
     url: `/${directory}/${slug}`,
     ...data,

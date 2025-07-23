@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { HTMLProps } from "react";
 import { LinkIcon } from "./icons/link-icon";
 import { toSlug } from "@/util/to-slug";
+import Link from "next/link";
 
 type HeadingTags = keyof Pick<
   JSX.IntrinsicElements,
@@ -39,12 +40,12 @@ export const Heading = ({
     >
       {children}
       {link && (
-        <a
+        <Link
           href={`#${slug}`}
           className="hidden md:block md:absolute -left-6 top-1/2 md:-translate-y-1/2 hover:text-pink-600"
         >
           <LinkIcon />
-        </a>
+        </Link>
       )}
     </Comp>
   );

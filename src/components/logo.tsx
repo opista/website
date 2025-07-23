@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { ConditionalWrapper } from "./conditional-wrapper";
 import { HTMLAttributes } from "react";
+import Link from "next/link";
 
 type LogoProps = {
   isLink?: boolean;
@@ -12,7 +13,7 @@ export const Logo = ({
 }: LogoProps & HTMLAttributes<HTMLSpanElement>) => (
   <ConditionalWrapper
     condition={isLink}
-    wrapper={(children) => <a href="/">{children}</a>}
+    wrapper={(children) => <Link href="/">{children}</Link>}
   >
     <span
       className={clsx(
