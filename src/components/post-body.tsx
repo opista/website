@@ -46,6 +46,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     Image,
     IpodDiscovery,
     IpodStorageUpgradeTable,
+    Link,
     TOC: () => <TableOfContents content={page.content} />,
     table: Table,
     th: TableHeadCell,

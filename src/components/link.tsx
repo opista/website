@@ -3,7 +3,9 @@ import NextLink from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import { UrlObject } from "url";
 
-type LinkProps = ComponentPropsWithoutRef<typeof NextLink>;
+type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
+  openInNewTab?: boolean;
+};
 
 const isInternalLink = (url?: string | UrlObject) => {
   if (!url) return false;
@@ -15,8 +17,11 @@ const isInternalLink = (url?: string | UrlObject) => {
   return url.href?.startsWith("/") || url.href?.startsWith("#");
 };
 
-export const Link = ({ href, ...props }: LinkProps) => {
+export const Link = ({ href, openInNewTab, ...props }: LinkProps) => {
   const isInternal = isInternalLink(href);
+
+  const target = !isInternal || openInNewTab ? "_blank" : undefined;
+
   return (
     <NextLink
       {...props}
@@ -26,7 +31,7 @@ export const Link = ({ href, ...props }: LinkProps) => {
       )}
       href={href}
       rel={isInternal ? undefined : "noopener noreferrer"}
-      target={isInternal ? undefined : "_blank"}
+      target={target}
     />
   );
 };
