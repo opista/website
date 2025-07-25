@@ -1,3 +1,4 @@
+import { isInternalLink } from "@/util/is-external-link";
 import clsx from "clsx";
 import NextLink from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
@@ -5,16 +6,6 @@ import { UrlObject } from "url";
 
 type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
   openInNewTab?: boolean;
-};
-
-const isInternalLink = (url?: string | UrlObject) => {
-  if (!url) return false;
-
-  if (typeof url === "string") {
-    return url.startsWith("/") || url.startsWith("#");
-  }
-
-  return url.href?.startsWith("/") || url.href?.startsWith("#");
 };
 
 export const Link = ({ href, openInNewTab, ...props }: LinkProps) => {

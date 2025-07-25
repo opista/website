@@ -2,6 +2,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { HTMLAttributes } from "react";
 import { ConditionalWrapper } from "./conditional-wrapper";
+import { isInternalLink } from "@/util/is-external-link";
 
 type ButtonProps = {
   center?: boolean;
@@ -16,14 +17,17 @@ export const Button = ({
   ...props
 }: HTMLAttributes<HTMLDivElement> & ButtonProps) => (
   <div
-    className={clsx({
-      "text-center": center,
+    className={clsx("flex", {
+      "justify-center": center,
     })}
   >
     <ConditionalWrapper
       condition={!!href}
       wrapper={(children) => (
-        <Link href={href as string} target="_blank">
+        <Link
+          href={href as string}
+          target={isInternalLink(href) ? undefined : "_blank"}
+        >
           {children}
         </Link>
       )}

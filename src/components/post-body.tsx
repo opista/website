@@ -7,16 +7,18 @@ import { TableOfContents } from "./table-of-contents";
 import { Link } from "./link";
 import remarkGfm from "remark-gfm";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 import { Table } from "./table/table";
 import { TableHeadCell } from "./table/table-head-cell";
 import { TableBodyCell } from "./table/table-body-cell";
 import { UnorderedList } from "./unordered-list";
-import { IpodDiscovery } from "./ipod/ipod-discovery";
+import { IpodIdentifier } from "./ipod/ipod-identifier/ipod-identifier";
 import { Alert } from "./alert";
 import { Heading, HeadingProps } from "./heading";
 import { IpodStorageUpgradeTable } from "./ipod/ipod-storage-upgrade-table";
 import { Accordion } from "./accordion";
+import { RamIndicator } from "./ram-indicator";
+import { BackplateIndicator } from "./backplate-indicator";
 
 type PostBodyProps = {
   page: PageContent;
@@ -39,14 +41,16 @@ export const PostBody = ({ page }: PostBodyProps) => {
   const components: MDXComponents = {
     a: Link,
     Accordion,
+    BackplateIndicator,
     Button,
     Alert,
     ...headings,
     img: Image,
     Image,
-    IpodDiscovery,
+    IpodIdentifier,
     IpodStorageUpgradeTable,
     Link,
+    RamIndicator,
     TOC: () => <TableOfContents content={page.content} />,
     table: Table,
     th: TableHeadCell,

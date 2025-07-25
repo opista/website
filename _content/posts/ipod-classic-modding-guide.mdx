@@ -1,0 +1,259 @@
+---
+title: iPod Classic Modding Guide
+---
+
+<TOC />
+
+## Introduction
+
+This guide collects insights into modding the iPod Classic **(5th, 6th, and 7th generation)**. I originally created it to collate the information I picked up during my own iPod modding journey. Think of this as a helpful starting point: it's not a complete, step-by-step manual, but it offers valuable resources and should help you begin with confidence.
+
+<Alert type="info">You'll find that some of the details in this guide come from other websites. I've made sure to reference every source, as my goal is to bring together and preserve this information in one convenient place.</Alert>
+
+
+## Necessary equipment
+
+A basic list of items to gain access to your iPod's internals. Equipment needed for speicifc mods will be listed in their respective sections.
+
+| Tool | Description | Link |
+| --- | --- | --- |
+| iFixit Essential Electronics Toolkit | A toolkit with all the necessary tools, including a spudger, tweezers, and screwdriver. | [iFixit](https://www.ifixit.com/en-gb/products/essential-electronics-toolkit)
+| iSesamo opening tool | A thin, flat tool used to open the iPod case without damaging it.  | [iFixit](https://www.ifixit.com/en-gb/products/isesamo-opening-tool)
+
+## Identify your iPod model
+
+Information gathered from various sources[^yuuiko_guide][^apple_support_identify_model] around the web. Select the model that matches your iPod, or answer the questions to identify it if you're not sure.
+
+<IpodIdentifier />
+
+
+## Opening your iPod
+
+It's relatively simple to open an iPod. However, people notoriously struggle[^reddit_7_gen_cant_open] to open the 6th/7th generation models due to the metal front and back. If you know what you're doing, you should be able to get at the internals within a few minutes.
+
+The iPod has **11** clips holding the front and back together. You'll need to disengage these clips with your pry tool (iSesamo or alternative) to access the internals.
+
+YouTuber [Geek Detour](https://www.youtube.com/@GeekDetour) has created a <Link href="/posts/ipod-modding/opening-ipod-reference.pdf" openInNewTab>reference card</Link>[^youtuber_geekdetour_reference_pdf] that you can print out which will help you to identify where the internal clips are.
+
+Here's a potato-cam video guide by [Elite Obsolete Electronics](https://www.youtube.com/watch?v=UZMXUt9hyNo).
+
+<Alert type="warning">It's important that you slide your pry tool **downwards** to disengage the clips. **DO NOT PUSH OUTWARDS!** Pushing the tool in other directions can cause unnecessary damage to the device housing.</Alert>
+
+
+## Storage mod
+
+WIP
+
+### Device storage limits
+
+There are limitations on the maximum storage capacity of iPods[^dcg_capacity_guide] running the stock operating system, depending on the model. A <RamIndicator ram={32} /> iPod has a limit of around 20,000 items (songs, videos etc.), whilst the <RamIndicator ram={64} /> models have a limit of around 50,000.
+
+You should also be aware that some generations (specifically 6/6.5) have a hard storage limit.
+
+Check out the compatibility table below for more details.
+
+<Accordion title="Upgrade compatibility table"><IpodStorageUpgradeTable /></Accordion>
+
+<Alert type="info">Looking to bypass these stock OS limits? You'll have to install Rockbox.[^reddit_rockbox_storage_limit] Check out [Installing Rockbox](#installing-rockbox) for more information.</Alert>
+
+### Upgrade options
+
+| Option | Description | Price |
+| --- | --- | --- |
+| iFlash Solo | SD Adapter. SD/SDHC/SDXC/UHS-1 U1 & U3 Card Compatible | [£29](https://www.iflash.xyz/store/iflash-solo/) |
+| iFlash Dual | Dual MicroSD Adapter. Supports up to 2 MicroSD cards | [£33](https://www.iflash.xyz/store/iflash-dual/) |
+| iFlash Sata | mSata Adapter. Supports mSATA SSDs | [£34](https://www.iflash.xyz/store/iflash-sata/) |
+| iFlash Quad | Quad MicroSD Adapter. Supports up to 4 MicroSD cards | [£36](https://www.iflash.xyz/store/iflash-quad/) |
+
+## Battery Mod
+
+WIP
+
+## Faceplate Replacement
+
+WIP
+
+## Screen Replacement
+
+WIP
+
+## Backplate Replacement
+
+WIP
+
+## Bluetooth Mod
+
+<Alert type="warning">When installing a mod within the device, be aware of a recurring issue[^reddit_bluetooth_range_1][^reddit_bluetooth_range_2] with Bluetooth range. The iPod's screen shield and metal casing can create a Faraday cage, potentially impairing wireless performance. This effect should be factored into your modification plans.</Alert>
+
+WIP
+
+{/* Options:
+* Cheap Bluetooth board & hijack lock switch (breaking change)
+* UGREEN CM672, rip out board & place button under lock switch (lock switch still works) 
+https://www.reddit.com/r/ipod/comments/1kztic2/comment/mw3uks1/
+https://www.reddit.com/r/ipod/comments/1lc4yz2/my_first_ipod_and_my_first_mod/
+
+
+UGREEN mod Needs:
+* [UGREEN CM672](https://www.amazon.co.uk/gp/product/B0CJY56XG3/ref=ox_sc_act_title_1?smid=AXZ3JQ1GVFPIF&psc=1)
+* 10kΩ resistor
+* wires
+* max 2000mah battery with this build */}
+
+## Software mod
+
+WIP
+
+### Bypassing 6th generation storage limits
+
+Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_donate] has [produced a guide](https://github.com/Olsro/reddit-ipod-guides/blob/main/guides/ipod6g-flash-more-recent-firmwares.md) on how to flash newer firmware versions onto your device. This means you'll be able to increase the storage on your device up to 2TB.[^dcg_capacity_guide]
+
+### Rockbox
+
+<Alert type="warning">Installing Rockbox will bypass the usual iPod [storage limits](#device-storage-limits), however, there will still be a 2TB limit enforced by the FAT32 file-system.[^dcg_capacity_guide]</Alert>
+
+WIP
+
+### Installing games
+
+Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_donate] (again!) has started and is [maintaing a project](https://github.com/Olsro/ipodclickwheelgamespreservationproject) to preserve iPod games. 
+
+### Debugging
+
+#### Force restart[^apple_support_force_restart]
+
+1. Put the Hold switch firmly in the unlocked position.
+1. Press and hold the Menu and Center (or Select) buttons for 8 seconds, or until you see the Apple logo.
+
+#### DFU Mode[^apple_wiki_dfu_mode]
+
+1. Connect the device to a computer using a USB cable.
+1. Hold down both the select (center) and Menu button.
+1. The device will reboot. Keep holding both buttons.
+1. After 8 seconds, release both buttons.
+
+
+#### Disk mode[^apple_support_disk_mode]
+
+1. Set your iPod on a flat surface and make sure your iPod has a battery charge.
+1. Slide the Hold switch on and off.
+1. Perform a [force restart](#force-restart).
+1. Press and hold the Centre and Play/Pause buttons until you see the disk mode screen. Make sure you press the Play/Pause buttons towards the outside of the click wheel and not near the centre.
+1. Connect your iPod to your computer. The screen on your iPod should display Do not disconnect. Make sure you eject your iPod in iTunes before you disconnect it from your computer.
+
+#### Debug mode[^ifixit_debug_mode]
+
+1. Perform a [force restart](#force-restart).
+1. Immediately after the Apple logo appears, hold down the Previous Track and Center buttons.
+1. The screen should display the Apple logo. Once the screen turns white, it is safe to release the two buttons.
+
+## FAQ
+
+### My screen shows a circled red X and a support link, what's happened?
+
+<Image alt="iPod classic circled red cross error" height={238} src="/posts/ipod-modding/red-cross-support.png" width={318} />
+
+This usually means a hard drive failure.[^apple_community_hard_drive_issue] You can confirm this by putting the iPod into [debug mode](#debug-mode) and checking the hard drive status. Possible issues:
+
+1. The hard drive is not connected properly.
+1. The connector is damaged.
+1. The hard drive is damaged or has failed.
+
+### Can I put an 6th/7th gen faceplate on my 5th generation iPod?
+
+Yes. However, you'll also need to transplant 6th/7th gen parts:
+
+* The midframe.
+* (optional) The clickwheel **plastic**. You can skip this, but if you do, the clickwheel won't sit flush with the faceplate.[^reddit_5_gen_7_gen_faceplate_1][^reddit_5_gen_7_gen_faceplate_2][^reddit_5_gen_7_gen_faceplate_3] This [video guide](https://www.youtube.com/watch?v=T1IRfKDwoXc) should help understand how to do this.
+
+### I've added music to my iPod, and now it's slow/crashes when I turn it on
+
+You're probably nearing/have reached the maximum number of songs your iPod can handle. <RamIndicator ram={32} /> models are limited to around 20,000 songs, whilst <RamIndicator ram={64} /> models are limited to around 50,000. [Identify your iPod model](#identify-your-ipod-model) to understand your device's limits.
+
+### I've tried to check my SMART data and I see "Error"
+
+This is likely a faulty hard drive. If the device is modded, check ribbon connections are seated correctly. If it's not modded, you will need to replace the drive. Check [Storage mod](#storage-mod) for more information.
+
+### I've checked my SMART data because my iPod is behaving strangely. What is "bad"?
+
+The Wikipedia entry for [S.M.A.R.T](https://en.wikipedia.org/wiki/Self-Monitoring,_Analysis_and_Reporting_Technology#Known_ATA_S.M.A.R.T._attributes) tells us everything that we need to know.
+
+| Attribute | Description |
+| --- | --- |
+| Power-off Retract Count (Retracts) | The number of power-off or emergency retract cycles. **Lower is better**. |
+| Current Pending Sector Count (Pending Sectors) | A count of bad sectors that have been found and re-mapped. **Lower is better**. |
+| Reallocated sectors count (Reallocs) | Count of reallocated sectors. The raw value represents a count of the bad sectors that have been found and remapped. Thus, the higher the attribute value, the more sectors the drive has had to reallocate. This value is primarily used as a metric of the life expectancy of the drive; a drive which has had any reallocations at all is significantly more likely to fail in the immediate months. **Lower is better**. |
+
+Reallocs will have an upper threshold before total drive failure. We don't know what this value is for an iPod hard drive, but if the number you see isn't 0, it is significantly more likely to fail. If you're noticing issues and see a high count, it may be easier to replace the drive. Check out [Storage mod](#storage-mod) for more information.
+
+## Communities
+
+### Reddit
+
+* [r/ipod](https://www.reddit.com/r/ipod/)
+* [r/IpodClassic](https://www.reddit.com/r/IpodClassic/)
+* [r/Modded_iPods](https://www.reddit.com/r/Modded_iPods/)
+
+### Discord
+
+* [iPod Modding](https://discord.gg/RrkzDNbBXJ)
+* [iPod](https://discord.gg/ipod)
+
+
+## Corrections & Contributions
+
+This guide is compiled from a markdown document on [Github](https://github.com/opista/marketing-website). If you've spotted an error or would like to contribute to the guide, feel free to [raise an issue](https://github.com/opista/marketing-website/issues) or create a [pull request](https://github.com/opista/marketing-website/pulls).
+
+{/* * https://www.reddit.com/r/IpodClassic/
+* https://www.reddit.com/r/ipod/
+* https://www.reddit.com/r/Modded_iPods/ */}
+
+{/* https://www.ajfriesen.com/modding-an-ipod-classic/
+
+https://www.reddit.com/r/ipod/comments/1kztic2/the_right_way_to_bluetooth_mod_your_ipod_classic/
+
+https://www.youtube.com/watch?v=l8b6X6pN5-Q
+
+https://www.reddit.com/r/DigitalAudioPlayer/comments/1l8oz5e/is_my_ipod_classic_enough/
+
+https://www.reddit.com/r/ipod/comments/1lon98g/playermods_bluetooth_ipod_classic_70_does_not/
+
+https://www.reddit.com/r/ipod/comments/1lypw1b/tips_for_a_bluetooth_ipod_5th_gen/
+
+https://www.reddit.com/r/ipod/comments/1gvouhc/how_do_you_add_a_bluetooth_module_into_an_ipod/
+
+https://www.reddit.com/r/ipod/comments/xzuzpf/audio_formats_and_quality/
+
+https://www.reddit.com/r/ipod/comments/zvb2f7/ipod_5th_gen_with_classic_aluminum_front_panel_is/
+
+https://github.com/Olsro/reddit-ipod-guides/blob/main/guides/encode-audio-tracks-oldapple.md
+
+https://hackaday.com/2022/02/16/classic-ipods-are-super-upgradeable-in-2022/
+
+https://www.xda-developers.com/modded-ipod-classic-bluetooth-usbc-ssd-how/
+
+https://www.reddit.com/answers/dd91b264-4b78-47d9-b9a3-e1993c2879d7/?q=How%20to%20mod%20an%20iPod%20Classic%20for%20Bluetooth&source=PDP
+
+https://www.reddit.com/r/ipod/comments/1kztic2/the_right_way_to_bluetooth_mod_your_ipod_classic/
+
+https://www.ifixit.com/Guide/iPod+5th+Generation+(Video)+Headphone+Jack+&+Hold+Switch+Replacement/604
+
+https://www.reddit.com/r/ipod/comments/14rgnai/max_storage_iflash_and_rockbox_6th_gen/ */}
+
+[^apple_community_hard_drive_issue]: https://discussions.apple.com/thread/5044739?answerId=22067446022&sortBy=rank#22067446022
+[^apple_support_disk_mode]: https://support.apple.com/en-gb/101325#clickwheel
+[^apple_support_force_restart]: https://support.apple.com/en-euro/102293#ipodclassic
+[^apple_support_identify_model]: https://support.apple.com/en-gb/103823#ipod
+[^apple_wiki_dfu_mode]: https://theapplewiki.com/wiki/DFU_Mode#iPod_classic_.286th_generation.29.2C_iPod_nano_.282nd.2C_3rd.2C_4th.2C_and_5th_generation.29.2C_iPod_shuffle_.282nd.2C_4th_generation.29
+[^dcg_capacity_guide]: https://dcg-ipod.affinityco.net/blogs/help-2/kb-40011-flash-modding-ipod-classics-compatible-capacities
+[^ifixit_debug_mode]: https://www.ifixit.com/Guide/How+to+put+an+iPod+Classic+into+Debug+mode/139818
+[^reddit_5_gen_7_gen_faceplate_1]: https://www.reddit.com/r/ipod/comments/y5gars/comment/isju73x/
+[^reddit_5_gen_7_gen_faceplate_2]: https://www.reddit.com/r/ipod/comments/zzvxqc/comment/j2e3kkh/
+[^reddit_5_gen_7_gen_faceplate_3]: https://www.reddit.com/r/ipod/comments/osgws4/comment/h6qm017/
+[^reddit_7_gen_cant_open]: https://www.reddit.com/r/IpodClassic/comments/1m6kfc2/fuck_my_life/
+[^reddit_bluetooth_range_1]: https://www.reddit.com/r/ipod/comments/1at1uoj/comment/kqwrjbx/
+[^reddit_bluetooth_range_2]: https://www.reddit.com/r/ipod/comments/1hdi1le/comment/mi40quh/
+[^reddit_rockbox_storage_limit]: https://www.reddit.com/r/ipod/comments/15y29wm/comment/jxawsp1/
+[^reddit_user_olsro_donate]: Like Olsro's work? Consider donating! https://www.patreon.com/Olsro
+[^youtuber_geekdetour_reference_pdf]: https://www.dropbox.com/scl/fi/9dbq097ahx8lfyhed06sg/iPod-Classic-Openning-Reference-Card.pdf?rlkey=gs189u4t2axulvz0h3f3nlg8y&e=2&dl=0
+[^yuuiko_guide]: https://yuuiko.github.io/iPodGuide/iPodGuidev2-1.pdf

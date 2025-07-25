@@ -17,19 +17,23 @@ const contentDirectory = join(process.cwd(), "_content");
 export const getPageContentBySlug = (
   directory: Directory,
   slug: string
-): PageContent => {
-  const fullPath = join(contentDirectory, directory, `${slug}.mdx`);
-  const fileContents = readFileSync(fullPath, "utf8");
-  const fileStats = statSync(fullPath);
-  const { content, data } = matter(fileContents);
+): PageContent | null => {
+  try {
+    const fullPath = join(contentDirectory, directory, `${slug}.mdx`);
+    const fileContents = readFileSync(fullPath, "utf8");
+    const fileStats = statSync(fullPath);
+    const { content, data } = matter(fileContents);
 
-  return {
-    content,
-    lastUpdated: fileStats.mtime,
-    slug,
-    url: `/${directory}/${slug}`,
-    ...data,
-  } as PageContent;
+    return {
+      content,
+      lastUpdated: fileStats.mtime,
+      slug,
+      url: `/${directory}/${slug}`,
+      ...data,
+    } as PageContent;
+  } catch (err) {
+    return null;
+  }
 };
 
 export const getAllPageSlugs = (directory: Directory) => {
@@ -41,5 +45,7 @@ export const getAllPageSlugs = (directory: Directory) => {
 
 export const getAppPagesAndContent = (directory: Directory) => {
   const slugs = getAllPageSlugs(directory);
-  return slugs.map(({ slug }) => getPageContentBySlug(directory, slug));
+  return slugs
+    .map(({ slug }) => getPageContentBySlug(directory, slug))
+    .filter((page): page is PageContent => !!page);
 };
