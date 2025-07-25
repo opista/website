@@ -3,6 +3,7 @@ import { getAllPageSlugs, getPageContentBySlug } from "@/lib/pages";
 import { PostBody } from "@/components/post-body";
 import { Heading } from "@/components/heading";
 import { notFound } from "next/navigation";
+import { BackToTop } from "@/components/back-to-top";
 
 type AppPageParams = {
   slug: string;
@@ -34,6 +35,7 @@ export default async function PostPage({ params }: { params: AppPageParams }) {
       </div>
       <p className="text-xs mt-0 mb-8">Last updated: {date}</p>
       <PostBody page={page} />
+      <BackToTop />
     </PageLayout>
   );
 }
