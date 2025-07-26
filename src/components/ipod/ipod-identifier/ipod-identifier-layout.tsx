@@ -12,7 +12,7 @@ export const IpodIdentifierLayout = ({
   image,
   title,
 }: IpodIdentifierLayoutProps) => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 min:h-[400px]">
+  <div className="grid grid-cols-1 sm:grid-cols-2 min-h-[400px]">
     <div className="flex flex-col justify-center">
       <div className="font-bold mb-8 text-center">{title}</div>
       <div className="flex gap-4 flex-wrap justify-center items-start content-start sm:h-[200px]">

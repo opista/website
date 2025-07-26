@@ -169,14 +169,14 @@ export const IpodIdentifier = () => {
       key: "capacity",
       question:
         "Looking on the back of your iPod, what storage capacity does it have?",
-      image: "/posts/ipod-modding/ipod-5-gen-search.png",
+      image: "/posts/ipod-modding/ipod-rear.png",
       answers: capacityOptions,
       skip: () => capacityOptions.length <= 1,
     },
     {
       key: "year",
       question: "Looking on the back of your iPod, what year does it say?",
-      image: "/posts/ipod-modding/ipod-5-gen-search.png",
+      image: "/posts/ipod-modding/ipod-rear.png",
       answers: yearOptions,
       skip: () => yearOptions.length <= 1,
     },
