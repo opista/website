@@ -37,10 +37,8 @@ export const BackToTop = ({
   return (
     showButton && (
       <Button
-        className={clsx(
-          "group select-none fixed bottom-4 right-4 z-10 px-0 py-0 w-10 h-10 flex items-center justify-center",
-          className
-        )}
+        className={clsx("group fixed bottom-4 right-4 z-10 p-3", className)}
+        noPadding
         onClick={onClick}
       >
         <ArrowUp />
