@@ -6,14 +6,14 @@ import { ArrowUp } from "./icons/arrow-up";
 import { useScrollPosition } from "@/hooks/use-scroll-position";
 import { Button } from "./button";
 
-type Props = {
+type BackToTopProps = {
   offset?: number;
 };
 
 export const BackToTop = ({
   className,
   offset = 300,
-}: HTMLProps<HTMLDivElement> & Props) => {
+}: HTMLProps<HTMLDivElement> & BackToTopProps) => {
   const scrollPosition = useScrollPosition();
 
   const onClick = useCallback(() => {
