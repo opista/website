@@ -7,7 +7,7 @@ import { TableOfContents } from "./table-of-contents";
 import { Link } from "./link";
 import remarkGfm from "remark-gfm";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
-import { ComponentPropsWithoutRef, ReactNode } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import { Table } from "./table/table";
 import { TableHeadCell } from "./table/table-head-cell";
 import { TableBodyCell } from "./table/table-body-cell";
@@ -19,6 +19,7 @@ import { IpodStorageUpgradeTable } from "./ipod/ipod-storage-upgrade-table";
 import { Accordion } from "./accordion";
 import { RamIndicator } from "./ram-indicator";
 import { BackplateIndicator } from "./backplate-indicator";
+import { YoutubeEmbed } from "./youtube-embed";
 
 type PostBodyProps = {
   page: PageContent;
@@ -59,6 +60,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     wrapper: ({ children }: ComponentPropsWithoutRef<"div">) => (
       <div className="mx-auto max-w-prose snap-y markdown">{children}</div>
     ),
+    YoutubeEmbed,
   };
 
   return (
