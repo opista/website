@@ -8,6 +8,7 @@ import { Heading } from "./heading";
 
 type TableOfContentsProps = {
   content: string;
+  maxDepth?: number;
 };
 
 const HeadingGroup = ({ headings }: { headings: TOCItem[] }) => (
@@ -24,9 +25,12 @@ const HeadingGroup = ({ headings }: { headings: TOCItem[] }) => (
   </ul>
 );
 
-export const TableOfContents = ({ content }: TableOfContentsProps) => {
+export const TableOfContents = ({
+  content,
+  maxDepth,
+}: TableOfContentsProps) => {
   const componentTitle = "Table of Contents";
-  const headings = generateTableOfContents(content);
+  const headings = generateTableOfContents(content, maxDepth);
 
   const baseHeading: TOCItem = {
     children: [],

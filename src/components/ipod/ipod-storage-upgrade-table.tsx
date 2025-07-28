@@ -9,7 +9,7 @@ import clsx from "clsx";
 import { InformationIcon } from "../icons/information-icon";
 import { Link } from "../link";
 
-type SupportLevel = "full" | "none" | "partial" | "software";
+type SupportLevel = "firmware" | "full" | "none" | "partial";
 
 type CapacityOption = {
   capacity: Capacity;
@@ -80,18 +80,18 @@ const deviceMap: GenerationConfiguration[] = [
         capacity: 80,
         upgrades: {
           "128GB": "full",
-          "256GB": "software",
-          "512GB": "software",
-          "1TB": "software",
+          "256GB": "firmware",
+          "512GB": "firmware",
+          "1TB": "firmware",
         },
       },
       {
         capacity: 160,
         upgrades: {
           "128GB": "full",
-          "256GB": "software",
-          "512GB": "software",
-          "1TB": "software",
+          "256GB": "firmware",
+          "512GB": "firmware",
+          "1TB": "firmware",
         },
       },
     ],
@@ -103,9 +103,9 @@ const deviceMap: GenerationConfiguration[] = [
         capacity: 120,
         upgrades: {
           "128GB": "full",
-          "256GB": "software",
-          "512GB": "software",
-          "1TB": "software",
+          "256GB": "firmware",
+          "512GB": "firmware",
+          "1TB": "firmware",
         },
       },
     ],
@@ -141,13 +141,13 @@ const supportLevelMap: Record<
       "Supported, but you'll reach the RAM's song limit before the storage limit",
     icon: ExclamationCircleIcon,
   },
-  software: {
+  firmware: {
     className: "text-purple-600 bg-purple-100",
     description: (
       <>
         Unsupported, but bypassable by{" "}
         <Link href="#bypassing-6th-generation-storage-limits">
-          flashing a newer software version
+          flashing a newer firmware version
         </Link>
       </>
     ),
@@ -178,7 +178,7 @@ const Key = () => (
             className={clsx({
               "border-t border-[var(--tw-prose-td-borders)]": index > 0,
             })}
-            key={`key-${level}`}
+            key={`key-${description}-${level}`}
           >
             <CompatibilityCell level={level as SupportLevel} />
             <TableBodyCell>{description}</TableBodyCell>
@@ -196,7 +196,8 @@ export const IpodStorageUpgradeTable = () => (
       <thead>
         <tr>
           <TableHeadCell
-            className="border-r border-[var(--tw-prose-td-borders)] align-middle"
+            border
+            className="align-middle"
             colSpan={2}
             rowSpan={2}
           >
@@ -216,12 +217,13 @@ export const IpodStorageUpgradeTable = () => (
           <>
             <tr key={device.generation}>
               <TableBodyCell
-                className="border-r border-[var(--tw-prose-td-borders)] align-middle"
+                border
+                className="align-middle"
                 rowSpan={device.capacityOptions.length}
               >
                 {device.generation}
               </TableBodyCell>
-              <TableBodyCell className="border-r border-[var(--tw-prose-td-borders)]">
+              <TableBodyCell border>
                 {device.capacityOptions[0].capacity}GB
               </TableBodyCell>
               {Object.entries(device.capacityOptions[0].upgrades).map(
@@ -235,9 +237,7 @@ export const IpodStorageUpgradeTable = () => (
             </tr>
             {device.capacityOptions.slice(1).map((option) => (
               <tr key={`${device.generation}-${option.capacity}`}>
-                <TableBodyCell className="border-r border-[var(--tw-prose-td-borders)]">
-                  {option.capacity}GB
-                </TableBodyCell>
+                <TableBodyCell border>{option.capacity}GB</TableBodyCell>
                 {Object.entries(option.upgrades).map(([upgrade, support]) => (
                   <CompatibilityCell
                     key={`${device.generation}-${option.capacity}-${upgrade}`}

@@ -33,12 +33,17 @@ const buildNestedTOC = (headings: TOCItem[]): TOCItem[] => {
   return root;
 };
 
-export const generateTableOfContents = (content: string) => {
+export const generateTableOfContents = (
+  content: string,
+  maxDepth: number = Infinity
+) => {
   const tree = unified().use(remarkParse).use(remarkMdx).parse(content);
 
   const flatHeadings: TOCItem[] = [];
 
   visit(tree, "heading", (node: any) => {
+    if (node.depth > maxDepth) return;
+
     const text = node.children
       .filter(
         (child: any) => child.type === "text" || child.type === "inlineCode"

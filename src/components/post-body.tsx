@@ -20,6 +20,9 @@ import { Accordion } from "./accordion";
 import { RamIndicator } from "./ram-indicator";
 import { BackplateIndicator } from "./backplate-indicator";
 import { YoutubeEmbed } from "./youtube-embed";
+import { IpodStorageBatteryCompatibilityTable } from "./ipod/ipod-storage-battery-compatibility-table";
+
+const MAX_HEADING_DEPTH = 3 as const;
 
 type PostBodyProps = {
   page: PageContent;
@@ -29,11 +32,11 @@ const headings = Array(6)
   .fill(null)
   .reduce((acc, curr, idx) => {
     const level = idx + 1;
-    const tag = `h${level}` as const;
+    const tag = `h${level}` as HeadingProps["level"];
     return {
       ...acc,
       [tag]: (props: HeadingProps) => (
-        <Heading {...props} level={tag as HeadingProps["level"]} link />
+        <Heading {...props} level={tag} link={level <= MAX_HEADING_DEPTH} />
       ),
     };
   }, {});
@@ -50,9 +53,12 @@ export const PostBody = ({ page }: PostBodyProps) => {
     Image,
     IpodIdentifier,
     IpodStorageUpgradeTable,
+    IpodStorageBatteryCompatibilityTable,
     Link,
     RamIndicator,
-    TOC: () => <TableOfContents content={page.content} />,
+    TableOfContents: () => (
+      <TableOfContents content={page.content} maxDepth={MAX_HEADING_DEPTH} />
+    ),
     table: Table,
     th: TableHeadCell,
     td: TableBodyCell,

@@ -2,7 +2,7 @@
 title: iPod Classic Modding Guide
 ---
 
-<TOC />
+<TableOfContents />
 
 ## Introduction
 
@@ -48,7 +48,7 @@ WIP
 
 There are limitations on the maximum storage capacity of iPods[^dcg_capacity_guide] running the stock operating system, depending on the model. A <RamIndicator ram={32} /> iPod has a limit of around 20,000 items (songs, videos etc.), whilst the <RamIndicator ram={64} /> models have a limit of around 50,000.
 
-You should also be aware that some generations (specifically 6/6.5) have a hard storage limit. However, you can [flash newer software](#bypassing-6th-generation-storage-limits) to bypass this.
+You should also be aware that some generations (specifically 6/6.5) have a hard storage limit. However, you can [flash newer firmware](#bypassing-6th-generation-storage-limits) to bypass this.
 
 Check out the compatibility table below for more details.
 
@@ -62,12 +62,25 @@ Check out the compatibility table below for more details.
 | --- | --- | --- |
 | iFlash Solo | SD Adapter. SD/SDHC/SDXC/UHS-1 U1 & U3 Card Compatible | [£29](https://www.iflash.xyz/store/iflash-solo/) |
 | iFlash Dual | Dual MicroSD Adapter. Supports up to 2 MicroSD cards | [£33](https://www.iflash.xyz/store/iflash-dual/) |
-| iFlash Sata | mSata Adapter. Supports mSATA SSDs | [£34](https://www.iflash.xyz/store/iflash-sata/) |
 | iFlash Quad | Quad MicroSD Adapter. Supports up to 4 MicroSD cards | [£36](https://www.iflash.xyz/store/iflash-quad/) |
+| iFlash Sata | mSata Adapter. Supports mSATA SSDs | [£34](https://www.iflash.xyz/store/iflash-sata/) |
 
 ## Battery Mod
 
 WIP
+
+### Storage mod compatibility
+
+Not all batteries are the same. Due to the variance in their dimensions (width, height, depth) you may find yourself trying to install a battery that doesn't fit into your device. 
+
+<BackplateIndicator backplate="thick" /> backplate iPods have the extra depth to accomodate all battery & storage combinations. 
+
+<BackplateIndicator backplate="thin" /> backplate iPods have less space and therefore choice is more limited.  
+
+This table should help guide you on which battery to choose.[^youtube_battery_iflash_guide]
+
+<Accordion title="Battery & iFlash compatibility table"><IpodStorageBatteryCompatibilityTable /></Accordion>
+
 
 ## Faceplate Replacement
 
@@ -186,6 +199,14 @@ The Wikipedia entry for [S.M.A.R.T](https://en.wikipedia.org/wiki/Self-Monitorin
 
 Reallocs will have an upper threshold before total drive failure. We don't know what this value is for an iPod hard drive, but if the number you see isn't 0, it is significantly more likely to fail. If you're noticing issues and see a high count, it may be easier to replace the drive. Check out [Storage mod](#storage-mod) for more information.
 
+### My clickwheel centre button isn't working
+
+The foam pad behind the clickwheel can shift out of alignment, preventing the button from clicking in correctly.
+
+You'll need to [disassemble your iPod](#opening-your-ipod) and recentre (or replace) the foam pad[^youtube_clickwheel_not_working]. As you can see in the image below, there is a black foam pad over each button. Ensure that these are centred.
+
+<Image alt="iPod internal board" className="max-w-full sm:max-w-sm" height={1014} src="/posts/ipod-modding/ipod-board.png" width={1080} />
+
 ## Communities
 
 ### Reddit
@@ -203,10 +224,6 @@ Reallocs will have an upper threshold before total drive failure. We don't know 
 ## Corrections & Contributions
 
 This guide is compiled from a markdown document on [Github](https://github.com/opista/marketing-website). If you've spotted an error or would like to contribute to the guide, feel free to [raise an issue](https://github.com/opista/marketing-website/issues) or create a [pull request](https://github.com/opista/marketing-website/pulls).
-
-{/* * https://www.reddit.com/r/IpodClassic/
-* https://www.reddit.com/r/ipod/
-* https://www.reddit.com/r/Modded_iPods/ */}
 
 {/* https://www.ajfriesen.com/modding-an-ipod-classic/
 
@@ -255,5 +272,7 @@ https://www.reddit.com/r/ipod/comments/14rgnai/max_storage_iflash_and_rockbox_6t
 [^reddit_bluetooth_range_2]: https://www.reddit.com/r/ipod/comments/1hdi1le/comment/mi40quh/
 [^reddit_rockbox_storage_limit]: https://www.reddit.com/r/ipod/comments/15y29wm/comment/jxawsp1/
 [^reddit_user_olsro_donate]: Like Olsro's work? Consider donating! https://www.patreon.com/Olsro
+[^youtube_battery_iflash_guide]: https://www.youtube.com/watch?v=K9m0tfSus14
+[^youtube_clickwheel_not_working]: https://youtu.be/LN3TuIAYDgY?t=159
 [^youtuber_geekdetour_reference_pdf]: https://www.dropbox.com/scl/fi/9dbq097ahx8lfyhed06sg/iPod-Classic-Openning-Reference-Card.pdf?rlkey=gs189u4t2axulvz0h3f3nlg8y&e=2&dl=0
 [^yuuiko_guide]: https://yuuiko.github.io/iPodGuide/iPodGuidev2-1.pdf
