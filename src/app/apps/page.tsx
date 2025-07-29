@@ -1,6 +1,6 @@
 import { Heading } from "@/components/heading";
 import { PageLayout } from "@/components/page-layout";
-import { PageContent, getAppPagesAndContent } from "@/lib/pages";
+import { PageContent, getAllPagesAndContent } from "@/lib/pages";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,7 +33,7 @@ const AppCell = ({ app }: AppCellProps) => {
 };
 
 export default async function Apps() {
-  const apps = await getAppPagesAndContent("apps");
+  const apps = await getAllPagesAndContent("apps");
 
   return (
     <PageLayout>

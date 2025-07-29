@@ -2,7 +2,7 @@ import { readFileSync, readdirSync, statSync } from "fs";
 import matter from "gray-matter";
 import { join } from "path";
 
-type Directory = "apps" | "posts";
+export type Directory = "apps" | "posts";
 
 export type PageContent = {
   content: string;
@@ -44,7 +44,7 @@ export const getAllPageSlugs = (directory: Directory) => {
   }));
 };
 
-export const getAppPagesAndContent = (directory: Directory) => {
+export const getAllPagesAndContent = (directory: Directory) => {
   const slugs = getAllPageSlugs(directory);
   return slugs
     .map(({ slug }) => getPageContentBySlug(directory, slug))
