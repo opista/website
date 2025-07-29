@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { ThemeConfig } from "tailwindcss/types/config";
 
 const config: Config = {
   content: [
@@ -14,6 +15,18 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      typography: () => ({
+        DEFAULT: {
+          css: {
+            "code::before": {
+              content: "normal",
+            },
+            "code::after": {
+              content: "normal",
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],

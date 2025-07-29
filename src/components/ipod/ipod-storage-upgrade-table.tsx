@@ -1,13 +1,14 @@
 import { Table } from "../table/table";
 import { TableBodyCell } from "../table/table-body-cell";
 import { TableHeadCell } from "../table/table-head-cell";
-import { FC, ReactNode } from "react";
+import { FC, Fragment, ReactNode } from "react";
 import { CheckCircleIcon } from "../icons/check-circle-icon";
 import { CrossCircleIcon } from "../icons/cross-circle-icon";
 import { ExclamationCircleIcon } from "../icons/exclamation-circle-icon";
 import clsx from "clsx";
 import { InformationIcon } from "../icons/information-icon";
 import { Link } from "../link";
+import { toSlug } from "@/util/to-slug";
 
 type SupportLevel = "firmware" | "full" | "none" | "partial";
 
@@ -163,7 +164,7 @@ const supportLevelMap: Record<
 const CompatibilityCell = ({ level }: { level: SupportLevel }) => {
   const { className, icon: Icon } = supportLevelMap[level];
   return (
-    <TableBodyCell className={clsx("text-center", className)}>
+    <TableBodyCell className={clsx("text-center w-[60px]", className)}>
       <Icon className="inline-block size-6" />
     </TableBodyCell>
   );
@@ -173,12 +174,12 @@ const Key = () => (
   <Table>
     <tbody>
       {Object.entries(supportLevelMap).map(
-        ([level, { description }], index) => (
+        ([level, { description, icon }], index) => (
           <tr
             className={clsx({
               "border-t border-[var(--tw-prose-td-borders)]": index > 0,
             })}
-            key={`key-${description}-${level}`}
+            key={icon.name}
           >
             <CompatibilityCell level={level as SupportLevel} />
             <TableBodyCell>{description}</TableBodyCell>
@@ -214,8 +215,8 @@ export const IpodStorageUpgradeTable = () => (
       </thead>
       <tbody>
         {deviceMap.map((device) => (
-          <>
-            <tr key={device.generation}>
+          <Fragment key={device.generation}>
+            <tr>
               <TableBodyCell
                 border
                 className="align-middle"
@@ -229,24 +230,37 @@ export const IpodStorageUpgradeTable = () => (
               {Object.entries(device.capacityOptions[0].upgrades).map(
                 ([upgrade, support]) => (
                   <CompatibilityCell
-                    key={`${device.generation}-${device.capacityOptions[0].capacity}-${upgrade}`}
+                    key={toSlug(
+                      device.generation.toString(),
+                      device.capacityOptions[0].capacity.toString(),
+                      upgrade
+                    )}
                     level={support}
                   />
                 )
               )}
             </tr>
             {device.capacityOptions.slice(1).map((option) => (
-              <tr key={`${device.generation}-${option.capacity}`}>
+              <tr
+                key={toSlug(
+                  device.generation.toString(),
+                  option.capacity.toString()
+                )}
+              >
                 <TableBodyCell border>{option.capacity}GB</TableBodyCell>
                 {Object.entries(option.upgrades).map(([upgrade, support]) => (
                   <CompatibilityCell
-                    key={`${device.generation}-${option.capacity}-${upgrade}`}
+                    key={toSlug(
+                      device.generation.toString(),
+                      option.capacity.toString(),
+                      upgrade
+                    )}
                     level={support}
                   />
                 ))}
               </tr>
             ))}
-          </>
+          </Fragment>
         ))}
       </tbody>
     </Table>

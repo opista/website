@@ -1,4 +1,4 @@
 import slugify from "slugify";
 
-export const toSlug = (value: string): string =>
-  slugify(value, { lower: true, strict: true });
+export const toSlug = (...value: string[]): string =>
+  slugify(value.join(" "), { lower: true, strict: true });
