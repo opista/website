@@ -1,6 +1,12 @@
 import { Button } from "@/components/button";
 import { Heading } from "@/components/heading";
 import { PageLayout } from "@/components/page-layout";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Not Found - OPISTA",
+  description: "Perhaps you took a wrong turn somewhere?",
+};
 
 export default function NotFoundPage() {
   return (

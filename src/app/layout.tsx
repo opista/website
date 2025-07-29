@@ -6,7 +6,7 @@ import clsx from "clsx";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "opista",
+  title: "OPISTA",
   description: "Building apps to enrich your life",
 };
 

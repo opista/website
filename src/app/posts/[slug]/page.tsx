@@ -4,6 +4,7 @@ import { PostBody } from "@/components/post-body";
 import { Heading } from "@/components/heading";
 import { notFound } from "next/navigation";
 import { BackToTop } from "@/components/back-to-top";
+import { Metadata } from "next";
 
 type AppPageParams = {
   slug: string;
@@ -11,6 +12,23 @@ type AppPageParams = {
 
 export async function generateStaticParams() {
   return getAllPageSlugs("posts");
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: AppPageParams;
+}): Promise<Metadata> {
+  const page = getPageContentBySlug("posts", params.slug);
+
+  if (!page) {
+    return {};
+  }
+
+  return {
+    title: `${page.title} - OPISTA`,
+    description: page.description,
+  };
 }
 
 export default async function PostPage({ params }: { params: AppPageParams }) {

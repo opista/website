@@ -1,6 +1,7 @@
 import { Heading } from "@/components/heading";
 import { PageLayout } from "@/components/page-layout";
 import { PageContent, getAppPagesAndContent } from "@/lib/pages";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,6 +9,10 @@ const MAX_IMAGE_WIDTH = 300;
 
 type AppCellProps = {
   app: PageContent;
+};
+
+export const metadata: Metadata = {
+  title: "Our Apps - OPISTA",
 };
 
 const AppCell = ({ app }: AppCellProps) => {

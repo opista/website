@@ -6,6 +6,7 @@ type Directory = "apps" | "posts";
 
 export type PageContent = {
   content: string;
+  description: string;
   lastUpdated: Date;
   slug: string;
   title: string;
