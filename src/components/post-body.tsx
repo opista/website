@@ -15,12 +15,14 @@ import { UnorderedList } from "./unordered-list";
 import { IpodIdentifier } from "./ipod/ipod-identifier/ipod-identifier";
 import { Alert } from "./alert";
 import { Heading, HeadingProps } from "./heading";
-import { IpodStorageUpgradeTable } from "./ipod/ipod-storage-upgrade-table";
+import { IpodStorageUpgradeCompatibilityTable } from "./ipod/ipod-storage-upgrade-compatibility-table";
 import { Accordion } from "./accordion";
 import { RamIndicator } from "./ram-indicator";
 import { BackplateIndicator } from "./backplate-indicator";
 import { YoutubeEmbed } from "./youtube-embed";
 import { IpodStorageBatteryCompatibilityTable } from "./ipod/ipod-storage-battery-compatibility-table";
+import { IpodStorageAdaptorOptionsTable } from "./ipod/ipod-storage-adaptor-options-table";
+import { IpodEquipmentTable } from "./ipod/ipod-equipment-table";
 
 const MAX_HEADING_DEPTH = 3 as const;
 
@@ -49,10 +51,11 @@ export const PostBody = ({ page }: PostBodyProps) => {
     Button,
     Alert,
     ...headings,
-    img: Image,
     Image,
+    IpodEquipmentTable,
+    IpodStorageAdaptorOptionsTable,
     IpodIdentifier,
-    IpodStorageUpgradeTable,
+    IpodStorageUpgradeCompatibilityTable,
     IpodStorageBatteryCompatibilityTable,
     Link,
     RamIndicator,
@@ -64,7 +67,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     td: TableBodyCell,
     ul: UnorderedList,
     wrapper: ({ children }: ComponentPropsWithoutRef<"div">) => (
-      <div className="mx-auto max-w-prose snap-y markdown">{children}</div>
+      <div className="snap-y markdown">{children}</div>
     ),
     YoutubeEmbed,
   };

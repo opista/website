@@ -45,7 +45,7 @@ export default async function PostPage({ params }: { params: AppPageParams }) {
   }).format(page.lastUpdated);
 
   return (
-    <PageLayout className="prose dark:prose-invert" tag="article">
+    <PageLayout className="prose prose-invert" tag="article">
       <div className="flex flex-col sm:flex-row items-center">
         <Heading className="mb-0" level="h1">
           {page.title}

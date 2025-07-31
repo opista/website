@@ -1,7 +1,9 @@
+import { ReactNode } from "react";
+
 type ConditionalWrapperProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   condition: boolean;
-  wrapper: (children: React.ReactNode) => React.ReactNode;
+  wrapper: (children: ReactNode) => ReactNode;
 };
 
 export const ConditionalWrapper = ({

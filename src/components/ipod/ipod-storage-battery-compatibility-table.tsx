@@ -13,7 +13,7 @@ type StorageMod =
   | "iFlash Dual"
   | "iFlash Quad"
   | "iFlash Sata"
-  | "imCort Design Dual";
+  | "Generic MicroSD";
 
 type BatteryMod =
   | "650mAh (OEM)"
@@ -25,7 +25,6 @@ type BatteryMod =
 
 type StorageOption = {
   name: StorageMod;
-  note?: string;
   thick: boolean;
   thin: boolean;
 };
@@ -39,11 +38,15 @@ const batteryMap: CompatibilityRow[] = [
   {
     name: "650mAh (OEM)",
     storageOptions: [
-      { name: "iFlash Solo", thick: true, thin: true },
+      {
+        name: "iFlash Solo",
+        thick: true,
+        thin: true,
+      },
       { name: "iFlash Dual", thick: true, thin: true },
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: true },
-      { name: "imCort Design Dual", thick: true, thin: true },
+      { name: "Generic MicroSD", thick: true, thin: true },
     ],
   },
   {
@@ -53,7 +56,7 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "imCort Design Dual", thick: true, thin: true },
+      { name: "Generic MicroSD", thick: true, thin: true },
     ],
   },
   {
@@ -63,7 +66,7 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "imCort Design Dual", thick: true, thin: true },
+      { name: "Generic MicroSD", thick: true, thin: true },
     ],
   },
   {
@@ -73,7 +76,7 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "imCort Design Dual", thick: true, thin: true },
+      { name: "Generic MicroSD", thick: true, thin: true },
     ],
   },
   {
@@ -83,7 +86,7 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "imCort Design Dual", thick: true, thin: false },
+      { name: "Generic MicroSD", thick: true, thin: false },
     ],
   },
   {
@@ -93,7 +96,7 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: false },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "imCort Design Dual", thick: true, thin: false },
+      { name: "Generic MicroSD", thick: true, thin: false },
     ],
   },
 ];
@@ -146,18 +149,17 @@ const Key = () => (
 export const IpodStorageBatteryCompatibilityTable = () => (
   <>
     <Key />
-    <Table>
+    <Table containerClassName="!mb-0">
       <thead>
         <tr className="text-center">
           <TableHeadCell border>Battery Mod</TableHeadCell>
-          <TableHeadCell border>Storage Mod</TableHeadCell>
-          <TableHeadCell border>
+          <TableHeadCell border>Storage Adaptor</TableHeadCell>
+          <TableHeadCell border className="w-[100px]">
             <BackplateIndicator backplate="thin" />
           </TableHeadCell>
-          <TableHeadCell border>
+          <TableHeadCell border className="w-[100px]">
             <BackplateIndicator backplate="thick" />
           </TableHeadCell>
-          <TableHeadCell>Notes</TableHeadCell>
         </tr>
       </thead>
       <tbody>
@@ -176,14 +178,12 @@ export const IpodStorageBatteryCompatibilityTable = () => (
               </TableBodyCell>
               <CompatibilityCell level={`${battery.storageOptions[0].thin}`} />
               <CompatibilityCell level={`${battery.storageOptions[0].thick}`} />
-              <TableBodyCell>{battery.storageOptions[0].note}</TableBodyCell>
             </tr>
             {battery.storageOptions.slice(1).map((option) => (
               <tr key={toSlug(battery.name, option.name)}>
                 <TableBodyCell border>{option.name}</TableBodyCell>
                 <CompatibilityCell level={`${option.thin}`} />
                 <CompatibilityCell level={`${option.thick}`} />
-                <TableBodyCell>{option.note}</TableBodyCell>
               </tr>
             ))}
           </Fragment>

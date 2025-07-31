@@ -190,21 +190,23 @@ const Key = () => (
   </Table>
 );
 
-export const IpodStorageUpgradeTable = () => (
+export const IpodStorageUpgradeCompatibilityTable = () => (
   <>
     <Key />
-    <Table className="text-center">
+    <Table className="text-center" containerClassName="!mb-0">
       <thead>
         <tr>
           <TableHeadCell
             border
-            className="align-middle"
+            className="align-middle w-[150px]"
             colSpan={2}
             rowSpan={2}
           >
             Generation
           </TableHeadCell>
-          <TableHeadCell colSpan={4}>Compatible upgrades</TableHeadCell>
+          <TableHeadCell className="w-[320px]" colSpan={4}>
+            Compatible upgrades
+          </TableHeadCell>
         </tr>
         <tr>
           <TableHeadCell>128GB</TableHeadCell>

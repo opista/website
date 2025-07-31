@@ -17,8 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html className="h-full scroll-smooth" lang="en">
-      <body className={clsx("bg-zinc-950 text-white h-full", inter.className)}>
-        <div className="w-full h-full max-w-3xl mx-auto px-4">{children}</div>
+      <body
+        className={clsx("bg-zinc-950 text-white h-full px-4", inter.className)}
+      >
+        <div className="w-full h-full max-w-prose mx-auto">{children}</div>
       </body>
     </html>
   );

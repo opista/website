@@ -39,7 +39,7 @@ export default async function AppPage({ params }: { params: AppPageParams }) {
   }
 
   return (
-    <PageLayout className="prose dark:prose-invert" tag="article">
+    <PageLayout className="prose prose-invert" tag="article">
       <div className="flex flex-col sm:flex-row items-center">
         <div className="relative my-0 mb-2 sm:mb-0 sm:mr-2 rounded-[25%] overflow-hidden w-[40px] h-[40px] sm:w-[70px] sm:h-[70px]">
           <Image

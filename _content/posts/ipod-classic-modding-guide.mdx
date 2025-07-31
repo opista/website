@@ -16,10 +16,7 @@ This guide collects insights into modding the iPod Classic **(5th, 6th, and 7th 
 
 A basic list of items to gain access to your iPod's internals. Equipment needed for speicifc mods will be listed in their respective sections.
 
-| Tool | Description | Link |
-| --- | --- | --- |
-| iFixit Essential Electronics Toolkit | A toolkit with all the necessary tools, including a spudger, tweezers, and screwdriver. | [iFixit](https://www.ifixit.com/en-gb/products/essential-electronics-toolkit)
-| iSesamo opening tool | A thin, flat tool used to open the iPod case without damaging it.  | [iFixit](https://www.ifixit.com/en-gb/products/isesamo-opening-tool)
+<IpodEquipmentTable />
 
 ## Identify your iPod model
 
@@ -38,43 +35,43 @@ YouTuber [Geek Detour](https://www.youtube.com/@GeekDetour) has created a <Link 
 
 <Accordion title="Video guide"><YoutubeEmbed videoId="a3gPf6obQHs" /></Accordion>
 
-<Alert type="warning">It's important that you slide your pry tool **downwards** to disengage the clips. **DO NOT PUSH OUTWARDS!** Pushing the tool in other directions can cause unnecessary damage to the device housing.</Alert>
+<Alert type="error">It's important that you slide your pry tool **downwards** to disengage the clips. **DO NOT PUSH OUTWARDS!** Pushing the tool in other directions can cause unnecessary damage to the device housing.</Alert>
 
 
 ## Storage mod
 
-WIP
+Storage mods are quite simple to perform. However, you must consider:
+
+* Which generation iPod you have
+* Which other mods you're looking to implement
+
+The answer to these questions will steer your choices when determining your storage adaptor.
 
 ### Device storage limits
 
-There are limitations on the maximum storage capacity of iPods[^dcg_capacity_guide] running the stock operating system, depending on the model. A <RamIndicator ram={32} /> iPod has a limit of around 20,000 items (songs, videos etc.), whilst the <RamIndicator ram={64} /> models have a limit of around 50,000.
+There are a few different limitations on the maximum storage capacity of iPods[^dcg_capacity_guide] running the stock operating system.
+
+A database of your iPod's files are loaded into RAM. A <RamIndicator ram={32} /> iPod has a limit of around 20,000 items (songs, videos etc.), whilst the <RamIndicator ram={64} /> models have a limit of around 50,000. If you're not sure how much RAM your device has, use the [iPod identifier](#identify-your-ipod-model).
 
 You should also be aware that some generations (specifically 6/6.5) have a hard storage limit. However, you can [flash newer firmware](#bypassing-6th-generation-storage-limits) to bypass this.
 
 Check out the compatibility table below for more details.
 
-<Accordion title="Upgrade compatibility table"><IpodStorageUpgradeTable /></Accordion>
+<Accordion title="Storage upgrade compatibility table"><IpodStorageUpgradeCompatibilityTable /></Accordion>
 
 <Alert type="info">Looking to bypass these stock OS limits? You'll have to install Rockbox.[^reddit_rockbox_storage_limit] Check out [Installing Rockbox](#installing-rockbox) for more information.</Alert>
 
-### Upgrade options
+### Storage adaptor options
 
-| Option | Description | Price |
-| --- | --- | --- |
-| iFlash Solo | SD Adapter. SD/SDHC/SDXC/UHS-1 U1 & U3 Card Compatible | [£29](https://www.iflash.xyz/store/iflash-solo/) |
-| iFlash Dual | Dual MicroSD Adapter. Supports up to 2 MicroSD cards | [£33](https://www.iflash.xyz/store/iflash-dual/) |
-| iFlash Quad | Quad MicroSD Adapter. Supports up to 4 MicroSD cards | [£36](https://www.iflash.xyz/store/iflash-quad/) |
-| iFlash Sata | mSata Adapter. Supports mSATA SSDs | [£34](https://www.iflash.xyz/store/iflash-sata/) |
+There are a number of adaptors of varying prices and configurations. The table below outlines the most common choices with pros and cons. The adaptors are in preference order.[^youtube_storage_adaptors_ranked] Higher is better.
+
+<Alert type="info">My preference is the iFlash Quad. It gives you space for further mods in a thin backplate. I would **avoid** mSata due to it's high power consumption[^iflash_adaptor_analysis] (Around **2x** the consumption of the original HDD, and **4.5x** the iFlash SD options)</Alert>
+
+<IpodStorageAdaptorOptionsTable />
 
 ## Battery Mod
 
 WIP
-
-### Identify battery dimensions
-
-Batteries should have a 6-digit code printed on their front which can be used to identify their dimensions. For example, the code `785239` can be broken down to 78mm width, 52mm height, 3.9mm thick.
-
-<Alert type="warning">Pay attention to listings when looking for batteries on AliExpress. The label, image and descriptions often show different dimensions on the same listing. Be sure to check thoroughly and look at reviews to ensure that you're buying the correct product.</Alert>
 
 ### Storage mod compatibility
 
@@ -86,7 +83,19 @@ Not all batteries are the same. Due to the variance in their dimensions (width, 
 
 This table should help guide you on which battery to choose.[^youtube_battery_iflash_guide]
 
-<Accordion title="Battery & iFlash compatibility table"><IpodStorageBatteryCompatibilityTable /></Accordion>
+<Accordion title="Battery & iFlash compatibility table">
+
+<Alert type="info">If you're not sure which storage adaptor is which, check out [Storage adaptor options](#storage-adaptor-options) for a more detailed description.</Alert>
+
+<IpodStorageBatteryCompatibilityTable />
+
+</Accordion>
+
+### Identifying battery dimensions
+
+Batteries should have a 6-digit code printed on their front which can be used to identify their dimensions. For example, the code `785239` can be broken down to 78mm width, 52mm height, 3.9mm thick.
+
+<Alert type="warning">Pay attention to listings when looking for batteries on AliExpress. The label, image and descriptions often show different dimensions on the same listing. Be sure to check thoroughly and look at reviews to ensure that you're buying the correct product.</Alert>
 
 
 ## Faceplate Replacement
@@ -120,7 +129,7 @@ UGREEN mod Needs:
 * wires
 * max 2000mah battery with this build */}
 
-## Software mod
+## Software Mod
 
 WIP
 
@@ -286,6 +295,8 @@ https://www.iflash.xyz/3rd-party-extended-battery-guide/
 
 */}
 
+## Reference
+
 [^apple_community_hard_drive_issue]: https://discussions.apple.com/thread/5044739?answerId=22067446022&sortBy=rank#22067446022
 [^apple_support_disk_mode]: https://support.apple.com/en-gb/101325#clickwheel
 [^apple_support_force_restart]: https://support.apple.com/en-euro/102293#ipodclassic
@@ -294,6 +305,7 @@ https://www.iflash.xyz/3rd-party-extended-battery-guide/
 [^dcg_capacity_guide]: https://dcg-ipod.affinityco.net/blogs/help-2/kb-40011-flash-modding-ipod-classics-compatible-capacities
 [^discord_ipod_community_faq_rockbox]: Perfectly summary lifted from the FAQs of the iPod Discord community
 [^ifixit_debug_mode]: https://www.ifixit.com/Guide/How+to+put+an+iPod+Classic+into+Debug+mode/139818
+[^iflash_adaptor_analysis]: https://www.iflash.xyz/runtime-shootout-2016-quad-dual-solo-msata-vs-original-hard-drive/#attachment_8774
 [^reddit_5_gen_7_gen_faceplate_1]: https://www.reddit.com/r/ipod/comments/y5gars/comment/isju73x/
 [^reddit_5_gen_7_gen_faceplate_2]: https://www.reddit.com/r/ipod/comments/zzvxqc/comment/j2e3kkh/
 [^reddit_5_gen_7_gen_faceplate_3]: https://www.reddit.com/r/ipod/comments/osgws4/comment/h6qm017/
@@ -304,5 +316,6 @@ https://www.iflash.xyz/3rd-party-extended-battery-guide/
 [^reddit_user_olsro_donate]: Like Olsro's work? Consider donating! https://www.patreon.com/Olsro
 [^youtube_battery_iflash_guide]: https://www.youtube.com/watch?v=K9m0tfSus14
 [^youtube_clickwheel_not_working]: https://youtu.be/LN3TuIAYDgY?t=159
+[^youtube_storage_adaptors_ranked]: https://www.youtube.com/watch?v=73az70S5lsc
 [^youtuber_geekdetour_reference_pdf]: https://www.dropbox.com/scl/fi/9dbq097ahx8lfyhed06sg/iPod-Classic-Openning-Reference-Card.pdf?rlkey=gs189u4t2axulvz0h3f3nlg8y&e=2&dl=0
 [^yuuiko_guide]: https://yuuiko.github.io/iPodGuide/iPodGuidev2-1.pdf
