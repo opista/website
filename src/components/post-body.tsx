@@ -23,6 +23,7 @@ import { YoutubeEmbed } from "./youtube-embed";
 import { IpodStorageBatteryCompatibilityTable } from "./ipod/ipod-storage-battery-compatibility-table";
 import { IpodStorageAdaptorOptionsTable } from "./ipod/ipod-storage-adaptor-options-table";
 import { IpodEquipmentTable } from "./ipod/ipod-equipment-table";
+import { RecommendedBadge } from "./recommended-badge";
 
 const MAX_HEADING_DEPTH = 3 as const;
 
@@ -59,6 +60,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     IpodStorageBatteryCompatibilityTable,
     Link,
     RamIndicator,
+    RecommendedBadge,
     TableOfContents: () => (
       <TableOfContents content={page.content} maxDepth={MAX_HEADING_DEPTH} />
     ),
