@@ -7,14 +7,14 @@ description: Your complete guide to modding iPod Classic (5th-7th gen). Explore 
 
 ## Introduction
 
-This guide collects insights into modding the iPod Classic **(5th, 6th, and 7th generation)**. I originally created it to collate the information I picked up during my own iPod modding journey. Think of this as a helpful starting point: it's not a complete, step-by-step manual, but it offers valuable resources and should help you begin with confidence.
+This guide collects insights into modding the iPod Classic **(5th, 6th, and 7th generation)**. I originally created it to collate the information I gathered during my own iPod modding journey. Think of this as a helpful starting point: it's not a complete, step-by-step manual, but it offers valuable resources and should help you get started with confidence.
 
 <Alert type="info">You'll find that some of the details in this guide come from other websites. I've made sure to reference every source, as my goal is to bring together and preserve this information in one convenient place.</Alert>
 
 
 ## Necessary equipment
 
-A basic list of items to gain access to your iPod's internals. Equipment needed for speicifc mods will be listed in their respective sections.
+A basic list of items to gain access to your iPod's internals. Equipment needed for specifc mods will be listed in their respective sections.
 
 <IpodEquipmentTable />
 
@@ -31,7 +31,7 @@ It's relatively simple to open an iPod. However, people notoriously struggle[^re
 
 The iPod has **11** clips holding the front and back together. You'll need to disengage these clips with your pry tool (iSesamo or alternative) to access the internals.
 
-YouTuber [Geek Detour](https://www.youtube.com/@GeekDetour) has created a <Link href="/posts/ipod-modding/documents/opening-ipod-reference.pdf" openInNewTab>reference card</Link>[^youtuber_geekdetour_reference_pdf] that you can print out which will help you to identify where the internal clips are.
+YouTuber [Geek Detour](https://www.youtube.com/@GeekDetour) has created a <Link href="/posts/ipod-modding/documents/opening-ipod-reference.pdf" openInNewTab>reference card</Link>[^youtuber_geekdetour_reference_pdf] that you can print out to identify where the internal clips are.
 
 <Accordion title="Video guide"><YoutubeEmbed videoId="a3gPf6obQHs" /></Accordion>
 
@@ -45,13 +45,13 @@ Storage mods are quite simple to perform. However, you must consider:
 * Which generation iPod you have
 * Which other mods you're looking to implement
 
-The answer to these questions will steer your choices when determining your storage adaptor.
+The answers to these questions will steer your choices when determining your storage adaptor.
 
 ### Device storage limits
 
 There are a few different limitations on the maximum storage capacity of iPods[^dcg_capacity_guide] running the stock operating system.
 
-A database of your iPod's files are loaded into RAM. A <RamIndicator ram={32} /> iPod has a limit of around 20,000 items (songs, videos etc.), whilst the <RamIndicator ram={64} /> models have a limit of around 50,000. If you're not sure how much RAM your device has, use the [iPod identifier](#identify-your-ipod-model).
+A database of your iPod's files is loaded into RAM. A <RamIndicator ram={32} /> iPod has a limit of around 20,000 items (songs, videos, etc.), whilst the <RamIndicator ram={64} /> models have a limit of around 50,000. If you're not sure how much RAM your device has, use the [iPod identifier](#identify-your-ipod-model).
 
 You should also be aware that some generations (specifically 6/6.5) have a hard storage limit. However, you can [flash newer firmware](#bypassing-6th-generation-storage-limits) to bypass this.
 
@@ -65,7 +65,7 @@ Check out the compatibility table below for more details.
 
 There are a number of adaptors of varying prices and configurations. The table below outlines the most common choices with pros and cons. The adaptors are in preference order.[^youtube_storage_adaptors_ranked] Higher is better.
 
-<Alert type="info">My preference is the iFlash Quad. It gives you space for further mods in a thin backplate. I would **avoid** mSata due to it's high power consumption[^iflash_adaptor_analysis] (Around **2x** the consumption of the original HDD, and **4.5x** the iFlash SD options)</Alert>
+<Alert type="info">My preference is the iFlash Quad. It gives you space for further mods in a thin backplate. I would **avoid** mSata due to its high power consumption[^iflash_adaptor_analysis] (Around **2x** the consumption of the original HDD, and **4.5x** the iFlash SD options)</Alert>
 
 <IpodStorageAdaptorOptionsTable />
 
@@ -75,11 +75,11 @@ WIP
 
 ### Storage mod compatibility
 
-Not all batteries are the same. Due to the variance in their dimensions (width, height, depth) you may find yourself trying to install a battery that doesn't fit into your device. 
+Not all batteries are the same. Due to the variance in their dimensions (width, height, depth), you may find yourself trying to install a battery that doesn't fit into your device. 
 
-<BackplateIndicator backplate="thick" /> backplate iPods have the extra depth to accomodate all battery & storage combinations. 
+<BackplateIndicator backplate="thick" /> backplate iPods have the extra depth to accommodate all battery & storage combinations. 
 
-<BackplateIndicator backplate="thin" /> backplate iPods have less space and therefore choice is more limited.  
+<BackplateIndicator backplate="thin" /> backplate iPods have less space, and therefore choice is more limited.  
 
 This table should help guide you on which battery to choose.[^youtube_battery_iflash_guide]
 
@@ -93,9 +93,9 @@ This table should help guide you on which battery to choose.[^youtube_battery_if
 
 ### Identifying battery dimensions
 
-Batteries should have a 6-digit code printed on their front which can be used to identify their dimensions. For example, the code `785239` can be broken down to 78mm width, 52mm height, 3.9mm thick.
+Batteries should have a 6-digit code printed on their front which can be used to identify their dimensions. For example, the code `785239` can be broken down to 78mm width, 52mm height, 3.9mm depth.
 
-<Alert type="warning">Pay attention to listings when looking for batteries on AliExpress. The label, image and descriptions often show different dimensions on the same listing. Be sure to check thoroughly and look at reviews to ensure that you're buying the correct product.</Alert>
+<Alert type="warning">Pay attention to listings when looking for batteries on AliExpress. The label, image, and descriptions often show different dimensions on the same listing. Be sure to check thoroughly and look at reviews to ensure that you're buying the correct product.</Alert>
 
 
 ## Faceplate Replacement
@@ -167,7 +167,7 @@ Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_don
 
 ### Rockbox
 
-<Alert type="warning">Installing Rockbox will bypass the usual iPod [storage limits](#device-storage-limits), however, there will still be a 2TB limit enforced by the FAT32 file-system.[^dcg_capacity_guide]</Alert>
+<Alert type="warning">Installing Rockbox will bypass the usual iPod [storage limits](#device-storage-limits); however, there will still be a 2TB limit enforced by the FAT32 file-system.[^dcg_capacity_guide]</Alert>
 
 WIP
 
@@ -198,12 +198,12 @@ Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_don
 #### Force restart[^apple_support_force_restart]
 
 1. Put the Hold switch firmly in the unlocked position.
-1. Press and hold the Menu and Center (or Select) buttons for 8 seconds, or until you see the Apple logo.
+1. Press and hold the Menu and Select (Centre) buttons for 8 seconds, or until you see the Apple logo.
 
 #### DFU Mode[^apple_wiki_dfu_mode]
 
 1. Connect the device to a computer using a USB cable.
-1. Hold down both the select (center) and Menu button.
+1. Hold down both the Select (Centre) and Menu button.
 1. The device will reboot. Keep holding both buttons.
 1. After 8 seconds, release both buttons.
 
@@ -213,13 +213,13 @@ Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_don
 1. Set your iPod on a flat surface and make sure your iPod has a battery charge.
 1. Slide the Hold switch on and off.
 1. Perform a [force restart](#force-restart).
-1. Press and hold the Centre and Play/Pause buttons until you see the disk mode screen. Make sure you press the Play/Pause buttons towards the outside of the click wheel and not near the centre.
+1. Press and hold the Select (Centre) and Play/Pause buttons until you see the disk mode screen. Make sure you press the Play/Pause buttons towards the outside of the click wheel and not near the centre.
 1. Connect your iPod to your computer. The screen on your iPod should display Do not disconnect. Make sure you eject your iPod in iTunes before you disconnect it from your computer.
 
 #### Debug mode[^ifixit_debug_mode]
 
 1. Perform a [force restart](#force-restart).
-1. Immediately after the Apple logo appears, hold down the Previous Track and Center buttons.
+1. Immediately after the Apple logo appears, hold down the Previous Track and Select (Centre) buttons.
 1. The screen should display the Apple logo. Once the screen turns white, it is safe to release the two buttons.
 
 ## FAQ
@@ -239,17 +239,17 @@ This usually means a hard drive failure.[^apple_community_hard_drive_issue] You 
 Yes. However, you'll also need to transplant 6th/7th gen parts:
 
 * The midframe.
-* (optional) The clickwheel **plastic**. You can skip this, but if you do, the clickwheel won't sit flush with the faceplate.[^reddit_5_gen_7_gen_faceplate_1][^reddit_5_gen_7_gen_faceplate_2][^reddit_5_gen_7_gen_faceplate_3] This [video guide](https://www.youtube.com/watch?v=T1IRfKDwoXc) should help understand how to do this. As you can see, the center of the plastic wheel has a slightly increased depth.
+* (optional) The clickwheel **plastic**. You can skip this, but if you do, the clickwheel won't sit flush with the faceplate.[^reddit_5_gen_7_gen_faceplate_1][^reddit_5_gen_7_gen_faceplate_2][^reddit_5_gen_7_gen_faceplate_3] This [video guide](https://www.youtube.com/watch?v=T1IRfKDwoXc) should help you understand how to do this. As you can see, the centre of the plastic wheel has a slightly increased depth.
 
 <Image height={1230} src="/posts/ipod-modding/clickwheel-depth.jpg" width={2048} />
 
 ### I've added music to my iPod, and now it's slow/crashes when I turn it on
 
-You're probably nearing/have reached the maximum number of songs your iPod can handle. <RamIndicator ram={32} /> models are limited to around 20,000 songs, whilst <RamIndicator ram={64} /> models are limited to around 50,000. [Identify your iPod model](#identify-your-ipod-model) to understand your device's limits.
+You're probably nearing or have reached the maximum number of songs your iPod can handle. <RamIndicator ram={32} /> models are limited to around 20,000 songs, whilst <RamIndicator ram={64} /> models are limited to around 50,000. [Identify your iPod model](#identify-your-ipod-model) to understand your device's limits.
 
 ### I've tried to check my SMART data and I see "Error"
 
-This is likely a faulty hard drive. If the device is modded, check ribbon connections are seated correctly. If it's not modded, you will need to replace the drive. Check [Storage mod](#storage-mod) for more information.
+This is likely a faulty hard drive. If the device is modded, check that ribbon connections are seated correctly. If it's not modded, you will need to replace the drive. Check [Storage mod](#storage-mod) for more information.
 
 ### I've checked my SMART data because my iPod is behaving strangely. What is "bad"?
 
@@ -259,7 +259,7 @@ The Wikipedia entry for [S.M.A.R.T](https://en.wikipedia.org/wiki/Self-Monitorin
 | --- | --- |
 | Power-off Retract Count (Retracts) | The number of power-off or emergency retract cycles. **Lower is better**. |
 | Current Pending Sector Count (Pending Sectors) | A count of bad sectors that have been found and re-mapped. **Lower is better**. |
-| Reallocated sectors count (Reallocs) | Count of reallocated sectors. The raw value represents a count of the bad sectors that have been found and remapped. Thus, the higher the attribute value, the more sectors the drive has had to reallocate. This value is primarily used as a metric of the life expectancy of the drive; a drive which has had any reallocations at all is significantly more likely to fail in the immediate months. **Lower is better**. |
+| Reallocated Sectors Count (Reallocs) | Count of reallocated sectors. The raw value represents a count of the bad sectors that have been found and remapped. Thus, the higher the attribute value, the more sectors the drive has had to reallocate. This value is primarily used as a metric of the life expectancy of the drive; a drive which has had any reallocations at all is significantly more likely to fail in the immediate months. **Lower is better**. |
 
 Reallocs will have an upper threshold before total drive failure. We don't know what this value is for an iPod hard drive, but if the number you see isn't 0, it is significantly more likely to fail. If you're noticing issues and see a high count, it may be easier to replace the drive. Check out [Storage mod](#storage-mod) for more information.
 
