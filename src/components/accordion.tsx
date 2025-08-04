@@ -9,7 +9,7 @@ export const Accordion = ({ children, title }: AccordionProps) => {
   return (
     <details className="border mb-6 p-4">
       <summary>{title}</summary>
-      <div className="mt-8">{children}</div>
+      <div className="mt-4">{children}</div>
     </details>
   );
 };

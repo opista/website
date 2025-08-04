@@ -193,7 +193,7 @@ export const IpodStorageAdaptorOptionsTable = () => {
               </TableBodyCell>
               <TableBodyCell className="align-top">
                 {upgrade.recommended && <RecommendedBadge />}
-                <p>{upgrade.description}</p>
+                <p className="mt-0">{upgrade.description}</p>
                 <ProsConsList list={upgrade.pros} type="pros" />
                 <ProsConsList
                   className="!mb-0"
