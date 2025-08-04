@@ -46,11 +46,9 @@ export default async function PostPage({ params }: { params: AppPageParams }) {
 
   return (
     <PageLayout className="prose prose-invert" tag="article">
-      <div className="flex flex-col sm:flex-row items-center">
-        <Heading className="mb-0" level="h1">
-          {page.title}
-        </Heading>
-      </div>
+      <Heading className="mb-0" level="h1">
+        {page.title}
+      </Heading>
       <p className="text-xs mt-0 mb-8">Last updated: {date}</p>
       <PostBody page={page} />
       <BackToTop />

@@ -122,6 +122,8 @@ There are a few routes that you can take when implementing a Bluetooth mod.
 
 <RecommendedBadge />
 
+<Alert type="info">This is the most technically complex mod, but in my opinion the most preferrable. There are no visible changes to the hardware, and Bluetooth connection is managed via the clickwheel.</Alert>
+
 WIP
 
 {/* PDF ref: https://drive.google.com/file/d/1TDKkOe6aor2UQCBvTYm-ElOgvlgp7tFc/view?usp=drive_link
@@ -134,7 +136,20 @@ https://www.reddit.com/r/IpodClassic/comments/jtppfu/oxyll_elegant_bluetooth_mod
 
 ### IcyEgg-9339's "Right Way" mod
 
-WIP
+<Alert type="warning">Although functionality of your iPod will remain the same, this does require you to remove one of the screws securing your lock switch to the backplate so that it can be pressed against an internal switch. Continued pressing of the lock switch **could** weaken the part over time.</Alert> 
+
+<Alert type="info">This mod uses 2000mAh (square) battery in a thin backplate.</Alert>
+
+[IcyEgg-9339's "Right Way" mod](https://www.reddit.com/r/ipod/comments/1kztic2/the_right_way_to_bluetooth_mod_your_ipod_classic/) isn't the first demonstration of this approach, however there has been some chatter about it on Reddit recently, and the author [gave plenty of details](https://www.reddit.com/r/ipod/comments/1kztic2/comment/mw3uks1/) for users to get started. 
+
+With this mod, you'll affix a button below the lock switch, which you can then press or hold to manage Bluetooth. This means that you're still able to use the lock switch as you did before, but with additional functionality.
+
+It uses the board from a [UGREEN CM672 Bluetooth adaptor](https://www.amazon.co.uk/UGREEN-Bluetooth-Transmitter-Connection-Headphone/dp/B0CJY56XG3), which is compatible with AirPods Pro 2[^amazon_review_airpods_pro_2_ugreen_cm672].
+
+<Accordion title="UGREEN CM672 wiring diagram">
+This diagram was initially shared sometime in April 2024[^imgur_ugreen_cm672_wiring_diagram], but I'm unable to find the original author.
+
+<Image alt="A wiring diagram for the UGREEN CM672 Bluetooth adaptor" height={914} src="/posts/ipod-modding/bluetooth/right-way-ugreen-cm672-wiring-diagram.jpg" width={1030} /></Accordion>
 
 {/* Options:
 * Cheap Bluetooth board & hijack lock switch (breaking change)
@@ -151,9 +166,9 @@ UGREEN mod Needs:
 
 ### Parts Plus Pods Bluetooth mod
 
-<Alert type="error">Although all of these mods require some level of destructive work, this particular approach repurposes the lock switch as a pairing button for bluetooth. **Your lock switch will no longer lock your device.** It requires you to **cut the flex cable connecting the headphone jack to the lock switch.** </Alert>
+<Alert type="error">Although all of these mods require some level of destructive work, this particular approach repurposes the lock switch as a pairing button for Bluetooth. **Your lock switch will no longer lock your device. It requires you to cut the flex cable connecting the headphone jack to the lock switch.** </Alert>
 
-[Parts Plus Pods](https://www.youtube.com/@partspluspods3689) is a channel dedicated to fixing broken iPods. The channel has multiple videos demonstrating how to implement Bluetooth. If you would prefer not to do this mod yourself, [their store](https://partspluspods.com.au/) also [sells "kits"](https://partspluspods.com.au/product/bluetooth-upgrade-kit-for-apple-ipod-classic-5th-gen/) at a reasonable price which have Bluetooth and an upgraded battery.
+[Parts Plus Pods](https://www.youtube.com/@partspluspods3689) is a channel dedicated to fixing broken iPods. The channel has multiple videos demonstrating how to implement Bluetooth. If you would prefer not to do this mod yourself, [their store also sells "kits"](https://partspluspods.com.au/product/bluetooth-upgrade-kit-for-apple-ipod-classic-5th-gen/) at a reasonable price which have Bluetooth and an upgraded battery.
 
 <Accordion title="Video guide"><YoutubeEmbed videoId="KnRa2Zu7v64" /></Accordion>
 
@@ -163,7 +178,7 @@ WIP
 
 ### Bypassing 6th generation storage limits
 
-Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_donate] has [produced a guide](https://github.com/Olsro/reddit-ipod-guides/blob/main/guides/ipod6g-flash-more-recent-firmwares.md) on how to flash newer firmware versions onto your device. This means you'll be able to increase the storage on your device up to 2TB.[^dcg_capacity_guide]
+Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_donate] has [produced a guide](https://github.com/Olsro/reddit-ipod-guides/blob/main/guides/ipod6g-flash-more-recent-firmwares.md) on how to flash newer firmware versions onto your device. This means you'll be able to increase the storage on your 6th generation iPod up to 2TB.[^dcg_capacity_guide]
 
 ### Rockbox
 
@@ -332,6 +347,7 @@ https://www.reddit.com/r/ipod/comments/1m7skk5/has_anyone_soldered_the_bluetooth
 
 ## Reference
 
+[^amazon_review_airpods_pro_2_ugreen_cm672]: https://www.amazon.co.uk/gp/customer-reviews/R23F4I6RJXG6PT/ref=cm_cr_getr_d_rvw_ttl?ie=UTF8
 [^apple_community_hard_drive_issue]: https://discussions.apple.com/thread/5044739?answerId=22067446022&sortBy=rank#22067446022
 [^apple_support_disk_mode]: https://support.apple.com/en-gb/101325#clickwheel
 [^apple_support_force_restart]: https://support.apple.com/en-euro/102293#ipodclassic
@@ -341,6 +357,7 @@ https://www.reddit.com/r/ipod/comments/1m7skk5/has_anyone_soldered_the_bluetooth
 [^discord_ipod_community_faq_rockbox]: Perfectly summary lifted from the FAQs of the iPod Discord community
 [^ifixit_debug_mode]: https://www.ifixit.com/Guide/How+to+put+an+iPod+Classic+into+Debug+mode/139818
 [^iflash_adaptor_analysis]: https://www.iflash.xyz/runtime-shootout-2016-quad-dual-solo-msata-vs-original-hard-drive/#attachment_8774
+[^imgur_ugreen_cm672_wiring_diagram]: https://imgur.com/a/90BnP5n
 [^reddit_5_gen_7_gen_faceplate_1]: https://www.reddit.com/r/ipod/comments/y5gars/comment/isju73x/
 [^reddit_5_gen_7_gen_faceplate_2]: https://www.reddit.com/r/ipod/comments/zzvxqc/comment/j2e3kkh/
 [^reddit_5_gen_7_gen_faceplate_3]: https://www.reddit.com/r/ipod/comments/osgws4/comment/h6qm017/
