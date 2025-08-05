@@ -155,13 +155,6 @@ export const IpodIdentifier = () => {
       skip: () => capacityOptions.length <= 1,
     },
     {
-      key: "year",
-      question: "Looking on the back of your iPod, what year does it say?",
-      image: "/posts/ipod-modding/ipod-rear.png",
-      answers: yearOptions,
-      skip: () => yearOptions.length <= 1,
-    },
-    {
       key: "hasSearch",
       question: 'Does your iPod have a "Search" option in the "Music" menu?',
       image: "/posts/ipod-modding/ipod-5-gen-search.png",
@@ -179,6 +172,13 @@ export const IpodIdentifier = () => {
         filteredGenerations.every(
           ({ hasSearch }) => hasSearch === filteredGenerations[0].hasSearch
         ),
+    },
+    {
+      key: "year",
+      question: "Looking on the back of your iPod, what year does it say?",
+      image: "/posts/ipod-modding/ipod-rear.png",
+      answers: yearOptions,
+      skip: () => yearOptions.length <= 1,
     },
   ];
 
