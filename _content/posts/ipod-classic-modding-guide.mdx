@@ -11,13 +11,6 @@ This guide collects insights into modding the iPod Classic **(5th, 6th, and 7th 
 
 <Alert type="info">You'll find that some of the details in this guide come from other websites. I've made sure to reference every source, as my goal is to bring together and preserve this information in one convenient place.</Alert>
 
-
-## Necessary equipment
-
-A basic list of items to gain access to your iPod's internals. Equipment needed for specific mods will be listed in their respective sections.
-
-<IpodEquipmentTable />
-
 ## Identify your iPod model
 
 Information gathered from various sources[^yuuiko_guide][^apple_support_identify_model] around the web. Select the model that matches your iPod, or answer the questions to identify it if you're not sure.
@@ -33,9 +26,16 @@ The iPod has **11** clips holding the front and back together. You'll need to di
 
 YouTuber [Geek Detour](https://www.youtube.com/@GeekDetour) has created a <Link href="/posts/ipod-modding/documents/opening-ipod-reference.pdf" openInNewTab>reference card</Link>[^youtuber_geekdetour_reference_pdf] that you can print out to identify where the internal clips are.
 
+<Accordion title="Shopping list">
+* [iFixit Essential Electronics Toolkit](https://www.ifixit.com/en-gb/products/essential-electronics-toolkit) (or similar)
+* [iSesamo Opening Tool](https://www.ifixit.com/en-gb/products/isesamo-opening-tool) (or similar)
+</Accordion>
+
 <Accordion title="Video guide"><YoutubeEmbed videoId="a3gPf6obQHs" /></Accordion>
 
 <Alert type="error">It's important that you slide your pry tool **downwards** to disengage the clips. **DO NOT PUSH OUTWARDS!** Pushing the tool in other directions can cause unnecessary damage to the device housing.</Alert>
+
+<Alert type="warning">The battery ribbon cable is very delicate and can be easily damaged. Be careful not to pull the front faceplate away too quickly or with too much force once the clips are disengaged.</Alert>
 
 ## Core hardware upgrades
 
@@ -72,9 +72,11 @@ There are a number of adaptors of varying prices and configurations. The table b
 
 ### Battery mod
 
-WIP
+You'll need to [Open your iPod](#opening-your-ipod) first. Then, follow the video guide below for battery replacement.
 
-#### Storage mod compatibility
+<Accordion title="Video guide"><YoutubeEmbed start={373} videoId="4AF1Pjbwc6c" /></Accordion>
+
+#### Battery & Storage Compatibility
 
 Not all batteries are the same. Due to the variance in their dimensions (width, height, depth), you may find yourself trying to install a battery that doesn't fit into your device. 
 
@@ -103,15 +105,15 @@ Batteries should have a 6-digit code printed on their front which can be used to
 
 ### Faceplate Replacement
 
-WIP
+<WorkInProgress />
 
 ### Screen Replacement
 
-WIP
+<WorkInProgress />
 
 ### Backplate Replacement
 
-WIP
+<WorkInProgress />
 
 ## Advanced mods
 
@@ -195,8 +197,6 @@ Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_don
 
 <Alert type="warning">Installing Rockbox will bypass the usual iPod [storage limits](#device-storage-limits); however, there will still be a 2TB limit enforced by the FAT32 file-system.[^dcg_capacity_guide]</Alert>
 
-WIP
-
 #### Is Rockbox right for me?[^discord_ipod_community_faq_rockbox]
 
 If you have ever thought the following:
@@ -214,6 +214,17 @@ If you have ever thought the following:
 - I don’t want bloat in my firmware!
 
 **iPodOS is for you.**
+
+#### Installing Rockbox
+
+<Accordion title="Software checklist">
+* Version 12.10.11.2 of iTunes (newer versions won't work)
+  * [Windows 32bit](https://secure-appldnld.apple.com/itunes12/001-80042-20210422-E8A351F2-A3B2-11EB-9A8F-CF1B67FC6302/iTunesSetup.exe)
+  * [Windows 64bit](https://secure-appldnld.apple.com/itunes12/001-80053-20210422-E8A3B28C-A3B2-11EB-BE07-CE1B67FC6302/iTunes64Setup.exe)
+* [Rockbox Utility](https://www.rockbox.org/wiki/RockboxUtility#Download)
+</Accordion>
+
+<Accordion title="Video guide"><YoutubeEmbed start={381} videoId="7vb-3GjFuZk" /></Accordion>
 
 ### Installing games
 
@@ -254,7 +265,7 @@ Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_don
 
 #### My screen shows a circled red X and a support link, what's happened?
 
-<Image alt="iPod classic circled red cross error" height={238} src="/posts/ipod-modding/red-cross-support.png" width={318} />
+<Image alt="iPod Classic circled red cross error" height={238} src="/posts/ipod-modding/red-cross-support.png" width={318} />
 
 This usually means a hard drive failure.[^apple_community_hard_drive_issue] You can confirm this by putting the iPod into [debug mode](#debug-mode) and checking the hard drive status. Possible issues:
 
@@ -315,7 +326,7 @@ You'll need to [disassemble your iPod](#opening-your-ipod) and recentre (or repl
 
 ### Corrections & Contributions
 
-This guide is compiled from a markdown document on [Github](https://github.com/opista/marketing-website). If you've spotted an error or would like to contribute to the guide, feel free to [raise an issue](https://github.com/opista/marketing-website/issues) or create a [pull request](https://github.com/opista/marketing-website/pulls).
+This guide is a community effort. It is compiled from a markdown document on [Github](https://github.com/opista/marketing-website). If you've spotted an error or would like to contribute to the guide, feel free to [raise an issue](https://github.com/opista/marketing-website/issues) or create a [pull request](https://github.com/opista/marketing-website/pulls).
 
 {/* https://www.ajfriesen.com/modding-an-ipod-classic/
 

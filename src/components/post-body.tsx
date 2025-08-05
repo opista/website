@@ -22,8 +22,8 @@ import { BackplateIndicator } from "./backplate-indicator";
 import { YoutubeEmbed } from "./youtube-embed";
 import { IpodStorageBatteryCompatibilityTable } from "./ipod/ipod-storage-battery-compatibility-table";
 import { IpodStorageAdaptorOptionsTable } from "./ipod/ipod-storage-adaptor-options-table";
-import { IpodEquipmentTable } from "./ipod/ipod-equipment-table";
 import { RecommendedBadge } from "./recommended-badge";
+import { WorkInProgress } from "./work-in-progress";
 
 type PostBodyProps = {
   page: PageContent;
@@ -51,7 +51,6 @@ export const PostBody = ({ page }: PostBodyProps) => {
     Alert,
     ...headings,
     Image,
-    IpodEquipmentTable,
     IpodStorageAdaptorOptionsTable,
     IpodIdentifier,
     IpodStorageUpgradeCompatibilityTable,
@@ -66,6 +65,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     th: TableHeadCell,
     td: TableBodyCell,
     ul: UnorderedList,
+    WorkInProgress,
     wrapper: ({ children }: ComponentPropsWithoutRef<"div">) => (
       <div className="snap-y markdown">{children}</div>
     ),
