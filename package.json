@@ -1,5 +1,5 @@
 {
-  "name": "opista-website",
+  "name": "@opista/website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
