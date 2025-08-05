@@ -25,8 +25,6 @@ import { IpodStorageAdaptorOptionsTable } from "./ipod/ipod-storage-adaptor-opti
 import { IpodEquipmentTable } from "./ipod/ipod-equipment-table";
 import { RecommendedBadge } from "./recommended-badge";
 
-const MAX_HEADING_DEPTH = 3 as const;
-
 type PostBodyProps = {
   page: PageContent;
 };
@@ -39,7 +37,7 @@ const headings = Array(6)
     return {
       ...acc,
       [tag]: (props: HeadingProps) => (
-        <Heading {...props} level={tag} link={level <= MAX_HEADING_DEPTH} />
+        <Heading {...props} level={tag} link={level <= 4} />
       ),
     };
   }, {});
@@ -62,7 +60,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     RamIndicator,
     RecommendedBadge,
     TableOfContents: () => (
-      <TableOfContents content={page.content} maxDepth={MAX_HEADING_DEPTH} />
+      <TableOfContents content={page.content} maxDepth={3} />
     ),
     table: Table,
     th: TableHeadCell,
