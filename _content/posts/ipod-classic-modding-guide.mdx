@@ -131,7 +131,7 @@ There are a few routes that you can take when implementing a Bluetooth mod.
 
 <Alert type="info">This is the most technically complex mod, but in my opinion the most preferrable. There are no visible changes to the hardware, and Bluetooth connection is managed via the clickwheel.</Alert>
 
-WIP
+<WorkInProgress />
 
 {/* PDF ref: https://drive.google.com/file/d/1TDKkOe6aor2UQCBvTYm-ElOgvlgp7tFc/view?usp=drive_link
 
@@ -187,11 +187,24 @@ If you'd like to contribute information on taptic mods, please see the [Correcti
 
 ## Software mod
 
-WIP
+<WorkInProgress />
 
 ### Bypassing 6th generation storage limits
 
 Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_donate] has [produced a guide](https://github.com/Olsro/reddit-ipod-guides/blob/main/guides/ipod6g-flash-more-recent-firmwares.md) on how to flash newer firmware versions onto your device. This means you'll be able to increase the storage on your 6th generation iPod up to 2TB.[^dcg_capacity_guide]
+
+<Accordion title="Software checklist">
+* iTunes 12.10.11.2 (newer versions won't work)
+  * [Windows 32bit](https://secure-appldnld.apple.com/itunes12/001-80042-20210422-E8A351F2-A3B2-11EB-9A8F-CF1B67FC6302/iTunesSetup.exe)
+  * [Windows 64bit](https://secure-appldnld.apple.com/itunes12/001-80053-20210422-E8A3B28C-A3B2-11EB-BE07-CE1B67FC6302/iTunes64Setup.exe)
+* [Rockbox Utility](https://www.rockbox.org/wiki/RockboxUtility#Download)
+* [iPod firmware 2.0.2](https://secure-appldnld.apple.com/iPod/SBML/osx/bundles/061-6797.20090909.3uTfE/iPod_35.2.0.2.ipsw)
+* [Olsro's custom Rockbox build](https://github.com/Olsro/reddit-ipod-guides/blob/main/guides/ipod6g-flash-more-recent-firmwares/ipodclassic6g-rockbox-full-with-flashtools.zip)
+* Olsro's iPod SysCFG Editor
+  * [Windows](https://github.com/Olsro/reddit-ipod-guides/blob/main/guides/ipod6g-flash-more-recent-firmwares/iPodSysCFGEditor_ForWindows.7z)
+  * [MacOS (Apple Silicon)](https://github.com/Olsro/reddit-ipod-guides/blob/main/guides/ipod6g-flash-more-recent-firmwares/iPodSysCFGEditor_ForMacs_AppleSilicon.7z)
+</Accordion>
+
 
 ### Rockbox
 
@@ -217,14 +230,20 @@ If you have ever thought the following:
 
 #### Installing Rockbox
 
+Installing Rockbox is a straightforward procedure. Check out the video guide below for the setup steps. 
+
 <Accordion title="Software checklist">
-* Version 12.10.11.2 of iTunes (newer versions won't work)
+* iTunes 12.10.11.2 (newer versions won't work)
   * [Windows 32bit](https://secure-appldnld.apple.com/itunes12/001-80042-20210422-E8A351F2-A3B2-11EB-9A8F-CF1B67FC6302/iTunesSetup.exe)
   * [Windows 64bit](https://secure-appldnld.apple.com/itunes12/001-80053-20210422-E8A3B28C-A3B2-11EB-BE07-CE1B67FC6302/iTunes64Setup.exe)
 * [Rockbox Utility](https://www.rockbox.org/wiki/RockboxUtility#Download)
 </Accordion>
 
 <Accordion title="Video guide"><YoutubeEmbed start={381} videoId="7vb-3GjFuZk" /></Accordion>
+
+Once you've done this, you can begin customising your device, such as by [installing themes](https://themes.rockbox.org/index.php?target=ipodvideo).
+
+<Alert type="info">Want to boot back into iPodOS? Perform a [force restart](#force-restart), and once the screen goes blank, flip the lockswitch **on**.</Alert>
 
 ### Installing games
 
@@ -309,6 +328,10 @@ The foam pad behind the clickwheel can shift out of alignment, preventing the bu
 You'll need to [disassemble your iPod](#opening-your-ipod) and recentre (or replace) the foam pad[^youtube_clickwheel_not_working]. As you can see in the image below, there is a black foam pad over each button. Ensure that these are centred.
 
 <Image alt="iPod internal board" className="max-w-full sm:max-w-sm" height={1014} src="/posts/ipod-modding/ipod-board.png" width={1080} />
+
+#### I installed Rockbox and can't get back to iPodOS
+
+You can access iPodOS by performing a [force restart](#force-restart), and once the screen goes blank, flip the lockswitch **on**.
 
 ### Communities
 
