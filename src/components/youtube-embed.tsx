@@ -1,8 +1,16 @@
 type YoutubeEmbedProps = {
+  start?: number;
   videoId: string;
 };
 
-export const YoutubeEmbed = ({ videoId }: YoutubeEmbedProps) => {
+const buildEmbedUrl = ({ start, videoId }: YoutubeEmbedProps) => {
+  const baseUrl = "https://www.youtube-nocookie.com/embed/";
+  const startParam = start ? `?start=${start}` : "";
+
+  return [baseUrl, videoId, startParam].filter(Boolean).join("");
+};
+
+export const YoutubeEmbed = (props: YoutubeEmbedProps) => {
   return (
     <iframe
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -10,7 +18,7 @@ export const YoutubeEmbed = ({ videoId }: YoutubeEmbedProps) => {
       className="aspect-video"
       frameBorder="0"
       referrerPolicy="strict-origin-when-cross-origin"
-      src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+      src={buildEmbedUrl(props)}
       title="YouTube video player"
     ></iframe>
   );
