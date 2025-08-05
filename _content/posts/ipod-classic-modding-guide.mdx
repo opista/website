@@ -117,11 +117,11 @@ Batteries should have a 6-digit code printed on their front which can be used to
 
 ## Advanced mods
 
+These mods are typically more complex than battery or storage mods which are mostly swapping parts. These mods will require soldering wires to parts of your iPod's circuit board. Therefore **you will need a soldering iron and wires**. 
+
 ### Bluetooth mod
 
-<Alert type="warning">When installing a mod within the device, be aware of a recurring issue[^reddit_bluetooth_range_1][^reddit_bluetooth_range_2] with Bluetooth range. The iPod's screen shield and metal casing can create a Faraday cage, potentially impairing wireless performance. This effect should be factored into your modification plans.</Alert>
-
-This mod is much more complicated than the battery or storage mods, and will require soldering wires to parts of your iPod's circuit board. 
+<Alert type="warning">When installing a Bluetooth board within the device, be aware of a recurring issue[^reddit_bluetooth_range_1][^reddit_bluetooth_range_2] with range. The iPod's screen shield and metal casing can act as a Faraday cage, potentially impairing wireless performance. This effect should be factored into your modification plans.</Alert>
 
 There are a few routes that you can take when implementing a Bluetooth mod.
 
@@ -129,7 +129,7 @@ There are a few routes that you can take when implementing a Bluetooth mod.
 
 <RecommendedBadge />
 
-<Alert type="info">This is the most technically complex mod, but in my opinion the most preferrable. There are no visible changes to the hardware, and Bluetooth connection is managed via the clickwheel.</Alert>
+This is the most technically complex mod, but in my opinion the most preferrable. There are no visible changes to the hardware, and Bluetooth connection is managed via the clickwheel.
 
 <WorkInProgress />
 
@@ -145,18 +145,34 @@ https://www.reddit.com/r/IpodClassic/comments/jtppfu/oxyll_elegant_bluetooth_mod
 
 <Alert type="warning">Although functionality of your iPod will remain the same, this does require you to remove one of the screws securing your lock switch to the backplate so that it can be pressed against an internal switch. Continued pressing of the lock switch **could** weaken the part over time.</Alert> 
 
-<Alert type="info">This mod uses a 2000mAh (square) battery in a thin backplate.</Alert>
+<Alert type="info">This mod has maximum space for a 2000mAh (square) battery when placed within a <BackplateIndicator backplate="thin" /> backplate.</Alert>
 
-[IcyEgg-9339's "Right Way" mod](https://www.reddit.com/r/ipod/comments/1kztic2/the_right_way_to_bluetooth_mod_your_ipod_classic/) isn't the first demonstration of this approach, however there has been some chatter about it on Reddit recently, and the author [gave plenty of details](https://www.reddit.com/r/ipod/comments/1kztic2/comment/mw3uks1/) for users to get started. 
+[IcyEgg-9339's Reddit post](https://www.reddit.com/r/ipod/comments/1kztic2/the_right_way_to_bluetooth_mod_your_ipod_classic/) isn't the first demonstration of this approach, however there has been some chatter about it on Reddit recently, and the author [gave plenty of details](https://www.reddit.com/r/ipod/comments/1kztic2/comment/mw3uks1/) for users to get started. 
 
 With this mod, you'll affix a button below the lock switch, which you can then press or hold to manage Bluetooth. This means that you're still able to use the lock switch as you did before, with additional functionality.
 
 It uses the board from a [UGREEN CM672 Bluetooth adaptor](https://www.amazon.co.uk/UGREEN-Bluetooth-Transmitter-Connection-Headphone/dp/B0CJY56XG3), which is compatible with AirPods Pro 2[^amazon_review_airpods_pro_2_ugreen_cm672].
 
-<Accordion title="UGREEN CM672 wiring diagram">
-This diagram was initially shared sometime in April 2024[^imgur_ugreen_cm672_wiring_diagram], but the original author is unknown.
+<Accordion title="Shopping list">
+* [10kΩ resistor](https://www.ebay.co.uk/itm/290917162518)
+* [UGREEN CM672 Bluetooth adaptor](https://www.amazon.co.uk/UGREEN-Bluetooth-Transmitter-Connection-Headphone/dp/B0CJY56XG3)
+* [Thin wire](https://www.aliexpress.com/item/4000099899470.html)
+* [Tactile button](https://www.aliexpress.com/item/32982712617.html)
+</Accordion>
 
-<Image alt="A wiring diagram for the UGREEN CM672 Bluetooth adaptor" height={914} src="/posts/ipod-modding/bluetooth/right-way-ugreen-cm672-wiring-diagram.jpg" width={1030} /></Accordion>
+<Accordion title="UGREEN CM672 technical details">
+
+Reddit user [RyuHyabusa77](https://www.reddit.com/user/RyuHyabusa77/) has produced a great diagram that describes the points on the board. You can follow their journey [in this thread](https://www.reddit.com/r/ipod/comments/1m7skk5/comment/n60kwgr/), where they supplied some more details which may be found useful.
+
+<Image alt="A wiring diagram for the UGREEN CM672 Bluetooth adaptor" height={1662} src="/posts/ipod-modding/bluetooth/right-way-ugreen-cm672-breakdown.png" width={2879} />
+
+This wiring diagram was initially shared sometime in April 2024[^imgur_ugreen_cm672_wiring_diagram], but the original author is unknown. 
+
+<Alert type="warning">It is recommended to **keep** the yellow PCB that is labelled as "remove" in this diagram[^reddit_bluetooth_ugreen_cm672_keep_pcb]. It improves the sound quality and range.</Alert>
+
+<Image alt="A wiring diagram for the UGREEN CM672 Bluetooth adaptor" height={914} src="/posts/ipod-modding/bluetooth/right-way-ugreen-cm672-wiring-diagram.jpg" width={1030} />
+
+</Accordion>
 
 {/* Options:
 * Cheap Bluetooth board & hijack lock switch (breaking change)
@@ -175,7 +191,18 @@ UGREEN mod Needs:
 
 <Alert type="error">Although all of these mods require some level of destructive work, this particular approach repurposes the lock switch as a pairing button for Bluetooth. **Your lock switch will no longer lock your device. It requires you to cut the flex cable connecting the headphone jack to the lock switch.** </Alert>
 
-[Parts Plus Pods](https://www.youtube.com/@partspluspods3689) is a channel dedicated to fixing broken iPods. The channel has multiple videos demonstrating how to implement Bluetooth. If you would prefer not to do this mod yourself, [their store also sells "kits"](https://partspluspods.com.au/product/bluetooth-upgrade-kit-for-apple-ipod-classic-5th-gen/) at a reasonable price which have Bluetooth and an upgraded battery.
+This mod is the cheapest option, mainly because the KCX_BT_EMITTER board is less than £1. 
+
+The [Parts Plus Pods](https://www.youtube.com/@partspluspods3689) YouTube channel has multiple videos demonstrating how to implement this mod. If you would prefer not to do this mod yourself, [their store also sells "kits"](https://partspluspods.com.au/product/bluetooth-upgrade-kit-for-apple-ipod-classic-5th-gen/) at a reasonable price which have Bluetooth and an upgraded battery.
+
+<Accordion title="Shopping list">
+* [10kΩ resistor](https://www.ebay.co.uk/itm/290917162518)
+* [KCX_BT_EMITTER Bluetooth board](https://www.aliexpress.com/item/1005005550299725.html)
+* [Antenna](https://www.aliexpress.com/item/1005006755521471.html)
+* [Thin wire](https://www.aliexpress.com/item/4000099899470.html)
+* [Tactile button](https://www.aliexpress.com/item/32982712617.html)
+</Accordion>
+
 
 <Accordion title="Video guide"><YoutubeEmbed videoId="KnRa2Zu7v64" /></Accordion>
 
@@ -418,3 +445,4 @@ https://www.reddit.com/r/ipod/comments/1m7skk5/has_anyone_soldered_the_bluetooth
 [^youtube_storage_adaptors_ranked]: https://www.youtube.com/watch?v=73az70S5lsc
 [^youtuber_geekdetour_reference_pdf]: https://www.dropbox.com/scl/fi/9dbq097ahx8lfyhed06sg/iPod-Classic-Openning-Reference-Card.pdf?rlkey=gs189u4t2axulvz0h3f3nlg8y&e=2&dl=0
 [^yuuiko_guide]: https://yuuiko.github.io/iPodGuide/iPodGuidev2-1.pdf
+[^reddit_bluetooth_ugreen_cm672_keep_pcb]: https://old.reddit.com/r/ipod/comments/1kztic2/the_right_way_to_bluetooth_mod_your_ipod_classic/mw3s96r/
