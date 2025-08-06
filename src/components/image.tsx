@@ -1,20 +1,11 @@
 import clsx from "clsx";
-import NextImage from "next/image";
+import NextImage, { type ImageProps as NextImageProps } from "next/image";
 
-type ImageProps = {
-  alt: string;
-  className?: string;
-  height: number;
-  src: string;
-  width: number;
-};
-
-export const Image = ({ alt, className, height, src, width }: ImageProps) => (
+export const Image = ({ alt, className, src, ...props }: NextImageProps) => (
   <NextImage
     alt={alt}
     className={clsx("mx-auto", className)}
-    height={height}
     src={src}
-    width={width}
+    {...props}
   />
 );

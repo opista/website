@@ -20,7 +20,13 @@ export const IpodIdentifierLayout = ({
       </div>
     </div>
     <div className="flex justify-center items-center">
-      <Image alt="An iPod graphic" height={300} src={image} width={200} />
+      <Image
+        alt="An iPod graphic"
+        height={300}
+        quality={100}
+        src={image}
+        width={200}
+      />
     </div>
   </div>
 );

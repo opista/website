@@ -132,7 +132,7 @@ export const IpodIdentifier = () => {
   const steps: Question[] = [
     {
       key: "hasMetalFaceplate",
-      image: "/posts/ipod-modding/ipod-7-gen.png",
+      image: "/posts/ipod-modding/ipod-identifier/ipod-7-gen.png",
       question: "Does your iPod have a metal faceplate?",
       answers: [
         {
@@ -150,14 +150,14 @@ export const IpodIdentifier = () => {
       key: "capacity",
       question:
         "Looking on the back of your iPod, what storage capacity does it have?",
-      image: "/posts/ipod-modding/ipod-rear.png",
+      image: "/posts/ipod-modding/ipod-identifier/ipod-rear.png",
       answers: capacityOptions,
       skip: () => capacityOptions.length <= 1,
     },
     {
       key: "hasSearch",
       question: 'Does your iPod have a "Search" option in the "Music" menu?',
-      image: "/posts/ipod-modding/ipod-5-gen-search.png",
+      image: "/posts/ipod-modding/ipod-identifier/ipod-5-gen-search.png",
       answers: [
         {
           label: "Yes",
@@ -176,7 +176,7 @@ export const IpodIdentifier = () => {
     {
       key: "year",
       question: "Looking on the back of your iPod, what year does it say?",
-      image: "/posts/ipod-modding/ipod-rear.png",
+      image: "/posts/ipod-modding/ipod-identifier/ipod-rear.png",
       answers: yearOptions,
       skip: () => yearOptions.length <= 1,
     },

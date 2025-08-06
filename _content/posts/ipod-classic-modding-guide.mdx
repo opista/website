@@ -20,7 +20,7 @@ Information gathered from various sources[^yuuiko_guide][^apple_support_identify
 
 ## Opening your iPod
 
-It's relatively simple to open an iPod. However, people notoriously struggle[^reddit_7_gen_cant_open] to open the 6th/7th generation models due to the metal front and back. If you know what you're doing, you should be able to get at the internals within a few minutes.
+It's relatively simple to open an iPod. However, people notoriously struggle[^reddit_6_gen_cant_open][^reddit_7_gen_cant_open] to open the 6th/7th generation models due to the metal front and back. If you know what you're doing, you should be able to get at the internals within a few minutes.
 
 The iPod has **11** clips holding the front and back together. You'll need to disengage these clips with your pry tool (iSesamo or alternative) to access the internals.
 
@@ -337,7 +337,7 @@ Reallocs will have an upper threshold before total drive failure. We don't know 
 
 #### My screen shows a circled red X and a support link, what's happened?
 
-<Image alt="iPod Classic circled red cross error" height={238} src="/posts/ipod-modding/red-cross-support.png" width={318} />
+<Image alt="iPod Classic circled red cross error" height={238} src="/posts/ipod-modding/faq/red-cross-support.png" width={318} />
 
 This usually means a hard drive failure.[^apple_community_hard_drive_issue] You can confirm this by putting the iPod into [debug mode](#debug-mode) and checking the hard drive status. Possible issues:
 
@@ -352,7 +352,7 @@ Yes. However, you'll also need to transplant 6th/7th gen parts:
 * The midframe.
 * (optional) The clickwheel **plastic**. You can skip this, but if you do, the clickwheel won't sit flush with the faceplate.[^reddit_5_gen_7_gen_faceplate_1][^reddit_5_gen_7_gen_faceplate_2][^reddit_5_gen_7_gen_faceplate_3] This [video guide](https://www.youtube.com/watch?v=T1IRfKDwoXc) should help you understand how to do this. As you can see, the centre of the plastic wheel has a slightly increased depth.
 
-<Image alt="Demonstrating the difference in depth of clickwheel plastic" height={1230} src="/posts/ipod-modding/clickwheel-depth.jpg" width={2048} />
+<Image alt="Demonstrating the difference in depth of clickwheel plastic" height={1230} src="/posts/ipod-modding/faq/clickwheel-depth.jpg" width={2048} />
 
 #### I've added music to my iPod, and now it's slow/crashes when I turn it on
 
@@ -372,11 +372,19 @@ The foam pad behind the clickwheel can shift out of alignment, preventing the bu
 
 You'll need to [disassemble your iPod](#opening-your-ipod) and recentre (or replace) the foam pad[^youtube_clickwheel_not_working]. As you can see in the image below, there is a black foam pad over each button. Ensure that these are centred.
 
-<Image alt="iPod internal board" className="max-w-full sm:max-w-sm" height={1014} src="/posts/ipod-modding/ipod-board.png" width={1080} />
+<Image alt="iPod internal board" className="max-w-full sm:max-w-sm" height={1014} src="/posts/ipod-modding/faq/ipod-board.png" width={1080} />
 
 #### I installed Rockbox and can't get back to iPodOS
 
 You can access iPodOS by performing a [force restart](#force-restart), and once the screen goes blank, flip the lockswitch **on**.
+
+#### There's a black mark on my screen, what is it?
+
+<Alert type="error">**Stop using your iPod and don't charge it anymore if you have a black mark on the screen.** It is a potential hazard and the battery needs to be disposed of properly!</Alert>
+
+This is usually caused by the battery swelling behind the screen, creating a pressure spot. Batteries can swell because of physical damage, defects, or just age (the most common for these devices). The best course of action is to properly dispose of the battery, and replace it with a new one. Check out the [Battery mod](#battery-mod) section to guide you on replacement.
+
+<Image alt="iPod with a swollen battery" className="max-w-full sm:max-w-sm" height={1543} src="/posts/ipod-modding/faq/ipod-black-mark.jpg" width={2057} />
 
 ### Communities
 
@@ -453,6 +461,7 @@ https://www.reddit.com/r/ipod/comments/1m7skk5/has_anyone_soldered_the_bluetooth
 [^reddit_5_gen_7_gen_faceplate_1]: https://www.reddit.com/r/ipod/comments/y5gars/comment/isju73x/
 [^reddit_5_gen_7_gen_faceplate_2]: https://www.reddit.com/r/ipod/comments/zzvxqc/comment/j2e3kkh/
 [^reddit_5_gen_7_gen_faceplate_3]: https://www.reddit.com/r/ipod/comments/osgws4/comment/h6qm017/
+[^reddit_6_gen_cant_open]: https://www.reddit.com/r/ipod/comments/1mi9i8n/looking_for_someone_to_replace_battery_of_ipod/
 [^reddit_7_gen_cant_open]: https://www.reddit.com/r/IpodClassic/comments/1m6kfc2/fuck_my_life/
 [^reddit_bluetooth_range_1]: https://www.reddit.com/r/ipod/comments/1at1uoj/comment/kqwrjbx/
 [^reddit_bluetooth_range_2]: https://www.reddit.com/r/ipod/comments/1hdi1le/comment/mi40quh/
