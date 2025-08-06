@@ -11,11 +11,11 @@ type IpodIdentifierResultsProps = {
 };
 
 const ipodImageMap: Record<Generation, string> = {
-  5: "/posts/ipod-modding/ipod-5-gen.png",
-  5.5: "/posts/ipod-modding/ipod-5-gen.png",
-  6: "/posts/ipod-modding/ipod-7-gen.png",
-  6.5: "/posts/ipod-modding/ipod-7-gen.png",
-  7: "/posts/ipod-modding/ipod-7-gen.png",
+  5: "/posts/ipod-modding/ipod-identifier/ipod-5-gen.png",
+  5.5: "/posts/ipod-modding/ipod-identifier/ipod-5-gen.png",
+  6: "/posts/ipod-modding/ipod-identifier/ipod-7-gen.png",
+  6.5: "/posts/ipod-modding/ipod-identifier/ipod-7-gen.png",
+  7: "/posts/ipod-modding/ipod-identifier/ipod-7-gen.png",
 };
 
 export const IpodIdentifierResults = ({
