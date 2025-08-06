@@ -307,6 +307,32 @@ Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_don
 1. Immediately after the Apple logo appears, hold down the Previous Track and Select (Centre) buttons.
 1. The screen should display the Apple logo. Once the screen turns white, it is safe to release the two buttons.
 
+#### Checking HDD Health
+
+Sometimes your iPod can begin to act strangely or sluggish. Album artwork may disappear, it may struggle to load songs, or report back that your storage capacity is much lower than it should be. These can often be an indication that your HDD health is declining.
+
+The iPod itself offers a diagnostic "HDSMARTData" report to gather some stats on your HDD. To do this follow the steps below:
+
+1. Put your iPod into [debug mode](#debug-mode)
+1. Press Menu for "Manual Test"
+1. Select "IO"
+1. Select "HardDrive"
+1. Select "HDSMARTData"
+
+This will run a [S.M.A.R.T](https://en.wikipedia.org/wiki/Self-Monitoring,_Analysis_and_Reporting_Technology#Known_ATA_S.M.A.R.T._attributes) report on your iPod's HDD. We care about the **Retracts**, **Reallocs**, and **Pending Sectors**. Check out the below table for details on what those mean.
+
+<Accordion title="S.M.A.R.T attribute glossary">
+
+| Attribute | Description |
+| --- | --- |
+| Power-off Retract Count (Retracts) | The number of power-off or emergency retract cycles. **Lower is better**. |
+| Current Pending Sector Count (Pending Sectors) | A count of bad sectors that have been found and re-mapped. **Lower is better**. |
+| Reallocated Sectors Count (Reallocs) | Count of reallocated sectors. The raw value represents a count of the bad sectors that have been found and remapped. Thus, the higher the attribute value, the more sectors the drive has had to reallocate. This value is primarily used as a metric of the life expectancy of the drive; a drive which has had any reallocations at all is significantly more likely to fail in the immediate months. **Lower is better**. |
+
+</Accordion>
+
+Reallocs will have an upper threshold before total drive failure. We don't know what this value is for an iPod hard drive, but if the number you see isn't 0, it is significantly more likely to fail. If you're noticing issues and see a high count, it may be easier to replace the drive. Check out [Storage mod](#storage-mod) for more information.
+
 ### FAQ
 
 #### My screen shows a circled red X and a support link, what's happened?
@@ -338,15 +364,7 @@ This is likely a faulty hard drive. If the device is modded, check that ribbon c
 
 #### I've checked my SMART data because my iPod is behaving strangely. What is "bad"?
 
-The Wikipedia entry for [S.M.A.R.T](https://en.wikipedia.org/wiki/Self-Monitoring,_Analysis_and_Reporting_Technology#Known_ATA_S.M.A.R.T._attributes) tells us everything that we need to know.
-
-| Attribute | Description |
-| --- | --- |
-| Power-off Retract Count (Retracts) | The number of power-off or emergency retract cycles. **Lower is better**. |
-| Current Pending Sector Count (Pending Sectors) | A count of bad sectors that have been found and re-mapped. **Lower is better**. |
-| Reallocated Sectors Count (Reallocs) | Count of reallocated sectors. The raw value represents a count of the bad sectors that have been found and remapped. Thus, the higher the attribute value, the more sectors the drive has had to reallocate. This value is primarily used as a metric of the life expectancy of the drive; a drive which has had any reallocations at all is significantly more likely to fail in the immediate months. **Lower is better**. |
-
-Reallocs will have an upper threshold before total drive failure. We don't know what this value is for an iPod hard drive, but if the number you see isn't 0, it is significantly more likely to fail. If you're noticing issues and see a high count, it may be easier to replace the drive. Check out [Storage mod](#storage-mod) for more information.
+Read the [Checking HDD Health](#checking-hdd-health) section for information on what your SMART report means.
 
 #### My clickwheel centre button isn't working
 
