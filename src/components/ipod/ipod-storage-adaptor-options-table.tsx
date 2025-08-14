@@ -36,7 +36,7 @@ const headings: Heading[] = [
 
 const upgrades: Upgrade[] = [
   {
-    option: "iFlash uDual",
+    option: "iFlash μDual",
     image: "/posts/ipod-modding/storage/iflash-udual.jpg",
     description: "Dual MicroSD Adaptor. Supports up to 2 MicroSD cards",
     price: {
