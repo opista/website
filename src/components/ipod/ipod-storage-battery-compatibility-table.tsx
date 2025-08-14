@@ -7,6 +7,9 @@ import { TableBodyCell } from "../table/table-body-cell";
 import { TableHeadCell } from "../table/table-head-cell";
 import { BackplateIndicator } from "../backplate-indicator";
 import { toSlug } from "@/util/to-slug";
+import { ConditionalWrapper } from "../conditional-wrapper";
+import { Link } from "../link";
+import { Tooltip } from "../tooltip";
 
 type StorageMod =
   | "iFlash Solo"
@@ -29,8 +32,15 @@ type StorageOption = {
   thin: boolean;
 };
 
+type DimensionsOption = {
+  link?: string;
+  measurements: number[]; // H x W x D
+  note?: string;
+};
+
 type CompatibilityRow = {
   name: BatteryMod;
+  dimensions?: DimensionsOption[];
   storageOptions: StorageOption[];
 };
 
@@ -51,6 +61,12 @@ const batteryMap: CompatibilityRow[] = [
   },
   {
     name: "2000mAh (square)",
+    dimensions: [
+      {
+        link: "https://www.aliexpress.com/item/1005008200745392.html",
+        measurements: [46.3, 42.6, 5.0],
+      },
+    ],
     storageOptions: [
       { name: "iFlash Solo", thick: true, thin: true },
       { name: "iFlash Dual", thick: true, thin: false },
@@ -81,6 +97,13 @@ const batteryMap: CompatibilityRow[] = [
   },
   {
     name: "3000mAh (thin)",
+    dimensions: [
+      {
+        link: "https://www.aliexpress.com/item/1005003263973779.html",
+        measurements: [82, 50.3, 3.9],
+        note: "Be careful when selecting your battery, there are multiple options. You want a depth AT OR BELOW 4mm",
+      },
+    ],
     storageOptions: [
       { name: "iFlash Solo", thick: true, thin: false },
       { name: "iFlash Dual", thick: true, thin: false },
@@ -146,14 +169,50 @@ const Key = () => (
   </Table>
 );
 
+const BatteryDimensions = ({
+  dimensions,
+}: {
+  dimensions: DimensionsOption;
+}) => {
+  const { link, measurements, note } = dimensions;
+
+  const measurementsFormatted = (
+    <>
+      <span className="font-bold">H</span> {measurements[0].toFixed(1)}mm x{" "}
+      <span className="font-bold">W</span> {measurements[1].toFixed(1)}mm x{" "}
+      <span className="font-bold">D</span> {measurements[2].toFixed(1)}mm
+    </>
+  );
+
+  return (
+    <>
+      <ConditionalWrapper
+        condition={!!link}
+        wrapper={(children) => (
+          <Link className="text-xs" href={link!}>
+            {children}
+          </Link>
+        )}
+      >
+        {measurementsFormatted}
+      </ConditionalWrapper>
+      {note && <Tooltip content={note} />}
+    </>
+  );
+};
+
 export const IpodStorageBatteryCompatibilityTable = () => (
   <>
     <Key />
     <Table containerClassName="!mb-0">
       <thead>
         <tr className="text-center">
-          <TableHeadCell border>Battery Mod</TableHeadCell>
-          <TableHeadCell border>Storage Adaptor</TableHeadCell>
+          <TableHeadCell border className="w-[260px]">
+            Battery Mod
+          </TableHeadCell>
+          <TableHeadCell border className="w-[180px]">
+            Storage Adaptor
+          </TableHeadCell>
           <TableHeadCell border className="w-[100px]">
             <BackplateIndicator backplate="thin" />
           </TableHeadCell>
@@ -171,7 +230,13 @@ export const IpodStorageBatteryCompatibilityTable = () => (
                 className="align-middle"
                 rowSpan={battery.storageOptions.length}
               >
-                {battery.name}
+                <div>{battery.name}</div>
+                {battery.dimensions?.map((dimensions) => (
+                  <BatteryDimensions
+                    dimensions={dimensions}
+                    key={toSlug(battery.name, ...dimensions.measurements)}
+                  />
+                ))}
               </TableBodyCell>
               <TableBodyCell border>
                 {battery.storageOptions[0].name}
