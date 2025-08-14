@@ -36,6 +36,22 @@ const headings: Heading[] = [
 
 const upgrades: Upgrade[] = [
   {
+    option: "iFlash uDual",
+    image: "/posts/ipod-modding/storage/iflash-udual.jpg",
+    description: "Dual MicroSD Adaptor. Supports up to 2 MicroSD cards",
+    price: {
+      link: "https://www.iflash.xyz/store/iflash-udual/",
+      label: "~£33",
+    },
+    pros: [
+      "Reliable and good quality",
+      "Fits 2 MicroSD cards",
+      'Has a "break line" to dispose of the adaptor above the card slots',
+    ],
+    cons: ["More expensive"],
+    recommended: true,
+  },
+  {
     option: "iFlash Quad",
     image: "/posts/ipod-modding/storage/iflash-quad.jpg",
     description: "Quad MicroSD Adaptor. Supports up to 4 MicroSD cards",
@@ -49,7 +65,6 @@ const upgrades: Upgrade[] = [
       "Space for maximum mods",
     ],
     cons: ["More expensive"],
-    recommended: true,
   },
   {
     option: "Generic MicroSD",
