@@ -46,6 +46,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     }),
+    {
+      url: `${BASE_URL}/posts`,
+      lastModified: getFileLastUpdated("posts"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     ...getAllPagesInGroup("posts", { changeFrequency: "daily", priority: 1 }),
   ];
 }
