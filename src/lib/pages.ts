@@ -6,8 +6,9 @@ export type Directory = "apps" | "posts";
 
 export type PageContent = {
   content: string;
+  createdAt: Date;
   description: string;
-  lastUpdated: Date;
+  lastUpdatedAt: Date;
   slug: string;
   title: string;
   url: string;
@@ -27,7 +28,8 @@ export const getPageContentBySlug = (
 
     return {
       content,
-      lastUpdated: fileStats.mtime,
+      createdAt: fileStats.birthtime,
+      lastUpdatedAt: fileStats.mtime,
       slug,
       url: `/${directory}/${slug}`,
       ...data,
