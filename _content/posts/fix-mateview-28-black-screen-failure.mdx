@@ -1,0 +1,137 @@
+---
+title: Fixing the Huawei MateView 28" display black screen failure
+description: A detailed walkthrough of how to disassemble and repair your Huawei MateView 28" monitor if it turns on and then immediately off (or doesn't turn on at all!)
+---
+
+<Alert type="info">This information is mostly a copy of [u/bozma88](https://www.reddit.com/user/bozma88/)'s [post on Reddit](https://www.reddit.com/r/Huawei/comments/1atdruk/psa_i_found_a_way_to_fix_the_mateview_282_32/). Without their amazing research into the issue, and solution sharing, my monitor would still be a lemon. This post is for me to refer back to later, with added further detail for disassembly (I have 2 of these monitors). Any questions should be asked in that thread, **I am an amateur**! </Alert>
+
+<Alert type="error">
+This guide involves disassembling electronic equipment and working with delicate components. This is not an official repair method and doing so may void your warranty. You perform these steps at your own risk.
+</Alert> 
+
+If you're here, your Huawei MateView 28" is probably turning on, and then a short time later turning off again. Or perhaps your monitor is longer turning on at all. Thanks to [u/bozma88](https://www.reddit.com/user/bozma88/), we can repair it!
+
+<Accordion title="Shopping list">
+* Two-tipped Soldering iron OR 2 soldering irons (I have a [Pinecil](https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/) and another cheap one)
+* Solder
+* Flux
+* [Spudger](https://www.ebay.co.uk/itm/224668794222)
+* [Tweezers](https://www.ifixit.com/en-gb/products/precision-tweezers-set)
+* [Kapton tape](https://www.amazon.co.uk/Youmile-Temperature-Resistant-Polyimide-Resisting-Width-5mm)
+* [Replacement MLV](https://cpc.farnell.com/littelfuse/2920l330-24mr/fuse-resettable-ptc-24vdc-3-3a/dp/FF04116) Must be 24V+ 3.3A+. (u/bozma88 recommends *2920L330/24*)
+* [Isopropyl alcohol](https://www.amazon.co.uk/dp/B087M3D2T8) - Make sure it's high purity (99%+)
+</Accordion>
+
+<TableOfContents />
+
+## What is the issue?
+
+A Varistor is like a fuse that opens a circuit when it overheats. This is a thermal scan of the damaged component: you see it suddenly tripping when you increase brightness!
+
+It's an engineering error: The high temperature of the internals of the casing makes it work above its rated temperature, and over time it breaks.
+
+<Image height={1200} src="/posts/fix-mateview-28-black-screen-failure/varistor-overheat.gif" width={900} />
+
+## Gaining access
+
+<Alert type="error">Before proceeding, ensure that the monitor is entirely unplugged!</Alert> 
+
+1. At the top of monitor stand, carefully remove the plastic cover.  There are **6 clips**, 2 on each size, and 1 on each end. (_Image 1 & 2_)
+1. You should see **4 screws**. Remove all of them. Don't worry about keeping track of which screws are used where, the 2 larger screws here are the only ones that differ from the rest. (_Image 1 & 2_)
+1. Before sliding the outer housing off, we'll need to remove the power button. This is a simple magnet. Use a piece of tape to pull it out. (_Image 3_)
+
+Once this is done, you'll be able to slide the outer housing up and off of the monitor. (_Image 4_)
+
+<Alert type="warning">**Be gentle removing the top cover!** If you're too rough, you'll snap some clips like I did (image below) 🤦🏻‍♂️</Alert>
+
+
+<Accordion open title="Images">
+
+<Image height={900} src="/posts/fix-mateview-28-black-screen-failure/top-of-monitor.jpg" width={1200} />
+
+<Image height={900} src="/posts/fix-mateview-28-black-screen-failure/top-of-monitor-clip.jpg" width={1200} />
+
+<Image height={1200} src="/posts/fix-mateview-28-black-screen-failure/power-button.jpg" width={900} />
+
+<Image height={1200} src="/posts/fix-mateview-28-black-screen-failure/monitor-exposed.jpg" width={900} />
+
+</Accordion>
+
+## Disconnecting the boards
+
+### Removing the wireless board
+
+Assuming everything went correctly, you should now have *some* access to the board that you need to meddle with. Before that though, we'll need to continue disassembling and disconnecting parts. You should see a wireless board mounted onto the main board.
+
+<Alert type="warning">The ribbon cables are very delicate, so be careful when disconnecting them</Alert>
+
+1. Disconnect the power ribbon. It's held down with a hinged latch on the **right-hand side**. Use a spudger to pull it up, and use tweezers to gently pull out the ribbon. (_Image 1_, circled in <span className="font-bold text-[#1E88E5]">Blue</span>)
+1. Now you can remove the **4** screws. (_Image 1_, circled in <span className="font-bold text-[#D81B60]">Pink</span>) **DON'T PULL THE BOARD AWAY YET!**
+1. Behind the wireless board, you'll see the the video cable connection (_Image 2_). Use tweezers to pull back the tape. You should see a another hinged latch. Release the latch and gently pull out the connector.
+
+You can now pull away the board, and lay it down on your surface. Be careful with the white & black cables that are still connected to it.
+
+<Accordion open title="Images">
+
+<Image height={900} src="/posts/fix-mateview-28-black-screen-failure/wireless-board.jpg" width={1200}/>
+
+<Image height={1200} src="/posts/fix-mateview-28-black-screen-failure/wireless-board-rear.jpg" width={900}/>
+
+</Accordion>
+
+### Disconnecting the main board
+
+Now we can start disconnecting the main board. Don't go mad here, we only need to dismantle the bare minimum to remove the board from the monitor stand.
+
+1. Disconnect the power ribbon. This is exactly the same process as on the wireless board. (_Image 1_, circled in <span className="font-bold text-[#FFC107]">Yellow</span>)
+1. Disconnect the audio cable. There's no latch, so gently use a spudger to ease the conenction out. (_Image 1_, circled in <span className="font-bold text-[#1E88E5]">Blue</span>)
+1. There's another video cable! Remove this in the same way as we did on the wireless board. (_Image 1_, circled in **White**)
+1. Remove the USB/audio interface connectors. There ard **3 clamps** to remove. 1 small, 2 large. Each one rests on a metal hook. Be careful that you don't lose them as you unscrew!  (_Image 1_, circled in <span className="font-bold text-[#D81B60]">Pink</span>)
+1. Now look to the top of the board. Cable 1 (left) has 2 grey tabs. Push those in, and then use a spudger to release the cable. You should be placing your spudger between the 2 larger metal pieces. (_Image 2_, circled in <span className="font-bold text-[#FFC107]">Yellow</span>)
+1. Cable 2 (right) has a plastic housing covering it. Remove that, And then use a spudge to ease the cable out. (_Image 2_, circled in <span className="font-bold text-[#D81B60]">Pink</span>) 
+1. There are **6 screws** holding the board in place. Remove those. **DON'T PULL THE BOARD AWAY YET!**
+1. Behind the wireless board, you'll see the the video cable connection. Use tweezers to pull back the tape. You should see a another hinged latch. Release the latch and gently pull out the connector. 
+
+You should now be able to remove the board from the stand!
+
+<Accordion open title="Images">
+
+<Image height={900} src="/posts/fix-mateview-28-black-screen-failure/main-board-bottom.jpg" width={1200}/>
+
+<Image height={900} src="/posts/fix-mateview-28-black-screen-failure/main-board-top.jpg" width={1200}/>
+
+</Accordion>
+
+### Replacing the component
+
+<Alert type="info">Take your time here. These parts are small and easily damaged.</Alert>
+
+Time to crack out your soldering iron.
+
+1. Look for the component labelled "X2". This is what you'll need to remove. (_Image 1_)
+1. Using a two-tipped soldering iron or 2 soldering irons, remove the component. Make sure that the pads are totally clean. (_Image 2_)
+1. Install your new MLV. Carefully apply a small amount of fresh solder to one pad, then place the new component on the pads. Solder the first pad, then solder the second pad to ensure a secure connection. Make sure that it sits as flat as possible.
+1. Secure the new component with a small piece of Kapton tape to prevent it from shorting against the metal casing once the monitor is reassembled.  (_Image 3_)
+
+<Alert type="info">Struggling a little with removing the component? Try a little flux.</Alert>
+
+<Alert type="warning">Use desoldering braid or a solder sucker to remove any excess solder from the pads. Then, use a cotton swab and high-purity isopropyl alcohol to clean the area thoroughly. The pads should be totally clear.</Alert>
+
+<Accordion open title="Images">
+
+<Image height={900} src="/posts/fix-mateview-28-black-screen-failure/x2-component.jpg" width={1200}/>
+
+<Image height={900} src="/posts/fix-mateview-28-black-screen-failure/clean-pads.jpg" width={1200}/>
+
+<Image height={900} src="/posts/fix-mateview-28-black-screen-failure/replacement-mlv.jpg" width={1200}/>
+
+</Accordion>
+
+## Reassembly
+
+Follow the disassembly steps in reverse.
+
+1. Ensure all ribbon connections are seated correctly
+1. Ensure all latches are secured
+
+Reconnect your cables and turn your monitor back on. If everything went smoothly, you should have picture and sound. Enjoy!

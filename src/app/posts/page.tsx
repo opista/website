@@ -41,7 +41,7 @@ export default async function Apps() {
                   <p className="mb-1 text-sm text-zinc-400">
                     {formatDate(post.createdAt)}
                   </p>
-                  <p>{post.description}</p>
+                  <p className="line-clamp-2">{post.description}</p>
                 </Link>
               </li>
             </Fragment>
