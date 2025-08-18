@@ -32,7 +32,7 @@ export default async function Apps() {
               {idx !== 0 && <HorizontalRule className="mb-8" />}
               <li className="mb-8">
                 <Link
-                  className="text-inherit hover:text-inherit hover:no-underline"
+                  className="!text-inherit !hover:text-inherit hover:no-underline"
                   href={post.url}
                 >
                   <Heading className="mb-1" level="h2">
