@@ -20,18 +20,19 @@ type Upgrade = {
   image: string;
   description: string;
   recommended?: boolean;
-  price: {
+  price: string;
+  pros?: string[];
+  purchase: {
     label: string;
     link?: string;
   };
-  pros?: string[];
 };
 
 const headings: Heading[] = [
-  { label: "Option", width: "120px" },
+  { label: "Option", width: "150px" },
   { label: "Image", width: "150px" },
   { label: "Description", width: "280px" },
-  { label: "Price" },
+  { label: "Purchase", width: "110px" },
 ];
 
 const upgrades: Upgrade[] = [
@@ -39,9 +40,10 @@ const upgrades: Upgrade[] = [
     option: "iFlash μDual",
     image: "/posts/ipod-modding/storage/iflash-udual.jpg",
     description: "Dual MicroSD Adaptor. Supports up to 2 MicroSD cards",
-    price: {
+    price: "~£33",
+    purchase: {
       link: "https://www.iflash.xyz/store/iflash-udual/",
-      label: "~£33",
+      label: "iFlash",
     },
     pros: [
       "Reliable and good quality",
@@ -55,9 +57,10 @@ const upgrades: Upgrade[] = [
     option: "iFlash Quad",
     image: "/posts/ipod-modding/storage/iflash-quad.jpg",
     description: "Quad MicroSD Adaptor. Supports up to 4 MicroSD cards",
-    price: {
+    price: "~£36",
+    purchase: {
       link: "https://www.iflash.xyz/store/iflash-quad/",
-      label: "~£36",
+      label: "iFlash",
     },
     pros: [
       "Reliable and good quality",
@@ -67,12 +70,13 @@ const upgrades: Upgrade[] = [
     cons: ["More expensive"],
   },
   {
-    option: "Generic MicroSD",
+    option: "Generic MicroSD (imCort Design)",
     image: "/posts/ipod-modding/storage/aliexpress-microsd.jpg",
     description: "Dual MicroSD Adaptor. Supports up to 2 MicroSD cards",
-    price: {
+    price: "~£38",
+    purchase: {
       link: "https://www.aliexpress.com/item/1005003944930279.html",
-      label: "~£38",
+      label: "AliExpress",
     },
     pros: [
       "Very compact",
@@ -85,9 +89,10 @@ const upgrades: Upgrade[] = [
     option: "iFlash Solo",
     image: "/posts/ipod-modding/storage/iflash-solo.jpg",
     description: "SD Adaptor. SD/SDHC/SDXC/UHS-1 U1 & U3 Card Compatible",
-    price: {
+    price: "~£29",
+    purchase: {
       link: "https://www.iflash.xyz/store/iflash-solo/",
-      label: "~£29",
+      label: "iFlash",
     },
     pros: ["Reliable and good quality"],
     cons: ["Takes up a lot of space", "You'll need to tape down the SD card"],
@@ -96,9 +101,10 @@ const upgrades: Upgrade[] = [
     option: "iFlash CF",
     image: "/posts/ipod-modding/storage/iflash-cf.jpg",
     description: "CF Adaptor. Supports CF (Compact Flash) cards",
-    price: {
+    price: "~£15",
+    purchase: {
       link: "https://www.iflash.xyz/store/iflash-cf/",
-      label: "~£15",
+      label: "iFlash",
     },
     pros: ["Reliable and good quality", "Affordable", "Most power efficient"],
     cons: [
@@ -110,9 +116,10 @@ const upgrades: Upgrade[] = [
     option: "iFlash Dual",
     image: "/posts/ipod-modding/storage/iflash-dual.jpg",
     description: "Dual SD Adaptor. Supports up to 2 SD cards",
-    price: {
+    price: "~£33",
+    purchase: {
       link: "https://www.iflash.xyz/store/iflash-dual/",
-      label: "~£33",
+      label: "iFlash",
     },
     pros: ["Reliable and good quality"],
     cons: ["Takes up a lot of space", "You'll need to tape down the SD card"],
@@ -121,9 +128,10 @@ const upgrades: Upgrade[] = [
     option: "iFlash Sata",
     image: "/posts/ipod-modding/storage/iflash-solo.jpg",
     description: "mSata Adaptor. Supports mSATA SSDs",
-    price: {
+    price: "~£34",
+    purchase: {
       link: "https://www.iflash.xyz/store/iflash-sata/",
-      label: "~£34",
+      label: "iFlash",
     },
     pros: ["Reliable and good quality"],
     cons: ["SSDs consume significantly more power than other options"],
@@ -132,9 +140,10 @@ const upgrades: Upgrade[] = [
     option: "Generic CF",
     image: "/posts/ipod-modding/storage/aliexpress-cf.jpg",
     description: "CF Adaptor. Supports CF (Compact Flash) cards",
-    price: {
+    price: "~£3",
+    purchase: {
       link: "https://www.aliexpress.com/item/1005006829426894.html",
-      label: "~£3",
+      label: "AliExpress",
     },
     pros: ["Very cheap", "Low power consumption"],
     cons: [
@@ -146,9 +155,10 @@ const upgrades: Upgrade[] = [
     option: "Generic m.2",
     image: "/posts/ipod-modding/storage/aliexpress-m2.jpg",
     description: "m.2 Adaptor. Supports m.2 SSDs",
-    price: {
+    price: "~£5",
+    purchase: {
       link: "https://www.aliexpress.com/item/1005005450291603.html",
-      label: "~£5",
+      label: "AliExpress",
     },
     pros: ["Very cheap"],
     cons: [
@@ -160,9 +170,10 @@ const upgrades: Upgrade[] = [
     option: "Generic mSATA",
     image: "/posts/ipod-modding/storage/aliexpress-msata.jpg",
     description: "mSata Adaptor. Supports mSATA SSDs",
-    price: {
+    price: "~£4",
+    purchase: {
       link: "https://www.aliexpress.com/item/1005005753470177.html",
-      label: "~£4",
+      label: "AliExpress",
     },
     pros: ["Very cheap"],
     cons: [
@@ -195,7 +206,8 @@ export const IpodStorageAdaptorOptionsTable = () => {
               key={upgrade.option}
             >
               <TableBodyCell className="align-top">
-                {upgrade.option}
+                <p className="mt-0">{upgrade.option}</p>
+                <p>{upgrade.price}</p>
               </TableBodyCell>
               <TableBodyCell>
                 <Image
@@ -218,12 +230,14 @@ export const IpodStorageAdaptorOptionsTable = () => {
               </TableBodyCell>
               <TableBodyCell className="align-top">
                 <ConditionalWrapper
-                  condition={!!upgrade.price.link}
+                  condition={!!upgrade.purchase.link}
                   wrapper={(children) => (
-                    <Link href={upgrade.price.link as string}>{children}</Link>
+                    <Link href={upgrade.purchase.link as string}>
+                      {children}
+                    </Link>
                   )}
                 >
-                  {upgrade.price.label}
+                  {upgrade.purchase.label}
                 </ConditionalWrapper>
               </TableBodyCell>
             </tr>
