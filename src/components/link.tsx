@@ -2,7 +2,6 @@ import { isInternalLink } from "@/util/is-external-link";
 import clsx from "clsx";
 import NextLink from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
-import { UrlObject } from "url";
 
 type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
   openInNewTab?: boolean;

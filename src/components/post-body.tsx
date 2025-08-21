@@ -24,6 +24,7 @@ import { IpodStorageBatteryCompatibilityTable } from "./ipod/ipod-storage-batter
 import { IpodStorageAdaptorOptionsTable } from "./ipod/ipod-storage-adaptor-options-table";
 import { RecommendedBadge } from "./recommended-badge";
 import { WorkInProgress } from "./work-in-progress";
+import { IpodFaceplateOptionsTable } from "./ipod/ipod-faceplate-options-table";
 
 type PostBodyProps = {
   page: PageContent;
@@ -51,10 +52,11 @@ export const PostBody = ({ page }: PostBodyProps) => {
     Alert,
     ...headings,
     Image,
-    IpodStorageAdaptorOptionsTable,
+    IpodFaceplateOptionsTable,
     IpodIdentifier,
-    IpodStorageUpgradeCompatibilityTable,
+    IpodStorageAdaptorOptionsTable,
     IpodStorageBatteryCompatibilityTable,
+    IpodStorageUpgradeCompatibilityTable,
     Link,
     RamIndicator,
     RecommendedBadge,
