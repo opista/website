@@ -1,8 +1,11 @@
+"use client";
+
 import clsx from "clsx";
-import { HTMLProps } from "react";
+import { HTMLProps, ReactNode } from "react";
 import { LinkIcon } from "./icons/link-icon";
 import { toSlug } from "@/util/to-slug";
 import Link from "next/link";
+import { ConditionalWrapper } from "./conditional-wrapper";
 
 type HeadingTags = keyof Pick<
   JSX.IntrinsicElements,
@@ -23,6 +26,36 @@ export type HeadingProps = HTMLProps<HTMLHeadingElement> & {
   link?: boolean;
 };
 
+const LinkWrapper = ({
+  children,
+  href,
+}: {
+  children: ReactNode;
+  href: string;
+}) => (
+  <Link className="inline-block no-underline" href={href}>
+    {children}
+  </Link>
+);
+
+const formattedChildren = (children: ReactNode, href: string) => {
+  if (!Array.isArray(children)) {
+    return <LinkWrapper href={href}>{children}</LinkWrapper>;
+  }
+
+  return children.map((child) => {
+    if (typeof child === "string") {
+      return (
+        <LinkWrapper href={href} key={child}>
+          {child}
+        </LinkWrapper>
+      );
+    }
+
+    return child;
+  });
+};
+
 export const Heading = ({
   level: Comp,
   link = false,
@@ -35,18 +68,18 @@ export const Heading = ({
   return (
     <Comp
       {...props}
-      className={clsx("scroll-mt-20 relative", levelClasses[Comp], className)}
+      className={clsx("relative scroll-mt-20", levelClasses[Comp], className)}
       id={slug}
     >
-      {children}
-      {link && (
-        <Link
-          href={`#${slug}`}
-          className="hidden md:block md:absolute -left-6 top-1/2 md:-translate-y-1/2 hover:text-pink-600"
+      <span className="group">
+        <ConditionalWrapper
+          condition={!!link}
+          wrapper={(children) => formattedChildren(children, `#${slug}`)}
         >
-          <LinkIcon />
-        </Link>
-      )}
+          {children}
+        </ConditionalWrapper>
+        <LinkIcon className="group-hover:text-pink-600 inline-block ml-2" />
+      </span>
     </Comp>
   );
 };
