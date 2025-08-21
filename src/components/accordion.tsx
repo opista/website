@@ -6,11 +6,9 @@ type AccordionProps = {
   title: ReactNode;
 };
 
-export const Accordion = ({ children, open, title }: AccordionProps) => {
-  return (
-    <details className="border mb-5 p-4" open={open}>
-      <summary>{title}</summary>
-      <div className="mt-4">{children}</div>
-    </details>
-  );
-};
+export const Accordion = ({ children, open, title }: AccordionProps) => (
+  <details className="border mb-5 p-4" open={open}>
+    <summary>{title}</summary>
+    <div className="mt-4">{children}</div>
+  </details>
+);

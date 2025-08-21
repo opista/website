@@ -25,19 +25,20 @@ const HeadingGroup = ({ headings }: { headings: TOCItem[] }) => (
   </ul>
 );
 
+const componentTitle = "Table of Contents";
+
+const baseHeading: TOCItem = {
+  children: [],
+  level: 2,
+  slug: toSlug(componentTitle),
+  title: componentTitle,
+};
+
 export const TableOfContents = ({
   content,
   maxDepth,
 }: TableOfContentsProps) => {
-  const componentTitle = "Table of Contents";
   const headings = generateTableOfContents(content, maxDepth);
-
-  const baseHeading: TOCItem = {
-    children: [],
-    level: 2,
-    slug: toSlug(componentTitle),
-    title: componentTitle,
-  };
 
   return (
     <>

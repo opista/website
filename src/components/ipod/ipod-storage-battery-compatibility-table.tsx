@@ -170,36 +170,26 @@ const Key = () => (
 );
 
 const BatteryDimensions = ({
-  dimensions,
+  dimensions: { link, measurements, note },
 }: {
   dimensions: DimensionsOption;
-}) => {
-  const { link, measurements, note } = dimensions;
-
-  const measurementsFormatted = (
-    <>
+}) => (
+  <>
+    <ConditionalWrapper
+      condition={!!link}
+      wrapper={(children) => (
+        <Link className="text-xs" href={link!}>
+          {children}
+        </Link>
+      )}
+    >
       <span className="font-bold">H</span> {measurements[0].toFixed(1)}mm x{" "}
       <span className="font-bold">W</span> {measurements[1].toFixed(1)}mm x{" "}
       <span className="font-bold">D</span> {measurements[2].toFixed(1)}mm
-    </>
-  );
-
-  return (
-    <>
-      <ConditionalWrapper
-        condition={!!link}
-        wrapper={(children) => (
-          <Link className="text-xs" href={link!}>
-            {children}
-          </Link>
-        )}
-      >
-        {measurementsFormatted}
-      </ConditionalWrapper>
-      {note && <Tooltip content={note} />}
-    </>
-  );
-};
+    </ConditionalWrapper>
+    {note && <Tooltip content={note} />}
+  </>
+);
 
 export const IpodStorageBatteryCompatibilityTable = () => (
   <>

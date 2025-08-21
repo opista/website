@@ -23,8 +23,6 @@ const siteLinks = [
 export const SiteLinks = () => {
   const pathname = usePathname();
 
-  console.log(pathname);
-
   return (
     <div className="text-right text-pink-600">
       {siteLinks.map(({ href, text }, idx) => (
