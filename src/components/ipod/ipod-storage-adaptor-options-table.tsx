@@ -183,67 +183,54 @@ const upgrades: Upgrade[] = [
   },
 ];
 
-export const IpodStorageAdaptorOptionsTable = () => {
-  return (
-    <Accordion title="Storage adaptor comparison table">
-      <Table containerClassName="!mb-0">
-        <thead>
-          <tr>
-            {headings.map((heading) => (
-              <TableHeadCell
-                key={heading.label}
-                style={{ width: heading.width }}
-              >
-                {heading.label}
-              </TableHeadCell>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {upgrades.map((upgrade) => (
-            <tr
-              className={clsx({ [RECOMMENDED_BG_COLOR]: upgrade.recommended })}
-              key={upgrade.option}
+export const IpodStorageAdaptorOptionsTable = () => (
+  <Table containerClassName="!mb-0">
+    <thead>
+      <tr>
+        {headings.map((heading) => (
+          <TableHeadCell key={heading.label} style={{ width: heading.width }}>
+            {heading.label}
+          </TableHeadCell>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {upgrades.map((upgrade) => (
+        <tr
+          className={clsx({ [RECOMMENDED_BG_COLOR]: upgrade.recommended })}
+          key={upgrade.option}
+        >
+          <TableBodyCell className="align-top">
+            <p className="mt-0">{upgrade.option}</p>
+            <p>{upgrade.price}</p>
+          </TableBodyCell>
+          <TableBodyCell>
+            <Image
+              alt={`Product image for ${upgrade.option}`}
+              className="m-0"
+              height={500}
+              src={upgrade.image}
+              width={500}
+            />
+          </TableBodyCell>
+          <TableBodyCell className="align-top">
+            {upgrade.recommended && <RecommendedBadge />}
+            <p className="mt-0">{upgrade.description}</p>
+            <ProsConsList list={upgrade.pros} type="pros" />
+            <ProsConsList className="!mb-0" list={upgrade.cons} type="cons" />
+          </TableBodyCell>
+          <TableBodyCell className="align-top">
+            <ConditionalWrapper
+              condition={!!upgrade.purchase.link}
+              wrapper={(children) => (
+                <Link href={upgrade.purchase.link as string}>{children}</Link>
+              )}
             >
-              <TableBodyCell className="align-top">
-                <p className="mt-0">{upgrade.option}</p>
-                <p>{upgrade.price}</p>
-              </TableBodyCell>
-              <TableBodyCell>
-                <Image
-                  alt={`Product image for ${upgrade.option}`}
-                  className="m-0"
-                  height={500}
-                  src={upgrade.image}
-                  width={500}
-                />
-              </TableBodyCell>
-              <TableBodyCell className="align-top">
-                {upgrade.recommended && <RecommendedBadge />}
-                <p className="mt-0">{upgrade.description}</p>
-                <ProsConsList list={upgrade.pros} type="pros" />
-                <ProsConsList
-                  className="!mb-0"
-                  list={upgrade.cons}
-                  type="cons"
-                />
-              </TableBodyCell>
-              <TableBodyCell className="align-top">
-                <ConditionalWrapper
-                  condition={!!upgrade.purchase.link}
-                  wrapper={(children) => (
-                    <Link href={upgrade.purchase.link as string}>
-                      {children}
-                    </Link>
-                  )}
-                >
-                  {upgrade.purchase.label}
-                </ConditionalWrapper>
-              </TableBodyCell>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Accordion>
-  );
-};
+              {upgrade.purchase.label}
+            </ConditionalWrapper>
+          </TableBodyCell>
+        </tr>
+      ))}
+    </tbody>
+  </Table>
+);
