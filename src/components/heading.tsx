@@ -38,12 +38,20 @@ const LinkWrapper = ({
   </Link>
 );
 
+const Icon = () => (
+  <LinkIcon className="group-hover:text-pink-600 inline-block ml-1" />
+);
+
 const formattedChildren = (children: ReactNode, href: string) => {
   if (!Array.isArray(children)) {
-    return <LinkWrapper href={href}>{children}</LinkWrapper>;
+    return (
+      <LinkWrapper href={href}>
+        {children} <Icon />
+      </LinkWrapper>
+    );
   }
 
-  return children.map((child) => {
+  const mapped = children.map((child) => {
     if (typeof child === "string") {
       return (
         <LinkWrapper href={href} key={child}>
@@ -54,6 +62,15 @@ const formattedChildren = (children: ReactNode, href: string) => {
 
     return child;
   });
+
+  return (
+    <>
+      {mapped}
+      <LinkWrapper href={href}>
+        <LinkIcon className="group-hover:text-pink-600 inline-block ml-1" />
+      </LinkWrapper>
+    </>
+  );
 };
 
 export const Heading = ({
@@ -64,6 +81,7 @@ export const Heading = ({
   ...props
 }: HeadingProps) => {
   const slug = toSlug(Array.isArray(children) ? children[0] : children);
+  const href = `#${slug}`;
 
   return (
     <Comp
@@ -74,11 +92,10 @@ export const Heading = ({
       <span className="group">
         <ConditionalWrapper
           condition={!!link}
-          wrapper={(children) => formattedChildren(children, `#${slug}`)}
+          wrapper={(children) => formattedChildren(children, href)}
         >
           {children}
         </ConditionalWrapper>
-        <LinkIcon className="group-hover:text-pink-600 inline-block ml-2" />
       </span>
     </Comp>
   );
