@@ -42,7 +42,7 @@ export default async function PostPage({ params }: { params: AppPageParams }) {
     dateStyle: "long",
     timeStyle: "long",
     timeZone: "UTC",
-  }).format(page.lastUpdatedAt);
+  }).format(page.modifiedAt);
 
   return (
     <PageLayout className="prose prose-invert" tag="article">

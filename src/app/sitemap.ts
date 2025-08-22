@@ -22,7 +22,7 @@ const getAllPagesInGroup = (
 
   return pages.map((page) => ({
     url: `${BASE_URL}${page.url}`,
-    lastModified: page.lastUpdatedAt,
+    lastModified: page.modifiedAt,
     changeFrequency,
     priority,
   }));
