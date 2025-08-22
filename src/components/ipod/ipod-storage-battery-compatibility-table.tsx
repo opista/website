@@ -5,7 +5,7 @@ import { Table } from "../table/table";
 import clsx from "clsx";
 import { TableBodyCell } from "../table/table-body-cell";
 import { TableHeadCell } from "../table/table-head-cell";
-import { BackplateIndicator } from "../backplate-indicator";
+import { BackplateIndicator } from "./backplate-indicator";
 import { toSlug } from "@/util/to-slug";
 import { ConditionalWrapper } from "../conditional-wrapper";
 import { Link } from "../link";
