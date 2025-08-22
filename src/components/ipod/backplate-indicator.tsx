@@ -11,7 +11,7 @@ export const BackplateIndicator = ({
 }: BackplateIndicatorProps) => (
   <span
     className={clsx(
-      "px-2 leading-none text-sm rounded-b-lg uppercase border border-current",
+      "px-2 leading-none text-sm text-white rounded-b-lg uppercase border border-current",
       {
         "font-thin": backplate === "thin",
         "py-1 font-black border-2": backplate === "thick",
