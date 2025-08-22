@@ -1,10 +1,12 @@
 "use client";
 
-import clsx from "clsx";
 import { HTMLProps, useCallback } from "react";
-import { ArrowUp } from "./icons/arrow-up";
+import clsx from "clsx";
+
 import { useScrollPosition } from "@/hooks/use-scroll-position";
+
 import { Button } from "./button";
+import { ArrowUp } from "./icons/arrow-up";
 
 type BackToTopProps = {
   offset?: number;

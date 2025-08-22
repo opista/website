@@ -1,13 +1,13 @@
-import { Table } from "../table/table";
-import { TableBodyCell } from "../table/table-body-cell";
-import { TableHeadCell } from "../table/table-head-cell";
-import { Image } from "../image";
+import clsx from "clsx";
+
 import { ConditionalWrapper } from "../conditional-wrapper";
+import { Image } from "../image";
 import { Link } from "../link";
 import { ProsConsList } from "../pros-cons-list";
 import { RECOMMENDED_BG_COLOR, RecommendedBadge } from "../recommended-badge";
-import clsx from "clsx";
-import { Accordion } from "../accordion";
+import { Table } from "../table/table";
+import { TableBodyCell } from "../table/table-body-cell";
+import { TableHeadCell } from "../table/table-head-cell";
 
 type Heading = {
   label: string;

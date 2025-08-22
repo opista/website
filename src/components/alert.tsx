@@ -1,8 +1,9 @@
-import clsx from "clsx";
 import { FC, ReactNode } from "react";
+import clsx from "clsx";
+
+import { ExclamationCircleIcon } from "./icons/exclamation-circle-icon";
 import { ExclamationTriangleIcon } from "./icons/exclamation-triangle-icon";
 import { InformationIcon } from "./icons/information-icon";
-import { ExclamationCircleIcon } from "./icons/exclamation-circle-icon";
 
 type AlertType = "error" | "info" | "warning";
 

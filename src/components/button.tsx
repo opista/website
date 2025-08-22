@@ -1,8 +1,10 @@
+import { HTMLAttributes } from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { HTMLAttributes } from "react";
-import { ConditionalWrapper } from "./conditional-wrapper";
+
 import { isInternalLink } from "@/util/is-external-link";
+
+import { ConditionalWrapper } from "./conditional-wrapper";
 
 type ButtonProps = {
   center?: boolean;

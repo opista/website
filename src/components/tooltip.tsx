@@ -1,8 +1,9 @@
 "use client";
 
-import { toSlug } from "@/util/to-slug";
-import { ReactNode } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+
+import { toSlug } from "@/util/to-slug";
+
 import { InformationIcon } from "./icons/information-icon";
 
 export type TooltipProps = {

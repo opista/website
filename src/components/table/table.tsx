@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import { HTMLAttributes } from "react";
+import clsx from "clsx";
 
 type TableProps = {
   containerClassName?: string;

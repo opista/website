@@ -1,10 +1,11 @@
-import { PageLayout } from "@/components/page-layout";
-import { getAllPageSlugs, getPageContentBySlug } from "@/lib/pages";
-import { PostBody } from "@/components/post-body";
-import { Heading } from "@/components/heading";
-import { notFound } from "next/navigation";
-import { BackToTop } from "@/components/back-to-top";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import { BackToTop } from "@/components/back-to-top";
+import { Heading } from "@/components/heading";
+import { PageLayout } from "@/components/page-layout";
+import { PostBody } from "@/components/post-body";
+import { getAllPageSlugs, getPageContentBySlug } from "@/lib/pages";
 
 type AppPageParams = {
   slug: string;

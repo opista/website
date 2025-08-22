@@ -1,7 +1,8 @@
-import { unified } from "unified";
-import remarkParse from "remark-parse";
 import remarkMdx from "remark-mdx";
+import remarkParse from "remark-parse";
+import { unified } from "unified";
 import { visit } from "unist-util-visit";
+
 import { toSlug } from "./to-slug";
 
 export type TOCItem = {

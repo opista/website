@@ -1,32 +1,32 @@
-import { MDXComponents } from "next-mdx-remote-client";
-
-import { Image } from "./image";
-import { Button } from "./button";
-import { PageContent } from "@/lib/pages";
-import { TableOfContents } from "./table-of-contents";
-import { Link } from "./link";
-import remarkGfm from "remark-gfm";
-import { MDXRemote } from "next-mdx-remote-client/rsc";
 import { ComponentPropsWithoutRef } from "react";
-import { Table } from "./table/table";
-import { TableHeadCell } from "./table/table-head-cell";
-import { TableBodyCell } from "./table/table-body-cell";
-import { UnorderedList } from "./unordered-list";
-import { IpodIdentifier } from "./ipod/ipod-identifier/ipod-identifier";
-import { Alert } from "./alert";
-import { Heading, HeadingProps } from "./heading";
-import { IpodStorageUpgradeCompatibilityTable } from "./ipod/ipod-storage-upgrade-compatibility-table";
+import { MDXComponents } from "next-mdx-remote-client";
+import { MDXRemote } from "next-mdx-remote-client/rsc";
+import remarkGfm from "remark-gfm";
+
+import { PageContent } from "@/lib/pages";
+
 import { Accordion } from "./accordion";
-import { RamIndicator } from "./ipod/ram-indicator";
+import { Alert } from "./alert";
+import { Button } from "./button";
+import { Heading, HeadingProps } from "./heading";
+import { Image } from "./image";
 import { BackplateIndicator } from "./ipod/backplate-indicator";
-import { YoutubeEmbed } from "./youtube-embed";
-import { IpodStorageBatteryCompatibilityTable } from "./ipod/ipod-storage-battery-compatibility-table";
-import { IpodStorageAdaptorOptionsTable } from "./ipod/ipod-storage-adaptor-options-table";
-import { RecommendedBadge } from "./recommended-badge";
-import { WorkInProgress } from "./work-in-progress";
-import { IpodFaceplateOptionsTable } from "./ipod/ipod-faceplate-options-table";
 import { IpodFaceplateOptionsTable5Gen } from "./ipod/ipod-faceplate-options-table-5gen";
 import { IpodFaceplateOptionsTable67Gen } from "./ipod/ipod-faceplate-options-table-67gen";
+import { IpodIdentifier } from "./ipod/ipod-identifier/ipod-identifier";
+import { IpodStorageAdaptorOptionsTable } from "./ipod/ipod-storage-adaptor-options-table";
+import { IpodStorageBatteryCompatibilityTable } from "./ipod/ipod-storage-battery-compatibility-table";
+import { IpodStorageUpgradeCompatibilityTable } from "./ipod/ipod-storage-upgrade-compatibility-table";
+import { RamIndicator } from "./ipod/ram-indicator";
+import { Link } from "./link";
+import { RecommendedBadge } from "./recommended-badge";
+import { Table } from "./table/table";
+import { TableBodyCell } from "./table/table-body-cell";
+import { TableHeadCell } from "./table/table-head-cell";
+import { TableOfContents } from "./table-of-contents";
+import { UnorderedList } from "./unordered-list";
+import { WorkInProgress } from "./work-in-progress";
+import { YoutubeEmbed } from "./youtube-embed";
 
 type PostBodyProps = {
   page: PageContent;

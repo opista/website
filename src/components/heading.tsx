@@ -1,9 +1,11 @@
-import clsx from "clsx";
 import { HTMLProps, ReactNode } from "react";
-import { LinkIcon } from "./icons/link-icon";
-import { toSlug } from "@/util/to-slug";
+import clsx from "clsx";
 import Link from "next/link";
+
+import { toSlug } from "@/util/to-slug";
+
 import { ConditionalWrapper } from "./conditional-wrapper";
+import { LinkIcon } from "./icons/link-icon";
 
 type HeadingTags = keyof Pick<
   JSX.IntrinsicElements,

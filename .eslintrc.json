@@ -1,3 +1,47 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "plugins": [
+    "simple-import-sort",
+    "unused-imports"
+  ],
+  "rules": {
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          [
+            "^\\u0000"
+          ],
+          [
+            "^react$",
+            "^@?\\w"
+          ],
+          [
+            "^@",
+            "^"
+          ],
+          [
+            "^\\./"
+          ],
+          [
+            "^.+\\.(module.css|module.scss)$"
+          ],
+          [
+            "^.+\\.(gif|png|svg|jpg)$"
+          ]
+        ]
+      }
+    ],
+    "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  }
 }

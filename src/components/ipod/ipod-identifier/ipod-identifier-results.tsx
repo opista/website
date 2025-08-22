@@ -1,8 +1,9 @@
-import clsx from "clsx";
-import { IpodIdentifierLayout } from "./ipod-identifier-layout";
+
 import { Button } from "@/components/button";
-import { RamIndicator } from "@/components/ipod/ram-indicator";
 import { BackplateIndicator } from "@/components/ipod/backplate-indicator";
+import { RamIndicator } from "@/components/ipod/ram-indicator";
+
+import { IpodIdentifierLayout } from "./ipod-identifier-layout";
 
 type IpodIdentifierResultsProps = {
   capacity: Capacity | null;

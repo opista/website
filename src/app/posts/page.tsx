@@ -1,10 +1,11 @@
+import { Fragment } from "react";
+import { Metadata } from "next";
+
 import { Heading } from "@/components/heading";
 import { HorizontalRule } from "@/components/horizontal-rule";
 import { Link } from "@/components/link";
 import { PageLayout } from "@/components/page-layout";
 import { getAllPagesAndContent } from "@/lib/pages";
-import { Metadata } from "next";
-import { Fragment } from "react";
 
 export const metadata: Metadata = {
   title: "Posts - OPISTA",

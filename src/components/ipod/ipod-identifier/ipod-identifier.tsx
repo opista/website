@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "../../button";
-import { IpodIdentifierResults } from "./ipod-identifier-results";
+
 import { IpodIdentifierLayout } from "./ipod-identifier-layout";
+import { IpodIdentifierResults } from "./ipod-identifier-results";
 
 const generationMap: GenerationConfiguration[] = [
   {

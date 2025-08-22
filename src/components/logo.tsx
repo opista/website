@@ -1,7 +1,8 @@
-import clsx from "clsx";
-import { ConditionalWrapper } from "./conditional-wrapper";
 import { HTMLAttributes } from "react";
+import clsx from "clsx";
 import Link from "next/link";
+
+import { ConditionalWrapper } from "./conditional-wrapper";
 
 type LogoProps = {
   isLink?: boolean;

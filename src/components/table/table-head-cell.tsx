@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import { ThHTMLAttributes } from "react";
+import clsx from "clsx";
 
 type TableHeadCellProps = {
   border?: boolean;

@@ -1,9 +1,10 @@
-import { Heading } from "@/components/heading";
-import { PageLayout } from "@/components/page-layout";
-import { PageContent, getAllPagesAndContent } from "@/lib/pages";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+import { Heading } from "@/components/heading";
+import { PageLayout } from "@/components/page-layout";
+import { getAllPagesAndContent,PageContent } from "@/lib/pages";
 
 const MAX_IMAGE_WIDTH = 300;
 

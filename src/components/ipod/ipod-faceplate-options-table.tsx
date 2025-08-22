@@ -1,9 +1,9 @@
-import { Table } from "../table/table";
-import { TableBodyCell } from "../table/table-body-cell";
-import { TableHeadCell } from "../table/table-head-cell";
 import { Heading } from "../heading";
 import { Image } from "../image";
 import { Link } from "../link";
+import { Table } from "../table/table";
+import { TableBodyCell } from "../table/table-body-cell";
+import { TableHeadCell } from "../table/table-head-cell";
 
 type Heading = {
   label: string;

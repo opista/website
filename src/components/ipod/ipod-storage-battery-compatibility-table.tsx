@@ -1,15 +1,17 @@
-import { ReactNode, FC, Fragment } from "react";
-import { CheckCircleIcon } from "../icons/check-circle-icon";
-import { CrossCircleIcon } from "../icons/cross-circle-icon";
-import { Table } from "../table/table";
+import { FC, Fragment,ReactNode } from "react";
 import clsx from "clsx";
-import { TableBodyCell } from "../table/table-body-cell";
-import { TableHeadCell } from "../table/table-head-cell";
-import { BackplateIndicator } from "./backplate-indicator";
+
 import { toSlug } from "@/util/to-slug";
 import { ConditionalWrapper } from "../conditional-wrapper";
+import { CheckCircleIcon } from "../icons/check-circle-icon";
+import { CrossCircleIcon } from "../icons/cross-circle-icon";
 import { Link } from "../link";
+import { Table } from "../table/table";
+import { TableBodyCell } from "../table/table-body-cell";
+import { TableHeadCell } from "../table/table-head-cell";
 import { Tooltip } from "../tooltip";
+
+import { BackplateIndicator } from "./backplate-indicator";
 
 type StorageMod =
   | "iFlash Solo"

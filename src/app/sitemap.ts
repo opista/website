@@ -1,7 +1,8 @@
-import { Directory, getAllPagesAndContent } from "@/lib/pages";
 import { statSync } from "fs";
 import type { MetadataRoute } from "next";
 import { join } from "path";
+
+import { Directory, getAllPagesAndContent } from "@/lib/pages";
 
 const BASE_URL = "https://opista.com";
 

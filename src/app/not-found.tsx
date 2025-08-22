@@ -1,7 +1,8 @@
+import { Metadata } from "next";
+
 import { Button } from "@/components/button";
 import { Heading } from "@/components/heading";
 import { PageLayout } from "@/components/page-layout";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Not Found - OPISTA",

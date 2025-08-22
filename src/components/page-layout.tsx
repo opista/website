@@ -1,6 +1,7 @@
-import { Header } from "@/components/header";
-import clsx from "clsx";
 import { ReactNode } from "react";
+import clsx from "clsx";
+
+import { Header } from "@/components/header";
 
 type PageLayoutProps = {
   children?: ReactNode;

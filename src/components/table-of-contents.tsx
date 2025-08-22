@@ -1,10 +1,11 @@
 import {
-  TOCItem,
   generateTableOfContents,
+  TOCItem,
 } from "@/util/generate-table-of-contents";
 import { toSlug } from "@/util/to-slug";
-import { Link } from "./link";
+
 import { Heading } from "./heading";
+import { Link } from "./link";
 
 type TableOfContentsProps = {
   content: string;
