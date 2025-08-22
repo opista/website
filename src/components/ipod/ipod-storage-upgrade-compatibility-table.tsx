@@ -164,7 +164,9 @@ const supportLevelMap: Record<
 const CompatibilityCell = ({ level }: { level: SupportLevel }) => {
   const { className, icon: Icon } = supportLevelMap[level];
   return (
-    <TableBodyCell className={clsx("text-center w-[60px]", className)}>
+    <TableBodyCell
+      className={clsx("align-middle text-center w-[60px]", className)}
+    >
       <Icon className="inline-block size-6" />
     </TableBodyCell>
   );

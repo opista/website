@@ -23,7 +23,7 @@ type Faceplate = {
 const headings: Heading[] = [
   { label: "Colour", width: "170px" },
   { label: "Image", width: "250px" },
-  { label: "Purchase" },
+  { label: "Purchase", width: "150px" },
 ];
 
 const faceplatesGen5: Faceplate[] = [

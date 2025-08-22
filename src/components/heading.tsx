@@ -1,5 +1,3 @@
-"use client";
-
 import clsx from "clsx";
 import { HTMLProps, ReactNode } from "react";
 import { LinkIcon } from "./icons/link-icon";

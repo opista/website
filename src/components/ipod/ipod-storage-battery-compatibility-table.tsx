@@ -143,7 +143,9 @@ const compatibilityMap: Record<
 const CompatibilityCell = ({ level }: { level: string }) => {
   const { className, icon: Icon } = compatibilityMap[level];
   return (
-    <TableBodyCell className={clsx("text-center w-[60px]", className)}>
+    <TableBodyCell
+      className={clsx("align-middle text-center w-[60px]", className)}
+    >
       <Icon className="inline-block size-6" />
     </TableBodyCell>
   );
