@@ -25,6 +25,8 @@ import { IpodStorageAdaptorOptionsTable } from "./ipod/ipod-storage-adaptor-opti
 import { RecommendedBadge } from "./recommended-badge";
 import { WorkInProgress } from "./work-in-progress";
 import { IpodFaceplateOptionsTable } from "./ipod/ipod-faceplate-options-table";
+import { IpodFaceplateOptionsTable5Gen } from "./ipod/ipod-faceplate-options-table-5gen";
+import { IpodFaceplateOptionsTable67Gen } from "./ipod/ipod-faceplate-options-table-67gen";
 
 type PostBodyProps = {
   page: PageContent;
@@ -52,7 +54,8 @@ export const PostBody = ({ page }: PostBodyProps) => {
     Alert,
     ...headings,
     Image,
-    IpodFaceplateOptionsTable,
+    IpodFaceplateOptionsTable5Gen,
+    IpodFaceplateOptionsTable67Gen,
     IpodIdentifier,
     IpodStorageAdaptorOptionsTable,
     IpodStorageBatteryCompatibilityTable,
