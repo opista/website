@@ -49,7 +49,7 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
       )}
       ref={ref}
     >
-      <span className="flex items-center gap-4 shrink-1 min-w-0">
+      <span className="flex items-center gap-2 sm:gap-4 shrink-1 min-w-0">
         {showSticky && (
           <>
             <div className="relative rounded-[25%] overflow-hidden w-[40px] h-[40px] shrink-0">
@@ -65,7 +65,7 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
           </>
         )}
       </span>
-      <span className="flex items-center gap-4 shrink-0">
+      <span className="flex items-center gap-2 sm:gap-4 shrink-0">
         <Price price={price} />
         {link && (
           <Button className="whitespace-nowrap" href={link}>
