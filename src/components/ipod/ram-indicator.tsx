@@ -1,5 +1,7 @@
 import clsx from "clsx";
 
+import { Ram } from "./ipod.types";
+
 type RamIndicatorProps = {
   className?: string;
   ram: Ram;

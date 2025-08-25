@@ -3,6 +3,7 @@ import clsx from "clsx";
 
 import { ExclamationCircleIcon } from "./icons/exclamation-circle-icon";
 import { ExclamationTriangleIcon } from "./icons/exclamation-triangle-icon";
+import { IconProps } from "./icons/icon.types";
 import { InformationIcon } from "./icons/information-icon";
 
 type AlertType = "error" | "info" | "warning";

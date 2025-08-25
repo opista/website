@@ -1,18 +1,18 @@
-type BackplateSize = "thick" | "thin";
+export type BackplateSize = "thick" | "thin";
 
-type Capacity = 30 | 60 | 80 | 120 | 160;
+export type Capacity = 30 | 60 | 80 | 120 | 160;
 
-type Ram = 32 | 64;
+export type Ram = 32 | 64;
 
-type Generation = 5 | 5.5 | 6 | 6.5 | 7;
+export type Generation = 5 | 5.5 | 6 | 6.5 | 7;
 
-type CapacityOption = {
+export type CapacityOption = {
   capacity: Capacity;
   backplate: BackplateSize;
   ram: Ram;
 };
 
-type GenerationConfiguration = {
+export type GenerationConfiguration = {
   capacityOptions: CapacityOption[];
   generation: Generation;
   hasSearch: boolean;

@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { Button } from "../../button";
+import { Capacity, GenerationConfiguration } from "../ipod.types";
 
 import { IpodIdentifierLayout } from "./ipod-identifier-layout";
 import { IpodIdentifierResults } from "./ipod-identifier-results";

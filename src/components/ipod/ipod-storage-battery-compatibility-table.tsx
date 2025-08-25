@@ -1,10 +1,11 @@
-import { FC, Fragment,ReactNode } from "react";
+import { FC, Fragment, ReactNode } from "react";
 import clsx from "clsx";
 
 import { toSlug } from "@/util/to-slug";
 import { ConditionalWrapper } from "../conditional-wrapper";
 import { CheckCircleIcon } from "../icons/check-circle-icon";
 import { CrossCircleIcon } from "../icons/cross-circle-icon";
+import { IconProps } from "../icons/icon.types";
 import { Link } from "../link";
 import { Table } from "../table/table";
 import { TableBodyCell } from "../table/table-body-cell";

@@ -5,11 +5,14 @@ import { toSlug } from "@/util/to-slug";
 import { CheckCircleIcon } from "../icons/check-circle-icon";
 import { CrossCircleIcon } from "../icons/cross-circle-icon";
 import { ExclamationCircleIcon } from "../icons/exclamation-circle-icon";
+import { IconProps } from "../icons/icon.types";
 import { InformationIcon } from "../icons/information-icon";
 import { Link } from "../link";
 import { Table } from "../table/table";
 import { TableBodyCell } from "../table/table-body-cell";
 import { TableHeadCell } from "../table/table-head-cell";
+
+import { Capacity, Generation } from "./ipod.types";
 
 type SupportLevel = "firmware" | "full" | "none" | "partial";
 

@@ -1,7 +1,7 @@
-
 import { Button } from "@/components/button";
 import { BackplateIndicator } from "@/components/ipod/backplate-indicator";
 import { RamIndicator } from "@/components/ipod/ram-indicator";
+import { Capacity, Generation, GenerationConfiguration } from "../ipod.types";
 
 import { IpodIdentifierLayout } from "./ipod-identifier-layout";
 

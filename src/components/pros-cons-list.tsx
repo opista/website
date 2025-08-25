@@ -3,6 +3,7 @@ import clsx from "clsx";
 
 import { CheckCircleIcon } from "./icons/check-circle-icon";
 import { CrossCircleIcon } from "./icons/cross-circle-icon";
+import { IconProps } from "./icons/icon.types";
 
 type ListType = "cons" | "pros";
 

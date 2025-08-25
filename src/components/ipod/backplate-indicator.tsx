@@ -1,5 +1,7 @@
 import clsx from "clsx";
 
+import { BackplateSize } from "./ipod.types";
+
 type BackplateIndicatorProps = {
   className?: string;
   backplate: BackplateSize;
