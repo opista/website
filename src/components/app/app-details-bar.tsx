@@ -44,12 +44,12 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
   return (
     <div
       className={clsx(
-        "sticky top-4 z-20 flex justify-between items-center p-2 bg-gray-800 rounded-lg",
+        "sticky top-2 sm:top-4 z-20 flex justify-between items-center p-2 bg-gray-800 rounded-lg",
         className
       )}
       ref={ref}
     >
-      <span className="flex items-center gap-4">
+      <span className="flex items-center gap-4 shrink-1 min-w-0">
         {showSticky && (
           <>
             <div className="relative rounded-[25%] overflow-hidden w-[40px] h-[40px] shrink-0">
@@ -61,13 +61,17 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
                 src={`/apps/${page.slug}/logo.png`}
               />
             </div>
-            <span className="hidden sm:block font-bold">{title}</span>
+            <span className="font-bold truncate shrink-1">{title}</span>
           </>
         )}
       </span>
-      <span className="flex items-center gap-4">
+      <span className="flex items-center gap-4 shrink-0">
         <Price price={price} />
-        {link && <Button href={link}>{cta}</Button>}
+        {link && (
+          <Button className="whitespace-nowrap" href={link}>
+            {cta}
+          </Button>
+        )}
       </span>
     </div>
   );
