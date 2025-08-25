@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import { AppDetailsBar } from "@/components/app/app-details-bar";
+import { BackToTop } from "@/components/back-to-top";
 import { Heading } from "@/components/heading";
 import { PageLayout } from "@/components/page-layout";
 import { PostBody } from "@/components/post-body";
@@ -42,7 +44,7 @@ export default async function AppPage({ params }: { params: AppPageParams }) {
   return (
     <PageLayout className="prose prose-invert" tag="article">
       <div className="flex flex-col sm:flex-row items-center">
-        <div className="relative my-0 mb-2 sm:mb-0 sm:mr-2 rounded-[25%] overflow-hidden w-[40px] h-[40px] sm:w-[70px] sm:h-[70px]">
+        <div className="relative my-0 mb-2 sm:mb-0 sm:mr-2 rounded-[25%] overflow-hidden w-[40px] h-[40px] sm:w-[70px] sm:h-[70px] shrink-0">
           <Image
             alt={`${page.title} logo`}
             className="my-0"
@@ -55,7 +57,10 @@ export default async function AppPage({ params }: { params: AppPageParams }) {
           {page.title}
         </Heading>
       </div>
+      <p className="font-bold">{page.description}</p>
+      <AppDetailsBar className="mb-5" page={page} />
       <PostBody page={page} />
+      <BackToTop />
     </PageLayout>
   );
 }
