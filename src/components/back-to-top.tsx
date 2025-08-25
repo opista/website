@@ -43,7 +43,7 @@ export const BackToTop = ({
         noPadding
         onClick={onClick}
       >
-        <ArrowUp />
+        <ArrowUp strokeWidth={4} />
         <span className="sr-only">Back to top</span>
       </Button>
     )

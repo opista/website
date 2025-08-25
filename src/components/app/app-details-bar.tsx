@@ -44,7 +44,7 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
   return (
     <div
       className={clsx(
-        "sticky top-2 sm:top-4 z-20 flex justify-between items-center p-2 bg-gray-800 rounded-lg",
+        "sticky top-2 sm:top-4 z-20 flex justify-between items-center p-2 bg-gray-800 rounded-lg text-white",
         className
       )}
       ref={ref}
