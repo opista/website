@@ -10,8 +10,11 @@ export type Directory = "apps" | "posts";
 export type PageContent = {
   content: string;
   createdAt: Date;
+  cta?: string;
   description: string;
+  link?: string;
   modifiedAt: Date;
+  price?: string;
   slug: string;
   title: string;
   url: string;

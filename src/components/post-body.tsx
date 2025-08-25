@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef } from "react";
+import clsx from "clsx";
 import { MDXComponents } from "next-mdx-remote-client";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
 import remarkGfm from "remark-gfm";
@@ -34,7 +35,7 @@ type PostBodyProps = {
 
 const headings = Array(6)
   .fill(null)
-  .reduce((acc, curr, idx) => {
+  .reduce((acc, _curr, idx) => {
     const level = idx + 1;
     const tag = `h${level}` as HeadingProps["level"];
     return {
@@ -52,6 +53,16 @@ export const PostBody = ({ page }: PostBodyProps) => {
     BackplateIndicator,
     Button,
     Alert,
+    AppLinkButton: (props) => (
+      <Button
+        {...props}
+        center
+        className={clsx("mx-auto", props.className)}
+        href={page.link}
+      >
+        {props.children || page.cta}
+      </Button>
+    ),
     ...headings,
     Image,
     IpodFaceplateOptionsTable5Gen,
