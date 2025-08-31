@@ -21,6 +21,7 @@ import { IpodStorageUpgradeCompatibilityTable } from "./ipod/ipod-storage-upgrad
 import { RamIndicator } from "./ipod/ram-indicator";
 import { Link } from "./link";
 import { RecommendedBadge } from "./recommended-badge";
+import { SolderingRequirement } from "./soldering-requirement";
 import { Table } from "./table/table";
 import { TableBodyCell } from "./table/table-body-cell";
 import { TableHeadCell } from "./table/table-head-cell";
@@ -74,6 +75,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     Link,
     RamIndicator,
     RecommendedBadge,
+    SolderingRequirement,
     TableOfContents: () => (
       <TableOfContents content={page.content} maxDepth={3} />
     ),
