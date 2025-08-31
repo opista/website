@@ -12,7 +12,7 @@ export const SolderingRequirement = ({
   <div className="mb-5">
     <div
       className={clsx(
-        "inline-flex items-center rounded-full bg-red-500 pl-1 pr-2 gap-1 text-white text-sm",
+        "inline-flex items-center rounded-full pl-1 pr-2 gap-1 text-white text-sm",
         {
           "bg-green-800": !requiresSoldering,
           "bg-yellow-700": requiresSoldering,
@@ -20,7 +20,7 @@ export const SolderingRequirement = ({
       )}
     >
       <div className="rounded-full bg-white p-1 bg-white/40 flex items-center justify-center">
-        <PencilFilledIcon className="size-2" />
+        <PencilFilledIcon className="!size-2" />
       </div>
       <span>
         {requiresSoldering ? "Soldering required" : "No soldering required"}
