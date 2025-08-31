@@ -22,7 +22,7 @@ export default function RootLayout({
       <body
         className={clsx("bg-zinc-950 text-white h-full px-4", inter.className)}
       >
-        <div className="w-full h-full max-w-prose mx-auto">{children}</div>
+        <div className="w-full h-full">{children}</div>
       </body>
     </html>
   );

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className="flex h-svh items-center justify-center">
       <div className="flex flex-col">
-        <Logo className="text-5xl sm:text-9xl" />
+        <Logo className="text-5xl sm:text-9xl text-center" />
         <SiteLinks />
       </div>
     </main>
