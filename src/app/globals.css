@@ -25,3 +25,7 @@
 sup+sup a[data-footnote-ref="true"] {
   margin-left: 0.25rem;
 }
+
+.main {
+  min-height: calc(100dvh - 60px - 237px);
+}

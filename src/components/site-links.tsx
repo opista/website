@@ -5,7 +5,11 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const siteLinks = [
+type SiteLinksProps = {
+  hideContact?: boolean;
+};
+
+export const siteLinks = [
   {
     href: "/apps",
     text: "apps",
@@ -20,25 +24,27 @@ const siteLinks = [
   },
 ];
 
-export const SiteLinks = () => {
+export const SiteLinks = ({ hideContact }: SiteLinksProps) => {
   const pathname = usePathname();
 
   return (
     <div className="text-right text-pink-600">
-      {siteLinks.map(({ href, text }, idx) => (
-        <Fragment key={text}>
-          {idx !== 0 && String.fromCharCode(0x2022)}
-          <Link
-            className={clsx("p-2 hover:underline decoration-2", {
-              "font-medium": !pathname.startsWith(href),
-              "font-bold underline": pathname.startsWith(href),
-            })}
-            href={href}
-          >
-            {text}
-          </Link>
-        </Fragment>
-      ))}
+      {siteLinks
+        .filter(({ text }) => !hideContact || text !== "contact")
+        .map(({ href, text }, idx) => (
+          <Fragment key={text}>
+            {idx !== 0 && String.fromCharCode(0x2022)}
+            <Link
+              className={clsx("p-2 hover:underline decoration-2", {
+                "font-medium": !pathname.startsWith(href),
+                "font-bold underline": pathname.startsWith(href),
+              })}
+              href={href}
+            >
+              {text}
+            </Link>
+          </Fragment>
+        ))}
     </div>
   );
 };

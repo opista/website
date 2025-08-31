@@ -3,6 +3,8 @@ import clsx from "clsx";
 
 import { Header } from "@/components/header";
 
+import { Footer } from "./footer";
+
 type PageLayoutProps = {
   children?: ReactNode;
   className?: string;
@@ -17,6 +19,12 @@ export const PageLayout = ({
   <>
     <Header />
 
-    <Wrapper className={clsx("py-4 sm:py-8", className)}>{children}</Wrapper>
+    <Wrapper
+      className={clsx("py-4 sm:py-8 pb-20 max-w-prose mx-auto main", className)}
+    >
+      {children}
+    </Wrapper>
+
+    <Footer />
   </>
 );
