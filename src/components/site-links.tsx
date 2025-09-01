@@ -31,13 +31,14 @@ export const SiteLinks = ({ hideContact }: SiteLinksProps) => {
     <div className="text-right text-pink-600">
       {siteLinks
         .filter(({ text }) => !hideContact || text !== "contact")
-        .map(({ href, text }, idx) => (
+        .map(({ href, text }, idx, arr) => (
           <Fragment key={text}>
             {idx !== 0 && String.fromCharCode(0x2022)}
             <Link
               className={clsx("p-2 hover:underline decoration-2", {
                 "font-medium": !pathname.startsWith(href),
                 "font-bold underline": pathname.startsWith(href),
+                "pr-0": idx === arr.length - 1,
               })}
               href={href}
             >
