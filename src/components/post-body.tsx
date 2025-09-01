@@ -54,16 +54,17 @@ export const PostBody = ({ page }: PostBodyProps) => {
     BackplateIndicator,
     Button,
     Alert,
-    AppLinkButton: (props) => (
-      <Button
-        {...props}
-        center
-        className={clsx("mx-auto", props.className)}
-        href={page.link}
-      >
-        {props.children || page.cta}
-      </Button>
-    ),
+    AppLinkButton: (props) =>
+      !!page.link && (
+        <Button
+          {...props}
+          center
+          className={clsx("mx-auto", props.className)}
+          href={page.link}
+        >
+          {props.children || page.cta}
+        </Button>
+      ),
     ...headings,
     Image,
     IpodFaceplateOptionsTable5Gen,

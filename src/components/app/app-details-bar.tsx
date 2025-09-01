@@ -41,6 +41,8 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, scrollPosition]);
 
+  if (!link) return;
+
   return (
     <div
       className={clsx(
