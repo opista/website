@@ -55,5 +55,6 @@ export const getAllPagesAndContent = (directory: Directory) => {
   const slugs = getAllPageSlugs(directory);
   return slugs
     .map(({ slug }) => getPageContentBySlug(directory, slug))
-    .filter((page): page is PageContent => !!page);
+    .filter((page): page is PageContent => !!page)
+    .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 };

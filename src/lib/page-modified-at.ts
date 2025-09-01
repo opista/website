@@ -5,5 +5,7 @@ export const pageModifiedAt = (filePath: string) => {
     encoding: "utf8",
   }).trim();
 
+  if (!result) return new Date();
+
   return new Date(result);
 };
