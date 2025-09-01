@@ -8,5 +8,7 @@ export const pageCreatedAt = (filePath: string) => {
     }
   ).trim();
 
+  if (!result) return new Date();
+
   return new Date(result);
 };
