@@ -7,6 +7,7 @@ import { BackToTop } from "@/components/back-to-top";
 import { Heading } from "@/components/heading";
 import { PageLayout } from "@/components/page-layout";
 import { PostBody } from "@/components/post-body";
+import { BASE_SITE_URL } from "@/constant";
 import { getAllPageSlugs, getPageContentBySlug } from "@/lib/pages";
 
 type AppPageParams = {
@@ -31,6 +32,9 @@ export async function generateMetadata({
   return {
     title: `${page.title} - OPISTA`,
     description: page.description,
+    alternates: {
+      canonical: `${BASE_SITE_URL}/apps/${page.slug}`,
+    },
   };
 }
 
