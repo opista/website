@@ -75,7 +75,7 @@ const upgrades: Upgrade[] = [
     description: "Dual MicroSD Adaptor. Supports up to 2 MicroSD cards",
     price: "~£38",
     purchase: {
-      link: "https://www.aliexpress.com/item/1005003944930279.html",
+      link: "https://s.click.aliexpress.com/e/_oC7IDBH",
       label: "AliExpress",
     },
     pros: [
@@ -142,7 +142,7 @@ const upgrades: Upgrade[] = [
     description: "CF Adaptor. Supports CF (Compact Flash) cards",
     price: "~£3",
     purchase: {
-      link: "https://www.aliexpress.com/item/1005006829426894.html",
+      link: "https://s.click.aliexpress.com/e/_omitNyJ",
       label: "AliExpress",
     },
     pros: ["Very cheap", "Low power consumption"],
@@ -157,7 +157,7 @@ const upgrades: Upgrade[] = [
     description: "m.2 Adaptor. Supports m.2 SSDs",
     price: "~£5",
     purchase: {
-      link: "https://www.aliexpress.com/item/1005005450291603.html",
+      link: "https://s.click.aliexpress.com/e/_oDrGLNZ",
       label: "AliExpress",
     },
     pros: ["Very cheap"],
@@ -172,7 +172,7 @@ const upgrades: Upgrade[] = [
     description: "mSata Adaptor. Supports mSATA SSDs",
     price: "~£4",
     purchase: {
-      link: "https://www.aliexpress.com/item/1005005753470177.html",
+      link: "https://s.click.aliexpress.com/e/_oBHuxph",
       label: "AliExpress",
     },
     pros: ["Very cheap"],

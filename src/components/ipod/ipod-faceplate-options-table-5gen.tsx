@@ -10,15 +10,15 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     purchase: [
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005004655859764.html",
+        link: "https://s.click.aliexpress.com/e/_omgf0Lt",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005009179681874.html",
+        link: "https://s.click.aliexpress.com/e/_optC9yP",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005008072732788.html",
+        link: "https://s.click.aliexpress.com/e/_olXvZx5",
       },
     ],
   },
@@ -28,15 +28,15 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     purchase: [
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005004655859764.html",
+        link: "https://s.click.aliexpress.com/e/_omgf0Lt",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005009179681874.html",
+        link: "https://s.click.aliexpress.com/e/_optC9yP",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005008072732788.html",
+        link: "https://s.click.aliexpress.com/e/_olXvZx5",
       },
     ],
   },
@@ -46,11 +46,11 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     purchase: [
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005009344395215.html",
+        link: "https://s.click.aliexpress.com/e/_oFgp8QR",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005009342173766.html",
+        link: "https://s.click.aliexpress.com/e/_oCeJdP9",
       },
     ],
   },
@@ -60,15 +60,15 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     purchase: [
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005004655859764.html",
+        link: "https://s.click.aliexpress.com/e/_omgf0Lt",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005009179681874.html",
+        link: "https://s.click.aliexpress.com/e/_optC9yP",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005008072732788.html",
+        link: "https://s.click.aliexpress.com/e/_olXvZx5",
       },
     ],
   },
@@ -78,15 +78,15 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     purchase: [
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005004655859764.html",
+        link: "https://s.click.aliexpress.com/e/_omgf0Lt",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005009179681874.html",
+        link: "https://s.click.aliexpress.com/e/_optC9yP",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005008072732788.html",
+        link: "https://s.click.aliexpress.com/e/_olXvZx5",
       },
     ],
   },
@@ -96,11 +96,11 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     purchase: [
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005009344395215.html",
+        link: "https://s.click.aliexpress.com/e/_oFgp8QR",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005009342173766.html",
+        link: "https://s.click.aliexpress.com/e/_oCeJdP9",
       },
     ],
   },
@@ -110,11 +110,11 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     purchase: [
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005004655859764.html",
+        link: "https://s.click.aliexpress.com/e/_omgf0Lt",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005009179681874.html",
+        link: "https://s.click.aliexpress.com/e/_optC9yP",
       },
     ],
   },
@@ -124,15 +124,15 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     purchase: [
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005004655859764.html",
+        link: "https://s.click.aliexpress.com/e/_omgf0Lt",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005009179681874.html",
+        link: "https://s.click.aliexpress.com/e/_optC9yP",
       },
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005008072732788.html",
+        link: "https://s.click.aliexpress.com/e/_olXvZx5",
       },
     ],
   },
@@ -142,7 +142,7 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     purchase: [
       {
         label: "AliExpress",
-        link: "https://www.aliexpress.com/item/1005004655859764.html",
+        link: "https://s.click.aliexpress.com/e/_omgf0Lt",
       },
     ],
   },
