@@ -66,7 +66,7 @@ const batteryMap: CompatibilityRow[] = [
     name: "2000mAh (square)",
     dimensions: [
       {
-        link: "https://www.aliexpress.com/item/1005008200745392.html",
+        link: "https://s.click.aliexpress.com/e/_oC2MEt5",
         measurements: [46.3, 42.6, 5.0],
       },
     ],
@@ -102,7 +102,7 @@ const batteryMap: CompatibilityRow[] = [
     name: "3000mAh (thin)",
     dimensions: [
       {
-        link: "https://www.aliexpress.com/item/1005003263973779.html",
+        link: "https://s.click.aliexpress.com/e/_oCNvre3",
         measurements: [82, 50.3, 3.9],
         note: "Be careful when selecting your battery, there are multiple options. You want a depth AT OR BELOW 4mm",
       },
