@@ -2,9 +2,8 @@ import { statSync } from "fs";
 import type { MetadataRoute } from "next";
 import { join } from "path";
 
+import { BASE_SITE_URL } from "@/constant";
 import { Directory, getAllPagesAndContent } from "@/lib/pages";
-
-const BASE_URL = "https://opista.com";
 
 type MetaConfig = MetadataRoute.Sitemap[number];
 
@@ -22,7 +21,7 @@ const getAllPagesInGroup = (
   const pages = getAllPagesAndContent(directory);
 
   return pages.map((page) => ({
-    url: `${BASE_URL}${page.url}`,
+    url: `${BASE_SITE_URL}${page.url}`,
     lastModified: page.modifiedAt,
     changeFrequency,
     priority,
@@ -32,13 +31,13 @@ const getAllPagesInGroup = (
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: BASE_URL,
+      url: BASE_SITE_URL,
       lastModified: getFileLastUpdated(),
       changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: `${BASE_URL}/apps`,
+      url: `${BASE_SITE_URL}/apps`,
       lastModified: getFileLastUpdated("apps"),
       changeFrequency: "monthly",
       priority: 0.8,
@@ -48,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }),
     {
-      url: `${BASE_URL}/posts`,
+      url: `${BASE_SITE_URL}/posts`,
       lastModified: getFileLastUpdated("posts"),
       changeFrequency: "monthly",
       priority: 0.8,
