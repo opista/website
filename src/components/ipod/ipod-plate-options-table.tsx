@@ -14,7 +14,7 @@ type PurchaseOption = {
   link: string;
 };
 
-type Faceplate = {
+type Plate = {
   name: string;
   image: string;
   purchase: PurchaseOption[];
@@ -26,15 +26,15 @@ const headings: Heading[] = [
   { label: "Purchase", width: "150px" },
 ];
 
-export type IpodFaceplateOptionsTableProps = {
-  faceplates: Faceplate[];
+export type IpodPlateOptionsTableProps = {
+  plates: Plate[];
   generation?: "5th" | "6th/7th";
 };
 
-export const IpodFaceplateOptionsTable = ({
-  faceplates,
+export const IpodPlateOptionsTable = ({
+  plates,
   generation,
-}: IpodFaceplateOptionsTableProps) => (
+}: IpodPlateOptionsTableProps) => (
   <Table containerClassName="!mb-0">
     <thead>
       <tr>
@@ -46,14 +46,14 @@ export const IpodFaceplateOptionsTable = ({
       </tr>
     </thead>
     <tbody>
-      {faceplates.map(({ image, name, purchase }) => (
+      {plates.map(({ image, name, purchase }) => (
         <tr key={name}>
           <TableBodyCell className="align-top">
             <p className="mt-0">{name}</p>
           </TableBodyCell>
           <TableBodyCell>
             <Image
-              alt={`Example of a ${name} ${generation} generation faceplate`}
+              alt={`Example of a ${name} ${generation} generation plate`}
               className="m-0"
               height={500}
               src={image}

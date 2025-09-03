@@ -1,9 +1,9 @@
 import {
-  IpodFaceplateOptionsTable,
-  IpodFaceplateOptionsTableProps,
-} from "./ipod-faceplate-options-table";
+  IpodPlateOptionsTable,
+  IpodPlateOptionsTableProps,
+} from "./ipod-plate-options-table";
 
-const faceplates: IpodFaceplateOptionsTableProps["faceplates"] = [
+const faceplates: IpodPlateOptionsTableProps["plates"] = [
   {
     name: "Black",
     image: "/posts/ipod-modding/faceplates/gen6/black.png",
@@ -159,5 +159,5 @@ const faceplates: IpodFaceplateOptionsTableProps["faceplates"] = [
 ];
 
 export const IpodFaceplateOptionsTable67Gen = () => (
-  <IpodFaceplateOptionsTable faceplates={faceplates} />
+  <IpodPlateOptionsTable plates={faceplates} />
 );
