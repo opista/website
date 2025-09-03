@@ -8,4 +8,13 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 module.exports = withPlugins([[withBundleAnalyzer]], {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/apps/avios-reminder",
+        destination: "/apps/airmiles-reminder",
+        permanent: true,
+      },
+    ];
+  },
 });
