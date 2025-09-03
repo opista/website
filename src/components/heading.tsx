@@ -80,7 +80,17 @@ export const Heading = ({
   className,
   ...props
 }: HeadingProps) => {
-  const slug = toSlug(Array.isArray(children) ? children[0] : children);
+  const slug = toSlug(
+    Array.isArray(children)
+      ? children
+          .filter((child): child is string => typeof child === "string")
+          .map((child) => child.trim())
+          .join(" ")
+      : typeof children === "string" || typeof children === "number"
+      ? children
+      : ""
+  );
+
   const href = `#${slug}`;
 
   return (
