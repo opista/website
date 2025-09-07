@@ -9,7 +9,7 @@ type SolderingRequirementProps = {
 export const SolderingRequirement = ({
   requiresSoldering,
 }: SolderingRequirementProps) => (
-  <div className="mb-5">
+  <div className="mb-5 select-none">
     <div
       className={clsx(
         "inline-flex items-center rounded-full pl-1 pr-2 gap-1 text-white text-sm",
