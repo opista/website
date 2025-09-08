@@ -146,6 +146,16 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
       },
     ],
   },
+  {
+    name: "Atomic (Custom made by EOE)",
+    image: "/posts/ipod-modding/faceplates/gen5/eoe-atomic.png",
+    purchase: [
+      {
+        label: "EOE",
+        link: "https://eoe.works/collections/atomic-parts-for-ipod-video",
+      },
+    ],
+  },
 ];
 
 export const IpodFaceplateOptionsTable5Gen = () => (
