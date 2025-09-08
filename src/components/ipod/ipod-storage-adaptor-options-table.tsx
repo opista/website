@@ -32,7 +32,6 @@ const headings: Heading[] = [
   { label: "Option", width: "150px" },
   { label: "Image", width: "150px" },
   { label: "Description", width: "280px" },
-  { label: "Purchase", width: "110px" },
 ];
 
 const upgrades: Upgrade[] = [
@@ -203,6 +202,17 @@ export const IpodStorageAdaptorOptionsTable = () => (
           <TableBodyCell className="align-top">
             <p className="mt-0">{upgrade.option}</p>
             <p>{upgrade.price}</p>
+            <div>
+              <p className="mb-0">Purchase:</p>
+              <ConditionalWrapper
+                condition={!!upgrade.purchase.link}
+                wrapper={(children) => (
+                  <Link href={upgrade.purchase.link as string}>{children}</Link>
+                )}
+              >
+                {upgrade.purchase.label}
+              </ConditionalWrapper>
+            </div>
           </TableBodyCell>
           <TableBodyCell>
             <Image
@@ -219,16 +229,7 @@ export const IpodStorageAdaptorOptionsTable = () => (
             <ProsConsList list={upgrade.pros} type="pros" />
             <ProsConsList className="!mb-0" list={upgrade.cons} type="cons" />
           </TableBodyCell>
-          <TableBodyCell className="align-top">
-            <ConditionalWrapper
-              condition={!!upgrade.purchase.link}
-              wrapper={(children) => (
-                <Link href={upgrade.purchase.link as string}>{children}</Link>
-              )}
-            >
-              {upgrade.purchase.label}
-            </ConditionalWrapper>
-          </TableBodyCell>
+          <TableBodyCell className="align-top"></TableBodyCell>
         </tr>
       ))}
     </tbody>

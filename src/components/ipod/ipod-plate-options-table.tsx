@@ -23,7 +23,6 @@ type Plate = {
 const headings: Heading[] = [
   { label: "Colour", width: "170px" },
   { label: "Image", width: "250px" },
-  { label: "Purchase", width: "150px" },
 ];
 
 export type IpodPlateOptionsTableProps = {
@@ -50,6 +49,14 @@ export const IpodPlateOptionsTable = ({
         <tr key={name}>
           <TableBodyCell className="align-top">
             <p className="mt-0">{name}</p>
+            <div>
+              <p className="mb-0">Purchase:</p>
+              {purchase.map((option) => (
+                <Link className="block" href={option.link} key={option.link}>
+                  {option.label}
+                </Link>
+              ))}
+            </div>
           </TableBodyCell>
           <TableBodyCell>
             <Image
@@ -59,13 +66,6 @@ export const IpodPlateOptionsTable = ({
               src={image}
               width={500}
             />
-          </TableBodyCell>
-          <TableBodyCell className="align-top">
-            {purchase.map((option) => (
-              <Link className="block" href={option.link} key={option.link}>
-                {option.label}
-              </Link>
-            ))}
           </TableBodyCell>
         </tr>
       ))}
