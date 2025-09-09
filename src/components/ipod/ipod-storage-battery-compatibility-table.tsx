@@ -69,6 +69,11 @@ const batteryMap: CompatibilityRow[] = [
         link: "https://s.click.aliexpress.com/e/_oC2MEt5",
         measurements: [46.3, 42.6, 5.0],
       },
+      {
+        link: "https://s.click.aliexpress.com/e/_opfWJAf",
+        measurements: [40, 44.5, 4.8],
+        note: "There are multiple options for this listing. Look for the one labelled '44.5404.8mm thinback'",
+      },
     ],
     storageOptions: [
       { name: "iFlash Solo", thick: true, thin: true },
@@ -105,6 +110,11 @@ const batteryMap: CompatibilityRow[] = [
         link: "https://s.click.aliexpress.com/e/_oCNvre3",
         measurements: [82, 50.3, 3.9],
         note: "Be careful when selecting your battery, there are multiple options. You want a depth AT OR BELOW 4mm",
+      },
+      {
+        link: "https://s.click.aliexpress.com/e/_oB8NWCP",
+        measurements: [79, 49, 3.8],
+        note: "Select '79493.8mm Thin Back'",
       },
     ],
     storageOptions: [
@@ -179,7 +189,7 @@ const BatteryDimensions = ({
 }: {
   dimensions: DimensionsOption;
 }) => (
-  <>
+  <div className="block">
     <ConditionalWrapper
       condition={!!link}
       wrapper={(children) => (
@@ -193,7 +203,7 @@ const BatteryDimensions = ({
       <span className="font-bold">D</span> {measurements[2].toFixed(1)}mm
     </ConditionalWrapper>
     {note && <Tooltip content={note} />}
-  </>
+  </div>
 );
 
 export const IpodStorageBatteryCompatibilityTable = () => (
