@@ -14,6 +14,11 @@ import { Tooltip } from "../tooltip";
 
 import { BackplateIndicator } from "./backplate-indicator";
 
+type Heading = {
+  label: ReactNode;
+  width?: string;
+};
+
 type StorageMod =
   | "iFlash Solo"
   | "iFlash Dual"
@@ -47,9 +52,22 @@ type CompatibilityRow = {
   storageOptions: StorageOption[];
 };
 
+const headings: Heading[] = [
+  { label: "Battery Mod", width: "260px" },
+  { label: "Storage Adaptor", width: "170px" },
+  { label: <BackplateIndicator backplate="thin" />, width: "90px" },
+  { label: <BackplateIndicator backplate="thick" />, width: "90px" },
+];
+
 const batteryMap: CompatibilityRow[] = [
   {
     name: "650mAh (OEM)",
+    dimensions: [
+      {
+        link: "https://s.click.aliexpress.com/e/_oEtP51z",
+        measurements: [19.7, 44.8, 6.2],
+      },
+    ],
     storageOptions: [
       {
         name: "iFlash Solo",
@@ -212,18 +230,15 @@ export const IpodStorageBatteryCompatibilityTable = () => (
     <Table containerClassName="!mb-0">
       <thead>
         <tr className="text-center">
-          <TableHeadCell border className="w-[260px]">
-            Battery Mod
-          </TableHeadCell>
-          <TableHeadCell border className="w-[180px]">
-            Storage Adaptor
-          </TableHeadCell>
-          <TableHeadCell border className="w-[100px]">
-            <BackplateIndicator backplate="thin" />
-          </TableHeadCell>
-          <TableHeadCell border className="w-[100px]">
-            <BackplateIndicator backplate="thick" />
-          </TableHeadCell>
+          {headings.map((heading) => (
+            <TableHeadCell
+              border
+              key={heading.label?.toString()}
+              style={{ width: heading.width }}
+            >
+              {heading.label}
+            </TableHeadCell>
+          ))}
         </tr>
       </thead>
       <tbody>
