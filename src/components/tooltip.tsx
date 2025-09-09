@@ -45,7 +45,7 @@ export const Tooltip = ({
       >
         <InformationIcon />
       </a>
-      <ReactTooltip id={id} />
+      <ReactTooltip className="max-w-[300px]" id={id} />
     </>
   );
 };
