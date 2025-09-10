@@ -1,6 +1,7 @@
 import "./globals.css";
 import "react-tooltip/dist/react-tooltip.css";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -24,6 +25,7 @@ export default function RootLayout({
       >
         <div className="w-full h-full">{children}</div>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!} />
     </html>
   );
 }
