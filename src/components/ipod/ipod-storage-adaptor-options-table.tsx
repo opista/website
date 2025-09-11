@@ -106,10 +106,7 @@ const upgrades: Upgrade[] = [
       label: "iFlash",
     },
     pros: ["Reliable and good quality", "Affordable", "Most power efficient"],
-    cons: [
-      "Take up lots of space",
-      "Storage is more expensive/harder to find in larger sizes",
-    ],
+    cons: ["Take up lots of space", "Storage is expensive in larger sizes"],
   },
   {
     option: "iFlash Dual",
@@ -145,10 +142,7 @@ const upgrades: Upgrade[] = [
       label: "AliExpress",
     },
     pros: ["Very cheap", "Low power consumption"],
-    cons: [
-      "Take up lots of space",
-      "Storage is more expensive/harder to find in larger sizes",
-    ],
+    cons: ["Take up lots of space", "Storage is expensive in larger sizes"],
   },
   {
     option: "Generic m.2",
