@@ -28,6 +28,7 @@ import { TableBodyCell } from "./table/table-body-cell";
 import { TableHeadCell } from "./table/table-head-cell";
 import { TableOfContents } from "./table-of-contents";
 import { UnorderedList } from "./unordered-list";
+import { VideoEmbed } from "./video-embed";
 import { WorkInProgress } from "./work-in-progress";
 import { YoutubeEmbed } from "./youtube-embed";
 
@@ -86,6 +87,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     th: TableHeadCell,
     td: TableBodyCell,
     ul: UnorderedList,
+    VideoEmbed,
     WorkInProgress,
     wrapper: ({ children }: ComponentPropsWithoutRef<"div">) => (
       <div className="snap-y markdown">{children}</div>
