@@ -212,8 +212,35 @@ This is the most technically complex mod, but in my opinion the most preferrable
 
 Oxyll has <Link href="/posts/ipod-modding/documents/oxyll-bluetooth-mod.pdf" openInNewTab>produced an incredibly detailed guide</Link>[^oxyll_bluetooth_mod] that covers everything you need to know about this mod, including the parts you'll need, how it works, and how to integrate your Bluetooth adaptor.
 
+<Accordion title="Video demonstration">
+Lifted from Oxyll's [Imgur post](https://imgur.com/a/oxyll-elegant-bluetooth-mod-ipod-classic-ofGnCJs#BRw0amp)
 
-<WorkInProgress />
+<VideoEmbed className="mb-09" src="https://i.imgur.com/BRw0amp.mp4" />
+</Accordion>
+
+<Accordion title="Shopping list">
+
+* Soldering iron (I use a [Pinecil](https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/))
+* [Solder](https://s.click.aliexpress.com/e/_opIXZUl)
+* [Kapton tape](https://s.click.aliexpress.com/e/_oE3tjPx) to prevent shorts/hold wires into position
+* [_Thin_ magnet wire](https://s.click.aliexpress.com/e/_oDIGb77) (I use 0.06mm) You won't need this everywhere, but you'll want to use it for the wires that sit under the clickwheel so that the buttons can still be pressed. If you use regular wire here, you **will** run into issues
+* [Regular wire](https://s.click.aliexpress.com/e/_oFnZYuv) for wiring everywhere other than the front of the board
+* [SN74LVC1G32DBVR Positive OR gate](https://www.aliexpress.com/item/1005001805679017.html), or
+* [SN74LVC1G02DBVR  Positive NOR gate](https://www.aliexpress.com/item/1005001805797054.html) depending on the bluetooth board
+* [SOT23 breakout board](https://s.click.aliexpress.com/e/_oBLCO17) (Optional). These are great if precision soldering isn't your thing.
+
+</Accordion>
+<Accordion title="With KCX_BT_EMITTER">
+
+<Alert type="info">You'll need the [SN74LVC1G32DBVR Positive OR gate](https://www.aliexpress.com/item/1005001805679017.html) from the **Shopping list** above for this board</Alert>
+
+The [KCX_BT_EMITTER](https://s.click.aliexpress.com/e/_om75acD) and [WiFi antenna](https://s.click.aliexpress.com/e/_oBiKXNR) are a great option for this mod. These 2 parts will come to less than £3!
+
+This is my own implementation, and I can confirm that I am not getting any feedback/humming with this wiring setup. See the wiring diagram below:
+
+<Image alt="Wiring diagram for the Oxyll BT Mod using the KCX_BT_EMITTER" className="mb-0" height={3300} src="/posts/ipod-modding/bluetooth/oxyll-bt-mod-kcx-bt-emitter.png" width={3500} />
+
+</Accordion>
 
 #### IcyEgg-9339's "Right Way" mod
 
@@ -252,14 +279,17 @@ This wiring diagram was initially shared sometime in April 2024[^imgur_ugreen_cm
 
 <Alert type="error">Although all of these mods require some level of destructive work, this particular approach repurposes the lock switch as a pairing button for Bluetooth. **Your lock switch will no longer lock your device. It requires you to cut the flex cable connecting the headphone jack to the lock switch.** </Alert>
 
-This mod is the cheapest option, because the KCX_BT_EMITTER board is less than £1. However, you could always replace this with a different Bluetooth board if you understand how to wire it up. 
+This mod is often paired with the KCX_BT_EMITTER board which is less than £1. However, you could always replace this with a different Bluetooth board if you understand how to wire it up. 
 
 The [Parts Plus Pods](https://www.youtube.com/@partspluspods3689) YouTube channel has multiple videos demonstrating how to implement this mod. If you would prefer not to do this mod yourself, [their store also sells "kits"](https://partspluspods.com.au/product/bluetooth-upgrade-kit-for-apple-ipod-classic-5th-gen/) at a reasonable price which have Bluetooth and an upgraded battery.
 
 <Accordion title="Shopping list">
-* [KCX_BT_EMITTER Bluetooth board](https://s.click.aliexpress.com/e/_oFBBqs7)
-* [Antenna](https://s.click.aliexpress.com/e/_op8Ruhd)
-* [Thin wire](https://s.click.aliexpress.com/e/_okDq06R)
+* Soldering iron (I use a [Pinecil](https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/))
+* [Solder](https://s.click.aliexpress.com/e/_opIXZUl)
+* [Kapton tape](https://s.click.aliexpress.com/e/_oE3tjPx) to prevent shorts/hold wires into position
+* [Wire](https://s.click.aliexpress.com/e/_oFnZYuv) 
+* [KCX_BT_EMITTER](https://s.click.aliexpress.com/e/_om75acD)
+* [WiFi antenna](https://s.click.aliexpress.com/e/_oBiKXNR)
 * [Tactile button](https://s.click.aliexpress.com/e/_ols8LkJ)
 </Accordion>
 
