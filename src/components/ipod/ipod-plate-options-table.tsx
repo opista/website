@@ -62,6 +62,7 @@ export const IpodPlateOptionsTable = ({
             <Image
               alt={`Example of a ${name} ${generation} generation plate`}
               className="m-0"
+              expandable
               height={500}
               src={image}
               width={500}
