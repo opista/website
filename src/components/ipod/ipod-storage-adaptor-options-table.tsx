@@ -212,6 +212,7 @@ export const IpodStorageAdaptorOptionsTable = () => (
             <Image
               alt={`Product image for ${upgrade.option}`}
               className="m-0"
+              expandable
               height={500}
               src={upgrade.image}
               width={500}
