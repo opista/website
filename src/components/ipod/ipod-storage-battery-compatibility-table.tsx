@@ -108,7 +108,7 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD", thick: true, thin: true },
+      { name: "Generic MicroSD", thick: true, thin: false },
     ],
   },
   {
@@ -118,7 +118,7 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD", thick: true, thin: true },
+      { name: "Generic MicroSD", thick: true, thin: false },
     ],
   },
   {
