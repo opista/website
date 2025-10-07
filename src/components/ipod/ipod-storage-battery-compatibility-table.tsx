@@ -20,14 +20,17 @@ type Heading = {
 };
 
 type StorageMod =
+  | "None (Stock HDD)"
   | "iFlash Solo"
   | "iFlash Dual"
   | "iFlash Quad"
+  | "iFlash uDUAL"
   | "iFlash Sata"
-  | "Generic MicroSD";
+  | "Generic MicroSD (imCort Design)";
 
 type BatteryMod =
   | "650mAh (OEM)"
+  | "850mAh (OEM)"
   | "2000mAh (square)"
   | "2000mAh (rectangle)"
   | "2800mAh (rectangle)"
@@ -70,14 +73,46 @@ const batteryMap: CompatibilityRow[] = [
     ],
     storageOptions: [
       {
+        name: "None (Stock HDD)",
+        thick: true,
+        thin: true,
+      },
+      {
         name: "iFlash Solo",
         thick: true,
         thin: true,
       },
       { name: "iFlash Dual", thick: true, thin: true },
       { name: "iFlash Quad", thick: true, thin: true },
+      { name: "iFlash uDUAL", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: true },
-      { name: "Generic MicroSD", thick: true, thin: true },
+      { name: "Generic MicroSD (imCort Design)", thick: true, thin: true },
+    ],
+  },
+  {
+    name: "850mAh (OEM)",
+    dimensions: [
+      {
+        link: "https://s.click.aliexpress.com/e/_c3ZMMOKL",
+        measurements: [19.7, 44.8, 6.2],
+      },
+    ],
+    storageOptions: [
+      {
+        name: "None (Stock HDD)",
+        thick: true,
+        thin: false,
+      },
+      {
+        name: "iFlash Solo",
+        thick: true,
+        thin: true,
+      },
+      { name: "iFlash Dual", thick: true, thin: true },
+      { name: "iFlash Quad", thick: true, thin: true },
+      { name: "iFlash uDUAL", thick: true, thin: true },
+      { name: "iFlash Sata", thick: true, thin: true },
+      { name: "Generic MicroSD (imCort Design)", thick: true, thin: true },
     ],
   },
   {
@@ -94,31 +129,49 @@ const batteryMap: CompatibilityRow[] = [
       },
     ],
     storageOptions: [
+      {
+        name: "None (Stock HDD)",
+        thick: false,
+        thin: false,
+      },
       { name: "iFlash Solo", thick: true, thin: true },
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: true },
+      { name: "iFlash uDUAL", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD", thick: true, thin: true },
+      { name: "Generic MicroSD (imCort Design)", thick: true, thin: true },
     ],
   },
   {
     name: "2000mAh (rectangle)",
     storageOptions: [
+      {
+        name: "None (Stock HDD)",
+        thick: false,
+        thin: false,
+      },
       { name: "iFlash Solo", thick: true, thin: false },
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: true },
+      { name: "iFlash uDUAL", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD", thick: true, thin: false },
+      { name: "Generic MicroSD (imCort Design)", thick: true, thin: false },
     ],
   },
   {
     name: "2800mAh (rectangle)",
     storageOptions: [
+      {
+        name: "None (Stock HDD)",
+        thick: false,
+        thin: false,
+      },
       { name: "iFlash Solo", thick: true, thin: false },
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: true },
+      { name: "iFlash uDUAL", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD", thick: true, thin: false },
+      { name: "Generic MicroSD (imCort Design)", thick: true, thin: false },
     ],
   },
   {
@@ -136,21 +189,33 @@ const batteryMap: CompatibilityRow[] = [
       },
     ],
     storageOptions: [
+      {
+        name: "None (Stock HDD)",
+        thick: false,
+        thin: false,
+      },
       { name: "iFlash Solo", thick: true, thin: false },
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: true },
+      { name: "iFlash uDUAL", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD", thick: true, thin: false },
+      { name: "Generic MicroSD (imCort Design)", thick: true, thin: false },
     ],
   },
   {
     name: "3000mAh (thick)",
     storageOptions: [
+      {
+        name: "None (Stock HDD)",
+        thick: false,
+        thin: false,
+      },
       { name: "iFlash Solo", thick: true, thin: false },
       { name: "iFlash Dual", thick: true, thin: false },
       { name: "iFlash Quad", thick: true, thin: false },
+      { name: "iFlash uDUAL", thick: true, thin: false },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD", thick: true, thin: false },
+      { name: "Generic MicroSD (imCort Design)", thick: true, thin: false },
     ],
   },
 ];
