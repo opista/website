@@ -16,7 +16,7 @@ const list = [
     link: "https://www.iflash.xyz/store/iflash-quad/",
   },
   {
-    label: "Storage adaptor (iFlash uDual) SOLD OUT",
+    label: "Storage adaptor (iFlash uDUAL) SOLD OUT",
     link: "https://www.iflash.xyz/store/iflash-udual/",
   },
   {

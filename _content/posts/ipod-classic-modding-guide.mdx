@@ -11,11 +11,63 @@ This guide collects insights into modding the iPod Classic **(5th, 6th, and 7th 
 
 <Alert type="info">You'll find that some of the details in this guide come from other websites. I've made sure to reference every source, as my goal is to bring together and preserve this information in one convenient place. </Alert>
 
+---
+
 ## Identify your iPod model
 
 Information gathered from various sources[^yuuiko_guide][^apple_support_identify_model] around the web. Answer the questions to identify your iPod.
 
 <IpodIdentifier />
+
+---
+
+## Buying parts
+
+There is a widely held belief[^reddit_faceplates_single_factory_1] that all aftermarket iPod parts (faceplates, backplates, batteries etc.) come from the same factory in China. I did my own digging into this, and although there are multiple traders on *AliExpress* who sell them, I believe that almost all have been sourced from a single company found on *Alibaba*: [Shenzhen Hyperion Lighting Co., Ltd.](https://hyperion.en.alibaba.com/productgrouplist-801920784/Parts_for_iPod.html).
+
+There are multiple resellers who also sell them (EOE, Parts Plus Pods, eBay sellers etc.), but as all the parts are coming from the same factory, the quality is likely to be the same. EOE themselves have commented that all aftermarket parts are made by one factory[^reddit_eoe_parts_single_factory], which includes their own products. **Resellers are not a guarantee of quality.**
+
+Inversely, you may want to take delivery time into consideration. AliExpress goods may take 2 weeks or more to deliver. Are you willing to pay (sometimes up to) 100% more if it means that you'll get those items faster?
+
+---
+
+### Popular sellers
+
+Below is a list of the most common places to buy iPod parts. This is not an exhaustive list, and I am sure that there are many other sellers out there.
+
+#### AliExpress
+
+<RecommendedBadge className="!mb-0" />
+
+<p className="mt-0">The cheapest way to buy your parts. Delivery will take longer, but you'll save a significant amount of money. This guide will direct you to the correct parts to buy through AliExpress.</p>
+
+#### EOE (Elite Obsolete Electronics)
+
+[EOE](https://eoe.works/) are US-based. They have a a mixed-to-positive reputation.[^reputation_eoe_positive_1][^reputation_eoe_positive_2][^reputation_eoe_negative_1][^reputation_eoe_negative_2] They re-sell parts, and also create their own custom "Atomic" plates. They also offer pre-modded/refurbished iPods. They have a [YouTube channel](https://www.youtube.com/channel/UCWyIsNHP5HDN667dUrIExbg), and moderate the iPod subreddits.
+
+#### Parts Plus Pods
+
+[Parts Plus Pods](https://partspluspods.com.au/) are AU-based. They have a generally positive reputation.[^reputation_parts_plus_pods_positive_1][^reputation_parts_plus_pods_positive_2][^reputation_parts_plus_pods_negative_1] They sell pre-modded iPods, as well as Bluetooth "upgrade kits". They have a [YouTube channel](https://www.youtube.com/@partspluspods3689) too.
+
+#### Playermods
+
+[Playermods](https://www.playermods.com/) are Ukraine-based. They have a mixed/controversial reputation.[^reputation_playermods_positive_1][^reputation_playermods_positive_2][^reputation_playermods_negative_1] They sell pre-modded iPods, as well as a few parts. They are known to be an expensive option.
+
+#### iDemiGods
+
+[iDemiGods](https://www.idemigods.com/) are Canada-based. They have a mixed-to-positive reputation[^reputation_idemigods_positive_1][^reputation_idemigods_positive_2][^reputation_idemigods_negative_1]. They predominantly sell parts, but also sell refurbished units.
+
+---
+
+### Navigating AliExpress
+
+It can be quite difficult to identify parts that will fit your device, or are even the correct parts at all. Some tips to help you navigate AliExpress:
+
+* Sorting by **Best Match** will not necessarily show you the best products. I recommend using **Orders**, and if you don't manage to find whaty you're looking for, revert back to **Best Match**.
+* Check the description. Often, there is text in the imagery that doesn't match the text in the description. If they don't match, you can always contact the seller to clarify.
+* Always check the reviews! Ideally, you want to see reviews with images. If there are no reviews, or the reviews sound weird (AI generated), I would avoid purchasing it.
+
+---
 
 ## Opening your iPod
 
@@ -35,6 +87,8 @@ YouTuber [Geek Detour](https://www.youtube.com/@GeekDetour) has created a <Link 
 <Alert type="error">It's important that you slide your pry tool **downwards** to disengage the clips. **DO NOT PUSH OUTWARDS!** Pushing the tool in other directions can cause unnecessary damage to the device housing.</Alert>
 
 <Alert type="warning">The battery ribbon cable is very delicate and can be easily damaged. Be careful not to pull the front faceplate away too quickly or with too much force once the clips are disengaged.</Alert>
+
+---
 
 ## Core hardware upgrades
 
@@ -65,11 +119,13 @@ Check out the compatibility table below for more details.
 
 #### Storage adaptor options
 
-There are a number of adaptors of varying prices and configurations. The table below outlines the most common choices with pros and cons. The adaptors are in preference order.[^youtube_storage_adaptors_ranked] Higher is better.
+There are a number of adaptors of varying prices and configurations. The table below outlines the most common choices with pros and cons. The adaptors are in preference order.[^youtube_storage_adaptors_ranked] Higher is better. **All adaptors here are compatible with 5th, 6th, and 7th generation iPods.**
 
-<Alert type="info">My preference is the iFlash μDual. It gives you space for further mods, and you can dispose of a large portion of the adaptor to reduce the footprint. I would **avoid** mSata due to its high power consumption[^iflash_adaptor_analysis] (Around **2x** the consumption of the original HDD, and **4.5x** the iFlash SD options)</Alert>
+<Alert type="info">My preference is the iFlash uDUAL. It gives you space for further mods, and you can dispose of a large portion of the adaptor to reduce the footprint. I would **avoid** mSata due to its high power consumption[^iflash_adaptor_analysis] (Around **2x** the consumption of the original HDD, and **4.5x** the iFlash SD options)</Alert>
 
 <Accordion title="Storage adaptor comparison table"><IpodStorageAdaptorOptionsTable /></Accordion>
+
+---
 
 ### Battery mod
 
@@ -79,6 +135,8 @@ Replacing the battery on your iPod is one of the easier mods, and is often the f
 
 1. If the iPod has a <BackplateIndicator backplate="thin" /> backplate, replace it with a <BackplateIndicator backplate="thick" /> backplate. This will give you more space for a larger battery behind the HDD.
 1. Remove the HDD and upgrade the storage (Check out [storage mods](#storage-mod) for more info). This will free up space for the battery, and allow you to use a <BackplateIndicator backplate="thin" /> backplate. This is the recommended path, as the stock HDDs are old and eventually fail anyway.
+
+<Alert type="info">If you're not planning on performing the storage mod, you can replace your battery, but it'll need to be "like-for-like", ie. a 650mAh battery for a 650mAh battery. You can find links to these in the **Battery & storage adaptor compatibility table** below.</Alert>
 
 #### Battery & Storage Compatibility
 
@@ -112,6 +170,8 @@ You'll need to [open your iPod](#opening-your-ipod) first. Then, follow the vide
 
 <Accordion title="Video guide"><YoutubeEmbed start={373} videoId="4AF1Pjbwc6c" /></Accordion>
 
+---
+
 ### Screen replacement
 
 Replacing the display is relatively straightforward, and once you're inside your iPod you just need to remove the faceplate to access it. The only thing that I would advise is that you don't remove the old display until the new one is ready, and only remove any protective covers once you're ready to replace the display.
@@ -120,7 +180,7 @@ These components are dust magnets, and as soon as you remove the old display dus
 
 If you do get some dust stuck in there, grab an air blower or similar and try and remove as much as possible.
 
-<Alert type="error">Be aware that 5th generation displays **ARE NOT** interchangeable with 6th & 7th generations. Make sure you select the correct link from Shopping list below.</Alert>
+<Alert type="error">Be aware that 5th generation displays **ARE NOT** interchangeable with 6th & 7th generations. Make sure you select the correct link from **Shopping list** below.</Alert>
 
 <Accordion title="Shopping list">
 * [iPod Display](https://s.click.aliexpress.com/e/_oEkGVQh) (**5th** generation)
@@ -132,13 +192,9 @@ You'll need to [open your iPod](#opening-your-ipod) first. Then, follow the vide
 
 <Accordion title="Video guide"><YoutubeEmbed start={176} videoId="b6dAwBZ8aTQ" /></Accordion>
 
+---
+
 ## Cosmetic mods
-
-There is a widely held belief[^reddit_faceplates_single_factory_1] that all aftermarket faceplates and backplates come from the same factory in China. I did my own digging into this, and although there are multiple traders on *AliExpress* who sell them, I believe that almost all have been sourced from a single company found on *Alibaba*: [Shenzhen Hyperion Lighting Co., Ltd.](https://hyperion.en.alibaba.com/productgrouplist-801920784/Parts_for_iPod.html).
-
-There are multiple resellers who also sell them (EOE, Parts Plus Pods, eBay sellers etc.), but as all the parts are coming from the same factory, the quality is likely to be the same. EOE themselves have commented that all aftermarket parts are made by one factory[^reddit_eoe_parts_single_factory], which includes their own products. **Resellers are not a guarantee of quality.**
-
-Inversely, you may want to take delivery time into consideration. AliExpress goods may take 2 weeks or more to deliver. Are you willing to pay (sometimes up to) 100% more if it means that you'll get those items faster?
 
 ### Faceplate mod
 
@@ -164,6 +220,8 @@ This list isn't exhaustive, but is a sample of most available faceplates
 You'll need to [open your iPod](#opening-your-ipod) first. Then, follow the video guide below. You can disregard everything after 5:20.
 
 <Accordion title="Video guide"><YoutubeEmbed start={199} videoId="EHhxcWZGmVI" /></Accordion>
+
+---
 
 ### Backplate mod
 
@@ -209,12 +267,15 @@ You'll need to [open your iPod](#opening-your-ipod) first. Then, follow the vide
 
 <Accordion title="Video guide"><YoutubeEmbed start={70} videoId="nLpAW-0kj2g" /></Accordion>
 
+---
 
 ## Advanced mods
 
 These mods are typically more complex than battery or storage mods which are mostly swapping parts. These mods are likely to require soldering wires to parts of your iPod's circuit board. Therefore **you will need a soldering iron and wires**. 
 
 <Alert type="error">These mods are not for beginners. If you have never soldered before, please practice on some spare electronics first. You can easily damage your iPod permanently if you don't know what you're doing.</Alert>
+
+---
 
 ### Bluetooth mod
 
@@ -315,8 +376,9 @@ The [Parts Plus Pods](https://www.youtube.com/@partspluspods3689) YouTube channe
 * [Tactile button](https://s.click.aliexpress.com/e/_ols8LkJ)
 </Accordion>
 
-
 <Accordion title="Video guide"><YoutubeEmbed videoId="KnRa2Zu7v64" /></Accordion>
+
+---
 
 ### Taptic mod
 
@@ -326,11 +388,15 @@ The [Parts Plus Pods](https://www.youtube.com/@partspluspods3689) YouTube channe
 
 <Accordion title="Video guide"><YoutubeEmbed videoId="crWU0Khyanw"/></Accordion>
 
+---
+
 ### Airtag mod
 
 <SolderingRequirement requiresSoldering />
 
 <WorkInProgress />
+
+---
 
 ## Software mod
 
@@ -350,6 +416,7 @@ Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_don
   * [MacOS (Apple Silicon)](https://github.com/Olsro/reddit-ipod-guides/blob/main/guides/ipod6g-flash-more-recent-firmwares/iPodSysCFGEditor_ForMacs_AppleSilicon.7z)
 </Accordion>
 
+---
 
 ### Rockbox
 
@@ -390,9 +457,13 @@ Once you've done this, you can begin customising your device, such as by [instal
 
 <Alert type="info">Want to boot back into iPodOS? Perform a [force restart](#force-restart), and once the screen goes blank, flip the lockswitch **on**.</Alert>
 
+---
+
 ### Installing games
 
 Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_donate] (again!) has started [a project to preserve iPod games](https://github.com/Olsro/ipodclickwheelgamespreservationproject). Follow the guide there to install (almost) all of the original iPod games on your device.
+
+---
 
 ## Troubleshooting & Support
 
@@ -463,6 +534,8 @@ This usually means a hard drive failure.[^apple_community_hard_drive_issue] You 
 1. The connector is damaged.
 1. The hard drive is damaged or has failed.
 
+---
+
 #### Can I put an 6th/7th generation faceplate on my 5th generation iPod?
 
 Yes. However, you'll also need to transplant 6th/7th generation parts:
@@ -472,17 +545,25 @@ Yes. However, you'll also need to transplant 6th/7th generation parts:
 
 <Image alt="Demonstrating the difference in depth of clickwheel plastic" expandable height={1230} src="/posts/ipod-modding/faq/clickwheel-depth.jpg" width={2048} />
 
+---
+
 #### I've added music to my iPod, and now it's slow/crashes when I turn it on
 
 You're probably nearing or have reached the maximum number of songs your iPod can handle. <RamIndicator ram={32} /> models are limited to around 20,000 songs, whilst <RamIndicator ram={64} /> models are limited to around 50,000. [Identify your iPod model](#identify-your-ipod-model) to understand your device's limits.
+
+---
 
 #### I've tried to check my SMART data and I see "Error"
 
 This is likely a faulty hard drive. If the device is modded, check that ribbon connections are seated correctly. If it's not modded, you will need to replace the drive. Check [Storage mod](#storage-mod) for more information.
 
+---
+
 #### I've checked my SMART data because my iPod is behaving strangely. What is "bad"?
 
 Read the [Checking HDD Health](#checking-hdd-health) section for information on what your SMART report means.
+
+---
 
 #### My clickwheel centre button isn't working
 
@@ -492,9 +573,13 @@ You'll need to [disassemble your iPod](#opening-your-ipod) and recentre (or repl
 
 <Image alt="iPod internal board" className="max-w-full sm:max-w-sm" expandable height={1014} src="/posts/ipod-modding/faq/ipod-board.png" width={1080} />
 
+---
+
 #### I installed Rockbox and can't get back to iPodOS
 
 You can access iPodOS by performing a [force restart](#force-restart), and once the screen goes blank, flip the lockswitch **on**.
+
+---
 
 #### There's a black mark on my screen, what is it?
 
@@ -505,6 +590,8 @@ This is usually caused by the battery swelling behind the screen, creating a pre
 To remove the battery: [Open your iPod](#opening-your-ipod). Spray some isopropyl alcohol underneath the battery to dissolve the adhesive. Take a plastic spudger and **carefully** lever the battery out. Be careful of the headphone jack assembly ribbon cable.
 
 <Image alt="iPod with a swollen battery" className="max-w-full sm:max-w-sm" expandable height={1543} src="/posts/ipod-modding/faq/ipod-black-mark.jpg" width={2057} />
+
+---
 
 #### There are black lines appearing on my screen
 
@@ -532,9 +619,13 @@ Some guides suggest massaging the display, but this only has limited success wit
 
 <Image alt="iPod with stuck and dead pixels, indicating a failing display" className="max-w-full sm:max-w-sm" expandable height={840} src="/posts/ipod-modding/faq/ipod-dead-stuck-pixels.jpg" width={980} />
 
+---
+
 #### My iPod is showing little or no storage space but has no music/videos on it
 
 If you've just picked this iPod up, it's possible that it's been used for storage previously. The easiest way to wipe it will be to restore it. Plug the iPod into your PC, open iTunes and hit the "Restore iPod..." button to wipe it. If it still has no space after this (or you're unable to even get this far) it's possible that the HDD is failing. [Check your HDD Health](#checking-hdd-health). 
+
+---
 
 #### My clickwheel doesn't quite fit into my 5th gen iPod faceplate
 
@@ -542,7 +633,7 @@ Sometimes when you change your faceplate, the clickwheel may not fit correctly, 
 
 This issue can be because the hole to house the clickwheel isn't large enough. Grab yourself some 600 & 1500 grit sandpaper ([It's cheap on AliExpress](https://s.click.aliexpress.com/e/_omPypKn)). With the 600 grit, take a few _gentle_ passes in the places where the button is recessed, and then repeat with the 1500 grit. Test the clickwheel again to see if it sits correctly and feels right. Repeat those steps until the clickwheel sits flush.
 
-
+---
 
 ### Communities
 
@@ -557,10 +648,13 @@ This issue can be because the hole to house the clickwheel isn't large enough. G
 * [iPod Modding](https://discord.gg/RrkzDNbBXJ)
 * [iPod](https://discord.gg/ipod)
 
+---
 
 ### Corrections & Contributions
 
 This guide is a community effort. It is compiled from a markdown document on [Github](https://github.com/opista/website). If you've spotted an error or would like to contribute to the guide, feel free to [raise an issue](https://github.com/opista/website/issues) or create a [pull request](https://github.com/opista/website/pulls).
+
+---
 
 ### Reference
 
@@ -603,3 +697,21 @@ This guide is a community effort. It is compiled from a markdown document on [Gi
 [^youtube_storage_adaptors_ranked]: https://www.youtube.com/watch?v=73az70S5lsc
 [^youtuber_geekdetour_reference_pdf]: https://www.dropbox.com/scl/fi/9dbq097ahx8lfyhed06sg/iPod-Classic-Openning-Reference-Card.pdf?rlkey=gs189u4t2axulvz0h3f3nlg8y&e=2&dl=0
 [^yuuiko_guide]: https://yuuiko.github.io/iPodGuide/iPodGuidev2-1.pdf
+
+[^reputation_eoe_positive_1]: https://www.reddit.com/r/ipod/comments/1cl2vjl/comment/lyzk8i0/
+[^reputation_eoe_positive_2]: https://www.reddit.com/r/ipod/comments/w0myv9/comment/igpqnoq/
+[^reputation_eoe_negative_1]: https://www.reddit.com/r/IpodClassic/comments/1j5184j/elite_obsolete_experience/
+[^reputation_eoe_negative_2]: https://www.reddit.com/r/IpodClassic/comments/1i3ljtu/elite_obsolete_electronics_review/
+
+[^reputation_parts_plus_pods_positive_1]: https://www.reddit.com/r/ipod/comments/19atf0r/comment/l5d6tqu/
+[^reputation_parts_plus_pods_positive_2]: https://www.reddit.com/r/ipod/comments/19atf0r/comment/lumv574/
+[^reputation_parts_plus_pods_negative_1]: https://www.reddit.com/r/ipod/comments/19atf0r/comment/kslja60/
+
+
+[^reputation_playermods_positive_1]: https://www.reddit.com/r/IpodClassic/comments/1dyhqsc/comment/lc91u3k/
+[^reputation_playermods_positive_2]: https://www.reddit.com/r/ipod/comments/192mmsl/comment/kh3iouk/
+[^reputation_playermods_negative_1]: https://www.reddit.com/r/ipod/comments/192mmsl/comment/lb6mlfk/
+
+[^reputation_idemigods_positive_1]: https://www.reddit.com/r/ipod/comments/18do3su/comment/kcinrsg/
+[^reputation_idemigods_positive_2]: https://www.reddit.com/r/ipod/comments/1k6fbi4/idemigods_review/
+[^reputation_idemigods_negative_1]: https://www.reddit.com/r/ipod/comments/18do3su/comment/mrx694r/
