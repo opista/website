@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import { toSlug } from "@/util/to-slug";
@@ -7,6 +8,7 @@ import { toSlug } from "@/util/to-slug";
 import { InformationIcon } from "./icons/information-icon";
 
 export type TooltipProps = {
+  className?: string;
   content: string;
   offset?: number;
   position?:
@@ -26,6 +28,7 @@ export type TooltipProps = {
 };
 
 export const Tooltip = ({
+  className,
   content,
   offset = 10,
   position = "top",
@@ -36,7 +39,7 @@ export const Tooltip = ({
   return (
     <>
       <a
-        className="inline-block"
+        className={clsx("inline-block", className)}
         data-tooltip-content={content}
         data-tooltip-id={id}
         data-tooltip-offset={offset}
@@ -45,7 +48,7 @@ export const Tooltip = ({
       >
         <InformationIcon />
       </a>
-      <ReactTooltip className="max-w-[300px]" id={id} />
+      <ReactTooltip className="max-w-[250px]" id={id} />
     </>
   );
 };
