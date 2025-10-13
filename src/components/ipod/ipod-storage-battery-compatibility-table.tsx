@@ -2,7 +2,6 @@ import { FC, Fragment, ReactNode } from "react";
 import clsx from "clsx";
 
 import { toSlug } from "@/util/to-slug";
-import { ConditionalWrapper } from "../conditional-wrapper";
 import { CheckCircleIcon } from "../icons/check-circle-icon";
 import { CrossCircleIcon } from "../icons/cross-circle-icon";
 import { IconProps } from "../icons/icon.types";
@@ -56,8 +55,8 @@ type CompatibilityRow = {
 };
 
 const headings: Heading[] = [
-  { label: "Battery Mod", width: "260px" },
-  { label: "Storage Adaptor", width: "170px" },
+  { label: "Battery Mod", width: "235px" },
+  { label: "Storage Adaptor", width: "190px" },
   { label: <BackplateIndicator backplate="thin" />, width: "90px" },
   { label: <BackplateIndicator backplate="thick" />, width: "90px" },
 ];
@@ -272,20 +271,17 @@ const BatteryDimensions = ({
 }: {
   dimensions: DimensionsOption;
 }) => (
-  <div className="block">
-    <ConditionalWrapper
-      condition={!!link}
-      wrapper={(children) => (
-        <Link className="text-xs" href={link!}>
-          {children}
-        </Link>
-      )}
-    >
+  <div className="block text-xs">
+    <hr className="my-1" />
+    <div>
       <span className="font-bold">H</span> {measurements[0].toFixed(1)}mm x{" "}
       <span className="font-bold">W</span> {measurements[1].toFixed(1)}mm x{" "}
       <span className="font-bold">D</span> {measurements[2].toFixed(1)}mm
-    </ConditionalWrapper>
-    {note && <Tooltip content={note} />}
+    </div>
+    <div>
+      <Link href={link!}>Purchase</Link>
+      {note && <Tooltip className="ml-[2px]" content={note} />}
+    </div>
   </div>
 );
 
@@ -315,13 +311,17 @@ export const IpodStorageBatteryCompatibilityTable = () => (
                 className="align-middle"
                 rowSpan={battery.storageOptions.length}
               >
-                <div>{battery.name}</div>
-                {battery.dimensions?.map((dimensions) => (
-                  <BatteryDimensions
-                    dimensions={dimensions}
-                    key={toSlug(battery.name, ...dimensions.measurements)}
-                  />
-                ))}
+                <div className="font-bold">{battery.name}</div>
+                {!!battery.dimensions?.length && (
+                  <div className="mt-2">
+                    {battery.dimensions?.map((dimensions) => (
+                      <BatteryDimensions
+                        dimensions={dimensions}
+                        key={toSlug(battery.name, ...dimensions.measurements)}
+                      />
+                    ))}
+                  </div>
+                )}
               </TableBodyCell>
               <TableBodyCell border>
                 {battery.storageOptions[0].name}
