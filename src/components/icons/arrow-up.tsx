@@ -4,6 +4,7 @@ import { IconProps } from "./icon.types";
 
 export const ArrowUp = ({ className, strokeWidth = 1.5 }: IconProps) => (
   <svg
+    aria-label="Icon, arrow pointing up"
     className={clsx("size-4", className)}
     fill="none"
     stroke="currentColor"

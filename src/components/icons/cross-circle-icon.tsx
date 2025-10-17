@@ -7,6 +7,7 @@ export const CrossCircleIcon = ({
   strokeWidth = 1.5,
 }: IconProps) => (
   <svg
+    aria-label="Icon, circle with a cross"
     className={clsx("size-4", className)}
     fill="none"
     stroke="currentColor"

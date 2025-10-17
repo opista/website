@@ -7,6 +7,7 @@ export const ExclamationCircleIcon = ({
   strokeWidth = 1.5,
 }: IconProps) => (
   <svg
+    aria-label="Icon, circle with an exclamation mark"
     className={clsx("size-4", className)}
     fill="none"
     stroke="currentColor"

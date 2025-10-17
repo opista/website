@@ -29,3 +29,7 @@ sup+sup a[data-footnote-ref="true"] {
 .main {
   min-height: calc(100dvh - 60px - 237px);
 }
+
+.alert .link {
+  @apply text-pink-700;
+}

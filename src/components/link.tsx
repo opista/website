@@ -18,7 +18,7 @@ export const Link = ({ href, openInNewTab, ...props }: LinkProps) => {
       {...props}
       className={clsx(
         props.className,
-        "decoration-wavy no-underline hover:underline text-pink-400 hover:text-pink-600"
+        "link decoration-wavy no-underline hover:underline text-pink-400 hover:text-pink-500"
       )}
       href={href}
       rel={isInternal ? undefined : "noopener noreferrer"}

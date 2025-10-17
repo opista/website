@@ -7,6 +7,7 @@ export const CheckCircleIcon = ({
   strokeWidth = 1.5,
 }: IconProps) => (
   <svg
+    aria-label="Icon, circle with a tick"
     className={clsx("size-4", className)}
     fill="none"
     stroke="currentColor"

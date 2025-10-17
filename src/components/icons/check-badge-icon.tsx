@@ -4,6 +4,7 @@ import { IconProps } from "./icon.types";
 
 export const CheckBadgeIcon = ({ className }: IconProps) => (
   <svg
+    aria-label="Icon, badge with a tick"
     className={clsx("size-4", className)}
     fill="currentColor"
     viewBox="0 0 24 24"
