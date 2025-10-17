@@ -28,7 +28,7 @@ export const SiteLinks = ({ hideContact }: SiteLinksProps) => {
   const pathname = usePathname();
 
   return (
-    <div className="text-right text-pink-600">
+    <div className="text-right text-pink-500">
       {siteLinks
         .filter(({ text }) => !hideContact || text !== "contact")
         .map(({ href, text }, idx, arr) => (

@@ -7,6 +7,7 @@ export const InformationIcon = ({
   strokeWidth = 1.5,
 }: IconProps) => (
   <svg
+    aria-label="Icon, information symbol"
     className={clsx("size-4", className)}
     fill="none"
     stroke="currentColor"

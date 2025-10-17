@@ -39,7 +39,7 @@ const LinkWrapper = ({
 );
 
 const Icon = () => (
-  <LinkIcon className="group-hover:text-pink-600 inline-block ml-1" />
+  <LinkIcon className="group-hover:text-pink-500 inline-block ml-1" />
 );
 
 const formattedChildren = (children: ReactNode, href: string) => {
@@ -67,7 +67,7 @@ const formattedChildren = (children: ReactNode, href: string) => {
     <>
       {mapped}
       <LinkWrapper href={href}>
-        <LinkIcon className="group-hover:text-pink-600 inline-block ml-1" />
+        <LinkIcon className="group-hover:text-pink-500 inline-block ml-1" />
       </LinkWrapper>
     </>
   );

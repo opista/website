@@ -30,7 +30,7 @@ export const Alert = ({ children, type = "info" }: AlertProps) => {
   return (
     <div
       className={clsx(
-        "rounded py-2 pl-3 pr-4 mb-5 flex items-center leading-5 not-prose",
+        "alert rounded py-2 pl-3 pr-4 mb-5 flex items-center leading-5 not-prose",
         styleMap[type]
       )}
     >

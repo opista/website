@@ -4,6 +4,7 @@ import { IconProps } from "./icon.types";
 
 export const ExpandIcon = ({ className, strokeWidth = 1.5 }: IconProps) => (
   <svg
+    aria-label="Icon, expand arrows pointing outwards"
     className={clsx("size-4", className)}
     fill="none"
     stroke="currentColor"

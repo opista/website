@@ -25,6 +25,7 @@ export const Image = ({
           className="border border-2 border-current bg-black absolute bottom-[10px] right-[10px] size-10 p-1 max-w-[30%] max-h-[30%]"
           href={src as string}
           openInNewTab
+          title="Open image in new tab"
         >
           <ExpandIcon className="size-auto" />
         </Link>

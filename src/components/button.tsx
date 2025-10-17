@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, KeyboardEvent } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 
@@ -19,33 +19,45 @@ export const Button = ({
   href,
   noPadding,
   ...props
-}: HTMLAttributes<HTMLDivElement> & ButtonProps) => (
-  <div
-    className={clsx("flex", {
-      "justify-center": center,
-    })}
-  >
-    <ConditionalWrapper
-      condition={!!href}
-      wrapper={(children) => (
-        <Link
-          href={href as string}
-          target={isInternalLink(href) ? undefined : "_blank"}
+}: HTMLAttributes<HTMLDivElement> & ButtonProps) => {
+  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      props.onClick?.(event as any);
+    }
+  };
+
+  return (
+    <div
+      className={clsx("flex", {
+        "justify-center": center,
+      })}
+    >
+      <ConditionalWrapper
+        condition={!!href}
+        wrapper={(children) => (
+          <Link
+            href={href as string}
+            target={isInternalLink(href) ? undefined : "_blank"}
+          >
+            {children}
+          </Link>
+        )}
+      >
+        <div
+          className={clsx(
+            "cursor-pointer select-none inline-block text-white no-underline focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800",
+            { "px-5 py-2.5 ": !noPadding },
+            className
+          )}
+          onKeyDown={href ? undefined : onKeyDown}
+          role={href ? undefined : "button"}
+          tabIndex={href ? undefined : 0}
+          {...props}
         >
           {children}
-        </Link>
-      )}
-    >
-      <div
-        className={clsx(
-          "cursor-pointer select-none inline-block text-white no-underline focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800",
-          { "px-5 py-2.5 ": !noPadding },
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </div>
-    </ConditionalWrapper>
-  </div>
-);
+        </div>
+      </ConditionalWrapper>
+    </div>
+  );
+};
