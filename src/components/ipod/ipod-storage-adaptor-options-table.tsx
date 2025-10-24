@@ -177,7 +177,7 @@ const upgrades: Upgrade[] = [
 ];
 
 export const IpodStorageAdaptorOptionsTable = () => (
-  <Table containerClassName="!mb-0">
+  <Table containerClassName="mb-0!">
     <thead>
       <tr>
         {headings.map((heading) => (
@@ -211,7 +211,7 @@ export const IpodStorageAdaptorOptionsTable = () => (
           <TableBodyCell>
             <Image
               alt={`Product image for ${upgrade.option}`}
-              className="m-0"
+              className="m-0!"
               expandable
               height={500}
               src={upgrade.image}
@@ -222,7 +222,7 @@ export const IpodStorageAdaptorOptionsTable = () => (
             {upgrade.recommended && <RecommendedBadge />}
             <p className="mt-0">{upgrade.description}</p>
             <ProsConsList list={upgrade.pros} type="pros" />
-            <ProsConsList className="!mb-0" list={upgrade.cons} type="cons" />
+            <ProsConsList className="mb-0!" list={upgrade.cons} type="cons" />
           </TableBodyCell>
           <TableBodyCell className="align-top"></TableBodyCell>
         </tr>
