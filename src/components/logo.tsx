@@ -18,7 +18,7 @@ export const Logo = ({
   >
     <span
       className={clsx(
-        "font-black tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600",
+        "font-black tracking-wide bg-clip-text text-transparent bg-linear-to-r from-purple-400 to-pink-600",
         className
       )}
     >

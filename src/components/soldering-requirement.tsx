@@ -20,7 +20,7 @@ export const SolderingRequirement = ({
       )}
     >
       <div className="rounded-full bg-white p-1 bg-white/40 flex items-center justify-center">
-        <PencilFilledIcon className="!size-2" />
+        <PencilFilledIcon className="size-2!" />
       </div>
       <span>
         {requiresSoldering ? "Soldering required" : "No soldering required"}

@@ -13,7 +13,7 @@ export const Table = ({
   <div className={clsx("overflow-auto mb-8", containerClassName)}>
     <table
       {...props}
-      className={clsx("border w-full table-fixed m-0 min-w-0", className)}
+      className={clsx("border w-full table-fixed !m-0 min-w-0", className)}
     />
   </div>
 );
