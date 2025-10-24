@@ -253,7 +253,7 @@ const Key = () => (
         ([level, { description, icon }], index) => (
           <tr
             className={clsx({
-              "border-t border-[var(--tw-prose-td-borders)]": index > 0,
+              "border-t border-(--tw-prose-td-borders)": index > 0,
             })}
             key={icon.name}
           >
@@ -288,7 +288,7 @@ const BatteryDimensions = ({
 export const IpodStorageBatteryCompatibilityTable = () => (
   <>
     <Key />
-    <Table containerClassName="!mb-0">
+    <Table containerClassName="mb-0!">
       <thead>
         <tr className="text-center">
           {headings.map((heading) => (

@@ -34,7 +34,7 @@ export const IpodPlateOptionsTable = ({
   plates,
   generation,
 }: IpodPlateOptionsTableProps) => (
-  <Table containerClassName="!mb-0">
+  <Table containerClassName="mb-0!">
     <thead>
       <tr>
         {headings.map((heading) => (
@@ -61,7 +61,7 @@ export const IpodPlateOptionsTable = ({
           <TableBodyCell>
             <Image
               alt={`Example of a ${name} ${generation} generation plate`}
-              className="m-0"
+              className="m-0!"
               expandable
               height={500}
               src={image}

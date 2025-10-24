@@ -15,7 +15,7 @@ export const TableBodyCell = ({
     className={clsx(
       "p-4",
       {
-        "border-r border-[var(--tw-prose-td-borders)]": border,
+        "border-r border-(--tw-prose-td-borders)": border,
       },
       className
     )}

@@ -183,7 +183,7 @@ const Key = () => (
         ([level, { description, icon }], index) => (
           <tr
             className={clsx({
-              "border-t border-[var(--tw-prose-td-borders)]": index > 0,
+              "border-t border-(--tw-prose-td-borders)": index > 0,
             })}
             key={icon.name}
           >
@@ -199,7 +199,7 @@ const Key = () => (
 export const IpodStorageUpgradeCompatibilityTable = () => (
   <>
     <Key />
-    <Table className="text-center" containerClassName="!mb-0">
+    <Table className="text-center" containerClassName="mb-0!">
       <thead>
         <tr>
           <TableHeadCell
