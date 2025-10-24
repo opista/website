@@ -57,7 +57,7 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
             <div className="relative rounded-[25%] overflow-hidden w-[40px] h-[40px] shrink-0">
               <Image
                 alt={`${page.title} logo`}
-                className="my-0"
+                className="!my-0"
                 fill
                 sizes="(max-width: 640px) 40px, 70px"
                 src={`/apps/${page.slug}/logo.png`}
