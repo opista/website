@@ -1,6 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+@layer utilities {
+  code:before {
+    content: normal !important;
+  }
+
+  code:after {
+    content: normal !important;
+  }
+}
 
 .footnotes li>p {
   margin: 0;

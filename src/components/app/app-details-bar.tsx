@@ -51,19 +51,19 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
       )}
       ref={ref}
     >
-      <span className="flex items-center gap-2 sm:gap-4 shrink-1 min-w-0">
+      <span className="flex items-center gap-2 sm:gap-4 shrink min-w-0">
         {showSticky && (
           <>
             <div className="relative rounded-[25%] overflow-hidden w-[40px] h-[40px] shrink-0">
               <Image
                 alt={`${page.title} logo`}
-                className="my-0"
+                className="!my-0"
                 fill
                 sizes="(max-width: 640px) 40px, 70px"
                 src={`/apps/${page.slug}/logo.png`}
               />
             </div>
-            <span className="font-bold truncate shrink-1">{title}</span>
+            <span className="font-bold truncate shrink">{title}</span>
           </>
         )}
       </span>
