@@ -37,25 +37,50 @@ Below is a list of the most common places to buy iPod parts. This is not an exha
 
 #### AliExpress
 
-<RecommendedBadge className="mb-0!" />
+<RecommendedBadge className="mb-2!" />
 
-<p className="mt-0">The cheapest way to buy your parts. Delivery will take longer, but you'll save a significant amount of money. This guide will direct you to the correct parts to buy through AliExpress.</p>
+<TrueFalseChip containerClassName="mb-0!" label="Returns" isTrue />
+<TrueFalseChip containerClassName="mb-0!" label="Warranty" isTrue />
+
+The cheapest way to buy your parts. Delivery will take longer, but you'll save a significant amount of money. This guide will direct you to the correct parts to buy through AliExpress.
+
+AliExpress [returns policy](https://www.aliexpress.com/ssr/300000437/PinKTaDpEb) ranges between 14 and 90 days. depending on the purchase country. Warranty is seller-dependent, so be sure to check the product description before purchasing. 
 
 #### EOE (Elite Obsolete Electronics)
 
+<TrueFalseChip containerClassName="mb-0!" label="Returns" isTrue />
+<TrueFalseChip containerClassName="mb-0!" label="Warranty" isTrue />
+
 [EOE](https://eoe.works/) are US-based. They have a a mixed-to-positive reputation.[^reputation_eoe_positive_1][^reputation_eoe_positive_2][^reputation_eoe_negative_1][^reputation_eoe_negative_2] They re-sell parts, and also create their own custom "Atomic" plates. They also offer pre-modded/refurbished iPods. They have a [YouTube channel](https://www.youtube.com/channel/UCWyIsNHP5HDN667dUrIExbg), and moderate the iPod subreddits.
+
+EOE offer a [30 day return/exchange policy](https://eoe.works/pages/return-refund-exchange-policy). The [warranty period varies between 90 and 180 days](https://eoe.works/pages/test-october-2025) depending on the product you purchase.
 
 #### Parts Plus Pods
 
+<TrueFalseChip containerClassName="mb-0!" label="Returns" isTrue />
+<TrueFalseChip containerClassName="mb-0!" label="Warranty" />
+
 [Parts Plus Pods](https://partspluspods.com.au/) are AU-based. They have a generally positive reputation.[^reputation_parts_plus_pods_positive_1][^reputation_parts_plus_pods_positive_2][^reputation_parts_plus_pods_negative_1] They sell pre-modded iPods, as well as Bluetooth "upgrade kits". They have a [YouTube channel](https://www.youtube.com/@partspluspods3689) too.
+
+Parts Plus Pods offer a [30 day return policy](https://partspluspods.com.au/terms-conditions/), but they do not offer a warranty.
 
 #### Playermods
 
+<TrueFalseChip containerClassName="mb-0!" label="Returns" isTrue />
+<TrueFalseChip containerClassName="mb-0!" label="Warranty" isTrue />
+
 [Playermods](https://www.playermods.com/) are Ukraine-based. They have a mixed/controversial reputation.[^reputation_playermods_positive_1][^reputation_playermods_positive_2][^reputation_playermods_negative_1] They sell pre-modded iPods, as well as a few parts. They are known to be an expensive option.
+
+Playermods offer a [14 day return policy](https://player-mods.com/policies/refund-policy). iPods have a [180 day warranty](https://player-mods.com/pages/warranty-policy).
 
 #### iDemiGods
 
+<TrueFalseChip containerClassName="mb-0!" label="Returns" isTrue />
+<TrueFalseChip containerClassName="mb-0!" label="Warranty" isTrue />
+
 [iDemiGods](https://www.idemigods.com/) are Canada-based. They have a mixed-to-positive reputation.[^reputation_idemigods_positive_1][^reputation_idemigods_positive_2][^reputation_idemigods_negative_1] They predominantly sell parts, but also sell refurbished units.
+
+iDemiGods [offer returns](https://www.idemigods.com/returns.asp), although it's not clear how long the returns period is. They do offer a warranty, but the length is specific to each product, so read the description carefully. 
 
 #### Amazon/eBay
 
@@ -98,7 +123,7 @@ YouTuber [Geek Detour](https://www.youtube.com/@GeekDetour) has created a <Link 
 
 ### Storage mod
 
-<SolderingRequirement />
+<SolderingChip />
 
 Storage mods are quite simple to perform. However, you must consider:
 
@@ -133,7 +158,7 @@ There are a number of adaptors of varying prices and configurations. The table b
 
 ### Battery mod
 
-<SolderingRequirement />
+<SolderingChip />
 
 Replacing the battery on your iPod is one of the easier mods, and is often the first mod people perform. If you are looking to **increase** your iPod's battery capacity, the battery will need to be physically larger. Due to limited space inside the iPod, you have a few options:
 
@@ -202,7 +227,7 @@ You'll need to [open your iPod](#opening-your-ipod) first. Then, follow the vide
 
 ### Faceplate mod
 
-<SolderingRequirement />
+<SolderingChip />
 
 6th/7th generation faceplates are metal and therefore better quality and more durable.
 
@@ -229,7 +254,7 @@ You'll need to [open your iPod](#opening-your-ipod) first. Then, follow the vide
 
 ### Backplate mod
 
-<SolderingRequirement />
+<SolderingChip />
 
 Backplates are interchangeable between 5th, 6th, and 7th generation iPods. However, you should ensure that you are buying the correct backplate for the mods you plan on implementing. <BackplateIndicator backplate="thin" /> backplates are (obviously) thinner, and therefore have less space for batteries, storage and other mods. <BackplateIndicator backplate="thick" /> backplates are thicker, and therefore have more space for you to play with. Check out [Battery & Storage Compatibility](#battery--storage-compatibility) to decide which backplate is best for you.
 
@@ -283,7 +308,7 @@ These mods are typically more complex than battery or storage mods which are mos
 
 ### Bluetooth mod
 
-<SolderingRequirement requiresSoldering />
+<SolderingChip requiresSoldering />
 
 <Alert type="warning">When installing a Bluetooth board within the device, be aware of a recurring issue[^reddit_bluetooth_range_1][^reddit_bluetooth_range_2] with range. The iPod's screen shield and metal casing can act as a Faraday cage, potentially impairing wireless performance. This effect should be factored into your modification plans.</Alert>
 
@@ -386,7 +411,7 @@ The [Parts Plus Pods](https://www.youtube.com/@partspluspods3689) YouTube channe
 
 ### Taptic mod
 
-<SolderingRequirement requiresSoldering />
+<SolderingChip requiresSoldering />
 
 <WorkInProgress />
 
@@ -396,7 +421,7 @@ The [Parts Plus Pods](https://www.youtube.com/@partspluspods3689) YouTube channe
 
 ### Airtag mod
 
-<SolderingRequirement requiresSoldering />
+<SolderingChip requiresSoldering />
 
 <WorkInProgress />
 
@@ -404,7 +429,7 @@ The [Parts Plus Pods](https://www.youtube.com/@partspluspods3689) YouTube channe
 
 ### USB-C mod
 
-<SolderingRequirement requiresSoldering />
+<SolderingChip requiresSoldering />
 
 <WorkInProgress />
 

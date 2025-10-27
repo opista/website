@@ -9,6 +9,8 @@ import { PageContent } from "@/lib/pages";
 import { Accordion } from "./accordion";
 import { Alert } from "./alert";
 import { Button } from "./button";
+import { SolderingChip } from "./chips/soldering-chip";
+import { TrueFalseChip } from "./chips/true-false-chip";
 import { Heading, HeadingProps } from "./heading";
 import { Image } from "./image";
 import { BackplateIndicator } from "./ipod/backplate-indicator";
@@ -22,7 +24,6 @@ import { RamIndicator } from "./ipod/ram-indicator";
 import { Link } from "./link";
 import { ProsConsList } from "./pros-cons-list";
 import { RecommendedBadge } from "./recommended-badge";
-import { SolderingRequirement } from "./soldering-requirement";
 import { Table } from "./table/table";
 import { TableBodyCell } from "./table/table-body-cell";
 import { TableHeadCell } from "./table/table-head-cell";
@@ -79,13 +80,14 @@ export const PostBody = ({ page }: PostBodyProps) => {
     ProsConsList,
     RamIndicator,
     RecommendedBadge,
-    SolderingRequirement,
+    SolderingChip,
     TableOfContents: () => (
       <TableOfContents content={page.content} maxDepth={3} />
     ),
     table: Table,
     th: TableHeadCell,
     td: TableBodyCell,
+    TrueFalseChip,
     ul: UnorderedList,
     VideoEmbed,
     WorkInProgress,
