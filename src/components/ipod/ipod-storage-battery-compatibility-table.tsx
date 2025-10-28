@@ -14,7 +14,8 @@ import { Tooltip } from "../tooltip";
 import { BackplateIndicator } from "./backplate-indicator";
 
 type Heading = {
-  label: ReactNode;
+  component?: ReactNode;
+  label: string;
   width?: string;
 };
 
@@ -57,8 +58,16 @@ type CompatibilityRow = {
 const headings: Heading[] = [
   { label: "Battery Mod", width: "235px" },
   { label: "Storage Adaptor", width: "190px" },
-  { label: <BackplateIndicator backplate="thin" />, width: "90px" },
-  { label: <BackplateIndicator backplate="thick" />, width: "90px" },
+  {
+    label: "Thin backplate",
+    component: <BackplateIndicator backplate="thin" />,
+    width: "90px",
+  },
+  {
+    label: "Thick backplate",
+    component: <BackplateIndicator backplate="thick" />,
+    width: "90px",
+  },
 ];
 
 const batteryMap: CompatibilityRow[] = [
@@ -294,10 +303,10 @@ export const IpodStorageBatteryCompatibilityTable = () => (
           {headings.map((heading) => (
             <TableHeadCell
               border
-              key={heading.label?.toString()}
+              key={heading.label}
               style={{ width: heading.width }}
             >
-              {heading.label}
+              {heading.component ?? heading.label}
             </TableHeadCell>
           ))}
         </tr>

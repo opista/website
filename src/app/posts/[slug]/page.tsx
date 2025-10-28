@@ -8,7 +8,7 @@ import { PostBody } from "@/components/post-body";
 import { BASE_SITE_URL } from "@/constant";
 import { getAllPageSlugs, getPageContentBySlug } from "@/lib/pages";
 
-type AppPageParams = {
+type PostPageParams = {
   slug: string;
 };
 
@@ -19,9 +19,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: AppPageParams;
+  params: Promise<PostPageParams>;
 }): Promise<Metadata> {
-  const page = getPageContentBySlug("posts", params.slug);
+  const { slug } = await params;
+  const page = getPageContentBySlug("posts", slug);
 
   if (!page) {
     return {};
@@ -36,8 +37,13 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage({ params }: { params: AppPageParams }) {
-  const page = getPageContentBySlug("posts", params.slug);
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<PostPageParams>;
+}) {
+  const { slug } = await params;
+  const page = getPageContentBySlug("posts", slug);
 
   if (!page) {
     return notFound();
