@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, ElementType } from "react";
 import clsx from "clsx";
 
 import { Header } from "@/components/header";
@@ -8,7 +8,7 @@ import { Footer } from "./footer";
 type PageLayoutProps = {
   children?: ReactNode;
   className?: string;
-  tag?: keyof JSX.IntrinsicElements;
+  tag?: ElementType;
 };
 
 export const PageLayout = ({

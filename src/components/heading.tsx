@@ -7,10 +7,7 @@ import { toSlug } from "@/util/to-slug";
 import { ConditionalWrapper } from "./conditional-wrapper";
 import { LinkIcon } from "./icons/link-icon";
 
-type HeadingTags = keyof Pick<
-  JSX.IntrinsicElements,
-  "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
->;
+type HeadingTags = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 const levelClasses = {
   h1: "text-3xl sm:text-7xl font-bold",
