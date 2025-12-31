@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={clsx("bg-zinc-950 text-white h-full px-4", inter.className)}
       >
-        <div className="w-full h-full">{children}</div>
+        <div className="w-full min-h-full flex flex-col">{children}</div>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!} />
     </html>
