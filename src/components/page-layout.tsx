@@ -20,7 +20,7 @@ export const PageLayout = ({
     <Header />
 
     <Wrapper
-      className={clsx("py-4 sm:py-8 pb-20 max-w-prose mx-auto main", className)}
+      className={clsx("py-4 sm:py-8 max-w-prose mx-auto main grow", className)}
     >
       {children}
     </Wrapper>
