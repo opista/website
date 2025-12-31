@@ -42,3 +42,7 @@ sup+sup a[data-footnote-ref="true"] {
 .alert .link {
   @apply text-pink-700;
 }
+
+.prose :where(h5 + *):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin-top: 0;
+}

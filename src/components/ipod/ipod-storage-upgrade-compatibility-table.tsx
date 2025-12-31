@@ -23,6 +23,7 @@ type CapacityOption = {
     "256GB": SupportLevel;
     "512GB": SupportLevel;
     "1TB": SupportLevel;
+    "2TB": SupportLevel;
   };
 };
 
@@ -42,6 +43,7 @@ const deviceMap: GenerationConfiguration[] = [
           "256GB": "full",
           "512GB": "partial",
           "1TB": "partial",
+          "2TB": "partial",
         },
       },
       {
@@ -51,6 +53,7 @@ const deviceMap: GenerationConfiguration[] = [
           "256GB": "full",
           "512GB": "full",
           "1TB": "full",
+          "2TB": "partial",
         },
       },
     ],
@@ -65,6 +68,7 @@ const deviceMap: GenerationConfiguration[] = [
           "256GB": "full",
           "512GB": "partial",
           "1TB": "partial",
+          "2TB": "partial",
         },
       },
       {
@@ -74,6 +78,7 @@ const deviceMap: GenerationConfiguration[] = [
           "256GB": "full",
           "512GB": "full",
           "1TB": "full",
+          "2TB": "partial",
         },
       },
     ],
@@ -88,6 +93,7 @@ const deviceMap: GenerationConfiguration[] = [
           "256GB": "firmware",
           "512GB": "firmware",
           "1TB": "firmware",
+          "2TB": "firmware",
         },
       },
       {
@@ -97,6 +103,7 @@ const deviceMap: GenerationConfiguration[] = [
           "256GB": "firmware",
           "512GB": "firmware",
           "1TB": "firmware",
+          "2TB": "firmware",
         },
       },
     ],
@@ -111,6 +118,7 @@ const deviceMap: GenerationConfiguration[] = [
           "256GB": "firmware",
           "512GB": "firmware",
           "1TB": "firmware",
+          "2TB": "firmware",
         },
       },
     ],
@@ -125,6 +133,7 @@ const deviceMap: GenerationConfiguration[] = [
           "256GB": "full",
           "512GB": "full",
           "1TB": "full",
+          "2TB": "partial",
         },
       },
     ],
@@ -143,7 +152,7 @@ const supportLevelMap: Record<
   partial: {
     className: "text-yellow-600 bg-yellow-100",
     description:
-      "Supported, but you'll reach the RAM's song limit before the storage limit",
+      "Supported, but you'll probably reach the RAM's song limit before the storage limit",
     icon: ExclamationCircleIcon,
   },
   firmware: {
@@ -210,15 +219,16 @@ export const IpodStorageUpgradeCompatibilityTable = () => (
           >
             Generation
           </TableHeadCell>
-          <TableHeadCell className="w-[320px]" colSpan={4}>
+          <TableHeadCell className="w-[320px]" colSpan={5}>
             Compatible upgrades
           </TableHeadCell>
         </tr>
         <tr>
-          <TableHeadCell>128GB</TableHeadCell>
-          <TableHeadCell>256GB</TableHeadCell>
-          <TableHeadCell>512GB</TableHeadCell>
-          <TableHeadCell>1TB</TableHeadCell>
+          <TableHeadCell className="text-center">128GB</TableHeadCell>
+          <TableHeadCell className="text-center">256GB</TableHeadCell>
+          <TableHeadCell className="text-center">512GB</TableHeadCell>
+          <TableHeadCell className="text-center">1TB</TableHeadCell>
+          <TableHeadCell className="text-center">2TB</TableHeadCell>
         </tr>
       </thead>
       <tbody>

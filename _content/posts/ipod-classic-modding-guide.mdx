@@ -51,7 +51,7 @@ AliExpress [returns policy](https://www.aliexpress.com/ssr/300000437/PinKTaDpEb)
 <TrueFalseChip containerClassName="mb-0!" label="Returns" isTrue />
 <TrueFalseChip containerClassName="mb-0!" label="Warranty" isTrue />
 
-[EOE](https://eoe.works/) are US-based. They have a a mixed-to-positive reputation.[^reputation_eoe_positive_1][^reputation_eoe_positive_2][^reputation_eoe_negative_1][^reputation_eoe_negative_2] They re-sell parts, sell parts that they've tested and extracted from other iPods, and create their own custom "Atomic" plates. They also offer pre-modded/refurbished iPods. They have a [YouTube channel](https://www.youtube.com/channel/UCWyIsNHP5HDN667dUrIExbg), and moderate the iPod subreddits.
+[EOE](https://eoe.works/) are US-based. They have a a mixed-to-positive reputation[^reputation_eoe_positive_1][^reputation_eoe_positive_2][^reputation_eoe_negative_1][^reputation_eoe_negative_2]. They re-sell parts, sell parts that they've tested and extracted from other iPods, and create their own custom "Atomic" plates. They also offer pre-modded/refurbished iPods. They have a [YouTube channel](https://www.youtube.com/channel/UCWyIsNHP5HDN667dUrIExbg), and moderate the iPod subreddits.
 
 EOE offer a [30 day return/exchange policy](https://eoe.works/pages/return-refund-exchange-policy). The [warranty period varies between 90 and 180 days](https://eoe.works/pages/limited-warranty/) depending on the product you purchase, and 1 year for new iPods.
 
@@ -60,7 +60,7 @@ EOE offer a [30 day return/exchange policy](https://eoe.works/pages/return-refun
 <TrueFalseChip containerClassName="mb-0!" label="Returns" isTrue />
 <TrueFalseChip containerClassName="mb-0!" label="Warranty" />
 
-[Parts Plus Pods](https://partspluspods.com.au/) are AU-based. They have a generally positive reputation.[^reputation_parts_plus_pods_positive_1][^reputation_parts_plus_pods_positive_2][^reputation_parts_plus_pods_negative_1] They sell pre-modded iPods, as well as Bluetooth "upgrade kits". They have a [YouTube channel](https://www.youtube.com/@partspluspods3689) too.
+[Parts Plus Pods](https://partspluspods.com.au/) are AU-based. They have a generally positive reputation[^reputation_parts_plus_pods_positive_1][^reputation_parts_plus_pods_positive_2][^reputation_parts_plus_pods_negative_1]. They sell pre-modded iPods, as well as Bluetooth "upgrade kits". They have a [YouTube channel](https://www.youtube.com/@partspluspods3689) too.
 
 Parts Plus Pods offer a [30 day return policy](https://partspluspods.com.au/terms-conditions/), but they do not offer a warranty.
 
@@ -69,7 +69,7 @@ Parts Plus Pods offer a [30 day return policy](https://partspluspods.com.au/term
 <TrueFalseChip containerClassName="mb-0!" label="Returns" isTrue />
 <TrueFalseChip containerClassName="mb-0!" label="Warranty" isTrue />
 
-[Playermods](https://www.playermods.com/) are Ukraine-based. They have a mixed/controversial reputation.[^reputation_playermods_positive_1][^reputation_playermods_positive_2][^reputation_playermods_negative_1] They sell pre-modded iPods, as well as a few parts. They are known to be an expensive option.
+[Playermods](https://www.playermods.com/) are Ukraine-based. They have a mixed/controversial reputation[^reputation_playermods_positive_1][^reputation_playermods_positive_2][^reputation_playermods_negative_1]. They sell pre-modded iPods, as well as a few parts. They are known to be an expensive option.
 
 Playermods offer a [14 day return policy](https://player-mods.com/policies/refund-policy). iPods have a [180 day warranty](https://player-mods.com/pages/warranty-policy).
 
@@ -78,7 +78,7 @@ Playermods offer a [14 day return policy](https://player-mods.com/policies/refun
 <TrueFalseChip containerClassName="mb-0!" label="Returns" isTrue />
 <TrueFalseChip containerClassName="mb-0!" label="Warranty" isTrue />
 
-[iDemiGods](https://www.idemigods.com/) are Canada-based. They have a mixed-to-positive reputation.[^reputation_idemigods_positive_1][^reputation_idemigods_positive_2][^reputation_idemigods_negative_1] They predominantly sell parts, but also sell refurbished units.
+[iDemiGods](https://www.idemigods.com/) are Canada-based. They have a mixed-to-positive reputation[^reputation_idemigods_positive_1][^reputation_idemigods_positive_2][^reputation_idemigods_negative_1]. They predominantly sell parts, but also sell refurbished units.
 
 iDemiGods [offer returns](https://www.idemigods.com/returns.asp), although it's not clear how long the returns period is. They do offer a warranty, but the length is specific to each product, so read the description carefully. 
 
@@ -134,21 +134,32 @@ The answers to these questions will steer your choices when determining your sto
 
 #### Device storage limits
 
-There are a few different limitations on the maximum storage capacity of iPods[^dcg_capacity_guide] running the stock operating system.
+There are a two limitations with the maximum storage capacity of iPods[^dcg_capacity_guide] running the stock operating system: RAM and storage capacity.
 
-A database of your iPod's files is loaded into RAM. A <RamIndicator ram={32} /> iPod has a limit of around 20,000 items (songs, videos, etc.), whilst the <RamIndicator ram={64} /> models have a limit of around 50,000. If you're not sure how much RAM your device has, use the [iPod identifier](#identify-your-ipod-model).
+##### RAM
 
-You should also be aware that some generations (specifically 6/6.5) have a hard storage limit. However, you can [flash newer firmware](#bypassing-6th-generation-storage-limits) to bypass this.
+On the stock iPod OS, a database of your iPod's files is loaded into RAM. A <RamIndicator ram={32} /> iPod can hold around 20,000 items (songs, videos, etc.) in memory, whilst the <RamIndicator ram={64} /> models can hold around 50,000.
+
+<Alert type="warning">While you _can_ technically install up to 2TB of storage in an iPod, exceeding these limits will likely cause the device to struggle (or fail) to load its database into memory, leading to severe performance issues.</Alert>
+
+<Alert type="info"> This limitation does not apply to Rockbox, which does not load the entire database into RAM[^reddit_rockbox_storage_limit]. Check out [Installing Rockbox](#installing-rockbox) for more information.</Alert>
+
+If you're not sure how much RAM your device has, use the [iPod identifier](#identify-your-ipod-model).
+
+##### Storage capacity
+
+All iPod Classics have a 2TB storage limit enforced by the FAT32 file-system[^dcg_capacity_guide].
+
+The 6/6.5 generations have a 160GB hard storage limit. However, you can [flash newer firmware](#bypassing-6th-generation-storage-limits) to bypass this.
 
 Check out the compatibility table below for more details.
 
 <Accordion title="Storage upgrade compatibility table"><IpodStorageUpgradeCompatibilityTable /></Accordion>
 
-<Alert type="info">Looking to bypass these stock OS limits? You'll have to install Rockbox.[^reddit_rockbox_storage_limit] Check out [Installing Rockbox](#installing-rockbox) for more information.</Alert>
 
 #### Storage adaptor options
 
-There are a number of adaptors of varying prices and configurations. The table below outlines the most common choices with pros and cons. The adaptors are in preference order.[^youtube_storage_adaptors_ranked] Higher is better. **All adaptors here are compatible with 5th, 6th, and 7th generation iPods.**
+There are a number of adaptors of varying prices and configurations. The table below outlines the most common choices with pros and cons. The adaptors are in preference order[^youtube_storage_adaptors_ranked]. Higher is better. **All adaptors here are compatible with 5th, 6th, and 7th generation iPods.**
 
 <Alert type="info">My preference is the iFlash uDUAL. It gives you space for further mods, and you can dispose of a large portion of the adaptor to reduce the footprint. I would **avoid** mSata due to its high power consumption[^iflash_adaptor_analysis] (Around **2x** the consumption of the original HDD, and **4.5x** the iFlash SD options)</Alert>
 
@@ -175,7 +186,7 @@ Not all batteries are the same. Due to the variance in their dimensions (width, 
 
 <BackplateIndicator backplate="thin" /> backplate iPods have less space, and therefore choice is more limited.  
 
-This table should help guide you on which battery to choose.[^youtube_battery_iflash_guide]
+This table should help guide you on which battery to choose[^youtube_battery_iflash_guide].
 
 <Accordion title="Battery & storage adaptor compatibility table">
 
@@ -231,7 +242,7 @@ You'll need to [open your iPod](#opening-your-ipod) first. Then, follow the vide
 
 6th/7th generation faceplates are metal and therefore better quality and more durable.
 
-With the 5th generation faceplates, many users have reported quality control issues. The plastic is easily scratched,[^reddit_faceplates_5_gen_scratched_1][^reddit_faceplates_5_gen_scratched_2] screw holes can be misaligned,[^reddit_faceplates_5_gen_misaligned_screws_1][^reddit_faceplates_5_gen_misaligned_screws_2][^reddit_faceplates_5_gen_misaligned_screws_3] and the clickwheel can be misaligned too.[^reddit_faceplates_5_gen_clickwheel_misaligned_1][^reddit_faceplates_5_gen_clickwheel_misaligned_2]
+With the 5th generation faceplates, many users have reported quality control issues. The plastic is easily scratched,[^reddit_faceplates_5_gen_scratched_1][^reddit_faceplates_5_gen_scratched_2] screw holes can be misaligned,[^reddit_faceplates_5_gen_misaligned_screws_1][^reddit_faceplates_5_gen_misaligned_screws_2][^reddit_faceplates_5_gen_misaligned_screws_3] and the clickwheel can be misaligned too[^reddit_faceplates_5_gen_clickwheel_misaligned_1][^reddit_faceplates_5_gen_clickwheel_misaligned_2].
 
 
 <Accordion title="Example 5th generation faceplates">
@@ -439,7 +450,7 @@ The [Parts Plus Pods](https://www.youtube.com/@partspluspods3689) YouTube channe
 
 ### Bypassing 6th generation storage limits
 
-Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_donate] has [produced a guide](https://github.com/Olsro/reddit-ipod-guides/blob/main/guides/ipod6g-flash-more-recent-firmwares.md) on how to flash newer firmware versions onto your device. This means you'll be able to increase the storage on your 6th generation iPod up to 2TB.[^dcg_capacity_guide]
+Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_donate] has [produced a guide](https://github.com/Olsro/reddit-ipod-guides/blob/main/guides/ipod6g-flash-more-recent-firmwares.md) on how to flash newer firmware versions onto your device. This means you'll be able to increase the storage on your 6th generation iPod up to 2TB[^dcg_capacity_guide].
 
 <Accordion title="Software checklist">
 * iTunes 12.10.11.2 (newer versions won't work)
@@ -457,7 +468,7 @@ Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_don
 
 ### Rockbox
 
-<Alert type="warning">Installing Rockbox will bypass the usual iPod [storage limits](#device-storage-limits); however, there will still be a 2TB limit enforced by the FAT32 file-system.[^dcg_capacity_guide]</Alert>
+<Alert type="warning">Installing Rockbox will bypass the usual iPod [storage limits](#device-storage-limits); however, there will still be a 2TB limit enforced by the FAT32 file-system[^dcg_capacity_guide].</Alert>
 
 #### Is Rockbox right for me?[^discord_ipod_community_faq_rockbox]
 
@@ -565,7 +576,7 @@ This will run a [S.M.A.R.T](https://en.wikipedia.org/wiki/Self-Monitoring,_Analy
 
 <Image alt="iPod Classic circled red cross error" className="max-w-full sm:max-w-sm" expandable height={238} src="/posts/ipod-modding/faq/red-cross-support.png" width={318} />
 
-This usually means a hard drive failure.[^apple_community_hard_drive_issue] You can confirm this by putting the iPod into [debug mode](#debug-mode) and checking the hard drive status. Possible issues:
+This usually means a hard drive failure[^apple_community_hard_drive_issue]. You can confirm this by putting the iPod into [debug mode](#debug-mode) and checking the hard drive status. Possible issues:
 
 1. The hard drive is not connected properly.
 1. The connector is damaged.
@@ -578,7 +589,7 @@ This usually means a hard drive failure.[^apple_community_hard_drive_issue] You 
 Yes. However, you'll also need to transplant 6th/7th generation parts:
 
 * The midframe.
-* (optional) The clickwheel **plastic**. You can skip this, but if you do, the clickwheel won't sit flush with the faceplate.[^reddit_5_gen_7_gen_faceplate_1][^reddit_5_gen_7_gen_faceplate_2][^reddit_5_gen_7_gen_faceplate_3] This [video guide](https://www.youtube.com/watch?v=T1IRfKDwoXc) should help you understand how to do this. As you can see, the centre of the plastic wheel has a slight difference in depth.
+* (optional) The clickwheel **plastic**. You can skip this, but if you do, the clickwheel won't sit flush with the faceplate[^reddit_5_gen_7_gen_faceplate_1][^reddit_5_gen_7_gen_faceplate_2][^reddit_5_gen_7_gen_faceplate_3]. This [video guide](https://www.youtube.com/watch?v=T1IRfKDwoXc) should help you understand how to do this. As you can see, the centre of the plastic wheel has a slight difference in depth.
 
 <Image alt="Demonstrating the difference in depth of clickwheel plastic" expandable height={1230} src="/posts/ipod-modding/faq/clickwheel-depth.jpg" width={2048} />
 
