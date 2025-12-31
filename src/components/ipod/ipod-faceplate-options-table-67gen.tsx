@@ -37,6 +37,20 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
+    name: "Light Blue",
+    image: "/posts/ipod-modding/faceplates/gen6/light-blue.png",
+    purchase: [
+      {
+        label: "AliExpress",
+        link: "https://s.click.aliexpress.com/e/_c3c786xx",
+      },
+      {
+        label: "AliExpress",
+        link: "https://s.click.aliexpress.com/e/_c435m7oh",
+      },
+    ],
+  },
+  {
     name: "Gold",
     image: "/posts/ipod-modding/faceplates/gen6/gold.png",
     purchase: [
@@ -73,6 +87,26 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
+    name: "Lime Green",
+    image: "/posts/ipod-modding/faceplates/gen6/lime-green.png",
+    purchase: [
+      {
+        label: "AliExpress",
+        link: "https://s.click.aliexpress.com/e/_c41gYWgV",
+      },
+    ],
+  },
+  {
+    name: "Green to Red Gradient",
+    image: "/posts/ipod-modding/faceplates/gen6/green-red-gradient.png",
+    purchase: [
+      {
+        label: "AliExpress",
+        link: "https://s.click.aliexpress.com/e/_c4rwxg4z",
+      },
+    ],
+  },
+  {
     name: "Grey",
     image: "/posts/ipod-modding/faceplates/gen6/grey.png",
     purchase: [
@@ -83,6 +117,16 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
       {
         label: "AliExpress",
         link: "https://s.click.aliexpress.com/e/_oDfhhbd",
+      },
+    ],
+  },
+  {
+    name: "Orange",
+    image: "/posts/ipod-modding/faceplates/gen6/orange.png",
+    purchase: [
+      {
+        label: "AliExpress",
+        link: "https://s.click.aliexpress.com/e/_c41gYWgV",
       },
     ],
   },
@@ -107,6 +151,16 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
       {
         label: "AliExpress",
         link: "https://s.click.aliexpress.com/e/_ollrWhz",
+      },
+    ],
+  },
+  {
+    name: "Purple to Blue Gradient",
+    image: "/posts/ipod-modding/faceplates/gen6/purple-blue-gradient.png",
+    purchase: [
+      {
+        label: "AliExpress",
+        link: "https://s.click.aliexpress.com/e/_c4rwxg4z",
       },
     ],
   },
