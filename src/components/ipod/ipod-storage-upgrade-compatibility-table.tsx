@@ -152,7 +152,7 @@ const supportLevelMap: Record<
   partial: {
     className: "text-yellow-600 bg-yellow-100",
     description:
-      "Supported, but you'll probably reach the RAM's song limit before the storage limit",
+      "Supported, but you'll probably reach the RAM's item limit before the storage limit",
     icon: ExclamationCircleIcon,
   },
   firmware: {
