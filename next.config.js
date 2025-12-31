@@ -6,6 +6,9 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 module.exports = withPlugins([[withBundleAnalyzer]], {
+  images: {
+    qualities: [100, 75],
+  },
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   poweredByHeader: false,
   async redirects() {
