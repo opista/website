@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from "fs";
 import matter from "gray-matter";
 import { join } from "path";
+import { cache } from "react";
 
 import { pageCreatedAt } from "./page-created-at";
 import { pageModifiedAt } from "./page-modified-at";
@@ -22,7 +23,7 @@ export type PageContent = {
 
 const contentDirectory = join(process.cwd(), "_content");
 
-export const getPageContentBySlug = (
+const getPageContentBySlugImpl = (
   directory: Directory,
   slug: string
 ): PageContent | null => {
@@ -43,6 +44,8 @@ export const getPageContentBySlug = (
     return null;
   }
 };
+
+export const getPageContentBySlug = cache(getPageContentBySlugImpl);
 
 export const getAllPageSlugs = (directory: Directory) => {
   const fullPath = join(contentDirectory, directory);
