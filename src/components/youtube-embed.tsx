@@ -16,6 +16,7 @@ export const YoutubeEmbed = (props: YoutubeEmbedProps) => (
     allowFullScreen
     className="aspect-video w-full"
     frameBorder="0"
+    loading="lazy"
     referrerPolicy="strict-origin-when-cross-origin"
     src={buildEmbedUrl(props)}
     title="YouTube video player"
