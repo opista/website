@@ -24,6 +24,7 @@ export const PageLayout = ({
         "py-4 sm:py-8 max-w-prose w-full mx-auto main grow",
         className
       )}
+      id="main-content"
     >
       {children}
     </Wrapper>

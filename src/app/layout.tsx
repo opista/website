@@ -23,6 +23,12 @@ export default function RootLayout({
       <body
         className={clsx("bg-zinc-950 text-white h-full px-4", inter.className)}
       >
+        <a
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-bold focus:rounded-md"
+          href="#main-content"
+        >
+          Skip to content
+        </a>
         <div className="w-full min-h-full flex flex-col">{children}</div>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!} />
