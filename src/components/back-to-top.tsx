@@ -39,12 +39,12 @@ export const BackToTop = ({
   return (
     showButton && (
       <Button
+        aria-label="Back to top"
         className={clsx("group fixed bottom-4 right-4 z-10 p-3", className)}
         noPadding
         onClick={onClick}
       >
         <ArrowUp strokeWidth={4} />
-        <span className="sr-only">Back to top</span>
       </Button>
     )
   );

@@ -3,7 +3,10 @@ import { SiteLinks } from "@/components/site-links";
 
 export default function Home() {
   return (
-    <main className="flex h-svh items-center justify-center">
+    <main
+      className="flex h-svh items-center justify-center"
+      id="main-content"
+    >
       <div className="flex flex-col">
         <Logo className="text-5xl sm:text-9xl text-center" />
         <SiteLinks />
