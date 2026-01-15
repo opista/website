@@ -1,6 +1,6 @@
 import { readdirSync, readFileSync } from "fs";
 import matter from "gray-matter";
-import { join } from "path";
+import { join, relative, isAbsolute } from "path";
 import { cache } from "react";
 
 import { pageCreatedAt } from "./page-created-at";
@@ -28,7 +28,15 @@ const getPageContentBySlugImpl = (
   slug: string
 ): PageContent | null => {
   try {
-    const fullPath = join(contentDirectory, directory, `${slug}.mdx`);
+    const expectedDir = join(contentDirectory, directory);
+    const fullPath = join(expectedDir, `${slug}.mdx`);
+
+    // Ensure path is within the expected directory
+    const rel = relative(expectedDir, fullPath);
+    if (rel.startsWith("..") || isAbsolute(rel)) {
+      return null;
+    }
+
     const fileContents = readFileSync(fullPath, "utf8");
     const { content, data } = matter(fileContents);
 
