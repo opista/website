@@ -1,6 +1,5 @@
+import { throttle } from "lodash";
 import { useEffect, useMemo, useState } from "react";
-
-import { throttle } from "@/util/throttle";
 
 export const useScrollPosition = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
