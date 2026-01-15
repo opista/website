@@ -24,7 +24,7 @@ export default function RootLayout({
         className={clsx("bg-zinc-950 text-white h-full px-4", inter.className)}
       >
         <a
-          className="fixed top-4 left-4 z-50 px-4 py-2 bg-white text-black font-bold rounded-md transition-transform -translate-y-[150%] focus:translate-y-0"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-bold focus:rounded-md"
           href="#main-content"
         >
           Skip to content
