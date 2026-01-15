@@ -5,3 +5,7 @@
 ## 2026-01-15 - Icon Buttons
 **Learning:** For icon-only buttons, using `aria-label` on the interactive element is often cleaner than using a nested `sr-only` span, as it directly labels the control for screen readers.
 **Action:** Prefer `aria-label` for icon-only buttons in the future.
+
+## 2026-01-15 - Smooth Transitions
+**Learning:** When revealing hidden elements like skip links on focus, using `transform: translate` is smoother and prevents layout shifts compared to toggling `sr-only` or display properties.
+**Action:** Use CSS transforms for show/hide animations on interactive elements.
