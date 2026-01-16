@@ -12,6 +12,7 @@ export const Link = ({ href, openInNewTab, ...props }: LinkProps) => {
   const isInternal = isInternalLink(href);
 
   const target = !isInternal || openInNewTab ? "_blank" : undefined;
+  const rel = target === "_blank" ? "noopener noreferrer" : undefined;
 
   return (
     <NextLink
@@ -21,7 +22,7 @@ export const Link = ({ href, openInNewTab, ...props }: LinkProps) => {
         "link decoration-wavy no-underline hover:underline text-pink-400 hover:text-pink-500"
       )}
       href={href}
-      rel={isInternal ? undefined : "noopener noreferrer"}
+      rel={rel}
       target={target}
     />
   );
