@@ -4,8 +4,11 @@ export const isInternalLink = (url?: string | UrlObject) => {
   if (!url) return false;
 
   if (typeof url === "string") {
-    return url.startsWith("/") || url.startsWith("#");
+    return (url.startsWith("/") && !url.startsWith("//")) || url.startsWith("#");
   }
 
-  return url.href?.startsWith("/") || url.href?.startsWith("#");
+  return (
+    (url.href?.startsWith("/") && !url.href?.startsWith("//")) ||
+    url.href?.startsWith("#")
+  );
 };
