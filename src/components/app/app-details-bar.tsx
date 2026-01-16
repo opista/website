@@ -1,10 +1,10 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import Image from "next/image";
 
-import { useScrollPosition } from "@/hooks/use-scroll-position";
+import { useScrollSelector } from "@/hooks/use-scroll-selector";
 import { PageContent } from "@/lib/pages";
 import { Button } from "../button";
 
@@ -30,16 +30,21 @@ const Price = ({ price }: { price?: string }) => {
 };
 
 export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
-  const scrollPosition = useScrollPosition();
+  const [isMounted, setIsMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const { cta, link, price, title } = page;
 
-  const showSticky = useMemo(() => {
-    if (!ref.current) return false;
-    const { top } = ref.current.getBoundingClientRect();
-    return top <= 16;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref, scrollPosition]);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const showSticky = useScrollSelector(
+    useCallback(() => {
+      if (!ref.current) return false;
+      const { top } = ref.current.getBoundingClientRect();
+      return top <= 16;
+    }, [isMounted])
+  );
 
   if (!link) return;
 

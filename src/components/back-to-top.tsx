@@ -3,7 +3,7 @@
 import { HTMLProps, useCallback } from "react";
 import clsx from "clsx";
 
-import { useScrollPosition } from "@/hooks/use-scroll-position";
+import { useScrollSelector } from "@/hooks/use-scroll-selector";
 
 import { Button } from "./button";
 import { ArrowUp } from "./icons/arrow-up";
@@ -16,7 +16,9 @@ export const BackToTop = ({
   className,
   offset = 300,
 }: HTMLProps<HTMLDivElement> & BackToTopProps) => {
-  const scrollPosition = useScrollPosition();
+  const showButton = useScrollSelector(
+    useCallback((y) => y > offset, [offset])
+  );
 
   const onClick = useCallback(() => {
     const focusableElement = document.querySelector(
@@ -33,8 +35,6 @@ export const BackToTop = ({
       preventScroll: true,
     });
   }, []);
-
-  const showButton = scrollPosition > offset;
 
   return (
     showButton && (
