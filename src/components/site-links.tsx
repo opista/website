@@ -33,8 +33,13 @@ export const SiteLinks = ({ hideContact }: SiteLinksProps) => {
         .filter(({ text }) => !hideContact || text !== "contact")
         .map(({ href, text }, idx, arr) => (
           <Fragment key={text}>
-            {idx !== 0 && String.fromCharCode(0x2022)}
+            {idx !== 0 && (
+              <span aria-hidden="true" className="select-none">
+                {String.fromCharCode(0x2022)}
+              </span>
+            )}
             <Link
+              aria-current={pathname.startsWith(href) ? "page" : undefined}
               className={clsx("p-2 hover:underline decoration-2", {
                 "font-medium": !pathname.startsWith(href),
                 "font-bold underline": pathname.startsWith(href),
