@@ -1,6 +1,5 @@
+import { throttle } from "lodash";
 import { useCallback, useSyncExternalStore } from "react";
-
-import { throttle } from "@/util/throttle";
 
 export function useScrollSelector<T>(
   selector: (scrollY: number) => T,
@@ -8,7 +7,10 @@ export function useScrollSelector<T>(
 ): T {
   const subscribe = useCallback(
     (onStoreChange: () => void) => {
-      const handleScroll = throttle(onStoreChange, wait);
+      const handleScroll = throttle(onStoreChange, wait, {
+        leading: true,
+        trailing: true,
+      });
       window.addEventListener("scroll", handleScroll, { passive: true });
       return () => {
         handleScroll.cancel();
