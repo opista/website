@@ -33,6 +33,7 @@ export const Alert = ({ children, type = "info" }: AlertProps) => {
         "alert rounded py-2 pl-3 pr-4 mb-5 flex items-center leading-5 not-prose",
         styleMap[type]
       )}
+      role="note"
     >
       <Icon className="mr-3 size-5 shrink-0" />
       <div>{children}</div>
