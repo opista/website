@@ -1,8 +1,3 @@
-import remarkMdx from "remark-mdx";
-import remarkParse from "remark-parse";
-import { unified } from "unified";
-import { visit } from "unist-util-visit";
-
 import { toSlug } from "./to-slug";
 
 export type TOCItem = {
@@ -34,37 +29,54 @@ const buildNestedTOC = (headings: TOCItem[]): TOCItem[] => {
   return root;
 };
 
+const stripMarkdown = (text: string): string => {
+  return text
+    .replace(/\[\^[^\]]+\]/g, "") // Remove footnotes [^...]
+    .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1") // Remove links [text](url) -> text
+    .replace(/(\*\*|__)(.*?)\1/g, "$2") // Remove bold **text** or __text__ -> text
+    .replace(/(\*|_)(.*?)\1/g, "$2") // Remove italic *text* or _text_ -> text
+    .replace(/`([^`]+)`/g, "$1") // Remove inline code `text` -> text
+    .trim();
+};
+
 export const generateTableOfContents = (
   content: string,
   maxDepth: number = Infinity
 ) => {
-  const tree = unified().use(remarkParse).use(remarkMdx).parse(content);
-
+  const lines = content.split(/\r?\n/);
   const flatHeadings: TOCItem[] = [];
+  let inCodeBlock = false;
 
-  visit(tree, "heading", (node: any) => {
-    if (node.depth > maxDepth) return;
+  for (const line of lines) {
+    const trimmed = line.trim();
 
-    const text = node.children
-      .filter(
-        (child: any) => child.type === "text" || child.type === "inlineCode"
-      )
-      .map((child: any) => child.value)
-      .join(" ")
-      .trim();
-
-    if (text) {
-      const slug = toSlug(text);
-      flatHeadings.push({
-        children: [],
-        level: node.depth,
-        slug,
-        title: text,
-      });
+    // Check for code block toggle
+    if (trimmed.startsWith("```")) {
+      inCodeBlock = !inCodeBlock;
+      continue;
     }
-  });
 
-  const nested = buildNestedTOC(flatHeadings);
+    if (inCodeBlock) continue;
 
-  return nested;
+    const match = line.match(/^ {0,3}(#{1,6})\s+(.*)$/);
+    if (match) {
+      const level = match[1].length;
+      if (level > maxDepth) continue;
+
+      const rawText = match[2];
+      const title = stripMarkdown(rawText);
+
+      if (title) {
+        const slug = toSlug(title);
+        flatHeadings.push({
+          children: [],
+          level,
+          slug,
+          title,
+        });
+      }
+    }
+  }
+
+  return buildNestedTOC(flatHeadings);
 };
