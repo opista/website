@@ -9,6 +9,13 @@ export interface ThrottledFunc<T extends (...args: any[]) => any> {
   cancel(): void;
 }
 
+/**
+ * Creates a throttled function that only invokes `func` at most once per
+ * every `wait` milliseconds.
+ *
+ * Adapted from Lodash 4.17.21 (https://github.com/lodash/lodash)
+ * to provide a lightweight alternative without the full library dependency.
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function throttle<T extends (...args: any[]) => any>(
   func: T,
