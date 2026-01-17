@@ -5,3 +5,7 @@
 ## 2026-01-15 - Icon Buttons
 **Learning:** For icon-only buttons, using `aria-label` on the interactive element is often cleaner than using a nested `sr-only` span, as it directly labels the control for screen readers.
 **Action:** Prefer `aria-label` for icon-only buttons in the future.
+
+## 2026-01-16 - Navigation Accessibility
+**Learning:** Visual indicators for active navigation links (bold/underline) are insufficient for screen readers. They must be paired with `aria-current="page"`.
+**Action:** Ensure all navigation components use `aria-current` for the active state.
