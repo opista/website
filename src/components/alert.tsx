@@ -25,12 +25,6 @@ const styleMap: Record<AlertType, string> = {
   warning: "bg-yellow-100 text-yellow-700 border-yellow-700",
 };
 
-const roleMap: Record<AlertType, "alert" | "status"> = {
-  error: "alert",
-  info: "status",
-  warning: "status",
-};
-
 export const Alert = ({ children, type = "info" }: AlertProps) => {
   const Icon = iconMap[type];
   return (
@@ -39,7 +33,7 @@ export const Alert = ({ children, type = "info" }: AlertProps) => {
         "alert rounded py-2 pl-3 pr-4 mb-5 flex items-center leading-5 not-prose",
         styleMap[type]
       )}
-      role={roleMap[type]}
+      role="note"
     >
       <Icon className="mr-3 size-5 shrink-0" />
       <div>{children}</div>
