@@ -1,5 +1,7 @@
-import { throttle } from "lodash-es";
 import { useCallback, useSyncExternalStore } from "react";
+
+// Use a custom throttle implementation to avoid adding a heavy dependency on lodash
+import { throttle } from "@/util/throttle";
 
 export function useScrollSelector<T>(
   selector: (scrollY: number) => T,
