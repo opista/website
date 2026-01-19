@@ -17,8 +17,3 @@
 
 **Learning:** `role="alert"` (assertive) should only be used for time-sensitive, dynamic updates that require immediate user attention. For static "callout" or "admonition" blocks in content (like blog posts), use `role="note"` instead. This ensures screen readers read them sequentially without interrupting the user.
 **Action:** Use `role="note"` for static alerts/callouts; reserve `role="alert"` for dynamic error messages.
-
-## 2026-01-18 - Image Overlays
-
-**Learning:** Interactive overlays on images (like expand buttons) must have accessible names (`aria-label`) because their visual context (the icon) is often insufficient or decorative, and `title` attributes are not reliable for all assistive technologies.
-**Action:** Check all image overlays for accessible labels.

@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType } from "react";
+import { HTMLAttributes, KeyboardEvent } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 
@@ -6,16 +6,11 @@ import { isInternalLink } from "@/util/is-external-link";
 
 import { ConditionalWrapper } from "./conditional-wrapper";
 
-type ButtonBaseProps = {
+type ButtonProps = {
   center?: boolean;
   href?: string;
   noPadding?: boolean;
 };
-
-// Allow properties from both button and div/anchor since it's polymorphic-ish
-type ButtonProps = ButtonBaseProps &
-  ComponentPropsWithoutRef<"button"> &
-  ComponentPropsWithoutRef<"a">;
 
 export const Button = ({
   center,
@@ -23,11 +18,14 @@ export const Button = ({
   className,
   href,
   noPadding,
-  type = "button",
   ...props
-}: ButtonProps) => {
-  const isLink = !!href;
-  const Tag = (isLink ? "div" : "button") as ElementType;
+}: HTMLAttributes<HTMLDivElement> & ButtonProps) => {
+  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      props.onClick?.(event as any);
+    }
+  };
 
   return (
     <div
@@ -36,27 +34,29 @@ export const Button = ({
       })}
     >
       <ConditionalWrapper
-        condition={isLink}
+        condition={!!href}
         wrapper={(children) => (
           <Link
             href={href as string}
-            target={isInternalLink(href!) ? undefined : "_blank"}
+            target={isInternalLink(href) ? undefined : "_blank"}
           >
             {children}
           </Link>
         )}
       >
-        <Tag
+        <div
           className={clsx(
             "cursor-pointer select-none inline-block text-white no-underline focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800",
             { "px-5 py-2.5 ": !noPadding },
             className
           )}
-          type={!isLink ? type : undefined}
+          onKeyDown={href ? undefined : onKeyDown}
+          role={href ? undefined : "button"}
+          tabIndex={href ? undefined : 0}
           {...props}
         >
           {children}
-        </Tag>
+        </div>
       </ConditionalWrapper>
     </div>
   );

@@ -22,7 +22,6 @@ export const Image = ({
       <div className={clsx("mx-auto relative", className)}>
         {children}
         <Link
-          aria-label="Open image in new tab"
           className="border border-2 border-current bg-black absolute bottom-[10px] right-[10px] size-10 p-1 max-w-[30%] max-h-[30%]"
           href={src as string}
           openInNewTab
