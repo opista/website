@@ -81,8 +81,8 @@ export const PostBody = ({ page }: PostBodyProps) => {
     RamIndicator,
     RecommendedBadge,
     SolderingChip,
-    TableOfContents: () => (
-      <TableOfContents content={page.content} maxDepth={3} />
+    TableOfContents: (props) => (
+      <TableOfContents {...props} content={page.content} maxDepth={3} />
     ),
     table: Table,
     th: TableHeadCell,
