@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { BackToTop } from "@/components/back-to-top";
 import { Heading } from "@/components/heading";
+import { ArticleJsonLd } from "@/components/json-ld";
 import { PageLayout } from "@/components/page-layout";
 import { PostBody } from "@/components/post-body";
 import { BASE_SITE_URL } from "@/constant";
@@ -28,11 +29,26 @@ export async function generateMetadata({
     return {};
   }
 
+  const url = `${BASE_SITE_URL}/posts/${page.slug}`;
+
   return {
     title: `${page.title} - OPISTA`,
     description: page.description,
     alternates: {
-      canonical: `${BASE_SITE_URL}/posts/${page.slug}`,
+      canonical: url,
+    },
+    openGraph: {
+      title: page.title,
+      description: page.description,
+      url,
+      type: "article",
+      publishedTime: page.datePublished?.toISOString() ?? page.createdAt.toISOString(),
+      modifiedTime: page.modifiedAt.toISOString(),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: page.title,
+      description: page.description,
     },
   };
 }
@@ -57,6 +73,13 @@ export default async function PostPage({
 
   return (
     <PageLayout className="prose prose-invert" tag="article">
+      <ArticleJsonLd
+        dateModified={page.modifiedAt.toISOString()}
+        datePublished={(page.datePublished ?? page.createdAt).toISOString()}
+        description={page.description}
+        title={page.title}
+        url={`${BASE_SITE_URL}/posts/${page.slug}`}
+      />
       <Heading className="mb-0" level="h1">
         {page.title}
       </Heading>
@@ -66,3 +89,4 @@ export default async function PostPage({
     </PageLayout>
   );
 }
+

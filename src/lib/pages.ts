@@ -13,6 +13,7 @@ export type PageContent = {
   content: string;
   createdAt: Date;
   cta?: string;
+  datePublished?: Date;
   description: string;
   link?: string;
   modifiedAt: Date;
