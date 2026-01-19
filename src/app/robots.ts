@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 
+import { BASE_SITE_URL } from "@/constant";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/private/",
     },
-    sitemap: "/sitemap.xml",
+    sitemap: `${BASE_SITE_URL}/sitemap.xml`,
   };
 }

@@ -30,11 +30,29 @@ export async function generateMetadata({
     return {};
   }
 
+  const url = `${BASE_SITE_URL}/apps/${page.slug}`;
+
   return {
     title: `${page.title} - OPISTA`,
     description: page.description,
     alternates: {
-      canonical: `${BASE_SITE_URL}/apps/${page.slug}`,
+      canonical: url,
+    },
+    openGraph: {
+      title: page.title,
+      description: page.description,
+      url,
+      images: [
+        {
+          url: `/apps/${page.slug}/logo.png`,
+          alt: `${page.title} logo`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary",
+      title: page.title,
+      description: page.description,
     },
   };
 }
