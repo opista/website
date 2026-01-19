@@ -42,6 +42,7 @@ const getPageContent = (
 
     return {
       content,
+      // Use bulk timestamp if available (short-circuit), otherwise fetch individually
       createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath),
       modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath),
       slug,
