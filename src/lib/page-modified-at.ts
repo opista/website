@@ -1,19 +1,11 @@
-import { execFileSync } from "child_process";
+import { execSync } from "child_process";
 
 export const pageModifiedAt = (filePath: string) => {
-  try {
-    const result = execFileSync(
-      "git",
-      ["log", "-1", '--pretty=format:%cI', filePath],
-      {
-        encoding: "utf8",
-      }
-    ).trim();
+  const result = execSync(`git log -1 --pretty="format:%cI" "${filePath}"`, {
+    encoding: "utf8",
+  }).trim();
 
-    if (!result) return new Date();
+  if (!result) return new Date();
 
-    return new Date(result);
-  } catch {
-    return new Date();
-  }
+  return new Date(result);
 };

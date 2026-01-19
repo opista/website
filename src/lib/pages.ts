@@ -3,6 +3,7 @@ import matter from "gray-matter";
 import { join, sep } from "path";
 import { cache } from "react";
 
+import { getBulkTimestamps } from "./bulk-git-timestamps";
 import { pageCreatedAt } from "./page-created-at";
 import { pageModifiedAt } from "./page-modified-at";
 
@@ -23,9 +24,10 @@ export type PageContent = {
 
 const contentDirectory = join(process.cwd(), "_content");
 
-const getPageContentBySlugImpl = (
+const getPageContent = (
   directory: Directory,
-  slug: string
+  slug: string,
+  timestamps?: { createdAt: Date; modifiedAt: Date }
 ): PageContent | null => {
   try {
     const intendedDir = join(contentDirectory, directory);
@@ -40,8 +42,9 @@ const getPageContentBySlugImpl = (
 
     return {
       content,
-      createdAt: pageCreatedAt(fullPath),
-      modifiedAt: pageModifiedAt(fullPath),
+      // Use bulk timestamp if available (short-circuit), otherwise fetch individually
+      createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath),
+      modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath),
       slug,
       url: `/${directory}/${slug}`,
       ...data,
@@ -50,6 +53,11 @@ const getPageContentBySlugImpl = (
     return null;
   }
 };
+
+const getPageContentBySlugImpl = (
+  directory: Directory,
+  slug: string
+): PageContent | null => getPageContent(directory, slug);
 
 export const getPageContentBySlug = cache(getPageContentBySlugImpl);
 
@@ -62,8 +70,13 @@ export const getAllPageSlugs = (directory: Directory) => {
 
 export const getAllPagesAndContent = (directory: Directory) => {
   const slugs = getAllPageSlugs(directory);
+  const timestamps = getBulkTimestamps(join(contentDirectory, directory));
+
   return slugs
-    .map(({ slug }) => getPageContentBySlug(directory, slug))
+    .map(({ slug }) => {
+      const fullPath = join(contentDirectory, directory, `${slug}.mdx`);
+      return getPageContent(directory, slug, timestamps.get(fullPath));
+    })
     .filter((page): page is PageContent => !!page)
     .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 };
