@@ -179,6 +179,7 @@ const CompatibilityCell = ({ level }: { level: SupportLevel }) => {
   return (
     <TableBodyCell
       className={clsx("align-middle text-center w-[60px]", className)}
+      aria-label={level}
     >
       <Icon className="inline-block size-6" />
     </TableBodyCell>
@@ -245,18 +246,11 @@ export const IpodStorageUpgradeCompatibilityTable = () => (
               <TableBodyCell border>
                 {device.capacityOptions[0].capacity}GB
               </TableBodyCell>
-              {Object.entries(device.capacityOptions[0].upgrades).map(
-                ([upgrade, support]) => (
-                  <CompatibilityCell
-                    key={toSlug(
-                      device.generation.toString(),
-                      device.capacityOptions[0].capacity.toString(),
-                      upgrade
-                    )}
-                    level={support}
-                  />
-                )
-              )}
+              <CompatibilityCell level={device.capacityOptions[0].upgrades["128GB"]} />
+              <CompatibilityCell level={device.capacityOptions[0].upgrades["256GB"]} />
+              <CompatibilityCell level={device.capacityOptions[0].upgrades["512GB"]} />
+              <CompatibilityCell level={device.capacityOptions[0].upgrades["1TB"]} />
+              <CompatibilityCell level={device.capacityOptions[0].upgrades["2TB"]} />
             </tr>
             {device.capacityOptions.slice(1).map((option) => (
               <tr
@@ -266,16 +260,11 @@ export const IpodStorageUpgradeCompatibilityTable = () => (
                 )}
               >
                 <TableBodyCell border>{option.capacity}GB</TableBodyCell>
-                {Object.entries(option.upgrades).map(([upgrade, support]) => (
-                  <CompatibilityCell
-                    key={toSlug(
-                      device.generation.toString(),
-                      option.capacity.toString(),
-                      upgrade
-                    )}
-                    level={support}
-                  />
-                ))}
+                <CompatibilityCell level={option.upgrades["128GB"]} />
+                <CompatibilityCell level={option.upgrades["256GB"]} />
+                <CompatibilityCell level={option.upgrades["512GB"]} />
+                <CompatibilityCell level={option.upgrades["1TB"]} />
+                <CompatibilityCell level={option.upgrades["2TB"]} />
               </tr>
             ))}
           </Fragment>
