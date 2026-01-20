@@ -1,12 +1,15 @@
 "use client";
 
+import clsx from "clsx";
 import { createPortal } from "react-dom";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import {
   generateTableOfContents,
   TOCItem,
 } from "@/util/generate-table-of-contents";
 import { useStickyToc } from "@/hooks/use-sticky-toc";
+import { useActiveHeading } from "@/hooks/use-active-heading";
 
 import { Heading } from "./heading";
 import { Link } from "./link";
@@ -22,27 +25,183 @@ type TableOfContentsProps = {
   enableSticky?: boolean;
 };
 
-const HeadingGroup = ({ headings }: { headings: TOCItem[] }) => (
-  <ul className="list-none m-0! pl-4">
-    {headings.map((heading) => (
-      <li className="m-0!" key={heading.slug}>
-        <Link href={`#${heading.slug}`}>{heading.title}</Link>
+const flattenSlugs = (items: TOCItem[]): string[] => items.flatMap((item) => [item.slug, ...flattenSlugs(item.children)]);
+
+const TOCContent = ({ headings }: { headings: TOCItem[] }) => (
+  <div className="border-l-2 border-gray-700">
+    <HeadingGroup headings={headings} />
+  </div>
+);
+
+type HeadingItemProps = {
+  activeSlug?: string | null;
+  heading: TOCItem;
+  registerRef?: (slug: string, el: HTMLAnchorElement | null) => void;
+};
+
+const HeadingItem = memo(
+  ({ heading, activeSlug, registerRef }: HeadingItemProps) => {
+    const isActive = activeSlug === heading.slug;
+
+    return (
+      <li className="m-0!">
+        <Link
+          ref={(el) => registerRef?.(heading.slug, el)}
+          className={clsx("transition-colors", isActive && "text-pink-400!")}
+          href={`#${heading.slug}`}
+        >
+          {heading.title}
+        </Link>
 
         {heading.children.length > 0 && (
-          <HeadingGroup headings={heading.children} />
+          <HeadingGroup
+            activeSlug={activeSlug}
+            headings={heading.children}
+            registerRef={registerRef}
+          />
         )}
       </li>
+    );
+  }
+);
+
+HeadingItem.displayName = "HeadingItem";
+
+type HeadingGroupProps = {
+  activeSlug?: string | null;
+  headings: TOCItem[];
+  registerRef?: (slug: string, el: HTMLAnchorElement | null) => void;
+};
+
+const HeadingGroup = ({
+  headings,
+  activeSlug,
+  registerRef,
+}: HeadingGroupProps) => (
+  <ul className="list-none m-0! pl-4">
+    {headings.map((heading) => (
+      <HeadingItem
+        key={heading.slug}
+        activeSlug={activeSlug}
+        heading={heading}
+        registerRef={registerRef}
+      />
     ))}
   </ul>
 );
 
 const COMPONENT_TITLE = "Table of Contents";
 
-const TOCContent = ({ headings }: { headings: TOCItem[] }) => (
-  <div className="border-l-2 border-pink-400">
-    <HeadingGroup headings={headings} />
-  </div>
-);
+type StickyTOCContentProps = {
+  activeSlug: string | null;
+  headings: TOCItem[];
+};
+
+// TOC content with active indicator and auto-scroll (for sticky display only)
+const StickyTOCContent = ({ activeSlug, headings }: StickyTOCContentProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const linkRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
+  const [indicatorStyle, setIndicatorStyle] = useState<{
+    top: number;
+    height: number;
+  } | null>(null);
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  const registerRef = useCallback(
+    (slug: string, el: HTMLAnchorElement | null) => {
+      if (el) {
+        linkRefs.current.set(slug, el);
+      } else {
+        linkRefs.current.delete(slug);
+      }
+    },
+    []
+  );
+
+  // Update indicator position when active slug changes
+  useEffect(() => {
+    if (!activeSlug || !containerRef.current) {
+      setIndicatorStyle(null);
+      return;
+    }
+
+    const activeLink = linkRefs.current.get(activeSlug);
+    if (!activeLink) {
+      setIndicatorStyle(null);
+      return;
+    }
+
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
+
+    setIndicatorStyle({
+      top: linkRect.top - containerRect.top + containerRef.current.scrollTop,
+      height: linkRect.height,
+    });
+
+    // Throttle scrollIntoView to avoid excessive calls during fast scrolling
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    scrollTimeoutRef.current = setTimeout(() => {
+      activeLink.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }, 100);
+
+    return () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, [activeSlug]);
+
+  return (
+    <div ref={containerRef} className="relative border-l-2 border-gray-700">
+      {/* Active indicator - single div that moves to the active item */}
+      {indicatorStyle && (
+        <div
+          className="absolute left-[-2px] w-1 bg-pink-400 transition-all duration-150"
+          style={{
+            top: indicatorStyle.top,
+            height: indicatorStyle.height,
+          }}
+        />
+      )}
+      <HeadingGroup
+        activeSlug={activeSlug}
+        headings={headings}
+        registerRef={registerRef}
+      />
+    </div>
+  );
+};
+
+type StickyTOCWrapperProps = {
+  activeSlug: string | null;
+  headings: TOCItem[];
+};
+
+const StickyTOCWrapper = ({ activeSlug, headings }: StickyTOCWrapperProps) => {
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
+    <nav
+      aria-label="Sticky Table of Contents"
+      className="prose prose-invert bg-zinc-950 fixed top-20 left-[calc(50%+65ch/2+1.5rem)] max-h-[calc(100vh-160px)] z-40 flex flex-col"
+      style={{ maxWidth: FIXED_TOC_WIDTH }}
+    >
+      <Heading className="mt-0 mb-2 shrink-0" level="h2">
+        {COMPONENT_TITLE}
+      </Heading>
+      <div className="overflow-y-auto min-h-0">
+        <StickyTOCContent activeSlug={activeSlug} headings={headings} />
+      </div>
+    </nav>,
+    document.body
+  );
+};
 
 export const TableOfContents = ({
   collapsable,
@@ -50,8 +209,13 @@ export const TableOfContents = ({
   maxDepth,
   enableSticky = true,
 }: TableOfContentsProps) => {
-  const headings = generateTableOfContents(content, maxDepth);
+  const headings = useMemo(
+    () => generateTableOfContents(content, maxDepth),
+    [content, maxDepth]
+  );
   const { containerRef, isSticky } = useStickyToc({ enabled: enableSticky });
+  const allSlugs = useMemo(() => flattenSlugs(headings), [headings]);
+  const activeSlug = useActiveHeading(allSlugs);
 
   return (
     <>
@@ -70,23 +234,10 @@ export const TableOfContents = ({
           <TOCContent headings={headings} />
         </ConditionalWrapper>
       </div>
-      ``
-      {/* Sticky TOC Portal */}
-      {isSticky &&
-        typeof document !== "undefined" &&
-        createPortal(
-          <nav
-            aria-label="Sticky Table of Contents"
-            className="prose prose-invert fixed top-20 left-[calc(50%+65ch/2+1.5rem)] max-h-[calc(100vh-160px)] overflow-y-auto z-40 border p-4"
-            style={{ maxWidth: FIXED_TOC_WIDTH }}
-          >
-            <Heading className="mt-0 mb-2" level="h2">
-              {COMPONENT_TITLE}
-            </Heading>
-            <TOCContent headings={headings} />
-          </nav>,
-          document.body
-        )}
+
+      {isSticky && (
+        <StickyTOCWrapper activeSlug={activeSlug} headings={headings} />
+      )}
     </>
   );
 };
