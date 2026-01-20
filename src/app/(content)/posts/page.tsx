@@ -4,17 +4,12 @@ import { Metadata } from "next";
 import { Heading } from "@/components/heading";
 import { HorizontalRule } from "@/components/horizontal-rule";
 import { Link } from "@/components/link";
+import { formatDate } from "@/lib/format-date";
 import { getAllPagesAndContent } from "@/lib/pages";
 
 export const metadata: Metadata = {
   title: "Posts - OPISTA",
 };
-
-const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat("en-GB", {
-    dateStyle: "long",
-    timeZone: "UTC",
-  }).format(date);
 
 export default function Apps() {
   const posts = getAllPagesAndContent("posts");
