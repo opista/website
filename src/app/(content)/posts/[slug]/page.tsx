@@ -6,6 +6,7 @@ import { Heading } from "@/components/heading";
 import { ArticleJsonLd } from "@/components/json-ld";
 import { PostBody } from "@/components/post-body";
 import { BASE_SITE_URL } from "@/constant";
+import { formatDate } from "@/lib/format-date";
 import { getAllPageSlugs, getPageContentBySlug } from "@/lib/pages";
 
 type PostPageParams = {
@@ -38,7 +39,7 @@ export async function generateMetadata({
     openGraph: {
       description: page.description,
       modifiedTime: page.modifiedAt.toISOString(),
-      publishedTime: page.datePublished?.toISOString() ?? page.createdAt.toISOString(),
+      publishedTime: page.createdAt.toISOString(),
       title: page.title,
       type: "article",
       url,
@@ -64,17 +65,11 @@ export default async function PostPage({
     return notFound();
   }
 
-  const date = new Intl.DateTimeFormat("en-GB", {
-    dateStyle: "long",
-    timeStyle: "long",
-    timeZone: "UTC",
-  }).format(page.modifiedAt);
-
   return (
     <article className="prose prose-invert">
       <ArticleJsonLd
         dateModified={page.modifiedAt.toISOString()}
-        datePublished={(page.datePublished ?? page.createdAt).toISOString()}
+        datePublished={page.createdAt.toISOString()}
         description={page.description}
         title={page.title}
         url={`${BASE_SITE_URL}/posts/${page.slug}`}
@@ -82,7 +77,8 @@ export default async function PostPage({
       <Heading className="mb-0" level="h1">
         {page.title}
       </Heading>
-      <p className="text-xs mt-0 mb-8">Last updated: {date}</p>
+      <p className="text-xs m-0!" title={formatDate(page.createdAt, { time: true })}>First posted: {formatDate(page.createdAt)}</p>
+      <p className="text-xs mt-0 mb-8" title={formatDate(page.modifiedAt, { time: true })}>Last updated: {formatDate(page.modifiedAt)}</p>
       <PostBody page={page} />
       <BackToTop />
     </article>
