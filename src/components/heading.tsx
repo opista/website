@@ -40,16 +40,33 @@ const Icon = () => (
 );
 
 const formattedChildren = (children: ReactNode, href: string) => {
+  if (Children.count(children) <= 1) {
+    return (
+      <LinkWrapper href={href}>
+        {children} <Icon />
+      </LinkWrapper>
+    );
+  }
+
+  const mapped = Children.map(children, (child) => {
+    if (typeof child === "string") {
+      return (
+        <LinkWrapper href={href} key={child}>
+          {child}
+        </LinkWrapper>
+      );
+    }
+
+    return child;
+  });
+
   return (
-    <LinkWrapper href={href}>
-      {Children.map(children, (child) => {
-        if (typeof child === "string") {
-          return child;
-        }
-        return child;
-      })}
-      <Icon />
-    </LinkWrapper>
+    <>
+      {mapped}
+      <LinkWrapper href={href}>
+        <Icon />
+      </LinkWrapper>
+    </>
   );
 };
 
