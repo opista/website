@@ -27,16 +27,6 @@ export const Link = ({
       ? `${ariaLabel} (opens in a new tab)`
       : ariaLabel;
 
-  const content =
-    shouldOpenInNewTab && !ariaLabel ? (
-      <>
-        {children}
-        <span className="sr-only">&nbsp;(opens in a new tab)</span>
-      </>
-    ) : (
-      children
-    );
-
   return (
     <NextLink
       {...props}
@@ -49,7 +39,14 @@ export const Link = ({
       rel={rel}
       target={target}
     >
-      {content}
+      {shouldOpenInNewTab && !ariaLabel ? (
+        <>
+          {children}
+          <span className="sr-only">&nbsp;(opens in a new tab)</span>
+        </>
+      ) : (
+        children
+      )}
     </NextLink>
   );
 };
