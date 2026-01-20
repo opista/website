@@ -14,6 +14,7 @@ import {
 import { Accordion } from "./accordion";
 import { ConditionalWrapper } from "./conditional-wrapper";
 import { Heading } from "./heading";
+import { ListTreeIcon } from "./icons/list-tree-icon";
 import { Link } from "./link";
 
 export const FIXED_TOC_WIDTH = 300;
@@ -90,7 +91,7 @@ const HeadingGroup = ({
   </ul>
 );
 
-const COMPONENT_TITLE = "Table of Contents";
+const COMPONENT_TITLE = "Table of contents";
 
 type StickyTOCContentProps = {
   activeSlug: string | null;
@@ -191,11 +192,11 @@ const StickyTOCWrapper = ({ activeSlug, headings }: StickyTOCWrapperProps) => {
   return createPortal(
     <nav
       aria-label="Sticky Table of Contents"
-      className="prose prose-invert bg-zinc-950 fixed top-20 left-[calc(50%+65ch/2+1.5rem)] max-h-[calc(100vh-160px)] z-40 flex flex-col"
+      className="prose prose-invert bg-zinc-950 fixed top-20 left-[calc(50%+65ch/2+clamp(1.5rem,5vw,8rem))] max-h-[calc(100vh-160px)] z-40 flex flex-col"
       style={{ maxWidth: FIXED_TOC_WIDTH }}
     >
       <Heading className="mt-0 mb-2 shrink-0" level="h2">
-        {COMPONENT_TITLE}
+        <ListTreeIcon className="w-6 h-6" /> On this page
       </Heading>
       <div className="overflow-y-auto min-h-0">
         <StickyTOCContent activeSlug={activeSlug} headings={headings} />
