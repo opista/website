@@ -17,3 +17,8 @@
 
 **Learning:** `role="alert"` (assertive) should only be used for time-sensitive, dynamic updates that require immediate user attention. For static "callout" or "admonition" blocks in content (like blog posts), use `role="note"` instead. This ensures screen readers read them sequentially without interrupting the user.
 **Action:** Use `role="note"` for static alerts/callouts; reserve `role="alert"` for dynamic error messages.
+
+## 2026-01-20 - External Link Warning
+
+**Learning:** When links open in a new tab (`target="_blank"`), screen reader users need an explicit warning. This can be achieved by appending visually hidden text `(opens in a new tab)` or modifying the `aria-label` if present.
+**Action:** Implement automated handling in the base `Link` component to ensure consistency and avoid manual errors.

@@ -8,11 +8,34 @@ type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
   openInNewTab?: boolean;
 };
 
-export const Link = ({ href, openInNewTab, ...props }: LinkProps) => {
+export const Link = ({
+  children,
+  href,
+  openInNewTab,
+  ...props
+}: LinkProps) => {
   const isInternal = isInternalLink(href);
 
   const target = !isInternal || openInNewTab ? "_blank" : undefined;
   const rel = target === "_blank" ? "noopener noreferrer" : undefined;
+
+  let content = children;
+  const ariaLabel = props["aria-label"];
+
+  if (target === "_blank") {
+    if (ariaLabel) {
+      // If aria-label is present, append the warning to it
+      props["aria-label"] = `${ariaLabel} (opens in a new tab)`;
+    } else {
+      // Otherwise, append a screen-reader-only span to the children
+      content = (
+        <>
+          {children}
+          <span className="sr-only">&nbsp;(opens in a new tab)</span>
+        </>
+      );
+    }
+  }
 
   return (
     <NextLink
@@ -24,6 +47,8 @@ export const Link = ({ href, openInNewTab, ...props }: LinkProps) => {
       href={href}
       rel={rel}
       target={target}
-    />
+    >
+      {content}
+    </NextLink>
   );
 };
