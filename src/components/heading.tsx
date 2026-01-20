@@ -7,7 +7,7 @@ import { toSlug } from "@/util/to-slug";
 import { ConditionalWrapper } from "./conditional-wrapper";
 import { LinkIcon } from "./icons/link-icon";
 
-type HeadingTags = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+export type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 const levelClasses = {
   h1: "text-3xl sm:text-7xl font-bold",
@@ -19,7 +19,7 @@ const levelClasses = {
 };
 
 export type HeadingProps = HTMLProps<HTMLHeadingElement> & {
-  level: HeadingTags;
+  level: HeadingTag;
   link?: boolean;
 };
 
@@ -63,12 +63,12 @@ export const Heading = ({
   const slug = toSlug(
     Array.isArray(children)
       ? children
-          .filter((child): child is string => typeof child === "string")
-          .map((child) => child.trim())
-          .join(" ")
+        .filter((child): child is string => typeof child === "string")
+        .map((child) => child.trim())
+        .join(" ")
       : typeof children === "string" || typeof children === "number"
-      ? children
-      : ""
+        ? children
+        : ""
   );
 
   const href = `#${slug}`;

@@ -11,7 +11,7 @@ import { Alert } from "./alert";
 import { Button } from "./button";
 import { SolderingChip } from "./chips/soldering-chip";
 import { TrueFalseChip } from "./chips/true-false-chip";
-import { Heading, HeadingProps } from "./heading";
+import { Heading, HeadingProps, HeadingTag } from "./heading";
 import { Image } from "./image";
 import { BackplateIndicator } from "./ipod/backplate-indicator";
 import { IpodFaceplateOptionsTable5Gen } from "./ipod/ipod-faceplate-options-table-5gen";
@@ -39,23 +39,26 @@ type PostBodyProps = {
 
 const headings = Array(6)
   .fill(null)
-  .reduce((acc, _curr, idx) => {
-    const level = idx + 1;
-    const tag = `h${level}` as HeadingProps["level"];
-    return {
-      ...acc,
-      [tag]: (props: Omit<HeadingProps, "level" | "link">) => (
-        <Heading {...props} level={tag} link={level <= 4} />
-      ),
-    };
-  }, {});
+  .reduce<Record<string, React.FC<Omit<HeadingProps, "level" | "link">>>>(
+    (acc, _curr, idx) => {
+      const num = idx + 1;
+      const level = `h${num}` as HeadingTag;
+      return {
+        ...acc,
+        [level]: (props: Omit<HeadingProps, "level" | "link">) => (
+          <Heading {...props} level={level} link={num <= 4} />
+        ),
+      };
+    },
+    {}
+  );
 
 export const PostBody = ({ page }: PostBodyProps) => {
   const components: MDXComponents = {
     a: Link,
     Accordion,
     Alert,
-    AppLinkButton: (props) =>
+    AppLinkButton: (props: ComponentPropsWithoutRef<typeof Button>) =>
       !!page.link && (
         <Button
           {...props}

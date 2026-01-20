@@ -118,39 +118,41 @@ const StickyTOCContent = ({ activeSlug, headings }: StickyTOCContentProps) => {
     []
   );
 
-  // Update indicator position when active slug changes
   useEffect(() => {
-    if (!activeSlug || !containerRef.current) {
-      setIndicatorStyle(null);
-      return;
-    }
+    const animationFrameId = requestAnimationFrame(() => {
+      if (!activeSlug || !containerRef.current) {
+        setIndicatorStyle(null);
+        return;
+      }
 
-    const activeLink = linkRefs.current.get(activeSlug);
-    if (!activeLink) {
-      setIndicatorStyle(null);
-      return;
-    }
+      const activeLink = linkRefs.current.get(activeSlug);
+      if (!activeLink) {
+        setIndicatorStyle(null);
+        return;
+      }
 
-    const containerRect = containerRef.current.getBoundingClientRect();
-    const linkRect = activeLink.getBoundingClientRect();
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
 
-    setIndicatorStyle({
-      height: linkRect.height,
-      top: linkRect.top - containerRect.top + containerRef.current.scrollTop,
+      setIndicatorStyle({
+        height: linkRect.height,
+        top: linkRect.top - containerRect.top + containerRef.current.scrollTop,
+      });
+
+      // Throttle scrollIntoView to avoid excessive calls during fast scrolling
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      scrollTimeoutRef.current = setTimeout(() => {
+        activeLink.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      }, 100);
     });
 
-    // Throttle scrollIntoView to avoid excessive calls during fast scrolling
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
-    scrollTimeoutRef.current = setTimeout(() => {
-      activeLink.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
-    }, 100);
-
     return () => {
+      cancelAnimationFrame(animationFrameId);
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
