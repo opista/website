@@ -38,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       changeFrequency: "monthly",
-      lastModified: getFileLastUpdated("apps"),
+      lastModified: getFileLastUpdated("(content)/apps"),
       priority: 0.8,
       url: `${BASE_SITE_URL}/apps`,
     },
@@ -48,7 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
     {
       changeFrequency: "monthly",
-      lastModified: getFileLastUpdated("posts"),
+      lastModified: getFileLastUpdated("(content)/posts"),
       priority: 0.8,
       url: `${BASE_SITE_URL}/posts`,
     },
