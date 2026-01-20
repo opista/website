@@ -10,7 +10,7 @@ import prettier from 'eslint-config-prettier/flat'
 
 export default defineConfig([
   {
-    ignores: ["eslint.config.mjs", "next.config.js", "postcss.config.js"],
+    ignores: ["eslint.config.mjs", "next.config.js", "postcss.config.js", ".lintstagedrc.js"],
   },
   ...nextVitals,
   prettier,

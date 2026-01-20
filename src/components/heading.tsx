@@ -96,7 +96,7 @@ export const Heading = ({
       className={clsx("relative scroll-mt-20", levelClasses[Comp], className)}
       id={slug}
     >
-      <span className="group">
+      <span className="group flex items-center gap-2">
         <ConditionalWrapper
           condition={!!link}
           wrapper={(children) => formattedChildren(children, href)}

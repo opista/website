@@ -1,4 +1,4 @@
-import { type ComponentPropsWithoutRef,forwardRef } from "react";
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
 import clsx from "clsx";
 import NextLink from "next/link";
 
@@ -42,7 +42,9 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       >
         {children}
         {shouldOpenInNewTab && !ariaLabel && (
-          <span className="sr-only">&nbsp;(opens in a new tab)</span>
+          <span className="relative">
+            <span className="sr-only">&nbsp;(opens in a new tab)</span>
+          </span>
         )}
       </NextLink>
     );
