@@ -39,13 +39,9 @@ export const Link = ({
       rel={rel}
       target={target}
     >
-      {shouldOpenInNewTab && !ariaLabel ? (
-        <>
-          {children}
-          <span className="sr-only">&nbsp;(opens in a new tab)</span>
-        </>
-      ) : (
-        children
+      {children}
+      {shouldOpenInNewTab && !ariaLabel && (
+        <span className="sr-only">&nbsp;(opens in a new tab)</span>
       )}
     </NextLink>
   );
