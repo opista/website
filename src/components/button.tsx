@@ -1,4 +1,4 @@
-import { HTMLAttributes, KeyboardEvent } from "react";
+import { HTMLAttributes, KeyboardEvent, MouseEvent } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 

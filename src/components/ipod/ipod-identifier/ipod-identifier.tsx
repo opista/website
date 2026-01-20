@@ -207,7 +207,7 @@ export const IpodIdentifier = () => {
           <IpodIdentifierLayout title={step.question} image={step.image}>
             {step.answers.map((answer) => (
               <Button
-                key={`${step.question}-${answer.value as string}`}
+                key={`${step.question}-${String(answer.value)}`}
                 onClick={() => onAnswer(step.key, answer.value)}
               >
                 {answer.label}

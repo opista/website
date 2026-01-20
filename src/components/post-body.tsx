@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentProps,ComponentPropsWithoutRef } from "react";
 import clsx from "clsx";
 import { MDXComponents } from "next-mdx-remote-client";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
