@@ -10,6 +10,7 @@ type ButtonProps = {
   center?: boolean;
   href?: string;
   noPadding?: boolean;
+  onEnter?: (event: KeyboardEvent<HTMLDivElement>) => void;
 };
 
 export const Button = ({
@@ -18,12 +19,13 @@ export const Button = ({
   className,
   href,
   noPadding,
+  onEnter,
   ...props
 }: HTMLAttributes<HTMLDivElement> & ButtonProps) => {
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      props.onClick?.(event as unknown as React.MouseEvent<HTMLDivElement>);
+      onEnter?.(event);
     }
   };
 
@@ -50,7 +52,7 @@ export const Button = ({
             { "px-5 py-2.5 ": !noPadding },
             className
           )}
-          onKeyDown={href ? undefined : onKeyDown}
+          onKeyDown={onKeyDown}
           role={href ? undefined : "button"}
           tabIndex={href ? undefined : 0}
           {...props}
