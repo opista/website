@@ -36,24 +36,24 @@ export async function generateMetadata({
     alternates: {
       canonical: url,
     },
+    description: page.description,
     openGraph: {
-      title: page.title,
       description: page.description,
-      url,
       images: [
         {
-          url: `/apps/${page.slug}/logo.png`,
           alt: `${page.title} logo`,
+          url: `/apps/${page.slug}/logo.png`,
         },
       ],
+      title: page.title,
+      url,
     },
+    title: `${page.title} - OPISTA`,
     twitter: {
       card: "summary",
-      title: page.title,
       description: page.description,
+      title: page.title,
     },
-    description: page.description,
-    title: `${page.title} - OPISTA`,
   };
 }
 

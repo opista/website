@@ -15,17 +15,17 @@ export const metadata: Metadata = {
   description: "Building apps to enrich your life",
   metadataBase: new URL(BASE_SITE_URL),
   openGraph: {
-    siteName: "OPISTA",
-    type: "website",
-    locale: "en_GB",
     images: [
       {
+        alt: "OPISTA logo",
+        height: 512,
         url: "/logo.png",
         width: 512,
-        height: 512,
-        alt: "OPISTA logo",
       },
     ],
+    locale: "en_GB",
+    siteName: "OPISTA",
+    type: "website",
   },
   twitter: {
     card: "summary",

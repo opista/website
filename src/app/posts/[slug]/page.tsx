@@ -35,21 +35,21 @@ export async function generateMetadata({
     alternates: {
       canonical: url,
     },
+    description: page.description,
     openGraph: {
-      title: page.title,
       description: page.description,
-      url,
-      type: "article",
-      publishedTime: page.datePublished?.toISOString() ?? page.createdAt.toISOString(),
       modifiedTime: page.modifiedAt.toISOString(),
+      publishedTime: page.datePublished?.toISOString() ?? page.createdAt.toISOString(),
+      title: page.title,
+      type: "article",
+      url,
     },
+    title: `${page.title} - OPISTA`,
     twitter: {
       card: "summary_large_image",
-      title: page.title,
       description: page.description,
+      title: page.title,
     },
-    description: page.description,
-    title: `${page.title} - OPISTA`,
   };
 }
 

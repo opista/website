@@ -1,15 +1,20 @@
-// @ts-check
-import eslint from "@eslint/js";
+import { defineConfig } from "eslint/config";
+import js from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import perfectionist from "eslint-plugin-perfectionist";
+import unusedImports from "eslint-plugin-unused-imports";
+import nextVitals from 'eslint-config-next/core-web-vitals'
+import prettier from 'eslint-config-prettier/flat'
 
-export default tseslint.config(
+export default defineConfig([
   {
     ignores: ["eslint.config.mjs", "next.config.js", "postcss.config.js"],
   },
-  eslint.configs.recommended,
+  ...nextVitals,
+  prettier,
+  js.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   {
     languageOptions: {
@@ -17,7 +22,7 @@ export default tseslint.config(
         ...globals.node,
         ...globals.jest,
       },
-      sourceType: "commonjs",
+      sourceType: "module",
       parserOptions: {
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
@@ -27,6 +32,7 @@ export default tseslint.config(
   {
     plugins: {
       "simple-import-sort": simpleImportSort,
+      "unused-imports": unusedImports,
       perfectionist,
     },
     rules: {
@@ -78,4 +84,4 @@ export default tseslint.config(
       ],
     },
   },
-);
+]);

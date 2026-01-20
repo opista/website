@@ -23,7 +23,7 @@ export const BackToTop = ({
   const onClick = useCallback(() => {
     const focusableElement = document.querySelector(
       'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    ) as HTMLElement | null;
+    );
 
     window.scrollTo({
       behavior: "smooth",

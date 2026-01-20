@@ -1,7 +1,8 @@
 "use client";
 
-import { FIXED_TOC_WIDTH } from "@/components/table-of-contents";
 import { useCallback, useEffect, useRef, useState } from "react";
+
+import { FIXED_TOC_WIDTH } from "@/components/table-of-contents";
 
 const CONTENT_MAX_WIDTH = 660; // max-w-prose = 65ch ≈ 656px (measured)
 const RIGHT_MARGIN = 24; // Space from viewport edge
@@ -61,8 +62,8 @@ export function useStickyToc({
         );
       },
       {
-        threshold: 0,
         rootMargin: "-80px 0px 0px 0px", // Account for potential header
+        threshold: 0,
       }
     );
 
@@ -73,7 +74,7 @@ export function useStickyToc({
 
   return {
     containerRef,
-    isSticky: enabled && isOutOfView && hasEnoughSpace,
     hasEnoughSpace,
+    isSticky: enabled && isOutOfView && hasEnoughSpace,
   };
 }

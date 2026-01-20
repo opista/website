@@ -1,15 +1,15 @@
 "use client";
 
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import { createPortal } from "react-dom";
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { useActiveHeading } from "@/hooks/use-active-heading";
+import { useStickyToc } from "@/hooks/use-sticky-toc";
 import {
   generateTableOfContents,
   TOCItem,
 } from "@/util/generate-table-of-contents";
-import { useStickyToc } from "@/hooks/use-sticky-toc";
-import { useActiveHeading } from "@/hooks/use-active-heading";
 
 import { Accordion } from "./accordion";
 import { ConditionalWrapper } from "./conditional-wrapper";
@@ -40,7 +40,7 @@ type HeadingItemProps = {
 };
 
 const HeadingItem = memo(
-  ({ heading, activeSlug, registerRef }: HeadingItemProps) => {
+  ({ activeSlug, heading, registerRef }: HeadingItemProps) => {
     const isActive = activeSlug === heading.slug;
 
     return (
@@ -74,8 +74,8 @@ type HeadingGroupProps = {
 };
 
 const HeadingGroup = ({
-  headings,
   activeSlug,
+  headings,
   registerRef,
 }: HeadingGroupProps) => (
   <ul className="list-none m-0! pl-4">
@@ -135,8 +135,8 @@ const StickyTOCContent = ({ activeSlug, headings }: StickyTOCContentProps) => {
     const linkRect = activeLink.getBoundingClientRect();
 
     setIndicatorStyle({
-      top: linkRect.top - containerRect.top + containerRef.current.scrollTop,
       height: linkRect.height,
+      top: linkRect.top - containerRect.top + containerRef.current.scrollTop,
     });
 
     // Throttle scrollIntoView to avoid excessive calls during fast scrolling
@@ -164,8 +164,8 @@ const StickyTOCContent = ({ activeSlug, headings }: StickyTOCContentProps) => {
         <div
           className="absolute left-[-2px] w-1 bg-pink-400 transition-all duration-150"
           style={{
-            top: indicatorStyle.top,
             height: indicatorStyle.height,
+            top: indicatorStyle.top,
           }}
         />
       )}
@@ -206,8 +206,8 @@ const StickyTOCWrapper = ({ activeSlug, headings }: StickyTOCWrapperProps) => {
 export const TableOfContents = ({
   collapsable,
   content,
-  maxDepth,
   enableSticky = true,
+  maxDepth,
 }: TableOfContentsProps) => {
   const headings = useMemo(
     () => generateTableOfContents(content, maxDepth),
