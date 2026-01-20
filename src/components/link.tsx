@@ -15,20 +15,20 @@ export const Link = ({
   ...props
 }: LinkProps) => {
   const isInternal = isInternalLink(href);
+  const shouldOpenInNewTab = !isInternal || openInNewTab;
 
-  const target = !isInternal || openInNewTab ? "_blank" : undefined;
-  const rel = target === "_blank" ? "noopener noreferrer" : undefined;
+  const target = shouldOpenInNewTab ? "_blank" : undefined;
+  const rel = shouldOpenInNewTab ? "noopener noreferrer" : undefined;
 
   const ariaLabel = props["aria-label"];
-  const shouldWarn = target === "_blank";
 
   const finalAriaLabel =
-    shouldWarn && ariaLabel
+    shouldOpenInNewTab && ariaLabel
       ? `${ariaLabel} (opens in a new tab)`
       : ariaLabel;
 
   const content =
-    shouldWarn && !ariaLabel ? (
+    shouldOpenInNewTab && !ariaLabel ? (
       <>
         {children}
         <span className="sr-only">&nbsp;(opens in a new tab)</span>
