@@ -14,13 +14,13 @@ type ProsConsListProps = {
 };
 
 const iconMap: Record<ListType, { icon: FC<IconProps>; className: string }> = {
-  pros: {
-    icon: CheckCircleIcon,
-    className: "text-green-600",
-  },
   cons: {
-    icon: CrossCircleIcon,
     className: "text-red-600",
+    icon: CrossCircleIcon,
+  },
+  pros: {
+    className: "text-green-600",
+    icon: CheckCircleIcon,
   },
 };
 

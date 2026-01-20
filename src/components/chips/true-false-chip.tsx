@@ -14,8 +14,8 @@ type TrueFalseChipProps = {
 };
 
 const iconMap: Record<string, FC<IconProps>> = {
-  true: CheckCircleIcon,
   false: CrossCircleIcon,
+  true: CheckCircleIcon,
 };
 
 export const TrueFalseChip = ({

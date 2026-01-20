@@ -5,8 +5,8 @@ import { Heading } from "@/components/heading";
 import { PageLayout } from "@/components/page-layout";
 
 export const metadata: Metadata = {
-  title: "Not Found - OPISTA",
   description: "Perhaps you took a wrong turn somewhere?",
+  title: "Not Found - OPISTA",
 };
 
 export default function NotFoundPage() {

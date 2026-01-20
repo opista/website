@@ -1,4 +1,4 @@
-import { HTMLProps, ReactNode } from "react";
+import { Children, HTMLProps, ReactNode } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 
@@ -7,7 +7,7 @@ import { toSlug } from "@/util/to-slug";
 import { ConditionalWrapper } from "./conditional-wrapper";
 import { LinkIcon } from "./icons/link-icon";
 
-type HeadingTags = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+export type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 const levelClasses = {
   h1: "text-3xl sm:text-7xl font-bold",
@@ -19,7 +19,7 @@ const levelClasses = {
 };
 
 export type HeadingProps = HTMLProps<HTMLHeadingElement> & {
-  level: HeadingTags;
+  level: HeadingTag;
   link?: boolean;
 };
 
@@ -40,7 +40,7 @@ const Icon = () => (
 );
 
 const formattedChildren = (children: ReactNode, href: string) => {
-  if (!Array.isArray(children)) {
+  if (Children.count(children) <= 1) {
     return (
       <LinkWrapper href={href}>
         {children} <Icon />
@@ -48,7 +48,7 @@ const formattedChildren = (children: ReactNode, href: string) => {
     );
   }
 
-  const mapped = children.map((child) => {
+  const mapped = Children.map(children, (child) => {
     if (typeof child === "string") {
       return (
         <LinkWrapper href={href} key={child}>
@@ -64,28 +64,28 @@ const formattedChildren = (children: ReactNode, href: string) => {
     <>
       {mapped}
       <LinkWrapper href={href}>
-        <LinkIcon className="group-hover:text-pink-500 inline-block ml-1" />
+        <Icon />
       </LinkWrapper>
     </>
   );
 };
 
 export const Heading = ({
-  level: Comp,
-  link = false,
   children,
   className,
+  level: Comp,
+  link = false,
   ...props
 }: HeadingProps) => {
   const slug = toSlug(
     Array.isArray(children)
       ? children
-          .filter((child): child is string => typeof child === "string")
-          .map((child) => child.trim())
-          .join(" ")
+        .filter((child): child is string => typeof child === "string")
+        .map((child) => child.trim())
+        .join(" ")
       : typeof children === "string" || typeof children === "number"
-      ? children
-      : ""
+        ? children
+        : ""
   );
 
   const href = `#${slug}`;

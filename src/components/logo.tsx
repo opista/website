@@ -14,7 +14,7 @@ export const Logo = ({
 }: LogoProps & HTMLAttributes<HTMLSpanElement>) => (
   <ConditionalWrapper
     condition={isLink}
-    wrapper={(children) => <Link href="/">{children}</Link>}
+    wrapper={(children) => <Link className="logo" href="/">{children}</Link>}
   >
     <span
       className={clsx(

@@ -34,109 +34,109 @@ type GenerationConfiguration = {
 
 const deviceMap: GenerationConfiguration[] = [
   {
-    generation: 5,
     capacityOptions: [
       {
         capacity: 30,
         upgrades: {
+          "1TB": "partial",
+          "2TB": "partial",
           "128GB": "full",
           "256GB": "full",
           "512GB": "partial",
-          "1TB": "partial",
-          "2TB": "partial",
         },
       },
       {
         capacity: 60,
         upgrades: {
+          "1TB": "full",
+          "2TB": "partial",
           "128GB": "full",
           "256GB": "full",
           "512GB": "full",
-          "1TB": "full",
-          "2TB": "partial",
         },
       },
     ],
+    generation: 5,
   },
   {
-    generation: 5.5,
     capacityOptions: [
       {
         capacity: 30,
         upgrades: {
+          "1TB": "partial",
+          "2TB": "partial",
           "128GB": "full",
           "256GB": "full",
           "512GB": "partial",
-          "1TB": "partial",
-          "2TB": "partial",
         },
       },
       {
         capacity: 80,
         upgrades: {
+          "1TB": "full",
+          "2TB": "partial",
           "128GB": "full",
           "256GB": "full",
           "512GB": "full",
-          "1TB": "full",
-          "2TB": "partial",
         },
       },
     ],
+    generation: 5.5,
   },
   {
-    generation: 6,
     capacityOptions: [
       {
         capacity: 80,
         upgrades: {
+          "1TB": "firmware",
+          "2TB": "firmware",
           "128GB": "full",
           "256GB": "firmware",
           "512GB": "firmware",
-          "1TB": "firmware",
-          "2TB": "firmware",
         },
       },
       {
         capacity: 160,
         upgrades: {
+          "1TB": "firmware",
+          "2TB": "firmware",
           "128GB": "full",
           "256GB": "firmware",
           "512GB": "firmware",
-          "1TB": "firmware",
-          "2TB": "firmware",
         },
       },
     ],
+    generation: 6,
   },
   {
-    generation: 6.5,
     capacityOptions: [
       {
         capacity: 120,
         upgrades: {
+          "1TB": "firmware",
+          "2TB": "firmware",
           "128GB": "full",
           "256GB": "firmware",
           "512GB": "firmware",
-          "1TB": "firmware",
-          "2TB": "firmware",
         },
       },
     ],
+    generation: 6.5,
   },
   {
-    generation: 7,
     capacityOptions: [
       {
         capacity: 160,
         upgrades: {
+          "1TB": "full",
+          "2TB": "partial",
           "128GB": "full",
           "256GB": "full",
           "512GB": "full",
-          "1TB": "full",
-          "2TB": "partial",
         },
       },
     ],
+    generation: 7,
   },
 ];
 
@@ -144,17 +144,6 @@ const supportLevelMap: Record<
   SupportLevel,
   { className: string; description: ReactNode | string; icon: FC<IconProps> }
 > = {
-  full: {
-    className: "text-green-600 bg-green-100",
-    description: "Supported",
-    icon: CheckCircleIcon,
-  },
-  partial: {
-    className: "text-yellow-600 bg-yellow-100",
-    description:
-      "Supported, but you'll probably reach the RAM's item limit before the storage limit",
-    icon: ExclamationCircleIcon,
-  },
   firmware: {
     className: "text-purple-600 bg-purple-100",
     description: (
@@ -167,10 +156,21 @@ const supportLevelMap: Record<
     ),
     icon: InformationIcon,
   },
+  full: {
+    className: "text-green-600 bg-green-100",
+    description: "Supported",
+    icon: CheckCircleIcon,
+  },
   none: {
     className: "text-red-600 bg-red-100",
     description: "Unsupported",
     icon: CrossCircleIcon,
+  },
+  partial: {
+    className: "text-yellow-600 bg-yellow-100",
+    description:
+      "Supported, but you'll probably reach the RAM's item limit before the storage limit",
+    icon: ExclamationCircleIcon,
   },
 };
 
@@ -179,6 +179,7 @@ const CompatibilityCell = ({ level }: { level: SupportLevel }) => {
   return (
     <TableBodyCell
       className={clsx("align-middle text-center w-[60px]", className)}
+      aria-label={level}
     >
       <Icon className="inline-block size-6" />
     </TableBodyCell>
@@ -245,18 +246,11 @@ export const IpodStorageUpgradeCompatibilityTable = () => (
               <TableBodyCell border>
                 {device.capacityOptions[0].capacity}GB
               </TableBodyCell>
-              {Object.entries(device.capacityOptions[0].upgrades).map(
-                ([upgrade, support]) => (
-                  <CompatibilityCell
-                    key={toSlug(
-                      device.generation.toString(),
-                      device.capacityOptions[0].capacity.toString(),
-                      upgrade
-                    )}
-                    level={support}
-                  />
-                )
-              )}
+              <CompatibilityCell level={device.capacityOptions[0].upgrades["128GB"]} />
+              <CompatibilityCell level={device.capacityOptions[0].upgrades["256GB"]} />
+              <CompatibilityCell level={device.capacityOptions[0].upgrades["512GB"]} />
+              <CompatibilityCell level={device.capacityOptions[0].upgrades["1TB"]} />
+              <CompatibilityCell level={device.capacityOptions[0].upgrades["2TB"]} />
             </tr>
             {device.capacityOptions.slice(1).map((option) => (
               <tr
@@ -266,16 +260,11 @@ export const IpodStorageUpgradeCompatibilityTable = () => (
                 )}
               >
                 <TableBodyCell border>{option.capacity}GB</TableBodyCell>
-                {Object.entries(option.upgrades).map(([upgrade, support]) => (
-                  <CompatibilityCell
-                    key={toSlug(
-                      device.generation.toString(),
-                      option.capacity.toString(),
-                      upgrade
-                    )}
-                    level={support}
-                  />
-                ))}
+                <CompatibilityCell level={option.upgrades["128GB"]} />
+                <CompatibilityCell level={option.upgrades["256GB"]} />
+                <CompatibilityCell level={option.upgrades["512GB"]} />
+                <CompatibilityCell level={option.upgrades["1TB"]} />
+                <CompatibilityCell level={option.upgrades["2TB"]} />
               </tr>
             ))}
           </Fragment>

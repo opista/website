@@ -57,7 +57,9 @@ export function useActiveHeading(headingSlugs: string[]): string | null {
     // Initialize on mount
     const initialActive = findActiveHeading(headingSlugs, cache);
     if (initialActive) {
-      setActiveSlug(initialActive);
+      requestAnimationFrame(() => {
+        setActiveSlug(initialActive);
+      });
     }
 
     // Track which headings are currently visible

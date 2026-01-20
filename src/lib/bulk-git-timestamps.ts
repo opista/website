@@ -38,8 +38,8 @@ export const getBulkTimestamps = (directory: string): Map<string, Timestamps> =>
         const entry = map.get(fullPath);
         if (!entry) {
           map.set(fullPath, {
-            modifiedAt: currentDate,
             createdAt: currentDate,
+            modifiedAt: currentDate,
           });
         } else {
           entry.createdAt = currentDate;

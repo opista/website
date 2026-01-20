@@ -59,26 +59,26 @@ const headings: Heading[] = [
   { label: "Battery Mod", width: "235px" },
   { label: "Storage Adaptor", width: "190px" },
   {
-    label: "Thin backplate",
     component: <BackplateIndicator backplate="thin" />,
+    label: "Thin backplate",
     width: "90px",
   },
   {
-    label: "Thick backplate",
     component: <BackplateIndicator backplate="thick" />,
+    label: "Thick backplate",
     width: "90px",
   },
 ];
 
 const batteryMap: CompatibilityRow[] = [
   {
-    name: "650mAh (OEM)",
     dimensions: [
       {
         link: "https://s.click.aliexpress.com/e/_oEtP51z",
         measurements: [19.7, 44.8, 6.2],
       },
     ],
+    name: "650mAh (OEM)",
     storageOptions: [
       {
         name: "None (Stock HDD)",
@@ -98,13 +98,13 @@ const batteryMap: CompatibilityRow[] = [
     ],
   },
   {
-    name: "850mAh (OEM)",
     dimensions: [
       {
         link: "https://s.click.aliexpress.com/e/_c3ZMMOKL",
         measurements: [19.7, 44.8, 6.2],
       },
     ],
+    name: "850mAh (OEM)",
     storageOptions: [
       {
         name: "None (Stock HDD)",
@@ -124,7 +124,6 @@ const batteryMap: CompatibilityRow[] = [
     ],
   },
   {
-    name: "2000mAh (square)",
     dimensions: [
       {
         link: "https://s.click.aliexpress.com/e/_oC2MEt5",
@@ -136,6 +135,7 @@ const batteryMap: CompatibilityRow[] = [
         note: "There are multiple options for this listing. Look for the one labelled '44.5404.8mm thinback'",
       },
     ],
+    name: "2000mAh (square)",
     storageOptions: [
       {
         name: "None (Stock HDD)",
@@ -183,7 +183,6 @@ const batteryMap: CompatibilityRow[] = [
     ],
   },
   {
-    name: "3000mAh (thin)",
     dimensions: [
       {
         link: "https://s.click.aliexpress.com/e/_oCNvre3",
@@ -196,6 +195,7 @@ const batteryMap: CompatibilityRow[] = [
         note: "Select '79493.8mm Thin Back'",
       },
     ],
+    name: "3000mAh (thin)",
     storageOptions: [
       {
         name: "None (Stock HDD)",
@@ -232,15 +232,15 @@ const compatibilityMap: Record<
   string,
   { className: string; description: ReactNode | string; icon: FC<IconProps> }
 > = {
-  true: {
-    className: "text-green-600 bg-green-100",
-    description: "Compatible",
-    icon: CheckCircleIcon,
-  },
   false: {
     className: "text-red-600 bg-red-100",
     description: "Incompatible",
     icon: CrossCircleIcon,
+  },
+  true: {
+    className: "text-green-600 bg-green-100",
+    description: "Compatible",
+    icon: CheckCircleIcon,
   },
 };
 

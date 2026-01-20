@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 import clsx from "clsx";
 import Image from "next/image";
 
@@ -30,20 +30,15 @@ const Price = ({ price }: { price?: string }) => {
 };
 
 export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
-  const [isMounted, setIsMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const { cta, link, price, title } = page;
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const showSticky = useScrollSelector(
     useCallback(() => {
       if (!ref.current) return false;
       const { top } = ref.current.getBoundingClientRect();
       return top <= 16;
-    }, [isMounted])
+    }, [])
   );
 
   if (!link) return;
