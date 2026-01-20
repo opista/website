@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, FC } from "react";
 import clsx from "clsx";
 import { MDXComponents } from "next-mdx-remote-client";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
@@ -39,13 +39,13 @@ type PostBodyProps = {
 
 const headings = Array(6)
   .fill(null)
-  .reduce<Record<string, React.FC<Omit<HeadingProps, "level" | "link">>>>(
+  .reduce<Record<string, FC<HeadingProps>>>(
     (acc, _curr, idx) => {
       const num = idx + 1;
       const level = `h${num}` as HeadingTag;
       return {
         ...acc,
-        [level]: (props: Omit<HeadingProps, "level" | "link">) => (
+        [level]: (props: HeadingProps) => (
           <Heading {...props} level={level} link={num <= 4} />
         ),
       };
