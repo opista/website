@@ -9,3 +9,7 @@
 ## 2026-01-17 - [Bulk Git Timestamps]
 **Learning:** Fetching git timestamps for many files individually (N+1) using `execSync` is a major build performance bottleneck (process spawning overhead).
 **Action:** Use a single `git log` command to fetch history for an entire directory and map it to files in memory, reducing complexity from O(N) to O(1) process spawns.
+
+## 2026-01-20 - [Keep Lodash Throttle]
+**Learning:** Writing a custom `throttle` implementation to save bundle size introduced maintenance risk without sufficient justification.
+**Action:** Keep `lodash-es` (or similar robust libraries) for complex utilities like `throttle`. Do not replace them with custom implementations unless absolutely necessary and proven to be a bottleneck.

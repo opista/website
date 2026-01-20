@@ -9,26 +9,43 @@ type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
 };
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ href, openInNewTab, ...props }, ref) => {
+  ({
+    children,
+    href,
+    openInNewTab,
+    ...props
+  }, ref) => {
     const isInternal = isInternalLink(href);
+    const shouldOpenInNewTab = !isInternal || openInNewTab;
+    const target = shouldOpenInNewTab ? "_blank" : undefined;
+    const rel = shouldOpenInNewTab ? "noopener noreferrer" : undefined;
 
-    const target = !isInternal || openInNewTab ? "_blank" : undefined;
-    const rel = target === "_blank" ? "noopener noreferrer" : undefined;
+    const ariaLabel = props["aria-label"];
+
+    const finalAriaLabel =
+      shouldOpenInNewTab && ariaLabel
+        ? `${ariaLabel} (opens in a new tab)`
+        : ariaLabel;
 
     return (
       <NextLink
         {...props}
-        ref={ref}
+        aria-label={finalAriaLabel}
         className={clsx(
           props.className,
           "link decoration-wavy no-underline hover:underline text-pink-400 hover:text-pink-500"
         )}
         href={href}
+        ref={ref}
         rel={rel}
         target={target}
-      />
+      >
+        {children}
+        {shouldOpenInNewTab && !ariaLabel && (
+          <span className="sr-only">&nbsp;(opens in a new tab)</span>
+        )}
+      </NextLink>
     );
-  }
-);
+  });
 
 Link.displayName = "Link";
