@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import { AppDetailsBar } from "@/components/app/app-details-bar";
 import { BackToTop } from "@/components/back-to-top";
 import { Heading } from "@/components/heading";
-import { PageLayout } from "@/components/page-layout";
 import { PostBody } from "@/components/post-body";
 import { BASE_SITE_URL } from "@/constant";
 import { getAllPageSlugs, getPageContentBySlug } from "@/lib/pages";
@@ -70,7 +69,7 @@ export default async function AppPage({
   }
 
   return (
-    <PageLayout className="prose prose-invert" tag="article">
+    <article className="prose prose-invert">
       <div className="flex flex-col sm:flex-row items-center">
         <div className="relative my-0 mb-2 sm:mb-0 sm:mr-2 rounded-[25%] overflow-hidden w-[40px] h-[40px] sm:w-[70px] sm:h-[70px] shrink-0">
           <Image
@@ -89,6 +88,6 @@ export default async function AppPage({
       <AppDetailsBar className="mb-5" page={page} />
       <PostBody page={page} />
       <BackToTop />
-    </PageLayout>
+    </article>
   );
 }

@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { BackToTop } from "@/components/back-to-top";
 import { Heading } from "@/components/heading";
 import { ArticleJsonLd } from "@/components/json-ld";
-import { PageLayout } from "@/components/page-layout";
 import { PostBody } from "@/components/post-body";
 import { BASE_SITE_URL } from "@/constant";
 import { getAllPageSlugs, getPageContentBySlug } from "@/lib/pages";
@@ -72,7 +71,7 @@ export default async function PostPage({
   }).format(page.modifiedAt);
 
   return (
-    <PageLayout className="prose prose-invert" tag="article">
+    <article className="prose prose-invert">
       <ArticleJsonLd
         dateModified={page.modifiedAt.toISOString()}
         datePublished={(page.datePublished ?? page.createdAt).toISOString()}
@@ -86,7 +85,7 @@ export default async function PostPage({
       <p className="text-xs mt-0 mb-8">Last updated: {date}</p>
       <PostBody page={page} />
       <BackToTop />
-    </PageLayout>
+    </article>
   );
 }
 

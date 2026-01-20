@@ -4,7 +4,6 @@ import { Metadata } from "next";
 import { Heading } from "@/components/heading";
 import { HorizontalRule } from "@/components/horizontal-rule";
 import { Link } from "@/components/link";
-import { PageLayout } from "@/components/page-layout";
 import { getAllPagesAndContent } from "@/lib/pages";
 
 export const metadata: Metadata = {
@@ -21,7 +20,7 @@ export default function Apps() {
   const posts = getAllPagesAndContent("posts");
 
   return (
-    <PageLayout>
+    <>
       <Heading className="mb-12" level="h1">
         Posts
       </Heading>
@@ -49,6 +48,6 @@ export default function Apps() {
           ))}
         </ul>
       </div>
-    </PageLayout>
+    </>
   );
 }

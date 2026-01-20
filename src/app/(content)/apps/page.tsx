@@ -3,8 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Heading } from "@/components/heading";
-import { PageLayout } from "@/components/page-layout";
-import { getAllPagesAndContent,PageContent } from "@/lib/pages";
+import { getAllPagesAndContent, PageContent } from "@/lib/pages";
 
 const MAX_IMAGE_WIDTH = 300;
 
@@ -37,13 +36,13 @@ export default function Apps() {
   const apps = getAllPagesAndContent("apps");
 
   return (
-    <PageLayout>
+    <>
       <Heading level="h1">Our Apps</Heading>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 sm:mt-16">
         {apps.map((app) => (
           <AppCell key={app.slug} app={app} />
         ))}
       </div>
-    </PageLayout>
+    </>
   );
 }
