@@ -14,7 +14,7 @@ type AppPageParams = {
   slug: string;
 };
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return getAllPageSlugs("apps");
 }
 
@@ -33,26 +33,26 @@ export async function generateMetadata({
   const url = `${BASE_SITE_URL}/apps/${page.slug}`;
 
   return {
-    title: `${page.title} - OPISTA`,
-    description: page.description,
     alternates: {
       canonical: url,
     },
+    description: page.description,
     openGraph: {
-      title: page.title,
       description: page.description,
-      url,
       images: [
         {
-          url: `/apps/${page.slug}/logo.png`,
           alt: `${page.title} logo`,
+          url: `/apps/${page.slug}/logo.png`,
         },
       ],
+      title: page.title,
+      url,
     },
+    title: `${page.title} - OPISTA`,
     twitter: {
       card: "summary",
-      title: page.title,
       description: page.description,
+      title: page.title,
     },
   };
 }

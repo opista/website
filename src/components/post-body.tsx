@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, FC } from "react";
 import clsx from "clsx";
 import { MDXComponents } from "next-mdx-remote-client";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
@@ -11,7 +11,7 @@ import { Alert } from "./alert";
 import { Button } from "./button";
 import { SolderingChip } from "./chips/soldering-chip";
 import { TrueFalseChip } from "./chips/true-false-chip";
-import { Heading, HeadingProps } from "./heading";
+import { Heading, HeadingProps, HeadingTag } from "./heading";
 import { Image } from "./image";
 import { BackplateIndicator } from "./ipod/backplate-indicator";
 import { IpodFaceplateOptionsTable5Gen } from "./ipod/ipod-faceplate-options-table-5gen";
@@ -39,35 +39,39 @@ type PostBodyProps = {
 
 const headings = Array(6)
   .fill(null)
-  .reduce((acc, _curr, idx) => {
-    const level = idx + 1;
-    const tag = `h${level}` as HeadingProps["level"];
-    return {
-      ...acc,
-      [tag]: (props: HeadingProps) => (
-        <Heading {...props} level={tag} link={level <= 4} />
-      ),
-    };
-  }, {});
+  .reduce<Record<string, FC<HeadingProps>>>(
+    (acc, _curr, idx) => {
+      const num = idx + 1;
+      const level = `h${num}` as HeadingTag;
+      return {
+        ...acc,
+        [level]: (props: HeadingProps) => (
+          <Heading {...props} level={level} link={num <= 4} />
+        ),
+      };
+    },
+    {}
+  );
 
 export const PostBody = ({ page }: PostBodyProps) => {
   const components: MDXComponents = {
     a: Link,
     Accordion,
-    BackplateIndicator,
-    Button,
     Alert,
-    AppLinkButton: (props) =>
+    AppLinkButton: (props: ComponentPropsWithoutRef<typeof Button>) =>
       !!page.link && (
         <Button
           {...props}
           center
           className={clsx("mx-auto", props.className)}
           href={page.link}
+          key={page.link}
         >
           {props.children || page.cta}
         </Button>
       ),
+    BackplateIndicator,
+    Button,
     ...headings,
     Image,
     IpodFaceplateOptionsTable5Gen,
@@ -81,12 +85,12 @@ export const PostBody = ({ page }: PostBodyProps) => {
     RamIndicator,
     RecommendedBadge,
     SolderingChip,
+    table: Table,
     TableOfContents: (props) => (
       <TableOfContents {...props} content={page.content} maxDepth={3} />
     ),
-    table: Table,
-    th: TableHeadCell,
     td: TableBodyCell,
+    th: TableHeadCell,
     TrueFalseChip,
     ul: UnorderedList,
     VideoEmbed,

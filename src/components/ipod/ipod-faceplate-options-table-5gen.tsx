@@ -5,8 +5,8 @@ import {
 
 const faceplates: IpodPlateOptionsTableProps["plates"] = [
   {
-    name: "Black",
     image: "/posts/ipod-modding/faceplates/gen5/black.png",
+    name: "Black",
     purchase: [
       {
         label: "AliExpress",
@@ -23,8 +23,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Blue",
     image: "/posts/ipod-modding/faceplates/gen5/blue.png",
+    name: "Blue",
     purchase: [
       {
         label: "AliExpress",
@@ -41,8 +41,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Blue (Transparent)",
     image: "/posts/ipod-modding/faceplates/gen5/blue-transparent.png",
+    name: "Blue (Transparent)",
     purchase: [
       {
         label: "AliExpress",
@@ -51,8 +51,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Green (Transparent)",
     image: "/posts/ipod-modding/faceplates/gen5/green-transparent.png",
+    name: "Green (Transparent)",
     purchase: [
       {
         label: "AliExpress",
@@ -65,9 +65,9 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Fluorescent Green (Transparent)",
     image:
       "/posts/ipod-modding/faceplates/gen5/green-fluorescent-transparent.png",
+    name: "Fluorescent Green (Transparent)",
     purchase: [
       {
         label: "AliExpress",
@@ -76,8 +76,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Grey (Transparent)",
     image: "/posts/ipod-modding/faceplates/gen5/grey-transparent.png",
+    name: "Grey (Transparent)",
     purchase: [
       {
         label: "AliExpress",
@@ -86,9 +86,9 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Fluorescent Pink (Transparent)",
     image:
       "/posts/ipod-modding/faceplates/gen5/pink-fluorescent-transparent.png",
+    name: "Fluorescent Pink (Transparent)",
     purchase: [
       {
         label: "AliExpress",
@@ -97,8 +97,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Purple",
     image: "/posts/ipod-modding/faceplates/gen5/purple.png",
+    name: "Purple",
     purchase: [
       {
         label: "AliExpress",
@@ -116,8 +116,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
   },
 
   {
-    name: "Purple (Transparent)",
     image: "/posts/ipod-modding/faceplates/gen5/purple-transparent.png",
+    name: "Purple (Transparent)",
     purchase: [
       {
         label: "AliExpress",
@@ -126,8 +126,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Red",
     image: "/posts/ipod-modding/faceplates/gen5/red.png",
+    name: "Red",
     purchase: [
       {
         label: "AliExpress",
@@ -144,8 +144,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Red (Transparent)",
     image: "/posts/ipod-modding/faceplates/gen5/red-transparent.png",
+    name: "Red (Transparent)",
     purchase: [
       {
         label: "AliExpress",
@@ -158,8 +158,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Transparent",
     image: "/posts/ipod-modding/faceplates/gen5/transparent.png",
+    name: "Transparent",
     purchase: [
       {
         label: "AliExpress",
@@ -172,8 +172,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "White",
     image: "/posts/ipod-modding/faceplates/gen5/white.png",
+    name: "White",
     purchase: [
       {
         label: "AliExpress",
@@ -190,8 +190,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Yellow",
     image: "/posts/ipod-modding/faceplates/gen5/yellow.png",
+    name: "Yellow",
     purchase: [
       {
         label: "AliExpress",
@@ -200,8 +200,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Yellow (Transparent)",
     image: "/posts/ipod-modding/faceplates/gen5/yellow-transparent.png",
+    name: "Yellow (Transparent)",
     purchase: [
       {
         label: "AliExpress",
@@ -210,8 +210,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Atomic (Custom made by EOE)",
     image: "/posts/ipod-modding/faceplates/gen5/eoe-atomic.png",
+    name: "Atomic (Custom made by EOE)",
     purchase: [
       {
         label: "EOE",

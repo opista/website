@@ -41,8 +41,8 @@ export const SiteLinks = ({ hideContact }: SiteLinksProps) => {
             <Link
               aria-current={pathname.startsWith(href) ? "page" : undefined}
               className={clsx("p-2 hover:underline decoration-2", {
-                "font-medium": !pathname.startsWith(href),
                 "font-bold underline": pathname.startsWith(href),
+                "font-medium": !pathname.startsWith(href),
                 "pr-0": idx === arr.length - 1,
               })}
               href={href}

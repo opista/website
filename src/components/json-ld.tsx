@@ -29,9 +29,9 @@ export const OrganizationJsonLd = () => (
   <JsonLd
     data={{
       "@type": "Organization",
+      logo: `${BASE_SITE_URL}/logo.png`,
       name: "OPISTA",
       url: BASE_SITE_URL,
-      logo: `${BASE_SITE_URL}/logo.png`,
     }}
   />
 );
@@ -49,36 +49,36 @@ type ArticleJsonLdProps = {
  * Article schema for blog posts
  */
 export const ArticleJsonLd = ({
-  title,
-  description,
-  url,
-  datePublished,
   dateModified,
+  datePublished,
+  description,
   image,
+  title,
+  url,
 }: ArticleJsonLdProps) => (
   <JsonLd
     data={{
       "@type": "Article",
-      headline: title,
-      description,
-      url,
-      datePublished,
-      dateModified,
-      image: image || `${BASE_SITE_URL}/logo.png`,
       author: {
         "@type": "Organization",
         name: "OPISTA",
         url: BASE_SITE_URL,
       },
+      dateModified,
+      datePublished,
+      description,
+      headline: title,
+      image: image || `${BASE_SITE_URL}/logo.png`,
       publisher: {
         "@type": "Organization",
-        name: "OPISTA",
-        url: BASE_SITE_URL,
         logo: {
           "@type": "ImageObject",
           url: `${BASE_SITE_URL}/logo.png`,
         },
+        name: "OPISTA",
+        url: BASE_SITE_URL,
       },
+      url,
     }}
   />
 );

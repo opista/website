@@ -17,18 +17,16 @@ export const BackToTop = ({
   offset = 300,
 }: HTMLProps<HTMLDivElement> & BackToTopProps) => {
   const showButton = useScrollSelector(
-    useCallback((y) => y > offset, [offset])
+    useCallback((y: number) => y > offset, [offset])
   );
 
   const onClick = useCallback(() => {
-    const focusableElement = document.querySelector(
-      'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    ) as HTMLElement | null;
+    const focusableElement = document.querySelector<HTMLAnchorElement>('.logo');
 
     window.scrollTo({
-      top: 0,
-      left: 0,
       behavior: "smooth",
+      left: 0,
+      top: 0,
     });
 
     focusableElement?.focus({

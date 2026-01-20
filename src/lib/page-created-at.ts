@@ -14,7 +14,7 @@ export const pageCreatedAt = (filePath: string) => {
     if (!result) return new Date();
 
     return new Date(result);
-  } catch (e) {
+  } catch {
     return new Date();
   }
 };

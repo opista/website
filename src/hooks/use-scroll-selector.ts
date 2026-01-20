@@ -1,5 +1,5 @@
-import { throttle } from "lodash-es";
 import { useCallback, useSyncExternalStore } from "react";
+import { throttle } from "lodash-es";
 
 export function useScrollSelector<T>(
   selector: (scrollY: number) => T,

@@ -17,8 +17,8 @@ const formatDate = (date: Date) =>
     timeZone: "UTC",
   }).format(date);
 
-export default async function Apps() {
-  const posts = await getAllPagesAndContent("posts");
+export default function Apps() {
+  const posts = getAllPagesAndContent("posts");
 
   return (
     <PageLayout>

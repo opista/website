@@ -1,6 +1,6 @@
+import { type ComponentPropsWithoutRef,forwardRef } from "react";
 import clsx from "clsx";
 import NextLink from "next/link";
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { isInternalLink } from "@/util/is-external-link";
 
