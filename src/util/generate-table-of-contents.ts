@@ -32,7 +32,7 @@ const buildNestedTOC = (headings: TOCItem[]): TOCItem[] => {
 const stripMarkdown = (text: string): string => {
   return text
     .replace(/\[\^[^\]]+\]/g, "") // Remove footnotes [^...]
-    .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1") // Remove links [text](url) -> text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // Remove links [text](url) -> text
     .replace(/(\*\*|__)(.*?)\1/g, "$2") // Remove bold **text** or __text__ -> text
     .replace(/(\*|_)(.*?)\1/g, "$2") // Remove italic *text* or _text_ -> text
     .replace(/`([^`]+)`/g, "$1") // Remove inline code `text` -> text

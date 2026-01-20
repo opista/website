@@ -13,7 +13,7 @@ type PostPageParams = {
   slug: string;
 };
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return getAllPageSlugs("posts");
 }
 
@@ -32,8 +32,6 @@ export async function generateMetadata({
   const url = `${BASE_SITE_URL}/posts/${page.slug}`;
 
   return {
-    title: `${page.title} - OPISTA`,
-    description: page.description,
     alternates: {
       canonical: url,
     },
@@ -50,6 +48,8 @@ export async function generateMetadata({
       title: page.title,
       description: page.description,
     },
+    description: page.description,
+    title: `${page.title} - OPISTA`,
   };
 }
 

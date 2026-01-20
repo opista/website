@@ -5,8 +5,8 @@ import {
 
 const faceplates: IpodPlateOptionsTableProps["plates"] = [
   {
-    name: "Black",
     image: "/posts/ipod-modding/faceplates/gen6/black.png",
+    name: "Black",
     purchase: [
       {
         label: "AliExpress",
@@ -19,8 +19,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Blue",
     image: "/posts/ipod-modding/faceplates/gen6/blue.png",
+    name: "Blue",
     purchase: [
       {
         label: "AliExpress",
@@ -37,8 +37,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Light Blue",
     image: "/posts/ipod-modding/faceplates/gen6/light-blue.png",
+    name: "Light Blue",
     purchase: [
       {
         label: "AliExpress",
@@ -51,8 +51,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Gold",
     image: "/posts/ipod-modding/faceplates/gen6/gold.png",
+    name: "Gold",
     purchase: [
       {
         label: "AliExpress",
@@ -69,8 +69,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Green",
     image: "/posts/ipod-modding/faceplates/gen6/green.png",
+    name: "Green",
     purchase: [
       {
         label: "AliExpress",
@@ -87,8 +87,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Lime Green",
     image: "/posts/ipod-modding/faceplates/gen6/lime-green.png",
+    name: "Lime Green",
     purchase: [
       {
         label: "AliExpress",
@@ -97,8 +97,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Green to Red Gradient",
     image: "/posts/ipod-modding/faceplates/gen6/green-red-gradient.png",
+    name: "Green to Red Gradient",
     purchase: [
       {
         label: "AliExpress",
@@ -107,8 +107,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Grey",
     image: "/posts/ipod-modding/faceplates/gen6/grey.png",
+    name: "Grey",
     purchase: [
       {
         label: "AliExpress",
@@ -121,8 +121,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Orange",
     image: "/posts/ipod-modding/faceplates/gen6/orange.png",
+    name: "Orange",
     purchase: [
       {
         label: "AliExpress",
@@ -131,8 +131,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Pink",
     image: "/posts/ipod-modding/faceplates/gen6/pink.png",
+    name: "Pink",
     purchase: [
       {
         label: "AliExpress",
@@ -145,8 +145,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Purple",
     image: "/posts/ipod-modding/faceplates/gen6/purple.png",
+    name: "Purple",
     purchase: [
       {
         label: "AliExpress",
@@ -155,8 +155,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Purple to Blue Gradient",
     image: "/posts/ipod-modding/faceplates/gen6/purple-blue-gradient.png",
+    name: "Purple to Blue Gradient",
     purchase: [
       {
         label: "AliExpress",
@@ -165,8 +165,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Red",
     image: "/posts/ipod-modding/faceplates/gen6/red.png",
+    name: "Red",
     purchase: [
       {
         label: "AliExpress",
@@ -183,8 +183,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Silver",
     image: "/posts/ipod-modding/faceplates/gen6/silver.png",
+    name: "Silver",
     purchase: [
       {
         label: "AliExpress",
@@ -197,8 +197,8 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    name: "Turquoise",
     image: "/posts/ipod-modding/faceplates/gen6/turquoise.png",
+    name: "Turquoise",
     purchase: [
       {
         label: "AliExpress",

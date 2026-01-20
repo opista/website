@@ -12,7 +12,6 @@ import { BASE_SITE_URL } from "@/constant";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "OPISTA",
   description: "Building apps to enrich your life",
   metadataBase: new URL(BASE_SITE_URL),
   openGraph: {

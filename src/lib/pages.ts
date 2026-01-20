@@ -1,7 +1,7 @@
+import { cache } from "react";
 import { readdirSync, readFileSync } from "fs";
 import matter from "gray-matter";
 import { join, sep } from "path";
-import { cache } from "react";
 
 import { getBulkTimestamps } from "./bulk-git-timestamps";
 import { pageCreatedAt } from "./page-created-at";
@@ -50,7 +50,7 @@ const getPageContent = (
       url: `/${directory}/${slug}`,
       ...data,
     } as PageContent;
-  } catch (err) {
+  } catch {
     return null;
   }
 };

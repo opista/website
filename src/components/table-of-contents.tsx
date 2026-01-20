@@ -11,10 +11,10 @@ import {
 import { useStickyToc } from "@/hooks/use-sticky-toc";
 import { useActiveHeading } from "@/hooks/use-active-heading";
 
+import { Accordion } from "./accordion";
+import { ConditionalWrapper } from "./conditional-wrapper";
 import { Heading } from "./heading";
 import { Link } from "./link";
-import { ConditionalWrapper } from "./conditional-wrapper";
-import { Accordion } from "./accordion";
 
 export const FIXED_TOC_WIDTH = 300;
 

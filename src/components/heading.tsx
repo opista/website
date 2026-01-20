@@ -1,4 +1,4 @@
-import { HTMLProps, ReactNode } from "react";
+import { Children, HTMLProps, ReactNode } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 
@@ -40,41 +40,24 @@ const Icon = () => (
 );
 
 const formattedChildren = (children: ReactNode, href: string) => {
-  if (!Array.isArray(children)) {
-    return (
-      <LinkWrapper href={href}>
-        {children} <Icon />
-      </LinkWrapper>
-    );
-  }
-
-  const mapped = children.map((child) => {
-    if (typeof child === "string") {
-      return (
-        <LinkWrapper href={href} key={child}>
-          {child}
-        </LinkWrapper>
-      );
-    }
-
-    return child;
-  });
-
   return (
-    <>
-      {mapped}
-      <LinkWrapper href={href}>
-        <LinkIcon className="group-hover:text-pink-500 inline-block ml-1" />
-      </LinkWrapper>
-    </>
+    <LinkWrapper href={href}>
+      {Children.map(children, (child) => {
+        if (typeof child === "string") {
+          return child;
+        }
+        return child;
+      })}
+      <Icon />
+    </LinkWrapper>
   );
 };
 
 export const Heading = ({
-  level: Comp,
-  link = false,
   children,
   className,
+  level: Comp,
+  link = false,
   ...props
 }: HeadingProps) => {
   const slug = toSlug(

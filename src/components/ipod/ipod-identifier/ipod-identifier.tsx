@@ -11,46 +11,46 @@ import { IpodIdentifierResults } from "./ipod-identifier-results";
 const generationMap: GenerationConfiguration[] = [
   {
     capacityOptions: [
-      { capacity: 30, backplate: "thin", ram: 32 },
-      { capacity: 60, backplate: "thick", ram: 64 },
+      { backplate: "thin", capacity: 30, ram: 32 },
+      { backplate: "thick", capacity: 60, ram: 64 },
     ],
     generation: 5,
-    hasSearch: false,
     hasMetalFaceplate: false,
+    hasSearch: false,
     years: [2005],
   },
   {
     capacityOptions: [
-      { capacity: 30, backplate: "thin", ram: 32 },
-      { capacity: 80, backplate: "thick", ram: 64 },
+      { backplate: "thin", capacity: 30, ram: 32 },
+      { backplate: "thick", capacity: 80, ram: 64 },
     ],
     generation: 5.5,
-    hasSearch: true,
     hasMetalFaceplate: false,
+    hasSearch: true,
     years: [2006],
   },
   {
     capacityOptions: [
-      { capacity: 80, backplate: "thin", ram: 64 },
-      { capacity: 160, backplate: "thick", ram: 64 },
+      { backplate: "thin", capacity: 80, ram: 64 },
+      { backplate: "thick", capacity: 160, ram: 64 },
     ],
     generation: 6,
-    hasSearch: true,
     hasMetalFaceplate: true,
+    hasSearch: true,
     years: [2007],
   },
   {
-    capacityOptions: [{ capacity: 120, backplate: "thin", ram: 64 }],
+    capacityOptions: [{ backplate: "thin", capacity: 120, ram: 64 }],
     generation: 6.5,
-    hasSearch: true,
     hasMetalFaceplate: true,
+    hasSearch: true,
     years: [2008],
   },
   {
-    capacityOptions: [{ capacity: 160, backplate: "thin", ram: 64 }],
+    capacityOptions: [{ backplate: "thin", capacity: 160, ram: 64 }],
     generation: 7,
-    hasSearch: true,
     hasMetalFaceplate: true,
+    hasSearch: true,
     years: [2009, 2010, 2011, 2012, 2013, 2014, 2015],
   },
 ];
@@ -105,9 +105,9 @@ const filterGeneration = (
 };
 
 const DEFAULT_ANSWER_STATE: AnswerState = {
+  capacity: null,
   hasMetalFaceplate: null,
   hasSearch: null,
-  capacity: null,
   year: null,
 };
 
@@ -134,9 +134,6 @@ export const IpodIdentifier = () => {
 
   const steps: Question[] = [
     {
-      key: "hasMetalFaceplate",
-      image: "/posts/ipod-modding/ipod-identifier/ipod-7-gen.png",
-      question: "Does your iPod have a metal faceplate?",
       answers: [
         {
           label: "Yes",
@@ -147,20 +144,20 @@ export const IpodIdentifier = () => {
           value: false,
         },
       ],
+      image: "/posts/ipod-modding/ipod-identifier/ipod-7-gen.png",
+      key: "hasMetalFaceplate",
+      question: "Does your iPod have a metal faceplate?",
       skip: () => false,
     },
     {
+      answers: capacityOptions,
+      image: "/posts/ipod-modding/ipod-identifier/ipod-rear.png",
       key: "capacity",
       question:
         "Looking on the back of your iPod, what storage capacity does it have?",
-      image: "/posts/ipod-modding/ipod-identifier/ipod-rear.png",
-      answers: capacityOptions,
       skip: () => capacityOptions.length <= 1,
     },
     {
-      key: "hasSearch",
-      question: 'Does your iPod have a "Search" option in the "Music" menu?',
-      image: "/posts/ipod-modding/ipod-identifier/ipod-5-gen-search.png",
       answers: [
         {
           label: "Yes",
@@ -171,16 +168,19 @@ export const IpodIdentifier = () => {
           value: false,
         },
       ],
+      image: "/posts/ipod-modding/ipod-identifier/ipod-5-gen-search.png",
+      key: "hasSearch",
+      question: 'Does your iPod have a "Search" option in the "Music" menu?',
       skip: () =>
         filteredGenerations.every(
           ({ hasSearch }) => hasSearch === filteredGenerations[0].hasSearch
         ),
     },
     {
+      answers: yearOptions,
+      image: "/posts/ipod-modding/ipod-identifier/ipod-rear.png",
       key: "year",
       question: "Looking on the back of your iPod, what year does it say?",
-      image: "/posts/ipod-modding/ipod-identifier/ipod-rear.png",
-      answers: yearOptions,
       skip: () => yearOptions.length <= 1,
     },
   ];
@@ -207,7 +207,7 @@ export const IpodIdentifier = () => {
           <IpodIdentifierLayout title={step.question} image={step.image}>
             {step.answers.map((answer) => (
               <Button
-                key={`${step.question}-${answer.value}`}
+                key={`${step.question}-${answer.value as string}`}
                 onClick={() => onAnswer(step.key, answer.value)}
               >
                 {answer.label}

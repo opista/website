@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentProps,ComponentPropsWithoutRef } from "react";
 import clsx from "clsx";
 import { MDXComponents } from "next-mdx-remote-client";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
@@ -44,7 +44,7 @@ const headings = Array(6)
     const tag = `h${level}` as HeadingProps["level"];
     return {
       ...acc,
-      [tag]: (props: HeadingProps) => (
+      [tag]: (props: Omit<HeadingProps, "level" | "link">) => (
         <Heading {...props} level={tag} link={level <= 4} />
       ),
     };
@@ -54,8 +54,6 @@ export const PostBody = ({ page }: PostBodyProps) => {
   const components: MDXComponents = {
     a: Link,
     Accordion,
-    BackplateIndicator,
-    Button,
     Alert,
     AppLinkButton: (props) =>
       !!page.link && (
@@ -64,10 +62,13 @@ export const PostBody = ({ page }: PostBodyProps) => {
           center
           className={clsx("mx-auto", props.className)}
           href={page.link}
+          key={page.link}
         >
           {props.children || page.cta}
         </Button>
       ),
+    BackplateIndicator,
+    Button,
     ...headings,
     Image,
     IpodFaceplateOptionsTable5Gen,
@@ -81,12 +82,12 @@ export const PostBody = ({ page }: PostBodyProps) => {
     RamIndicator,
     RecommendedBadge,
     SolderingChip,
+    table: Table,
     TableOfContents: (props) => (
       <TableOfContents {...props} content={page.content} maxDepth={3} />
     ),
-    table: Table,
-    th: TableHeadCell,
     td: TableBodyCell,
+    th: TableHeadCell,
     TrueFalseChip,
     ul: UnorderedList,
     VideoEmbed,

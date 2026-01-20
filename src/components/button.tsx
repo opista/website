@@ -23,7 +23,7 @@ export const Button = ({
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      props.onClick?.(event as any);
+      props.onClick?.(event as unknown as React.MouseEvent<HTMLDivElement>);
     }
   };
 

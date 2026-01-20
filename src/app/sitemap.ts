@@ -21,36 +21,36 @@ const getAllPagesInGroup = (
   const pages = getAllPagesAndContent(directory);
 
   return pages.map((page) => ({
-    url: `${BASE_SITE_URL}${page.url}`,
-    lastModified: page.modifiedAt,
     changeFrequency,
+    lastModified: page.modifiedAt,
     priority,
+    url: `${BASE_SITE_URL}${page.url}`,
   }));
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: BASE_SITE_URL,
-      lastModified: getFileLastUpdated(),
       changeFrequency: "yearly",
+      lastModified: getFileLastUpdated(),
       priority: 1,
+      url: BASE_SITE_URL,
     },
     {
-      url: `${BASE_SITE_URL}/apps`,
-      lastModified: getFileLastUpdated("apps"),
       changeFrequency: "monthly",
+      lastModified: getFileLastUpdated("apps"),
       priority: 0.8,
+      url: `${BASE_SITE_URL}/apps`,
     },
     ...getAllPagesInGroup("apps", {
       changeFrequency: "monthly",
       priority: 0.8,
     }),
     {
-      url: `${BASE_SITE_URL}/posts`,
-      lastModified: getFileLastUpdated("posts"),
       changeFrequency: "monthly",
+      lastModified: getFileLastUpdated("posts"),
       priority: 0.8,
+      url: `${BASE_SITE_URL}/posts`,
     },
     ...getAllPagesInGroup("posts", { changeFrequency: "daily", priority: 1 }),
   ];
