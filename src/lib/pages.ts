@@ -98,9 +98,9 @@ export const getAllPageSlugs = (directory: Directory) => {
   }));
 };
 
-export const getAllPagesImpl = (directory: Directory) => {
+export const getAllPagesImpl = async (directory: Directory) => {
   const slugs = getAllPageSlugs(directory);
-  const timestamps = getBulkTimestamps(join(contentDirectory, directory));
+  const timestamps = await getBulkTimestamps(join(contentDirectory, directory));
 
   return slugs
     .map(({ slug }) => {
