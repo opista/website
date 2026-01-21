@@ -80,4 +80,6 @@ const getAllPagesAndContentImpl = (directory: Directory) => {
     .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 };
 
+// Cache the result to avoid redundant git operations and file reads
+// during the generation of a single page or request.
 export const getAllPagesAndContent = cache(getAllPagesAndContentImpl);
