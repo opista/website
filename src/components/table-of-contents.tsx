@@ -21,9 +21,10 @@ export const FIXED_TOC_WIDTH = 300;
 
 type TableOfContentsProps = {
   collapsable?: boolean;
-  content: string;
-  maxDepth?: number;
+  content?: string;
   enableSticky?: boolean;
+  headings?: TOCItem[];
+  maxDepth?: number;
 };
 
 const flattenSlugs = (items: TOCItem[]): string[] => items.flatMap((item) => [item.slug, ...flattenSlugs(item.children)]);
@@ -210,11 +211,16 @@ export const TableOfContents = ({
   collapsable,
   content,
   enableSticky = true,
+  headings: precalcedHeadings,
   maxDepth,
 }: TableOfContentsProps) => {
   const headings = useMemo(
-    () => generateTableOfContents(content, maxDepth),
-    [content, maxDepth]
+    () => {
+      if (precalcedHeadings) return precalcedHeadings;
+      if (content) return generateTableOfContents(content, maxDepth);
+      return [];
+    },
+    [content, maxDepth, precalcedHeadings]
   );
   const { containerRef, isSticky } = useStickyToc({ enabled: enableSticky });
   const allSlugs = useMemo(() => flattenSlugs(headings), [headings]);
