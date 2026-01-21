@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   alternates: {
     types: {
-      "application/rss+xml": `${BASE_SITE_URL}/feed.xml`,
+      "application/rss+xml": `${BASE_SITE_URL}/feed`,
     },
   },
   description: "Making things for fun (and sometimes profit)",

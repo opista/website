@@ -6,7 +6,7 @@ import { getAllPagesAndContent } from "@/lib/pages";
 export function GET() {
   const feed = new RSS({
     description: "Making things for fun (and sometimes profit)",
-    feed_url: `${BASE_SITE_URL}/feed.xml`,
+    feed_url: `${BASE_SITE_URL}/feed`,
     language: "en-gb",
     site_url: BASE_SITE_URL,
     title: "OPISTA Blog",
