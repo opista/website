@@ -3,6 +3,8 @@ import RSS from "rss";
 import { BASE_SITE_URL } from "@/constant";
 import { getAllPagesAndContent } from "@/lib/pages";
 
+export const dynamic = "force-static";
+
 export function GET() {
   const feed = new RSS({
     description: "Making things for fun (and sometimes profit)",
