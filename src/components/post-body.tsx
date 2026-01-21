@@ -89,7 +89,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     SolderingChip,
     table: Table,
     TableOfContents: (props) => (
-      <TableOfContents {...props} headings={tableOfContents} maxDepth={3} />
+      <TableOfContents {...props} headings={tableOfContents} />
     ),
     td: TableBodyCell,
     th: TableHeadCell,
