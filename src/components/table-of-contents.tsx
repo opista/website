@@ -6,10 +6,7 @@ import { createPortal } from "react-dom";
 
 import { useActiveHeading } from "@/hooks/use-active-heading";
 import { useStickyToc } from "@/hooks/use-sticky-toc";
-import {
-  generateTableOfContents,
-  TOCItem,
-} from "@/util/generate-table-of-contents";
+import { TOCItem } from "@/util/generate-table-of-contents";
 
 import { Accordion } from "./accordion";
 import { ConditionalWrapper } from "./conditional-wrapper";
@@ -21,9 +18,8 @@ export const FIXED_TOC_WIDTH = 300;
 
 type TableOfContentsProps = {
   collapsable?: boolean;
-  content: string;
-  maxDepth?: number;
   enableSticky?: boolean;
+  headings: TOCItem[];
 };
 
 const flattenSlugs = (items: TOCItem[]): string[] => items.flatMap((item) => [item.slug, ...flattenSlugs(item.children)]);
@@ -208,14 +204,9 @@ const StickyTOCWrapper = ({ activeSlug, headings }: StickyTOCWrapperProps) => {
 
 export const TableOfContents = ({
   collapsable,
-  content,
   enableSticky = true,
-  maxDepth,
+  headings,
 }: TableOfContentsProps) => {
-  const headings = useMemo(
-    () => generateTableOfContents(content, maxDepth),
-    [content, maxDepth]
-  );
   const { containerRef, isSticky } = useStickyToc({ enabled: enableSticky });
   const allSlugs = useMemo(() => flattenSlugs(headings), [headings]);
   const activeSlug = useActiveHeading(allSlugs);

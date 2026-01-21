@@ -5,6 +5,7 @@ import { MDXRemote } from "next-mdx-remote-client/rsc";
 import remarkGfm from "remark-gfm";
 
 import { PageContent } from "@/lib/pages";
+import { generateTableOfContents } from "@/util/generate-table-of-contents";
 
 import { Accordion } from "./accordion";
 import { Alert } from "./alert";
@@ -54,6 +55,7 @@ const headings = Array(6)
   );
 
 export const PostBody = ({ page }: PostBodyProps) => {
+  const tableOfContents = generateTableOfContents(page.content, 3);
   const components: MDXComponents = {
     a: Link,
     Accordion,
@@ -87,7 +89,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     SolderingChip,
     table: Table,
     TableOfContents: (props) => (
-      <TableOfContents {...props} content={page.content} maxDepth={3} />
+      <TableOfContents {...props} headings={tableOfContents} />
     ),
     td: TableBodyCell,
     th: TableHeadCell,
