@@ -67,7 +67,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
           href={page.link}
           key={page.link}
         >
-          {props.children || page.cta}
+          {props.children}
         </Button>
       ),
     BackplateIndicator,
