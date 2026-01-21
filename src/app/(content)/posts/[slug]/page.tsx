@@ -67,8 +67,6 @@ export default async function PostPage({
 
   const pageWasUpdated = page.createdAt.getTime() !== page.modifiedAt.getTime()
 
-  console.log({ createdAt: page.createdAt.toISOString(), modifiedAt: page.modifiedAt.toISOString(), pageWasUpdated })
-
   return (
     <article className="prose prose-invert">
       <ArticleJsonLd
@@ -92,4 +90,3 @@ export default async function PostPage({
     </article>
   );
 }
-
