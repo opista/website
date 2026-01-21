@@ -39,12 +39,12 @@ const getPageContent = (
 
     const fileContents = readFileSync(fullPath, "utf8");
     const { content, data } = matter(fileContents);
+    const now = new Date();
 
     return {
       content,
-      // Use bulk timestamp if available (short-circuit), otherwise fetch individually
-      createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath),
-      modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath),
+      createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath) ?? now,
+      modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath) ?? now,
       slug,
       url: `/${directory}/${slug}`,
       ...data,

@@ -65,6 +65,10 @@ export default async function PostPage({
     return notFound();
   }
 
+  const pageWasUpdated = page.createdAt.getTime() !== page.modifiedAt.getTime()
+
+  console.log({ createdAt: page.createdAt.toISOString(), modifiedAt: page.modifiedAt.toISOString(), pageWasUpdated })
+
   return (
     <article className="prose prose-invert">
       <ArticleJsonLd
@@ -78,7 +82,11 @@ export default async function PostPage({
         {page.title}
       </Heading>
       <p className="text-xs m-0!" title={formatDate(page.createdAt, { time: true })}>First posted: {formatDate(page.createdAt)}</p>
-      <p className="text-xs mt-0 mb-8" title={formatDate(page.modifiedAt, { time: true })}>Last updated: {formatDate(page.modifiedAt)}</p>
+      {pageWasUpdated && (
+        <p className="text-xs mt-0 mb-8" title={formatDate(page.modifiedAt, { time: true })}>
+          Last updated: {formatDate(page.modifiedAt)}
+        </p>
+      )}
       <PostBody page={page} />
       <BackToTop />
     </article>
