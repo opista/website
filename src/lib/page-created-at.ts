@@ -11,10 +11,10 @@ export const pageCreatedAt = (filePath: string) => {
       }
     ).trim();
 
-    if (!result) return new Date();
+    if (!result) return null;
 
     return new Date(result);
   } catch {
-    return new Date();
+    return null;
   }
 };
