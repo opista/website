@@ -21,6 +21,8 @@ export type PageContent = {
   url: string;
 };
 
+export type Page = Omit<PageContent, "content">;
+
 const contentDirectory = join(process.cwd(), "_content");
 
 const getPageContent = (
@@ -53,6 +55,35 @@ const getPageContent = (
   }
 };
 
+const getPage = (
+  directory: Directory,
+  slug: string,
+  timestamps?: { createdAt: Date; modifiedAt: Date }
+): Page | null => {
+  try {
+    const intendedDir = join(contentDirectory, directory);
+    const fullPath = join(intendedDir, `${slug}.mdx`);
+
+    if (!fullPath.startsWith(`${intendedDir}${sep}`)) {
+      return null;
+    }
+
+    const fileContents = readFileSync(fullPath, "utf8");
+    const { data } = matter(fileContents);
+    const now = new Date();
+
+    return {
+      createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath) ?? now,
+      modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath) ?? now,
+      slug,
+      url: `/${directory}/${slug}`,
+      ...data,
+    } as Page;
+  } catch {
+    return null;
+  }
+};
+
 const getPageContentBySlugImpl = (
   directory: Directory,
   slug: string
@@ -67,19 +98,17 @@ export const getAllPageSlugs = (directory: Directory) => {
   }));
 };
 
-const getAllPagesAndContentImpl = (directory: Directory) => {
+export const getAllPagesImpl = (directory: Directory) => {
   const slugs = getAllPageSlugs(directory);
   const timestamps = getBulkTimestamps(join(contentDirectory, directory));
 
   return slugs
     .map(({ slug }) => {
       const fullPath = join(contentDirectory, directory, `${slug}.mdx`);
-      return getPageContent(directory, slug, timestamps.get(fullPath));
+      return getPage(directory, slug, timestamps.get(fullPath));
     })
-    .filter((page): page is PageContent => !!page)
+    .filter((page): page is Page => !!page)
     .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 };
 
-// Cache the result to avoid redundant git operations and file reads
-// during the generation of a single page or request.
-export const getAllPagesAndContent = cache(getAllPagesAndContentImpl);
+export const getAllPages = cache(getAllPagesImpl);
