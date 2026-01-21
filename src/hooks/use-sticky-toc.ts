@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { throttle } from "lodash-es";
 
 import { FIXED_TOC_WIDTH } from "@/components/table-of-contents";
 
@@ -38,15 +39,18 @@ export function useStickyToc({
   useEffect(() => {
     if (!enabled) return;
 
-    const handleResize = () => {
+    const handleResize = throttle(() => {
       setHasEnoughSpace(calculateSpace());
-    };
+    }, 200);
 
     // Initial calculation
-    handleResize();
+    setHasEnoughSpace(calculateSpace());
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      handleResize.cancel();
+      window.removeEventListener("resize", handleResize);
+    };
   }, [enabled, calculateSpace]);
 
   // Set up IntersectionObserver to detect when TOC scrolls out of view
