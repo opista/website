@@ -31,7 +31,7 @@ const Price = ({ price }: { price?: string }) => {
 
 export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const { cta, link, price, title } = page;
+  const { link, price, title } = page;
 
   const showSticky = useScrollSelector(
     useCallback(() => {
@@ -71,7 +71,7 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
         <Price price={price} />
         {link && (
           <Button className="whitespace-nowrap" href={link}>
-            {cta}
+            Try {title}
           </Button>
         )}
       </span>
