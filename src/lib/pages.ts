@@ -67,7 +67,7 @@ export const getAllPageSlugs = (directory: Directory) => {
   }));
 };
 
-export const getAllPagesAndContent = (directory: Directory) => {
+const getAllPagesAndContentImpl = (directory: Directory) => {
   const slugs = getAllPageSlugs(directory);
   const timestamps = getBulkTimestamps(join(contentDirectory, directory));
 
@@ -79,3 +79,5 @@ export const getAllPagesAndContent = (directory: Directory) => {
     .filter((page): page is PageContent => !!page)
     .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 };
+
+export const getAllPagesAndContent = cache(getAllPagesAndContentImpl);
