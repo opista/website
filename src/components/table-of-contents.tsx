@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import clsx from "clsx";
+import { cn } from "@/util/cn";
 import { createPortal } from "react-dom";
 
 import { useActiveHeading } from "@/hooks/use-active-heading";
@@ -41,10 +41,10 @@ const HeadingItem = memo(
     const isActive = activeSlug === heading.slug;
 
     return (
-      <li className="m-0!">
+      <li className="m-0">
         <Link
           ref={(el) => registerRef?.(heading.slug, el)}
-          className={clsx("transition-colors", isActive && "text-pink-400!")}
+          className={cn("transition-colors", isActive && "text-pink-400")}
           href={`#${heading.slug}`}
         >
           {heading.title}
@@ -75,7 +75,7 @@ const HeadingGroup = ({
   headings,
   registerRef,
 }: HeadingGroupProps) => (
-  <ul className="list-none m-0! pl-4">
+  <ul className="list-none m-0 pl-4">
     {headings.map((heading) => (
       <HeadingItem
         key={heading.slug}

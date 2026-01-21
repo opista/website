@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
-import clsx from "clsx";
+import { cn } from "@/util/cn";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -40,7 +40,7 @@ export const SiteLinks = ({ hideContact }: SiteLinksProps) => {
             )}
             <Link
               aria-current={pathname.startsWith(href) ? "page" : undefined}
-              className={clsx("p-2 hover:underline decoration-2", {
+              className={cn("p-2 hover:underline decoration-2", {
                 "font-bold underline": pathname.startsWith(href),
                 "font-medium": !pathname.startsWith(href),
                 "pr-0": idx === arr.length - 1,

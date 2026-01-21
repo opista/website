@@ -1,5 +1,5 @@
 import { FC, Fragment, ReactNode } from "react";
-import clsx from "clsx";
+import { cn } from "@/util/cn";
 
 import { toSlug } from "@/util/to-slug";
 import { CheckCircleIcon } from "../icons/check-circle-icon";
@@ -248,7 +248,7 @@ const CompatibilityCell = ({ level }: { level: string }) => {
   const { className, icon: Icon } = compatibilityMap[level];
   return (
     <TableBodyCell
-      className={clsx("align-middle text-center w-[60px]", className)}
+      className={cn("align-middle text-center w-[60px]", className)}
     >
       <Icon className="inline-block size-6" />
     </TableBodyCell>
@@ -261,7 +261,7 @@ const Key = () => (
       {Object.entries(compatibilityMap).map(
         ([level, { description, icon }], index) => (
           <tr
-            className={clsx({
+            className={cn({
               "border-t border-(--tw-prose-td-borders)": index > 0,
             })}
             key={icon.name}

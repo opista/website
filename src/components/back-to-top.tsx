@@ -1,7 +1,7 @@
 "use client";
 
 import { HTMLProps, useCallback } from "react";
-import clsx from "clsx";
+import { cn } from "@/util/cn";
 
 import { useScrollSelector } from "@/hooks/use-scroll-selector";
 
@@ -38,7 +38,7 @@ export const BackToTop = ({
     showButton && (
       <Button
         aria-label="Back to top"
-        className={clsx("group fixed bottom-4 right-4 z-10 p-3", className)}
+        className={cn("group fixed bottom-4 right-4 z-10 p-3", className)}
         noPadding
         onClick={onClick}
       >

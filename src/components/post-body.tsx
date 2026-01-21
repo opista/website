@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, FC } from "react";
-import clsx from "clsx";
+import { cn } from "@/util/cn";
 import { MDXComponents } from "next-mdx-remote-client";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
 import remarkGfm from "remark-gfm";
@@ -65,7 +65,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
         <Button
           {...props}
           center
-          className={clsx("mx-auto", props.className)}
+          className={cn("mx-auto", props.className)}
           href={page.link}
           key={page.link}
         >

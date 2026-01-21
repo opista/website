@@ -1,6 +1,6 @@
 "use client";
 
-import clsx from "clsx";
+import { cn } from "@/util/cn";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import { toSlug } from "@/util/to-slug";
@@ -39,7 +39,7 @@ export const Tooltip = ({
   return (
     <>
       <a
-        className={clsx("inline-block", className)}
+        className={cn("inline-block", className)}
         data-tooltip-content={content}
         data-tooltip-id={id}
         data-tooltip-offset={offset}

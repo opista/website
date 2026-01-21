@@ -1,5 +1,5 @@
 import { Children, HTMLProps, ReactNode } from "react";
-import clsx from "clsx";
+import { cn } from "@/util/cn";
 import Link from "next/link";
 
 import { toSlug } from "@/util/to-slug";
@@ -93,7 +93,7 @@ export const Heading = ({
   return (
     <Comp
       {...props}
-      className={clsx("relative scroll-mt-20", levelClasses[Comp], className)}
+      className={cn("relative scroll-mt-20", levelClasses[Comp], className)}
       id={slug}
     >
       <span className="group flex items-center gap-2">
