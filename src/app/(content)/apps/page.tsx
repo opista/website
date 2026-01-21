@@ -32,8 +32,8 @@ const AppCell = ({ app }: AppCellProps) => {
   );
 };
 
-export default function Apps() {
-  const apps = getAllPagesAndContent("apps");
+export default async function Apps() {
+  const apps = await getAllPagesAndContent("apps");
 
   return (
     <>

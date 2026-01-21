@@ -23,11 +23,11 @@ export type PageContent = {
 
 const contentDirectory = join(process.cwd(), "_content");
 
-const getPageContent = (
+const getPageContent = async (
   directory: Directory,
   slug: string,
   timestamps?: { createdAt: Date; modifiedAt: Date }
-): PageContent | null => {
+): Promise<PageContent | null> => {
   try {
     const intendedDir = join(contentDirectory, directory);
     const fullPath = join(intendedDir, `${slug}.mdx`);
@@ -40,10 +40,13 @@ const getPageContent = (
     const { content, data } = matter(fileContents);
     const now = new Date();
 
+    const createdAt = timestamps?.createdAt ?? await pageCreatedAt(fullPath) ?? now;
+    const modifiedAt = timestamps?.modifiedAt ?? await pageModifiedAt(fullPath) ?? now;
+
     return {
       content,
-      createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath) ?? now,
-      modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath) ?? now,
+      createdAt,
+      modifiedAt,
       slug,
       url: `/${directory}/${slug}`,
       ...data,
@@ -56,7 +59,7 @@ const getPageContent = (
 const getPageContentBySlugImpl = (
   directory: Directory,
   slug: string
-): PageContent | null => getPageContent(directory, slug);
+): Promise<PageContent | null> => getPageContent(directory, slug);
 
 export const getPageContentBySlug = cache(getPageContentBySlugImpl);
 
@@ -67,15 +70,17 @@ export const getAllPageSlugs = (directory: Directory) => {
   }));
 };
 
-export const getAllPagesAndContent = (directory: Directory) => {
+export const getAllPagesAndContent = async (directory: Directory) => {
   const slugs = getAllPageSlugs(directory);
-  const timestamps = getBulkTimestamps(join(contentDirectory, directory));
+  const timestamps = await getBulkTimestamps(join(contentDirectory, directory));
 
-  return slugs
+  const pages = await Promise.all(slugs
     .map(({ slug }) => {
       const fullPath = join(contentDirectory, directory, `${slug}.mdx`);
       return getPageContent(directory, slug, timestamps.get(fullPath));
-    })
+    }));
+
+  return pages
     .filter((page): page is PageContent => !!page)
     .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 };

@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   title: "Posts - OPISTA",
 };
 
-export default function Apps() {
-  const posts = getAllPagesAndContent("posts");
+export default async function Posts() {
+  const posts = await getAllPagesAndContent("posts");
 
   return (
     <>
