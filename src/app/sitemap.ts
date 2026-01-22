@@ -22,6 +22,7 @@ const getAllPagesInGroup = async (
 
   return pages.map((page) => ({
     changeFrequency,
+    lastModified: page.modifiedAt,
     priority,
     url: `${BASE_SITE_URL}${page.url}`,
   }));
