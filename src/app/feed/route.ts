@@ -5,7 +5,7 @@ import { getAllPages } from "@/lib/pages";
 
 export const dynamic = "force-static";
 
-export function GET() {
+export async function GET() {
   const feed = new RSS({
     description: "Making things for fun (and sometimes profit)",
     feed_url: `${BASE_SITE_URL}/feed`,
@@ -14,7 +14,9 @@ export function GET() {
     title: "OPISTA Blog",
   });
 
-  getAllPages("posts").forEach((post) => {
+  const posts = await getAllPages("posts")
+
+  posts.forEach((post) => {
     feed.item({
       date: post.createdAt,
       description: post.description,

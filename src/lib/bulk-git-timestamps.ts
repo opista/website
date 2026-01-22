@@ -1,16 +1,19 @@
-import { execFileSync } from "child_process";
+import { execFile } from "child_process";
 import { join } from "path";
+import { promisify } from "util";
+
+const execFileAsync = promisify(execFile);
 
 export type Timestamps = {
   createdAt: Date;
   modifiedAt: Date;
 };
 
-export const getBulkTimestamps = (directory: string): Map<string, Timestamps> => {
+export const getBulkTimestamps = async (directory: string): Promise<Map<string, Timestamps>> => {
   const map = new Map<string, Timestamps>();
 
   try {
-    const output = execFileSync(
+    const { stdout } = await execFileAsync(
       "git",
       [
         "log",
@@ -22,7 +25,7 @@ export const getBulkTimestamps = (directory: string): Map<string, Timestamps> =>
       { encoding: "utf8" }
     );
 
-    const lines = output.split(/\r?\n/);
+    const lines = stdout.split(/\r?\n/);
     let currentDate: Date | null = null;
     const root = process.cwd();
 
