@@ -1,0 +1,121 @@
+---
+title: "Vibe coding a webapp from zero to production"
+description: "Building a web app from your phone is possible, but you need the right workflow. Here is the step-by-step process I used to go from zero to production."
+--- 
+
+With the rise of AI, it's become easier than ever for **anyone** to build a web app. But what does it actually take to get from idea to production? I had a go at this myself, here's the process that I found worked for me.
+
+<TableOfContents />
+
+## The Mobile Office
+
+Before you begin, you need access to the right tools. I'm subscribed to Google's "AI Pro" plan, which gave me access to everything I needed to get the job done. While you can swap these out for alternatives, my workflow relies on this specific stack:
+
+* **[Gemini](https://gemini.google) (or your preferred LLM)**: For the initial "interrogation phase", hashing out the details and architectural planning.
+* **[Stitch](https://stitch.withgoogle.com/):** For designing the UI. This is crucial, you don't want to prompt your way to a good design.
+* **[Jules](https://jules.google/):** The engine room. This is where your features get built.
+* **[Vercel](https://vercel.com):** Vercel's deployment previews enable a very quick feedback loop. **This is critical:** Vercel will deploy a live version of every single Pull Request Jules creates, meaning you can test changes on your phone without a local dev environment.
+* **GitHub (or your preferred Git provider):** For reviewing code, handling merge conflicts, and merging PRs.
+
+With these set up, we can begin the process of building our app.
+
+## 1. The interrogation phase
+
+The biggest mistake is jumping straight into building. If you don't have a clear idea of what you want and how you want to get there, you're going to end up with a hallucinated mess. It is crucial to have a solid plan before you open your code editor.
+
+I do this by having a conversation with Gemini (the LLM, not the coding agent). I pitch my idea and ask it to act as a Product Manager. We discuss user flow, data structures, edge cases, and the tech stack.
+
+This is the perfect time to ask the LLM for recommendations. Describe your constraints (e.g., "I need this to be fast and SEO-friendly" or "I need real-time updates") and let it suggest the best framework and database for the job. Agreeing on a standard, well-documented stack early on prevents the agent from trying to use obscure libraries later.
+
+It is vital that you try to cover every base here. The more scenarios you outline now, the less ambiguity your cloud agent will struggle with later on.
+
+<Alert>
+**A note on expertise:** It is key to have some development experience. It's much easier to see where Gemini is going wrong and course-correct if you know what you're talking about. If development isn't your area of expertise, you may struggle to spot when the plan is going off the rails.
+</Alert>
+
+However, Gemini can also help you reduce complexity. For example, for one app I planned to host a server to run puppeteer scripts, but Gemini steered me towards using GitHub Actions. That switch saved me money and maintenance time, and it worked perfectly for my use case.
+
+By the end of this process, you will want Gemini to generate a **PRD (Product Requirements Document)** for you. This is the blueprint for your app. You should also use this time to decide which features can be shelved for the MVP. The quicker you can get to a working product, the better.
+
+## 2. The design phase
+
+A lot of people skip this step and try and have the coding agent design the UI through prompts. **This is a mistake.** You cannot "prompt" your way to a good UI in a code editor.
+
+Google Stitch does a great job of generating the initial visuals. Prompt for a specific vibe (eg. e-commerce, grid layout) and iterate upon it until you're at least 90% happy.
+
+**Do not bike-shed the last 10%.** Obsessing over perfect spacing, or something you want removed at this stage is a waste of time; you can easily amend those details as you build out the product. Similarly, don't get hung up on the dummy imagery or copy. It is all easily changed later. Focus entirely on the layout, structure, and feature placement.
+
+You'll want to repeat this for each page of your site.
+
+## 3. Initializing the project
+
+Now that we have our plans and our designs, it's time to actually start building.
+
+Head over to GitHub and create your repository (or multiple if need-be). Once you've done that, open Jules and connect it up.
+
+This is where your work in Step 1 pays off. Because you already agreed on a stack (e.g., Next.js with Tailwind, and NestJS backend), your first prompt is simple: *"Initialize a new Next.js app with Tailwind CSS."*
+
+My recommendation here would be to rely on an existing UI library, or alternatively make use of something like [Radix UI](https://www.radix-ui.com/), which can provide you accessible primitives.
+
+Jules will spin up the scaffolding, and you'll have a blank canvas ready for your designs.
+
+## 4. The vibe loop (frontend)
+
+This is where the magic happens. We are going to take that static design from Stitch and breathe life into it.
+
+Stitch has a handy integration that allows you to export your generated code directly into a Jules session. Do this, and tell Jules that this file is the "Source of Truth" for your UI.
+
+From here, we enter the Vibe Loop. Instead of asking Jules to "build the whole app" at once, we are going to break it down into small, manageable chunks:
+
+1. **Prompt:** Ask for one specific feature (e.g., "Take the product card from the design and create a reusable React component").
+2. **Plan:** Review Jules' proposed plan. If it looks wrong here, it will be wrong in the code.
+3. **Code:** Jules will write the code and **open a Pull Request (PR)** on GitHub.
+4. **Review:** Open the PR in your GitHub mobile app. **Do not just read the code.** Click the "View Deployment" button that Vercel adds to the PR comments.
+5. **Verify:** Test the live preview URL on your phone. Does the button click? Is the layout broken on mobile?
+6. **Merge:** If the preview works, merge the PR.
+
+Repeat this loop, feature by feature, until your frontend matches your vision, and the codebase is organised.
+
+## 5. The vibe loop (backend)
+
+We currently have a frontend application that looks the part, but doesn't really do anything. Let's fix that.
+
+Just like the frontend, you need to break down your backend features into small, atomic tasks. Don't ask for "a working database." Ask for *"a Supabase client that connects to our env variables."* Then ask for *"an API route to fetch all products."*
+
+<Alert type="warning">
+**Important:** You can't visually "vibe check" backend logic like you can the frontend. Since this code runs under the hood, you can't just click around to verify it works. You must ask Jules to write tests.
+</Alert>
+
+* Prompt Jules to include a unit test or integration test for every backend feature.
+* Ask to set up GitHub Actions to run tests on every PR.
+* Don't allow PRs to be merged unless the tests pass.
+
+You can wire up the frontend to the backend as you go, or build the API endpoints in isolation first. Personally, I prefer to build the endpoint, verify the tests pass, and *then* connect the UI.
+
+## 6. The Finishing Touches
+
+Before you ship, you need to add the polish that AI often forgets because it isn't a "feature."
+
+This is the boring stuff that makes a difference. I explicitly ask Jules to:
+
+* Generate a sitemap.xml and robots.txt for SEO.
+* Add OpenGraph meta tags and imagery (so your link looks good when shared on WhatsApp or Twitter).
+* Add a Favicon.
+* Run a Lighthouse check and optimize any heavy images.
+* Perform accessibility checks.
+
+These tasks are easy for an agent to handle in bulk, but if you don't ask for them, they won't happen.
+
+## 7. Going Live
+
+Now for the easy part. Because we've been using modern tools, deployment is trivial.
+
+Vercel will automatically deploy anything merged into your `main` branch. You connect your GitHub repo, and it automatically detects the Next.js app.
+
+For the final launch, you simply merge your changes to the main branch. Vercel picks this up, runs the build, and deploys it to production. Add your custom domain in the dashboard, wait a minute for the SSL to provision, and you are live.
+
+## Conclusion
+
+By treating AI as a junior developer and yourself as the Architect and Product Manager, you can ship things faster than you ever thought possible.
+
+The tools are still maturing, but the workflow is definitely here. It requires a shift in mindset—from "how do I write this function?" to "how do I describe this feature?". But once you click into that rhythm, it feels like a superpower.
