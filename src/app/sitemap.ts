@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 import { join } from "path";
 
 import { BASE_SITE_URL } from "@/constant";
-import { Directory, getAllPagesAndContent } from "@/lib/pages";
+import { Directory, getAllPages } from "@/lib/pages";
 
 type MetaConfig = MetadataRoute.Sitemap[number];
 
@@ -18,7 +18,7 @@ const getAllPagesInGroup = (
   directory: Directory,
   { changeFrequency, priority }: Partial<MetaConfig>
 ) => {
-  const pages = getAllPagesAndContent(directory);
+  const pages = getAllPages(directory);
 
   return pages.map((page) => ({
     changeFrequency,
