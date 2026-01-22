@@ -1,6 +1,6 @@
 import { FC, Fragment, ReactNode } from "react";
-import { cn } from "@/util/cn";
 
+import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
 import { CheckCircleIcon } from "../icons/check-circle-icon";
 import { CrossCircleIcon } from "../icons/cross-circle-icon";

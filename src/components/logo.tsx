@@ -1,6 +1,7 @@
 import { HTMLAttributes } from "react";
-import { cn } from "@/util/cn";
 import Link from "next/link";
+
+import { cn } from "@/util/cn";
 
 import { ConditionalWrapper } from "./conditional-wrapper";
 

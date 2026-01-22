@@ -1,10 +1,10 @@
 import { ComponentPropsWithoutRef, FC } from "react";
-import { cn } from "@/util/cn";
 import { MDXComponents } from "next-mdx-remote-client";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
 import remarkGfm from "remark-gfm";
 
 import { PageContent } from "@/lib/pages";
+import { cn } from "@/util/cn";
 import { generateTableOfContents } from "@/util/generate-table-of-contents";
 
 import { Accordion } from "./accordion";

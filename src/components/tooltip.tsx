@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/util/cn";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
+import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
 
 import { InformationIcon } from "./icons/information-icon";

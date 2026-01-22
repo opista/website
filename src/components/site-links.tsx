@@ -1,9 +1,10 @@
 "use client";
 
 import { Fragment } from "react";
-import { cn } from "@/util/cn";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import { cn } from "@/util/cn";
 
 type SiteLinksProps = {
   hideContact?: boolean;

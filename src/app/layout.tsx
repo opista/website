@@ -2,12 +2,12 @@ import "./globals.css";
 import "react-tooltip/dist/react-tooltip.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { cn } from "@/util/cn";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import { OrganizationJsonLd } from "@/components/json-ld";
 import { BASE_SITE_URL } from "@/constant";
+import { cn } from "@/util/cn";
 
 const inter = Inter({ subsets: ["latin"] });
 

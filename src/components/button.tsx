@@ -1,9 +1,9 @@
 'use client';
 
 import { HTMLAttributes, KeyboardEvent } from "react";
-import { cn } from "@/util/cn";
 import Link from "next/link";
 
+import { cn } from "@/util/cn";
 import { isInternalLink } from "@/util/is-external-link";
 
 import { ConditionalWrapper } from "./conditional-wrapper";

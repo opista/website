@@ -1,4 +1,5 @@
 import { TdHTMLAttributes } from "react";
+
 import { cn } from "@/util/cn";
 
 type TableBodyCellProps = {

@@ -1,4 +1,5 @@
 import { ThHTMLAttributes } from "react";
+
 import { cn } from "@/util/cn";
 
 type TableHeadCellProps = {

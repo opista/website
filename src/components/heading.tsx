@@ -1,7 +1,7 @@
 import { Children, HTMLProps, ReactNode } from "react";
-import { cn } from "@/util/cn";
 import Link from "next/link";
 
+import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
 
 import { ConditionalWrapper } from "./conditional-wrapper";

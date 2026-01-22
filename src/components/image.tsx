@@ -1,5 +1,6 @@
-import { cn } from "@/util/cn";
 import NextImage, { type ImageProps as NextImageProps } from "next/image";
+
+import { cn } from "@/util/cn";
 
 import { ConditionalWrapper } from "./conditional-wrapper";
 import { ExpandIcon } from "./icons/expand-icon";

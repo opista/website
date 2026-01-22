@@ -1,11 +1,11 @@
 "use client";
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { cn } from "@/util/cn";
 import { createPortal } from "react-dom";
 
 import { useActiveHeading } from "@/hooks/use-active-heading";
 import { useStickyToc } from "@/hooks/use-sticky-toc";
+import { cn } from "@/util/cn";
 import { TOCItem } from "@/util/generate-table-of-contents";
 
 import { Accordion } from "./accordion";
@@ -41,10 +41,10 @@ const HeadingItem = memo(
     const isActive = activeSlug === heading.slug;
 
     return (
-      <li className="m-0">
+      <li className="m-0!">
         <Link
           ref={(el) => registerRef?.(heading.slug, el)}
-          className={cn("transition-colors", isActive && "text-pink-400")}
+          className={cn({ ["text-pink-500"]: isActive })}
           href={`#${heading.slug}`}
         >
           {heading.title}
@@ -75,7 +75,7 @@ const HeadingGroup = ({
   headings,
   registerRef,
 }: HeadingGroupProps) => (
-  <ul className="list-none m-0 pl-4">
+  <ul className="list-none m-0! pl-4">
     {headings.map((heading) => (
       <HeadingItem
         key={heading.slug}

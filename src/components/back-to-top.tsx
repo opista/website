@@ -1,9 +1,9 @@
 "use client";
 
 import { HTMLProps, useCallback } from "react";
-import { cn } from "@/util/cn";
 
 import { useScrollSelector } from "@/hooks/use-scroll-selector";
+import { cn } from "@/util/cn";
 
 import { Button } from "./button";
 import { ArrowUp } from "./icons/arrow-up";

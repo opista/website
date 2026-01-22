@@ -1,11 +1,11 @@
 "use client";
 
 import { useCallback, useRef } from "react";
-import { cn } from "@/util/cn";
 import Image from "next/image";
 
 import { useScrollSelector } from "@/hooks/use-scroll-selector";
 import { PageContent } from "@/lib/pages";
+import { cn } from "@/util/cn";
 import { Button } from "../button";
 
 type AppDetailsBarProps = {
