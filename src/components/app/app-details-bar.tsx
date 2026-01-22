@@ -1,11 +1,11 @@
 "use client";
 
 import { useCallback, useRef } from "react";
+import clsx from "clsx";
 import Image from "next/image";
 
 import { useScrollSelector } from "@/hooks/use-scroll-selector";
 import { PageContent } from "@/lib/pages";
-import { cn } from "@/util/cn";
 import { Button } from "../button";
 
 type AppDetailsBarProps = {
@@ -20,7 +20,7 @@ const Price = ({ price }: { price?: string }) => {
 
   return (
     <span
-      className={cn("font-bold uppercase", {
+      className={clsx("font-bold uppercase", {
         "text-green-300": isFree,
       })}
     >
@@ -45,7 +45,7 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
 
   return (
     <div
-      className={cn(
+      className={clsx(
         "sticky top-2 sm:top-4 z-20 flex justify-between items-center p-2 bg-gray-800 rounded-lg text-white",
         className
       )}

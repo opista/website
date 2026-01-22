@@ -1,11 +1,11 @@
-import { cn } from "@/util/cn";
+import clsx from "clsx";
 
 import { IconProps } from "./icon.types";
 
 export const CheckBadgeIcon = ({ className }: IconProps) => (
   <svg
     aria-label="Icon, badge with a tick"
-    className={cn("size-4", className)}
+    className={clsx("size-4", className)}
     fill="currentColor"
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"

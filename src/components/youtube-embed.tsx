@@ -12,7 +12,7 @@ const buildEmbedUrl = ({ start, videoId }: YoutubeEmbedProps) => {
 
 export const YoutubeEmbed = (props: YoutubeEmbedProps) => (
   <iframe
-    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowFullScreen
     className="aspect-video w-full"
     frameBorder="0"

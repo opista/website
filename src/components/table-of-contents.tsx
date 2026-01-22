@@ -1,11 +1,11 @@
 "use client";
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import clsx from "clsx";
 import { createPortal } from "react-dom";
 
 import { useActiveHeading } from "@/hooks/use-active-heading";
 import { useStickyToc } from "@/hooks/use-sticky-toc";
-import { cn } from "@/util/cn";
 import { TOCItem } from "@/util/generate-table-of-contents";
 
 import { Accordion } from "./accordion";
@@ -44,8 +44,7 @@ const HeadingItem = memo(
       <li className="m-0!">
         <Link
           ref={(el) => registerRef?.(heading.slug, el)}
-          aria-current={isActive ? "location" : undefined}
-          className={cn({ ["text-pink-500"]: isActive })}
+          className={clsx("transition-colors", isActive && "text-pink-400!")}
           href={`#${heading.slug}`}
         >
           {heading.title}

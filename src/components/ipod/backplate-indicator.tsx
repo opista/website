@@ -1,4 +1,4 @@
-import { cn } from "@/util/cn";
+import clsx from "clsx";
 
 import { BackplateSize } from "./ipod.types";
 
@@ -12,7 +12,7 @@ export const BackplateIndicator = ({
   className,
 }: BackplateIndicatorProps) => (
   <span
-    className={cn(
+    className={clsx(
       "px-2 leading-none text-sm text-white rounded-b-lg uppercase border border-current",
       {
         "font-thin": backplate === "thin",

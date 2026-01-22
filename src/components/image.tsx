@@ -1,6 +1,5 @@
+import clsx from "clsx";
 import NextImage, { type ImageProps as NextImageProps } from "next/image";
-
-import { cn } from "@/util/cn";
 
 import { ConditionalWrapper } from "./conditional-wrapper";
 import { ExpandIcon } from "./icons/expand-icon";
@@ -20,7 +19,7 @@ export const Image = ({
   <ConditionalWrapper
     condition={!!expandable}
     wrapper={(children) => (
-      <div className={cn("mx-auto relative", className)}>
+      <div className={clsx("mx-auto relative", className)}>
         {children}
         <Link
           className="border border-2 border-current bg-black absolute bottom-[10px] right-[10px] size-10 p-1 max-w-[30%] max-h-[30%]"
@@ -35,7 +34,7 @@ export const Image = ({
   >
     <NextImage
       alt={alt}
-      className={cn("mx-auto", className)}
+      className={clsx("mx-auto", className)}
       sizes="(max-width: 650px) 100vw, 650px"
       src={src}
       {...props}

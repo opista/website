@@ -4,7 +4,7 @@ export const pageModifiedAt = (filePath: string) => {
   try {
     const result = execFileSync(
       "git",
-      ["log", "-1", '--pretty=format:%cI', "--", filePath],
+      ["log", "-1", '--pretty=format:%cI', filePath],
       {
         encoding: "utf8",
         stdio: ["ignore", "pipe", "ignore"],

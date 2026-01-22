@@ -2,12 +2,12 @@ import "./globals.css";
 import "react-tooltip/dist/react-tooltip.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
+import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import { OrganizationJsonLd } from "@/components/json-ld";
 import { BASE_SITE_URL } from "@/constant";
-import { cn } from "@/util/cn";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html className="h-full scroll-smooth" lang="en">
       <body
-        className={cn("bg-zinc-950 text-white h-full", inter.className)}
+        className={clsx("bg-zinc-950 text-white h-full", inter.className)}
       >
         <OrganizationJsonLd />
         {children}

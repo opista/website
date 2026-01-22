@@ -1,15 +1,15 @@
-import { stat } from "fs/promises";
+import { statSync } from "fs";
 import type { MetadataRoute } from "next";
 import { join } from "path";
 
 import { BASE_SITE_URL } from "@/constant";
-import { Directory, getAllPages } from "@/lib/pages";
+import { Directory, getAllPagesAndContent } from "@/lib/pages";
 
 type MetaConfig = MetadataRoute.Sitemap[number];
 
-const getFileLastUpdated = async (directory: string = "") => {
+const getFileLastUpdated = (directory: string = "") => {
   const filePath = join(process.cwd(), "src", "app", directory, "page.tsx");
-  const fileStats = await stat(filePath);
+  const fileStats = statSync(filePath);
 
   return fileStats.mtime;
 };
@@ -18,28 +18,21 @@ const getAllPagesInGroup = async (
   directory: Directory,
   { changeFrequency, priority }: Partial<MetaConfig>
 ) => {
-  const pages = await getAllPages(directory);
+  const pages = await getAllPagesAndContent(directory);
 
   return pages.map((page) => ({
     changeFrequency,
+    lastModified: page.modifiedAt,
     priority,
     url: `${BASE_SITE_URL}${page.url}`,
   }));
 };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [homeLastModified, appsLastModified, postsLastModified] =
-    await Promise.all([
-      getFileLastUpdated(),
-      getFileLastUpdated("(content)/apps"),
-      getFileLastUpdated("(content)/posts"),
-    ]);
-
   const apps = await getAllPagesInGroup("apps", {
     changeFrequency: "monthly",
     priority: 0.8,
   });
-
   const posts = await getAllPagesInGroup("posts", {
     changeFrequency: "daily",
     priority: 1,
@@ -48,20 +41,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     {
       changeFrequency: "yearly",
-      lastModified: homeLastModified,
+      lastModified: getFileLastUpdated(),
       priority: 1,
       url: BASE_SITE_URL,
     },
     {
       changeFrequency: "monthly",
-      lastModified: appsLastModified,
+      lastModified: getFileLastUpdated("(content)/apps"),
       priority: 0.8,
       url: `${BASE_SITE_URL}/apps`,
     },
     ...apps,
     {
       changeFrequency: "monthly",
-      lastModified: postsLastModified,
+      lastModified: getFileLastUpdated("(content)/posts"),
       priority: 0.8,
       url: `${BASE_SITE_URL}/posts`,
     },

@@ -1,6 +1,5 @@
 import { TdHTMLAttributes } from "react";
-
-import { cn } from "@/util/cn";
+import clsx from "clsx";
 
 type TableBodyCellProps = {
   border?: boolean;
@@ -13,7 +12,7 @@ export const TableBodyCell = ({
 }: TdHTMLAttributes<HTMLTableCellElement> & TableBodyCellProps) => (
   <td
     {...props}
-    className={cn(
+    className={clsx(
       "p-4",
       {
         "border-r border-(--tw-prose-td-borders)": border,

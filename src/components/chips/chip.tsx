@@ -1,6 +1,6 @@
 import { FC } from "react";
+import clsx from "clsx";
 
-import { cn } from "@/util/cn";
 import { IconProps } from "../icons/icon.types";
 
 type ChipProps = {
@@ -25,11 +25,11 @@ export const Chip = ({
   icon: Icon,
   label,
 }: ChipProps) => (
-  <div className={cn("inline-block mb-5 select-none", containerClassName)}>
+  <div className={clsx(containerClassName, "inline-block mb-5 select-none")}>
     <div
-      className={cn(
-        "inline-flex items-center rounded-full pl-1 pr-2 gap-1 text-white text-sm",
+      className={clsx(
         className,
+        "inline-flex items-center rounded-full pl-1 pr-2 gap-1 text-white text-sm",
         color ? chipColorMap[color] : chipColorMap.blue
       )}
     >

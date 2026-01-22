@@ -1,4 +1,4 @@
-import { cn } from "@/util/cn";
+import clsx from "clsx";
 
 import { IconProps } from "./icon.types";
 
@@ -8,7 +8,7 @@ export const CrossCircleIcon = ({
 }: IconProps) => (
   <svg
     aria-label="Icon, circle with a cross"
-    className={cn("size-4", className)}
+    className={clsx("size-4", className)}
     fill="none"
     stroke="currentColor"
     strokeWidth={strokeWidth}

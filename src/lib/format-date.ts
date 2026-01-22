@@ -17,22 +17,15 @@ const getOrdinal = (number: number) => {
   return `${number}${suffixes[category]}`;
 };
 
-const dateFormatter = new Intl.DateTimeFormat("en-GB", {
-  dateStyle: "long",
-  timeZone: "UTC",
-});
-
-const dateTimeFormatter = new Intl.DateTimeFormat("en-GB", {
-  dateStyle: "long",
-  timeStyle: "long",
-  timeZone: "UTC",
-});
-
 export const formatDate = (
   date: Date,
   { time }: Options = { time: false }
 ) => {
-  const formatter = time ? dateTimeFormatter : dateFormatter;
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    dateStyle: "long",
+    timeStyle: time ? "long" : undefined,
+    timeZone: "UTC",
+  });
 
   return formatter
     .formatToParts(date)

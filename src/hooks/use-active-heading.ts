@@ -1,81 +1,118 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-type HeadingState = "ABOVE" | "INSIDE" | "BELOW";
+// Cache for heading elements to avoid repeated DOM lookups
+type HeadingElementCache = Map<string, HTMLElement>;
+
+const findActiveHeading = (
+  headingSlugs: string[],
+  cache: HeadingElementCache
+) => {
+  const viewportTop = 80; // Account for header offset
+
+  // Find the heading that's closest to (but past) the top of viewport
+  let activeHeading: string | null = null;
+
+  for (const slug of headingSlugs) {
+    const el = cache.get(slug);
+    if (!el) continue;
+
+    const rect = el.getBoundingClientRect();
+    // If this heading is at or above the detection line, it's a candidate
+    if (rect.top <= viewportTop + 50) {
+      activeHeading = slug;
+    } else {
+      // Once we find one below the detection line, stop
+      // (headings are in document order)
+      break;
+    }
+  }
+
+  return activeHeading;
+};
 
 /**
  * Hook to track which heading is currently visible/active as user scrolls.
  * Uses IntersectionObserver to detect when headings enter the viewport.
- *
- * Optimized to avoid force reflows (getBoundingClientRect) by tracking
- * relative positions using Observer entries.
  */
 export function useActiveHeading(headingSlugs: string[]): string | null {
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
+  const elementCache = useRef<HeadingElementCache>(new Map());
 
   useEffect(() => {
     if (headingSlugs.length === 0) return;
 
-    // Track the state of each heading relative to the active zone
-    // We use a Map to store the state of each slug
-    const headingStates = new Map<string, HeadingState>();
+    // Build element cache once
+    const cache = new Map<string, HTMLElement>();
+    for (const slug of headingSlugs) {
+      const el = document.getElementById(slug);
+      if (el) cache.set(slug, el);
+    }
+    elementCache.current = cache;
+
+    const headingElements = Array.from(cache.values());
+    if (headingElements.length === 0) return;
+
+    // Initialize on mount
+    const initialActive = findActiveHeading(headingSlugs, cache);
+    if (initialActive) {
+      requestAnimationFrame(() => {
+        setActiveSlug(initialActive);
+      });
+    }
+
+    // Track which headings are currently visible
+    const visibleHeadings = new Set<string>();
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const id = entry.target.id;
-
           if (entry.isIntersecting) {
-            headingStates.set(id, "INSIDE");
+            visibleHeadings.add(id);
           } else {
-            // The active zone starts at 80px from the top (due to rootMargin)
-            // If the element is above this zone, it's "ABOVE" (passed)
-            if (entry.boundingClientRect.top < 80) {
-              headingStates.set(id, "ABOVE");
-            } else {
-              headingStates.set(id, "BELOW");
-            }
+            visibleHeadings.delete(id);
           }
         });
 
-        // Determine the active heading based on priority:
-        // 1. First "INSIDE" heading (visible)
-        // 2. Last "ABOVE" heading (passed sections)
-        // 3. Null (if everything is BELOW)
-        let newActiveSlug: string | null = null;
+        // Find all visible headings and pick the one closest to the top of viewport
+        if (visibleHeadings.size > 0) {
+          const visibleWithPosition: { slug: string; top: number }[] = [];
 
-        // Iterate in document order
-        for (const slug of headingSlugs) {
-          const state = headingStates.get(slug);
+          const visibleArray = Array.from(visibleHeadings);
+          for (const slug of visibleArray) {
+            const el = cache.get(slug);
+            if (el) {
+              visibleWithPosition.push({
+                slug,
+                top: el.getBoundingClientRect().top,
+              });
+            }
+          }
 
-          if (state === "ABOVE") {
-            newActiveSlug = slug;
-          } else if (state === "INSIDE") {
-            // Found a visible one. This takes precedence.
-            // Since we iterate in order, this is the top-most visible one.
-            newActiveSlug = slug;
-            break; // Stop looking
-          } else if (state === "BELOW") {
-            // We reached the future sections. Stop.
-            break;
+          if (visibleWithPosition.length > 0) {
+            // Sort by top position (closest to top first)
+            visibleWithPosition.sort((a, b) => a.top - b.top);
+            setActiveSlug(visibleWithPosition[0].slug);
+            return;
           }
         }
 
-        setActiveSlug(newActiveSlug);
+        // No headings in view - use scroll position to find the last passed heading
+        const fallback = findActiveHeading(headingSlugs, cache);
+        if (fallback) {
+          setActiveSlug(fallback);
+        }
       },
       {
-        // Active zone: Top 80px excluded (header), Bottom 70% excluded
-        // This focuses on the top ~30% of the screen
+        // Trigger when heading is near the top of the viewport
         rootMargin: "-80px 0px -70% 0px",
         threshold: 0,
       }
     );
 
-    headingSlugs.forEach((slug) => {
-      const el = document.getElementById(slug);
-      if (el) observer.observe(el);
-    });
+    headingElements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, [headingSlugs]);

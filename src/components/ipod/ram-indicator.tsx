@@ -1,4 +1,4 @@
-import { cn } from "@/util/cn";
+import clsx from "clsx";
 
 import { Ram } from "./ipod.types";
 
@@ -9,7 +9,7 @@ type RamIndicatorProps = {
 
 export const RamIndicator = ({ className, ram }: RamIndicatorProps) => (
   <span
-    className={cn(
+    className={clsx(
       "inline-block font-bold px-2 py-1 leading-none text-sm rounded-lg",
       className,
       {

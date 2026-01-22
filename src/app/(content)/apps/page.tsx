@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Heading } from "@/components/heading";
-import { getAllPages, Page } from "@/lib/pages";
+import { getAllPagesAndContent, PageContent } from "@/lib/pages";
 
 const MAX_IMAGE_WIDTH = 300;
 
 type AppCellProps = {
-  app: Page;
+  app: PageContent;
 };
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ const AppCell = ({ app }: AppCellProps) => {
 };
 
 export default async function Apps() {
-  const apps = await getAllPages("apps");
+  const apps = await getAllPagesAndContent("apps");
 
   return (
     <>

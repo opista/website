@@ -1,11 +1,11 @@
-import { cn } from "@/util/cn";
+import clsx from "clsx";
 
 import { IconProps } from "./icon.types";
 
 export const LinkIcon = ({ className, strokeWidth = 1.5 }: IconProps) => (
   <svg
     aria-label="Icon, link symbol"
-    className={cn("size-4", className)}
+    className={clsx("size-4", className)}
     fill="none"
     stroke="currentColor"
     strokeWidth={strokeWidth}

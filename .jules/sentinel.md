@@ -7,8 +7,3 @@
 **Vulnerability:** Using `execSync` with string interpolation (e.g., `execSync(\`git log "${path}"\`)`) allows command injection if the input variable contains quotes and shell metacharacters (e.g., `foo"; rm -rf /; echo "`).
 **Learning:** Even if files are expected to exist, paths constructed from user input must be treated as untrusted in shell commands.
 **Prevention:** Always use `execFileSync` (or `execFile`) with an argument array to pass parameters safely, avoiding shell parsing entirely.
-
-## 2026-01-21 - Argument Injection in Git Commands
-**Vulnerability:** Shell commands like `git log` can interpret filenames starting with a hyphen (e.g., `-p`) as flags if not properly separated, even when using `execFileSync`.
-**Learning:** Argument arrays prevent shell injection but not argument injection (flag spoofing).
-**Prevention:** Always use the double-dash `--` separator before file paths (e.g., `["log", ..., "--", filePath]`) to force treating subsequent arguments as paths.

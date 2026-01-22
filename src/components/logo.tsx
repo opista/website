@@ -1,7 +1,6 @@
 import { HTMLAttributes } from "react";
+import clsx from "clsx";
 import Link from "next/link";
-
-import { cn } from "@/util/cn";
 
 import { ConditionalWrapper } from "./conditional-wrapper";
 
@@ -18,7 +17,7 @@ export const Logo = ({
     wrapper={(children) => <Link className="logo" href="/">{children}</Link>}
   >
     <span
-      className={cn(
+      className={clsx(
         "font-black tracking-wide bg-clip-text text-transparent bg-linear-to-r from-purple-400 to-pink-600",
         className
       )}

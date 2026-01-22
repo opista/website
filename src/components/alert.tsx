@@ -1,6 +1,5 @@
 import { FC, ReactNode } from "react";
-
-import { cn } from "@/util/cn";
+import clsx from "clsx";
 
 import { ExclamationCircleIcon } from "./icons/exclamation-circle-icon";
 import { ExclamationTriangleIcon } from "./icons/exclamation-triangle-icon";
@@ -30,7 +29,7 @@ export const Alert = ({ children, type = "info" }: AlertProps) => {
   const Icon = iconMap[type];
   return (
     <div
-      className={cn(
+      className={clsx(
         "alert rounded py-2 pl-3 pr-4 mb-5 flex items-center leading-5 not-prose",
         styleMap[type]
       )}

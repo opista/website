@@ -5,14 +5,14 @@ import { Heading } from "@/components/heading";
 import { HorizontalRule } from "@/components/horizontal-rule";
 import { Link } from "@/components/link";
 import { formatDate } from "@/lib/format-date";
-import { getAllPages } from "@/lib/pages";
+import { getAllPagesAndContent } from "@/lib/pages";
 
 export const metadata: Metadata = {
   title: "Posts - OPISTA",
 };
 
 export default async function Posts() {
-  const posts = await getAllPages("posts");
+  const posts = await getAllPagesAndContent("posts");
 
   return (
     <>

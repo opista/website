@@ -1,6 +1,5 @@
 import { ThHTMLAttributes } from "react";
-
-import { cn } from "@/util/cn";
+import clsx from "clsx";
 
 type TableHeadCellProps = {
   border?: boolean;
@@ -13,7 +12,7 @@ export const TableHeadCell = ({
 }: ThHTMLAttributes<HTMLTableCellElement> & TableHeadCellProps) => (
   <th
     {...props}
-    className={cn(
+    className={clsx(
       "whitespace-nowrap p-4",
       {
         "border-r border-(--tw-prose-td-borders)": border,

@@ -1,11 +1,11 @@
-import { cn } from "@/util/cn";
+import clsx from "clsx";
 
 import { IconProps } from "./icon.types";
 
 export const ListTreeIcon = ({ className, strokeWidth = 2 }: IconProps) => (
   <svg
     aria-label="Icon, list tree"
-    className={cn("size-4", className)}
+    className={clsx("size-4", className)}
     fill="none"
     strokeLinecap="round"
     strokeLinejoin="round"
