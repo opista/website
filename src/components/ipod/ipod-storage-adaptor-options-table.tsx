@@ -1,5 +1,4 @@
-import clsx from "clsx";
-
+import { cn } from "@/util/cn";
 import { ConditionalWrapper } from "../conditional-wrapper";
 import { Image } from "../image";
 import { Link } from "../link";
@@ -190,7 +189,7 @@ export const IpodStorageAdaptorOptionsTable = () => (
     <tbody>
       {upgrades.map((upgrade) => (
         <tr
-          className={clsx({ [RECOMMENDED_BG_COLOR]: upgrade.recommended })}
+          className={cn({ [RECOMMENDED_BG_COLOR]: upgrade.recommended })}
           key={upgrade.option}
         >
           <TableBodyCell className="align-top">

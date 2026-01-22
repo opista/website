@@ -28,6 +28,7 @@
     "remark-gfm": "^4.0.1",
     "rss": "^1.2.2",
     "slugify": "^1.6.6",
+    "tailwind-merge": "^3.4.0",
     "typescript-eslint": "^8.53.1"
   },
   "devDependencies": {
