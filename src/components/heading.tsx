@@ -21,6 +21,7 @@ const levelClasses = {
 export type HeadingProps = HTMLProps<HTMLHeadingElement> & {
   level: HeadingTag;
   link?: boolean;
+  spanClassName?: string;
 };
 
 const LinkWrapper = ({
@@ -75,6 +76,7 @@ export const Heading = ({
   className,
   level: Comp,
   link = false,
+  spanClassName,
   ...props
 }: HeadingProps) => {
   const slug = toSlug(
@@ -96,7 +98,7 @@ export const Heading = ({
       className={cn("relative scroll-mt-20", levelClasses[Comp], className)}
       id={slug}
     >
-      <span className="group flex items-center gap-2">
+      <span className={cn("group flex items-center gap-2", spanClassName)}>
         <ConditionalWrapper
           condition={!!link}
           wrapper={(children) => formattedChildren(children, href)}

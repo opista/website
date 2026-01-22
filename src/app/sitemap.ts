@@ -14,11 +14,11 @@ const getFileLastUpdated = async (directory: string = "") => {
   return fileStats.mtime;
 };
 
-const getAllPagesInGroup = (
+const getAllPagesInGroup = async (
   directory: Directory,
   { changeFrequency, priority }: Partial<MetaConfig>
 ) => {
-  const pages = getAllPages(directory);
+  const pages = await getAllPages(directory);
 
   return pages.map((page) => ({
     changeFrequency,
@@ -36,6 +36,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       getFileLastUpdated("(content)/posts"),
     ]);
 
+  const apps = await getAllPagesInGroup("apps", {
+    changeFrequency: "monthly",
+    priority: 0.8,
+  });
+
+  const posts = await getAllPagesInGroup("posts", {
+    changeFrequency: "daily",
+    priority: 1,
+  });
+
   return [
     {
       changeFrequency: "yearly",
@@ -49,16 +59,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
       url: `${BASE_SITE_URL}/apps`,
     },
-    ...getAllPagesInGroup("apps", {
-      changeFrequency: "monthly",
-      priority: 0.8,
-    }),
+    ...apps,
     {
       changeFrequency: "monthly",
       lastModified: postsLastModified,
       priority: 0.8,
       url: `${BASE_SITE_URL}/posts`,
     },
-    ...getAllPagesInGroup("posts", { changeFrequency: "daily", priority: 1 }),
+    ...posts,
   ];
 }
