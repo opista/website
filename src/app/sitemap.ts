@@ -1,4 +1,4 @@
-import { statSync } from "fs";
+import { stat } from "fs/promises";
 import type { MetadataRoute } from "next";
 import { join } from "path";
 
@@ -7,9 +7,9 @@ import { Directory, getAllPagesAndContent } from "@/lib/pages";
 
 type MetaConfig = MetadataRoute.Sitemap[number];
 
-const getFileLastUpdated = (directory: string = "") => {
+const getFileLastUpdated = async (directory: string = "") => {
   const filePath = join(process.cwd(), "src", "app", directory, "page.tsx");
-  const fileStats = statSync(filePath);
+  const fileStats = await stat(filePath);
 
   return fileStats.mtime;
 };
@@ -28,17 +28,24 @@ const getAllPagesInGroup = (
   }));
 };
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [homeLastModified, appsLastModified, postsLastModified] =
+    await Promise.all([
+      getFileLastUpdated(),
+      getFileLastUpdated("(content)/apps"),
+      getFileLastUpdated("(content)/posts"),
+    ]);
+
   return [
     {
       changeFrequency: "yearly",
-      lastModified: getFileLastUpdated(),
+      lastModified: homeLastModified,
       priority: 1,
       url: BASE_SITE_URL,
     },
     {
       changeFrequency: "monthly",
-      lastModified: getFileLastUpdated("(content)/apps"),
+      lastModified: appsLastModified,
       priority: 0.8,
       url: `${BASE_SITE_URL}/apps`,
     },
@@ -48,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
     {
       changeFrequency: "monthly",
-      lastModified: getFileLastUpdated("(content)/posts"),
+      lastModified: postsLastModified,
       priority: 0.8,
       url: `${BASE_SITE_URL}/posts`,
     },
