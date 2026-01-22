@@ -1,7 +1,7 @@
 import RSS from "rss";
 
 import { BASE_SITE_URL } from "@/constant";
-import { getAllPagesAndContent } from "@/lib/pages";
+import { getAllPages } from "@/lib/pages";
 
 export const dynamic = "force-static";
 
@@ -14,7 +14,7 @@ export async function GET() {
     title: "OPISTA Blog",
   });
 
-  const posts = await getAllPagesAndContent("posts");
+  const posts = await getAllPages("posts")
 
   posts.forEach((post) => {
     feed.item({

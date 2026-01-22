@@ -1,5 +1,6 @@
 import { FC } from "react";
-import clsx from "clsx";
+
+import { cn } from "@/util/cn";
 
 import { CheckCircleIcon } from "./icons/check-circle-icon";
 import { CrossCircleIcon } from "./icons/cross-circle-icon";
@@ -30,10 +31,10 @@ export const ProsConsList = ({ className, list, type }: ProsConsListProps) => {
   const { className: iconClassName, icon: Icon } = iconMap[type];
 
   return (
-    <ul className={clsx("not-prose list-none mb-5", className)}>
+    <ul className={cn("not-prose list-none mb-5", className)}>
       {list.map((item, idx) => (
         <li className="flex pl-0" key={idx}>
-          <Icon className={clsx(iconClassName, "shrink-0 mt-1 mr-1")} />
+          <Icon className={cn(iconClassName, "shrink-0 mt-1 mr-1")} />
           <span>{item}</span>
         </li>
       ))}

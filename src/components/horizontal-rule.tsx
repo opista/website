@@ -1,9 +1,9 @@
-import clsx from "clsx";
+import { cn } from "@/util/cn";
 
 export type HorizontalRuleProps = {
   className?: string;
 };
 
 export const HorizontalRule = ({ className }: HorizontalRuleProps) => (
-  <hr className={clsx("border-0 h-px bg-zinc-500", className)} />
+  <hr className={cn("border-0 h-px bg-zinc-500", className)} />
 );

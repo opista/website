@@ -1,10 +1,10 @@
 import { ComponentPropsWithoutRef, FC } from "react";
-import clsx from "clsx";
 import { MDXComponents } from "next-mdx-remote-client";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
 import remarkGfm from "remark-gfm";
 
 import { PageContent } from "@/lib/pages";
+import { cn } from "@/util/cn";
 import { generateTableOfContents } from "@/util/generate-table-of-contents";
 
 import { Accordion } from "./accordion";
@@ -65,7 +65,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
         <Button
           {...props}
           center
-          className={clsx("mx-auto", props.className)}
+          className={cn("mx-auto", props.className)}
           href={page.link}
           key={page.link}
         >

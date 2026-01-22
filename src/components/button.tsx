@@ -1,9 +1,9 @@
 'use client';
 
 import { HTMLAttributes, KeyboardEvent } from "react";
-import clsx from "clsx";
 import Link from "next/link";
 
+import { cn } from "@/util/cn";
 import { isInternalLink } from "@/util/is-external-link";
 
 import { ConditionalWrapper } from "./conditional-wrapper";
@@ -35,7 +35,7 @@ export const Button = ({
 
   return (
     <div
-      className={clsx("flex", {
+      className={cn("flex", {
         "justify-center": center,
       })}
     >
@@ -51,7 +51,7 @@ export const Button = ({
         )}
       >
         <Tag
-          className={clsx(
+          className={cn(
             "cursor-pointer select-none inline-block text-white no-underline focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800",
             { "px-5 py-2.5 ": !noPadding },
             className
