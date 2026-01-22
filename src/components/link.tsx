@@ -1,7 +1,7 @@
 import { type ComponentPropsWithoutRef, forwardRef } from "react";
-import clsx from "clsx";
 import NextLink from "next/link";
 
+import { cn } from "@/util/cn";
 import { isInternalLink } from "@/util/is-external-link";
 
 type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
@@ -31,9 +31,9 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       <NextLink
         {...props}
         aria-label={finalAriaLabel}
-        className={clsx(
+        className={cn(
+          "transition-colors link decoration-wavy no-underline hover:underline text-pink-400 hover:text-pink-500",
           props.className,
-          "link decoration-wavy no-underline hover:underline text-pink-400 hover:text-pink-500"
         )}
         href={href}
         ref={ref}

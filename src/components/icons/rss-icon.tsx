@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/util/cn";
 
 import { IconProps } from "./icon.types";
 
@@ -8,7 +8,7 @@ export const RssIcon = ({ className,
 }: IconProps) => (
   <svg
     aria-label="Icon, RSS feed"
-    className={clsx("size-4", className)}
+    className={cn("size-4", className)}
     fill="none"
     strokeLinecap="round"
     strokeLinejoin="round"

@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/util/cn";
 
 import { CheckBadgeIcon } from "./icons/check-badge-icon";
 
@@ -10,7 +10,7 @@ type RecommendedBadgeProps = {
 
 export const RecommendedBadge = ({ className }: RecommendedBadgeProps) => (
   <div
-    className={clsx(
+    className={cn(
       "flex items-center text-yellow-600 font-bold mb-5",
       className
     )}
