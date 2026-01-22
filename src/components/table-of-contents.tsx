@@ -44,6 +44,7 @@ const HeadingItem = memo(
       <li className="m-0!">
         <Link
           ref={(el) => registerRef?.(heading.slug, el)}
+          aria-current={isActive ? "location" : undefined}
           className={cn({ ["text-pink-500"]: isActive })}
           href={`#${heading.slug}`}
         >
