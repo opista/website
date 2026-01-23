@@ -1,5 +1,5 @@
 import { cache } from "react";
-import { readdirSync, readFileSync } from "fs";
+import { closeSync, openSync, readdirSync, readFileSync, readSync } from "fs";
 import matter from "gray-matter";
 import { join, sep } from "path";
 
@@ -24,6 +24,41 @@ export type PageContent = {
 export type Page = Omit<PageContent, "content">;
 
 const contentDirectory = join(process.cwd(), "_content");
+
+const readFrontMatter = (fullPath: string) => {
+  try {
+    const fd = openSync(fullPath, "r");
+    const bufferSize = 4096;
+    const buffer = Buffer.alloc(bufferSize);
+
+    try {
+      const bytesRead = readSync(fd, buffer, 0, bufferSize, 0);
+      const content = buffer.toString("utf8", 0, bytesRead);
+
+      // If file is smaller than buffer, we have the full content
+      if (bytesRead < bufferSize) {
+        const { data } = matter(content);
+        return data;
+      }
+
+      // Check for closing delimiter
+      // We look for a line starting with ---
+      const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+      if (match) {
+        const { data } = matter(match[0]);
+        return data;
+      }
+    } finally {
+      closeSync(fd);
+    }
+  } catch {
+    // Fallthrough to full read on any error
+  }
+
+  const fileContents = readFileSync(fullPath, "utf8");
+  const { data } = matter(fileContents);
+  return data;
+};
 
 const getPageContent = (
   directory: Directory,
@@ -68,8 +103,7 @@ const getPage = (
       return null;
     }
 
-    const fileContents = readFileSync(fullPath, "utf8");
-    const { data } = matter(fileContents);
+    const data = readFrontMatter(fullPath);
     const now = new Date();
 
     return {
