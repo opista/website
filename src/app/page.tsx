@@ -4,7 +4,7 @@ import { SiteLinks } from "@/components/site-links";
 export default function Home() {
   return (
     <main
-      className="flex h-svh items-center justify-center border border-red-500"
+      className="flex h-svh items-center justify-center"
       id="main-content"
     >
       <div className="flex flex-col">
