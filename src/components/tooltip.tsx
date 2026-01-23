@@ -1,9 +1,9 @@
 "use client";
 
+import { useId } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import { cn } from "@/util/cn";
-import { toSlug } from "@/util/to-slug";
 
 import { InformationIcon } from "./icons/information-icon";
 
@@ -34,20 +34,25 @@ export const Tooltip = ({
   position = "top",
   variant = "dark",
 }: TooltipProps) => {
-  const id = toSlug(content);
+  const id = useId();
 
   return (
     <>
-      <a
-        className={cn("inline-block", className)}
+      <button
+        aria-label="More information"
+        className={cn(
+          "inline-block appearance-none bg-transparent border-none p-0 cursor-help align-middle",
+          className
+        )}
         data-tooltip-content={content}
         data-tooltip-id={id}
         data-tooltip-offset={offset}
         data-tooltip-place={position}
         data-tooltip-variant={variant}
+        type="button"
       >
         <InformationIcon />
-      </a>
+      </button>
       <ReactTooltip className="max-w-[250px]" id={id} />
     </>
   );

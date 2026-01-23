@@ -44,6 +44,7 @@ export function useStickyToc({
     }, 200);
 
     // Initial calculation
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHasEnoughSpace(calculateSpace());
 
     window.addEventListener("resize", handleResize);
