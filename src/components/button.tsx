@@ -44,6 +44,7 @@ export const Button = ({
         wrapper={(children) => (
           <Link
             href={href as string}
+            rel={isInternalLink(href) ? undefined : "noopener noreferrer"}
             target={isInternalLink(href) ? undefined : "_blank"}
           >
             {children}
