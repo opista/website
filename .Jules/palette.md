@@ -27,3 +27,8 @@
 
 **Learning:** Replacing `div` with `role="button"` with native `<button>` elements improves accessibility (free keyboard support, focus handling) but requires handling polymorphism if the component also supports `href` (rendering as a link). When both `onClick` and `onEnter` props are supported, care must be taken to not duplicate event triggers, as native buttons fire `onClick` on Enter/Space keypresses.
 **Action:** Use polymorphic rendering to switch between `<button>` and `<div>`/`<a>`. Remove manual `onKeyDown` handlers for Enter/Space unless custom non-click behavior is required.
+
+## 2026-02-12 - Tooltip Accessibility
+
+**Learning:** Tooltip triggers should be interactive elements like `<button>`, not `<a>` tags without hrefs. This ensures keyboard accessibility (tab focus) and correct semantic role. Also, generating IDs from content (`toSlug`) is fragile; `useId` provides stable, unique IDs for ARIA relationships.
+**Action:** Use `<button type="button">` for interactive toggles and `useId` for accessibility attribute pairing.
