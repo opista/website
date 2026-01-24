@@ -5,6 +5,24 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   openAnalyzer: true,
 });
 
+const contentSecurityPolicy = `
+  default-src 'self';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' blob: data: https://www.googletagmanager.com https://*.google-analytics.com;
+  connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
+  font-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'self';
+  frame-src 'self' https://www.youtube-nocookie.com;
+  block-all-mixed-content;
+  upgrade-insecure-requests;
+`
+  .replace(/\s{2,}/g, " ")
+  .trim();
+
 module.exports = withPlugins([[withBundleAnalyzer]], {
   images: {
     qualities: [100, 75],
@@ -39,6 +57,10 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
           {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: contentSecurityPolicy,
           },
         ],
       },
