@@ -5,8 +5,9 @@ import { IconProps } from "./icon.types";
 export const CrossCircleIcon = ({
   className,
   strokeWidth = 1.5,
-}: IconProps) => (
+ ...props}: IconProps) => (
   <svg
+    {...props}
     aria-label="Icon, circle with a cross"
     className={cn("size-4", className)}
     fill="none"

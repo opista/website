@@ -2,8 +2,9 @@ import { cn } from "@/util/cn";
 
 import { IconProps } from "./icon.types";
 
-export const ArrowUp = ({ className, strokeWidth = 1.5 }: IconProps) => (
+export const ArrowUp = ({ className, strokeWidth = 1.5 , ...props}: IconProps) => (
   <svg
+    {...props}
     aria-label="Icon, arrow pointing up"
     className={cn("size-4", className)}
     fill="none"
