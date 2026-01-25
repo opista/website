@@ -5,8 +5,9 @@ import { IconProps } from "./icon.types";
 export const ExclamationTriangleIcon = ({
   className,
   strokeWidth = 1.5,
-}: IconProps) => (
+ ...props}: IconProps) => (
   <svg
+    {...props}
     aria-label="Icon, warning symbol"
     className={cn("size-4", className)}
     fill="none"
