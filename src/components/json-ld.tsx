@@ -1,4 +1,5 @@
 import { BASE_SITE_URL } from "@/constant";
+import { safeJsonLdReplacer } from "@/util/safe-json-ld-replacer";
 
 type JsonLdProps = {
   data: Record<string, unknown>;
@@ -12,10 +13,12 @@ export const JsonLd = ({ data }: JsonLdProps) => {
   return (
     <script
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          ...data,
-        }),
+        __html: safeJsonLdReplacer(
+          JSON.stringify({
+            "@context": "https://schema.org",
+            ...data,
+          })
+        ),
       }}
       type="application/ld+json"
     />
