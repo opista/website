@@ -5,8 +5,9 @@ import { IconProps } from "./icon.types";
 export const RssIcon = ({ className,
   strokeWidth = 3,
 
-}: IconProps) => (
+ ...props}: IconProps) => (
   <svg
+    {...props}
     aria-label="Icon, RSS feed"
     className={cn("size-4", className)}
     fill="none"

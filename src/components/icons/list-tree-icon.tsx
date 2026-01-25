@@ -2,8 +2,9 @@ import { cn } from "@/util/cn";
 
 import { IconProps } from "./icon.types";
 
-export const ListTreeIcon = ({ className, strokeWidth = 2 }: IconProps) => (
+export const ListTreeIcon = ({ className, strokeWidth = 2 , ...props}: IconProps) => (
   <svg
+    {...props}
     aria-label="Icon, list tree"
     className={cn("size-4", className)}
     fill="none"

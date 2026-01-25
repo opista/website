@@ -5,8 +5,9 @@ import { IconProps } from "./icon.types";
 export const ExclamationCircleIcon = ({
   className,
   strokeWidth = 1.5,
-}: IconProps) => (
+ ...props}: IconProps) => (
   <svg
+    {...props}
     aria-label="Icon, circle with an exclamation mark"
     className={cn("size-4", className)}
     fill="none"

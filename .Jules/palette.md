@@ -32,3 +32,8 @@
 
 **Learning:** Tooltip triggers should be interactive elements like `<button>`, not `<a>` tags without hrefs. This ensures keyboard accessibility (tab focus) and correct semantic role. Also, generating IDs from content (`toSlug`) is fragile; `useId` provides stable, unique IDs for ARIA relationships.
 **Action:** Use `<button type="button">` for interactive toggles and `useId` for accessibility attribute pairing.
+
+## 2026-10-24 - Semantic Icons & Visual Metaphors
+
+**Learning:** Icons often convey meaning visually (e.g. checkmark = "Pro", cross = "Con") that is lost to screen readers if the icon just says "check icon". It is better to hide the icon (`aria-hidden`) and provide semantic text (e.g., "Pro: ") via `sr-only` classes. To support this, all icon components must accept and spread `...props` to the underlying `<svg>`.
+**Action:** Ensure all icon components extend standard SVG props and spread them. Replace visual metaphors with semantic text for screen readers.
