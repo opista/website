@@ -14,27 +14,26 @@ type ProsConsListProps = {
   type: ListType;
 };
 
-const iconMap: Record<ListType, { icon: FC<IconProps>; className: string }> = {
+const listConfig: Record<
+  ListType,
+  { icon: FC<IconProps>; className: string; prefix: string }
+> = {
   cons: {
     className: "text-red-600",
     icon: CrossCircleIcon,
+    prefix: "Con: ",
   },
   pros: {
     className: "text-green-600",
     icon: CheckCircleIcon,
+    prefix: "Pro: ",
   },
-};
-
-const prefixMap: Record<ListType, string> = {
-  cons: "Con: ",
-  pros: "Pro: ",
 };
 
 export const ProsConsList = ({ className, list, type }: ProsConsListProps) => {
   if (!list) return null;
 
-  const { className: iconClassName, icon: Icon } = iconMap[type];
-  const prefix = prefixMap[type];
+  const { className: iconClassName, icon: Icon, prefix } = listConfig[type];
 
   return (
     <ul className={cn("not-prose list-none mb-5", className)}>
