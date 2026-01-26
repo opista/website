@@ -31,7 +31,7 @@ export function useActiveHeading(headingSlugs: string[]): string | null {
           } else {
             // The active zone starts at 80px from the top (due to rootMargin)
             // If the element is above this zone, it's "ABOVE" (passed)
-            if (entry.boundingClientRect.top < 80) {
+            if (entry.boundingClientRect.top <= 80) {
               headingStates.set(id, "ABOVE");
             } else {
               headingStates.set(id, "BELOW");
