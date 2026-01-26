@@ -1,11 +1,9 @@
 "use client";
 
+import { IconCircleCheck, IconCopy } from "@tabler/icons-react";
 import { HTMLAttributes, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/util/cn";
-
-import { CheckCircleIcon } from "./icons/check-circle-icon";
-import { CopyIcon } from "./icons/copy-icon";
 
 export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreElement>) => {
   const ref = useRef<HTMLPreElement>(null);
@@ -52,7 +50,19 @@ export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreEle
         }}
         type="button"
       >
-        {copied ? <CheckCircleIcon /> : <CopyIcon />}
+        {copied ? (
+          <IconCircleCheck
+            aria-label="Icon, circle with a tick"
+            className="size-4"
+            stroke={1.5}
+          />
+        ) : (
+          <IconCopy
+            aria-label="Icon, copy to clipboard"
+            className="size-4"
+            stroke={1.5}
+          />
+        )}
       </button>
     </div>
   );

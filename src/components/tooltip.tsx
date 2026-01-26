@@ -2,10 +2,9 @@
 
 import { useId } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import { IconInfoCircle } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
-
-import { InformationIcon } from "./icons/information-icon";
 
 export type TooltipProps = {
   className?: string;
@@ -51,7 +50,11 @@ export const Tooltip = ({
         data-tooltip-variant={variant}
         type="button"
       >
-        <InformationIcon />
+        <IconInfoCircle
+          aria-label="Icon, information symbol"
+          className="size-4"
+          stroke={1.5}
+        />
       </button>
       <ReactTooltip className="max-w-[250px]" id={id} />
     </>

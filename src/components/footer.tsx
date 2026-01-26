@@ -1,6 +1,7 @@
 "use client";
 
-import { RssIcon } from "./icons/rss-icon";
+import { IconRss } from "@tabler/icons-react";
+
 import { Link } from "./link";
 import { Logo } from "./logo";
 import { siteLinks } from "./site-links";
@@ -26,7 +27,11 @@ export const Footer = () => {
           className="inline-flex items-center gap-1 text-pink-500 hover:text-pink-400 mb-8"
           href="/feed"
         >
-          <RssIcon className="size-5" />
+          <IconRss
+            aria-label="Icon, RSS feed"
+            className="size-5"
+            stroke={3}
+          />
           <span className="text-sm">RSS</span>
         </Link>
 

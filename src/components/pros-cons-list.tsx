@@ -1,10 +1,7 @@
+import { IconCircleCheck, IconCircleX, IconProps } from "@tabler/icons-react";
 import { FC } from "react";
 
 import { cn } from "@/util/cn";
-
-import { CheckCircleIcon } from "./icons/check-circle-icon";
-import { CrossCircleIcon } from "./icons/cross-circle-icon";
-import { IconProps } from "./icons/icon.types";
 
 type ListType = "cons" | "pros";
 
@@ -20,12 +17,12 @@ const listConfig: Record<
 > = {
   cons: {
     className: "text-red-600",
-    icon: CrossCircleIcon,
+    icon: IconCircleX,
     prefix: "Con: ",
   },
   pros: {
     className: "text-green-600",
-    icon: CheckCircleIcon,
+    icon: IconCircleCheck,
     prefix: "Pro: ",
   },
 };
@@ -41,7 +38,8 @@ export const ProsConsList = ({ className, list, type }: ProsConsListProps) => {
         <li className="flex pl-0" key={idx}>
           <Icon
             aria-hidden="true"
-            className={cn(iconClassName, "shrink-0 mt-1 mr-1")}
+            className={cn(iconClassName, "size-4 shrink-0 mt-1 mr-1")}
+            stroke={1.5}
           />
           <span>
             <span className="sr-only">{prefix}</span>

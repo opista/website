@@ -1,12 +1,8 @@
+import { IconAlertCircle, IconCircleCheck, IconCircleX, IconInfoCircle, IconProps } from "@tabler/icons-react";
 import { FC, Fragment, ReactNode } from "react";
 
 import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
-import { CheckCircleIcon } from "../icons/check-circle-icon";
-import { CrossCircleIcon } from "../icons/cross-circle-icon";
-import { ExclamationCircleIcon } from "../icons/exclamation-circle-icon";
-import { IconProps } from "../icons/icon.types";
-import { InformationIcon } from "../icons/information-icon";
 import { Link } from "../link";
 import { Table } from "../table/table";
 import { TableBodyCell } from "../table/table-body-cell";
@@ -142,7 +138,7 @@ const deviceMap: GenerationConfiguration[] = [
 
 const supportLevelMap: Record<
   SupportLevel,
-  { className: string; description: ReactNode | string; icon: FC<IconProps> }
+  { className: string; description: ReactNode | string; icon: FC<IconProps>; label: string }
 > = {
   firmware: {
     className: "text-purple-600 bg-purple-100",
@@ -154,34 +150,38 @@ const supportLevelMap: Record<
         </Link>
       </>
     ),
-    icon: InformationIcon,
+    icon: IconInfoCircle,
+    label: "Icon, information symbol",
   },
   full: {
     className: "text-green-600 bg-green-100",
     description: "Supported",
-    icon: CheckCircleIcon,
+    icon: IconCircleCheck,
+    label: "Icon, circle with a tick",
   },
   none: {
     className: "text-red-600 bg-red-100",
     description: "Unsupported",
-    icon: CrossCircleIcon,
+    icon: IconCircleX,
+    label: "Icon, circle with a cross",
   },
   partial: {
     className: "text-yellow-600 bg-yellow-100",
     description:
       "Supported, but you'll probably reach the RAM's item limit before the storage limit",
-    icon: ExclamationCircleIcon,
+    icon: IconAlertCircle,
+    label: "Icon, circle with an exclamation mark",
   },
 };
 
 const CompatibilityCell = ({ level }: { level: SupportLevel }) => {
-  const { className, icon: Icon } = supportLevelMap[level];
+  const { className, icon: Icon, label } = supportLevelMap[level];
   return (
     <TableBodyCell
       className={cn("align-middle text-center w-[60px]", className)}
       aria-label={level}
     >
-      <Icon className="inline-block size-6" />
+      <Icon aria-label={label} className="inline-block size-6" />
     </TableBodyCell>
   );
 };

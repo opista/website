@@ -1,11 +1,7 @@
+import { IconAlertCircle, IconAlertTriangle, IconInfoCircle, IconProps } from "@tabler/icons-react";
 import { FC, ReactNode } from "react";
 
 import { cn } from "@/util/cn";
-
-import { ExclamationCircleIcon } from "./icons/exclamation-circle-icon";
-import { ExclamationTriangleIcon } from "./icons/exclamation-triangle-icon";
-import { IconProps } from "./icons/icon.types";
-import { InformationIcon } from "./icons/information-icon";
 
 type AlertType = "error" | "info" | "warning";
 
@@ -14,10 +10,10 @@ type AlertProps = {
   children: ReactNode;
 };
 
-const iconMap: Record<AlertType, FC<IconProps>> = {
-  error: ExclamationTriangleIcon,
-  info: InformationIcon,
-  warning: ExclamationCircleIcon,
+const iconMap: Record<AlertType, { icon: FC<IconProps>; label: string }> = {
+  error: { icon: IconAlertTriangle, label: "Icon, warning symbol" },
+  info: { icon: IconInfoCircle, label: "Icon, information symbol" },
+  warning: { icon: IconAlertCircle, label: "Icon, circle with an exclamation mark" },
 };
 
 const styleMap: Record<AlertType, string> = {
@@ -27,7 +23,7 @@ const styleMap: Record<AlertType, string> = {
 };
 
 export const Alert = ({ children, type = "info" }: AlertProps) => {
-  const Icon = iconMap[type];
+  const { icon: Icon, label } = iconMap[type];
   return (
     <div
       className={cn(
@@ -36,7 +32,7 @@ export const Alert = ({ children, type = "info" }: AlertProps) => {
       )}
       role="note"
     >
-      <Icon className="mr-3 size-5 shrink-0" />
+      <Icon aria-label={label} className="mr-3 size-5 shrink-0" />
       <div>{children}</div>
     </div>
   );
