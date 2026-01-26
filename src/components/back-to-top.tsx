@@ -1,12 +1,12 @@
 "use client";
 
+import { IconArrowUp } from "@tabler/icons-react";
 import { HTMLProps, useCallback } from "react";
 
 import { useScrollSelector } from "@/hooks/use-scroll-selector";
 import { cn } from "@/util/cn";
 
 import { Button } from "./button";
-import { ArrowUp } from "./icons/arrow-up";
 
 type BackToTopProps = {
   offset?: number;
@@ -42,7 +42,11 @@ export const BackToTop = ({
         noPadding
         onClick={onClick}
       >
-        <ArrowUp strokeWidth={4} />
+        <IconArrowUp
+          aria-label="Icon, arrow pointing up"
+          className="size-4"
+          stroke={4}
+        />
       </Button>
     )
   );

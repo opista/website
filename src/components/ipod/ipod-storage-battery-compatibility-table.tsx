@@ -1,10 +1,8 @@
+import { IconCircleCheck, IconCircleX, IconProps } from "@tabler/icons-react";
 import { FC, Fragment, ReactNode } from "react";
 
 import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
-import { CheckCircleIcon } from "../icons/check-circle-icon";
-import { CrossCircleIcon } from "../icons/cross-circle-icon";
-import { IconProps } from "../icons/icon.types";
 import { Link } from "../link";
 import { Table } from "../table/table";
 import { TableBodyCell } from "../table/table-body-cell";
@@ -230,27 +228,29 @@ const batteryMap: CompatibilityRow[] = [
 
 const compatibilityMap: Record<
   string,
-  { className: string; description: ReactNode | string; icon: FC<IconProps> }
+  { className: string; description: ReactNode | string; icon: FC<IconProps>; label: string }
 > = {
   false: {
     className: "text-red-600 bg-red-100",
     description: "Incompatible",
-    icon: CrossCircleIcon,
+    icon: IconCircleX,
+    label: "Icon, circle with a cross",
   },
   true: {
     className: "text-green-600 bg-green-100",
     description: "Compatible",
-    icon: CheckCircleIcon,
+    icon: IconCircleCheck,
+    label: "Icon, circle with a tick",
   },
 };
 
 const CompatibilityCell = ({ level }: { level: string }) => {
-  const { className, icon: Icon } = compatibilityMap[level];
+  const { className, icon: Icon, label } = compatibilityMap[level];
   return (
     <TableBodyCell
       className={cn("align-middle text-center w-[60px]", className)}
     >
-      <Icon className="inline-block size-6" />
+      <Icon aria-label={label} className="inline-block size-6" stroke={1.5} />
     </TableBodyCell>
   );
 };

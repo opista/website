@@ -1,21 +1,26 @@
+import { IconRosetteDiscountCheck } from "@tabler/icons-react";
+import { HTMLAttributes } from "react";
+
 import { cn } from "@/util/cn";
 
-import { CheckBadgeIcon } from "./icons/check-badge-icon";
+export const RECOMMENDED_BG_COLOR = "bg-green-50 dark:bg-green-900/20";
 
-export const RECOMMENDED_BG_COLOR = "bg-yellow-600/20";
-
-type RecommendedBadgeProps = {
-  className?: string;
-};
-
-export const RecommendedBadge = ({ className }: RecommendedBadgeProps) => (
-  <div
+export const RecommendedBadge = ({
+  className,
+  ...props
+}: HTMLAttributes<HTMLSpanElement>) => (
+  <span
     className={cn(
-      "flex items-center text-yellow-600 font-bold mb-5",
+      "inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20",
       className
     )}
+    {...props}
   >
-    <CheckBadgeIcon className="mr-1" />
+    <IconRosetteDiscountCheck
+      aria-label="Icon, badge with a tick"
+      className="size-4 mr-1"
+      stroke={1.5}
+    />
     Recommended
-  </div>
+  </span>
 );

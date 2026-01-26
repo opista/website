@@ -1,37 +1,37 @@
-"use client";
+import { IconRss } from "@tabler/icons-react";
 
-import { RssIcon } from "./icons/rss-icon";
+import { cn } from "@/util/cn";
+
 import { Link } from "./link";
-import { Logo } from "./logo";
-import { siteLinks } from "./site-links";
 
-export const Footer = () => {
-  return (
-    <footer className="flex flex-col text-center py-6 sm:py-8 text-sm text-gray-400 border-t border-gray-500 sm:text-base">
-      <div className="max-w-prose mx-auto w-full">
-        <Logo className="text-xl mb-4" isLink />
-
-        <ul className="mt-4 mb-4">
-          {siteLinks.map(({ href, text }) => (
-            <li key={text}>
-              <Link className="p-1" href={href}>
-                {text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <Link
-          aria-label="RSS Feed"
-          className="inline-flex items-center gap-1 text-pink-500 hover:text-pink-400 mb-8"
-          href="/feed"
-        >
-          <RssIcon className="size-5" />
-          <span className="text-sm">RSS</span>
-        </Link>
-
-        <div>© {new Date().getFullYear()} OPISTA. All rights reserved.</div>
-      </div>
-    </footer>
-  );
-};
+export const Footer = () => (
+  <footer className="w-full mt-12 py-10 border-t border-zinc-800 text-center text-zinc-500 text-sm">
+    <div className="mb-4">
+      <Link
+        className="text-pink-600 dark:text-pink-500 font-black text-lg no-underline uppercase tracking-widest hover:bg-transparent"
+        href="/"
+      >
+        Opista
+      </Link>
+    </div>
+    <div className="flex justify-center space-x-4 mb-4">
+      <Link href="/apps">apps</Link>
+      <Link href="/posts">posts</Link>
+      <Link href="mailto:hello@opista.com">contact</Link>
+    </div>
+    <div className="flex justify-center mb-6">
+      <a
+        aria-label="RSS Feed"
+        className={cn(
+          "text-pink-600 dark:text-pink-500 hover:text-pink-700 dark:hover:text-pink-400 transition-colors"
+        )}
+        href="/feed"
+      >
+        <IconRss aria-label="Icon, RSS feed" className="size-5" stroke={3} />
+      </a>
+    </div>
+    <div>
+      &copy; {new Date().getFullYear()} OPISTA. All rights reserved.
+    </div>
+  </footer>
+);
