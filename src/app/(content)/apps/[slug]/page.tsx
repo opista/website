@@ -23,7 +23,7 @@ export async function generateMetadata({
   params: Promise<AppPageParams>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const page = getPageContentBySlug("apps", slug);
+  const page = await getPageContentBySlug("apps", slug);
 
   if (!page) {
     return {};
@@ -62,7 +62,7 @@ export default async function AppPage({
   params: Promise<AppPageParams>;
 }) {
   const { slug } = await params;
-  const page = getPageContentBySlug("apps", slug);
+  const page = await getPageContentBySlug("apps", slug);
 
   if (!page) {
     return notFound();
