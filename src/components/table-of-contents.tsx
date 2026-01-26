@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef } from "react";
 import { createPortal } from "react-dom";
 import { IconListTree } from "@tabler/icons-react";
 
@@ -98,11 +98,8 @@ type StickyTOCContentProps = {
 // TOC content with active indicator and auto-scroll (for sticky display only)
 const StickyTOCContent = ({ activeSlug, headings }: StickyTOCContentProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const indicatorRef = useRef<HTMLDivElement>(null);
   const linkRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
-  const [indicatorStyle, setIndicatorStyle] = useState<{
-    top: number;
-    height: number;
-  } | null>(null);
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const registerRef = useCallback(
@@ -118,24 +115,27 @@ const StickyTOCContent = ({ activeSlug, headings }: StickyTOCContentProps) => {
 
   useEffect(() => {
     const animationFrameId = requestAnimationFrame(() => {
-      if (!activeSlug || !containerRef.current) {
-        setIndicatorStyle(null);
+      if (!indicatorRef.current || !containerRef.current) {
+        return;
+      }
+
+      if (!activeSlug) {
+        indicatorRef.current.style.opacity = "0";
         return;
       }
 
       const activeLink = linkRefs.current.get(activeSlug);
       if (!activeLink) {
-        setIndicatorStyle(null);
+        indicatorRef.current.style.opacity = "0";
         return;
       }
 
       const containerRect = containerRef.current.getBoundingClientRect();
       const linkRect = activeLink.getBoundingClientRect();
 
-      setIndicatorStyle({
-        height: linkRect.height,
-        top: linkRect.top - containerRect.top + containerRef.current.scrollTop,
-      });
+      indicatorRef.current.style.height = `${linkRect.height}px`;
+      indicatorRef.current.style.top = `${linkRect.top - containerRect.top + containerRef.current.scrollTop}px`;
+      indicatorRef.current.style.opacity = "1";
 
       // Throttle scrollIntoView to avoid excessive calls during fast scrolling
       if (scrollTimeoutRef.current) {
@@ -160,15 +160,13 @@ const StickyTOCContent = ({ activeSlug, headings }: StickyTOCContentProps) => {
   return (
     <div ref={containerRef} className="relative border-l-2 border-gray-700">
       {/* Active indicator - single div that moves to the active item */}
-      {indicatorStyle && (
-        <div
-          className="absolute left-[-2px] w-1 bg-pink-400 transition-all duration-150"
-          style={{
-            height: indicatorStyle.height,
-            top: indicatorStyle.top,
-          }}
-        />
-      )}
+      <div
+        ref={indicatorRef}
+        className="absolute left-[-2px] w-1 bg-pink-400 transition-all duration-150"
+        style={{
+          opacity: 0,
+        }}
+      />
       <HeadingGroup
         activeSlug={activeSlug}
         headings={headings}
