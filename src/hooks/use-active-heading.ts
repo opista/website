@@ -56,9 +56,6 @@ export function useActiveHeading(headingSlugs: string[]): string | null {
             // Since we iterate in order, this is the top-most visible one.
             newActiveSlug = slug;
             break; // Stop looking
-          } else if (state === "BELOW") {
-            // We reached the future sections. Stop.
-            break;
           }
         }
 
