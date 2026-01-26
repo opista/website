@@ -3,6 +3,7 @@ import NextLink from "next/link";
 
 import { cn } from "@/util/cn";
 import { isInternalLink } from "@/util/is-external-link";
+import { sanitizeUrl } from "@/util/sanitize-url";
 
 type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
   openInNewTab?: boolean;
@@ -27,6 +28,8 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         ? `${ariaLabel} (opens in a new tab)`
         : ariaLabel;
 
+    const safeHref = typeof href === "string" ? sanitizeUrl(href) || "#" : href;
+
     return (
       <NextLink
         {...props}
@@ -35,7 +38,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
           "transition-colors link decoration-wavy no-underline hover:underline text-pink-400 hover:text-pink-500",
           props.className,
         )}
-        href={href}
+        href={safeHref}
         ref={ref}
         rel={rel}
         target={target}
