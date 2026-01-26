@@ -12,3 +12,8 @@
 **Vulnerability:** Shell commands like `git log` can interpret filenames starting with a hyphen (e.g., `-p`) as flags if not properly separated, even when using `execFileSync`.
 **Learning:** Argument arrays prevent shell injection but not argument injection (flag spoofing).
 **Prevention:** Always use the double-dash `--` separator before file paths (e.g., `["log", ..., "--", filePath]`) to force treating subsequent arguments as paths.
+
+## 2026-02-20 - XSS via JavaScript Protocol in Next.js Link
+**Vulnerability:** Next.js `Link` component (and standard anchor tags) does not sanitize `javascript:` URIs by default. User-controlled content or developer oversight can lead to XSS if `href` contains `javascript:alert(1)`.
+**Learning:** Framework navigation components often trust the `href` provided. Explicit sanitization is required when handling potentially untrusted URLs.
+**Prevention:** Implement a `sanitizeUrl` utility that blocks `javascript:` scheme and apply it to all `Link` and `Button` components.

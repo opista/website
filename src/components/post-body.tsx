@@ -23,6 +23,7 @@ import { IpodStorageBatteryCompatibilityTable } from "./ipod/ipod-storage-batter
 import { IpodStorageUpgradeCompatibilityTable } from "./ipod/ipod-storage-upgrade-compatibility-table";
 import { RamIndicator } from "./ipod/ram-indicator";
 import { Link } from "./link";
+import { Pre } from "./pre";
 import { ProsConsList } from "./pros-cons-list";
 import { RecommendedBadge } from "./recommended-badge";
 import { Table } from "./table/table";
@@ -83,6 +84,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     IpodStorageBatteryCompatibilityTable,
     IpodStorageUpgradeCompatibilityTable,
     Link,
+    pre: Pre,
     ProsConsList,
     RamIndicator,
     RecommendedBadge,

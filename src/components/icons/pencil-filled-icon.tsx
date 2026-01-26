@@ -2,8 +2,9 @@ import { cn } from "@/util/cn";
 
 import { IconProps } from "./icon.types";
 
-export const PencilFilledIcon = ({ className }: IconProps) => (
+export const PencilFilledIcon = ({ className , ...props}: IconProps) => (
   <svg
+    {...props}
     aria-label="Icon, pencil"
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"

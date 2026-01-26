@@ -2,8 +2,9 @@ import { cn } from "@/util/cn";
 
 import { IconProps } from "./icon.types";
 
-export const CheckBadgeIcon = ({ className }: IconProps) => (
+export const CheckBadgeIcon = ({ className , ...props}: IconProps) => (
   <svg
+    {...props}
     aria-label="Icon, badge with a tick"
     className={cn("size-4", className)}
     fill="currentColor"
