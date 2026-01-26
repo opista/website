@@ -181,7 +181,7 @@ const CompatibilityCell = ({ level }: { level: SupportLevel }) => {
       className={cn("align-middle text-center w-[60px]", className)}
       aria-label={level}
     >
-      <Icon aria-label={label} className="inline-block size-6" stroke={1.5} />
+      <Icon aria-label={label} className="inline-block size-6" />
     </TableBodyCell>
   );
 };

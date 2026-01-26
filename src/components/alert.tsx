@@ -32,7 +32,7 @@ export const Alert = ({ children, type = "info" }: AlertProps) => {
       )}
       role="note"
     >
-      <Icon aria-label={label} className="mr-3 size-5 shrink-0" stroke={1.5} />
+      <Icon aria-label={label} className="mr-3 size-5 shrink-0" />
       <div>{children}</div>
     </div>
   );

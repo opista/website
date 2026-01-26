@@ -4,8 +4,6 @@ import { ComponentPropsWithoutRef, ReactNode } from "react";
 import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
 
-import { Link } from "./link";
-
 export type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 export type HeadingProps = ComponentPropsWithoutRef<HeadingTag> & {

@@ -250,7 +250,7 @@ const CompatibilityCell = ({ level }: { level: string }) => {
     <TableBodyCell
       className={cn("align-middle text-center w-[60px]", className)}
     >
-      <Icon aria-label={label} className="inline-block size-6" stroke={1.5} />
+      <Icon aria-label={label} className="inline-block size-6" />
     </TableBodyCell>
   );
 };
