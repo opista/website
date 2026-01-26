@@ -196,7 +196,6 @@ const StickyTOCWrapper = ({ activeSlug, headings }: StickyTOCWrapperProps) => {
         <IconListTree
           aria-label="Icon, list tree"
           className="w-6 h-6"
-          stroke={2}
         />{" "}
         On this page
       </Heading>

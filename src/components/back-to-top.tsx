@@ -45,6 +45,7 @@ export const BackToTop = ({
         <IconArrowUpBar
           aria-label="Icon, arrow pointing up"
           className="size-4"
+          stroke={3}
         />
       </Button>
     )
