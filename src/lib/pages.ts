@@ -1,5 +1,5 @@
 import { cache } from "react";
-import { closeSync, openSync, readdirSync, readFileSync, readSync } from "fs";
+import { open, readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
 import { join, sep } from "path";
 
@@ -25,14 +25,14 @@ export type Page = Omit<PageContent, "content">;
 
 const contentDirectory = join(process.cwd(), "_content");
 
-const readFrontMatter = (fullPath: string) => {
+const readFrontMatter = async (fullPath: string) => {
   try {
-    const fd = openSync(fullPath, "r");
+    const fd = await open(fullPath, "r");
     const bufferSize = 4096;
     const buffer = Buffer.alloc(bufferSize);
 
     try {
-      const bytesRead = readSync(fd, buffer, 0, bufferSize, 0);
+      const { bytesRead } = await fd.read(buffer, 0, bufferSize, 0);
       const content = buffer.toString("utf8", 0, bytesRead);
 
       // If file is smaller than buffer, we have the full content
@@ -49,22 +49,22 @@ const readFrontMatter = (fullPath: string) => {
         return data;
       }
     } finally {
-      closeSync(fd);
+      await fd.close();
     }
   } catch {
     // Fallthrough to full read on any error
   }
 
-  const fileContents = readFileSync(fullPath, "utf8");
+  const fileContents = await readFile(fullPath, "utf8");
   const { data } = matter(fileContents);
   return data;
 };
 
-const getPageContent = (
+const getPageContent = async (
   directory: Directory,
   slug: string,
   timestamps?: { createdAt: Date; modifiedAt: Date }
-): PageContent | null => {
+): Promise<PageContent | null> => {
   try {
     const intendedDir = join(contentDirectory, directory);
     const fullPath = join(intendedDir, `${slug}.mdx`);
@@ -73,14 +73,19 @@ const getPageContent = (
       return null;
     }
 
-    const fileContents = readFileSync(fullPath, "utf8");
+    const fileContents = await readFile(fullPath, "utf8");
     const { content, data } = matter(fileContents);
     const now = new Date();
 
+    const [createdAt, modifiedAt] = await Promise.all([
+      timestamps?.createdAt ?? pageCreatedAt(fullPath),
+      timestamps?.modifiedAt ?? pageModifiedAt(fullPath),
+    ]);
+
     return {
       content,
-      createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath) ?? now,
-      modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath) ?? now,
+      createdAt: createdAt ?? now,
+      modifiedAt: modifiedAt ?? now,
       slug,
       url: `/${directory}/${slug}`,
       ...data,
@@ -90,11 +95,11 @@ const getPageContent = (
   }
 };
 
-const getPage = (
+const getPage = async (
   directory: Directory,
   slug: string,
   timestamps?: { createdAt: Date; modifiedAt: Date }
-): Page | null => {
+): Promise<Page | null> => {
   try {
     const intendedDir = join(contentDirectory, directory);
     const fullPath = join(intendedDir, `${slug}.mdx`);
@@ -103,12 +108,17 @@ const getPage = (
       return null;
     }
 
-    const data = readFrontMatter(fullPath);
+    const data = await readFrontMatter(fullPath);
     const now = new Date();
 
+    const [createdAt, modifiedAt] = await Promise.all([
+      timestamps?.createdAt ?? pageCreatedAt(fullPath),
+      timestamps?.modifiedAt ?? pageModifiedAt(fullPath),
+    ]);
+
     return {
-      createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath) ?? now,
-      modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath) ?? now,
+      createdAt: createdAt ?? now,
+      modifiedAt: modifiedAt ?? now,
       slug,
       url: `/${directory}/${slug}`,
       ...data,
@@ -118,29 +128,33 @@ const getPage = (
   }
 };
 
-const getPageContentBySlugImpl = (
+const getPageContentBySlugImpl = async (
   directory: Directory,
   slug: string
-): PageContent | null => getPageContent(directory, slug);
+): Promise<PageContent | null> => getPageContent(directory, slug);
 
 export const getPageContentBySlug = cache(getPageContentBySlugImpl);
 
-export const getAllPageSlugs = (directory: Directory) => {
+export const getAllPageSlugs = async (directory: Directory) => {
   const fullPath = join(contentDirectory, directory);
-  return readdirSync(fullPath).map((slug) => ({
+  const files = await readdir(fullPath);
+  return files.map((slug) => ({
     slug: slug.replace(/\.mdx$/, ""),
   }));
 };
 
 export const getAllPagesImpl = async (directory: Directory) => {
-  const slugs = getAllPageSlugs(directory);
+  const slugs = await getAllPageSlugs(directory);
   const timestamps = await getBulkTimestamps(join(contentDirectory, directory));
 
-  return slugs
-    .map(({ slug }) => {
-      const fullPath = join(contentDirectory, directory, `${slug}.mdx`);
-      return getPage(directory, slug, timestamps.get(fullPath));
-    })
+  const pagePromises = slugs.map(async ({ slug }) => {
+    const fullPath = join(contentDirectory, directory, `${slug}.mdx`);
+    return getPage(directory, slug, timestamps.get(fullPath));
+  });
+
+  const pages = await Promise.all(pagePromises);
+
+  return pages
     .filter((page): page is Page => !!page)
     .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 };

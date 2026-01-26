@@ -13,8 +13,8 @@ type AppPageParams = {
   slug: string;
 };
 
-export function generateStaticParams() {
-  return getAllPageSlugs("apps");
+export async function generateStaticParams() {
+  return await getAllPageSlugs("apps");
 }
 
 export async function generateMetadata({
@@ -23,7 +23,7 @@ export async function generateMetadata({
   params: Promise<AppPageParams>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const page = getPageContentBySlug("apps", slug);
+  const page = await getPageContentBySlug("apps", slug);
 
   if (!page) {
     return {};
@@ -62,7 +62,7 @@ export default async function AppPage({
   params: Promise<AppPageParams>;
 }) {
   const { slug } = await params;
-  const page = getPageContentBySlug("apps", slug);
+  const page = await getPageContentBySlug("apps", slug);
 
   if (!page) {
     return notFound();

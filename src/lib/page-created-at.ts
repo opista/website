@@ -1,15 +1,19 @@
-import { execFileSync } from "child_process";
+import { execFile } from "child_process";
+import { promisify } from "util";
 
-export const pageCreatedAt = (filePath: string) => {
+const execFileAsync = promisify(execFile);
+
+export const pageCreatedAt = async (filePath: string) => {
   try {
-    const result = execFileSync(
+    const { stdout } = await execFileAsync(
       "git",
       ["log", "--diff-filter=A", '--pretty=format:%cI', "--", filePath],
       {
         encoding: "utf8",
-        stdio: ["ignore", "pipe", "ignore"], // Ignore stdin/stderr, capture stdout
       }
-    ).trim();
+    );
+
+    const result = stdout.trim();
 
     if (!result) return null;
 

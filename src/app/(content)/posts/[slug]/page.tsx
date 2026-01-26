@@ -13,8 +13,8 @@ type PostPageParams = {
   slug: string;
 };
 
-export function generateStaticParams() {
-  return getAllPageSlugs("posts");
+export async function generateStaticParams() {
+  return await getAllPageSlugs("posts");
 }
 
 export async function generateMetadata({
@@ -23,7 +23,7 @@ export async function generateMetadata({
   params: Promise<PostPageParams>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const page = getPageContentBySlug("posts", slug);
+  const page = await getPageContentBySlug("posts", slug);
 
   if (!page) {
     return {};
@@ -59,7 +59,7 @@ export default async function PostPage({
   params: Promise<PostPageParams>;
 }) {
   const { slug } = await params;
-  const page = getPageContentBySlug("posts", slug);
+  const page = await getPageContentBySlug("posts", slug);
 
   if (!page) {
     return notFound();
