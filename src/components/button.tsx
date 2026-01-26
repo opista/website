@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { cn } from "@/util/cn";
 import { isInternalLink } from "@/util/is-external-link";
+import { sanitizeUrl } from "@/util/sanitize-url";
 
 import { ConditionalWrapper } from "./conditional-wrapper";
 
@@ -33,6 +34,8 @@ export const Button = ({
 
   const Tag = href ? "div" : "button";
 
+  const safeHref = sanitizeUrl(href);
+
   return (
     <div
       className={cn("flex", {
@@ -43,7 +46,7 @@ export const Button = ({
         condition={!!href}
         wrapper={(children) => (
           <Link
-            href={href as string}
+            href={safeHref || "#"}
             rel={isInternalLink(href) ? undefined : "noopener noreferrer"}
             target={isInternalLink(href) ? undefined : "_blank"}
           >
