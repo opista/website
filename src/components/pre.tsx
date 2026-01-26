@@ -41,9 +41,11 @@ export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreEle
       <button
         aria-label="Copy code"
         className={cn(
-          "absolute top-2 right-2 p-2 rounded-md bg-gray-800/80 backdrop-blur-sm border border-gray-700 text-gray-400 hover:text-white transition-all duration-200",
+          "absolute top-2 right-2 p-2 rounded-md bg-zinc-950 border transition-all duration-200",
           "opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100",
-          { "text-green-500 hover:text-green-500 border-green-500/50": copied }
+          {
+            "text-green-500 border-green-500": copied,
+          }
         )}
         onClick={() => {
           void onCopy();
