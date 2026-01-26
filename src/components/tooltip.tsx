@@ -1,37 +1,62 @@
 "use client";
 
-import { IconInfoCircle } from "@tabler/icons-react";
-import { ReactNode } from "react";
+import { useId } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import { IconInfoCircle } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 
-type TooltipProps = {
-  children?: ReactNode;
+export type TooltipProps = {
   className?: string;
   content: string;
+  offset?: number;
+  position?:
+    | "bottom-end"
+    | "bottom-start"
+    | "bottom"
+    | "left-end"
+    | "left-start"
+    | "left"
+    | "right-end"
+    | "right-start"
+    | "right"
+    | "top-end"
+    | "top-start"
+    | "top";
+  variant?: "dark" | "error" | "info" | "light" | "success" | "warning";
 };
 
-export const Tooltip = ({ children, className, content }: TooltipProps) => (
-  <>
-    <button
-      className={cn("inline-block align-middle text-zinc-400", className)}
-      data-tooltip-content={content}
-      data-tooltip-id="tooltip"
-      type="button"
-    >
-      {children || (
+export const Tooltip = ({
+  className,
+  content,
+  offset = 10,
+  position = "top",
+  variant = "dark",
+}: TooltipProps) => {
+  const id = useId();
+
+  return (
+    <>
+      <button
+        aria-label="More information"
+        className={cn(
+          "inline-block appearance-none bg-transparent border-none p-0 cursor-help align-middle",
+          className
+        )}
+        data-tooltip-content={content}
+        data-tooltip-id={id}
+        data-tooltip-offset={offset}
+        data-tooltip-place={position}
+        data-tooltip-variant={variant}
+        type="button"
+      >
         <IconInfoCircle
           aria-label="Icon, information symbol"
           className="size-4"
           stroke={1.5}
         />
-      )}
-    </button>
-    <ReactTooltip
-      className="z-50 max-w-xs text-xs"
-      id="tooltip"
-      place="top"
-    />
-  </>
-);
+      </button>
+      <ReactTooltip className="max-w-[250px]" id={id} />
+    </>
+  );
+};
