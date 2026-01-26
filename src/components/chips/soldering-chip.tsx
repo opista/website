@@ -1,4 +1,4 @@
-import { PencilFilledIcon } from "../icons/pencil-filled-icon";
+import { IconPencil } from "@tabler/icons-react";
 
 import { Chip } from "./chip";
 
@@ -9,7 +9,7 @@ type SolderingChipProps = {
 export const SolderingChip = ({ requiresSoldering }: SolderingChipProps) => (
   <Chip
     color={requiresSoldering ? "yellow" : "green"}
-    icon={PencilFilledIcon}
+    icon={IconPencil}
     label={requiresSoldering ? "Soldering required" : "No soldering required"}
   />
 );

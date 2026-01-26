@@ -1,11 +1,11 @@
 import { Children, HTMLProps, ReactNode } from "react";
 import Link from "next/link";
+import { IconLink } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
 
 import { ConditionalWrapper } from "./conditional-wrapper";
-import { LinkIcon } from "./icons/link-icon";
 
 export type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
@@ -37,7 +37,12 @@ const LinkWrapper = ({
 );
 
 const Icon = () => (
-  <LinkIcon className="group-hover:text-pink-500 inline-block ml-1" />
+  <IconLink
+    aria-label="Icon, link symbol"
+    className="group-hover:text-pink-500 inline-block ml-1"
+    size={16}
+    stroke={1.5}
+  />
 );
 
 const formattedChildren = (children: ReactNode, href: string) => {

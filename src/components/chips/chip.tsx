@@ -1,7 +1,7 @@
+import { IconProps } from "@tabler/icons-react";
 import { FC } from "react";
 
 import { cn } from "@/util/cn";
-import { IconProps } from "../icons/icon.types";
 
 type ChipProps = {
   className?: string;
@@ -34,7 +34,7 @@ export const Chip = ({
       )}
     >
       <div className="rounded-full bg-white bg-white/40 flex items-center justify-center">
-        <Icon />
+        <Icon aria-hidden="true" size={16} stroke={1.5} />
       </div>
       <span>{label}</span>
     </div>

@@ -1,6 +1,6 @@
-import { cn } from "@/util/cn";
+import { IconRosetteDiscountCheck } from "@tabler/icons-react";
 
-import { CheckBadgeIcon } from "./icons/check-badge-icon";
+import { cn } from "@/util/cn";
 
 export const RECOMMENDED_BG_COLOR = "bg-yellow-600/20";
 
@@ -15,7 +15,11 @@ export const RecommendedBadge = ({ className }: RecommendedBadgeProps) => (
       className
     )}
   >
-    <CheckBadgeIcon className="mr-1" />
+    <IconRosetteDiscountCheck
+      aria-label="Icon, badge with a tick"
+      className="mr-1 size-4"
+      stroke={1.5}
+    />
     Recommended
   </div>
 );

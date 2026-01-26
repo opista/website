@@ -2,6 +2,7 @@
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { IconListTree } from "@tabler/icons-react";
 
 import { useActiveHeading } from "@/hooks/use-active-heading";
 import { useStickyToc } from "@/hooks/use-sticky-toc";
@@ -11,7 +12,6 @@ import { TOCItem } from "@/util/generate-table-of-contents";
 import { Accordion } from "./accordion";
 import { ConditionalWrapper } from "./conditional-wrapper";
 import { Heading } from "./heading";
-import { ListTreeIcon } from "./icons/list-tree-icon";
 import { Link } from "./link";
 
 export const FIXED_TOC_WIDTH = 300;
@@ -193,7 +193,11 @@ const StickyTOCWrapper = ({ activeSlug, headings }: StickyTOCWrapperProps) => {
       style={{ maxWidth: FIXED_TOC_WIDTH }}
     >
       <Heading className="mt-0 mb-2 shrink-0" level="h2">
-        <ListTreeIcon className="w-6 h-6" /> On this page
+        <IconListTree
+          aria-label="Icon, list tree"
+          className="w-6 h-6"
+        />{" "}
+        On this page
       </Heading>
       <div className="overflow-y-auto min-h-0">
         <StickyTOCContent activeSlug={activeSlug} headings={headings} />
