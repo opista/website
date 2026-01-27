@@ -1,5 +1,3 @@
-const withPlugins = require("next-compose-plugins");
-
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
   openAnalyzer: true,
@@ -23,7 +21,8 @@ const contentSecurityPolicy = `
   .replace(/\s{2,}/g, " ")
   .trim();
 
-module.exports = withPlugins([[withBundleAnalyzer]], {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     qualities: [100, 75],
   },
@@ -55,8 +54,16 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
             value: "strict-origin-when-cross-origin",
           },
           {
+            key: "X-Permitted-Cross-Domain-Policies",
+            value: "none",
+          },
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin",
+          },
+          {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
+            value: "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
           },
           {
             key: "Content-Security-Policy",
@@ -75,4 +82,6 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
       },
     ];
   },
-});
+};
+
+module.exports = withBundleAnalyzer(nextConfig);
