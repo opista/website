@@ -20,7 +20,7 @@
     "globals": "^17.0.0",
     "gray-matter": "^4.0.3",
     "lodash-es": "^4.17.23",
-    "next": "^16.1.4",
+    "next": "^16.1.5",
     "next-compose-plugins": "^2.2.1",
     "next-mdx-remote-client": "^2.1.7",
     "react": "^19.2.1",
