@@ -1,7 +1,7 @@
 "use client";
 
-import { IconArrowUpBar } from "@tabler/icons-react";
 import { HTMLProps, useCallback } from "react";
+import { IconArrowUpBar } from "@tabler/icons-react";
 
 import { useScrollSelector } from "@/hooks/use-scroll-selector";
 import { cn } from "@/util/cn";

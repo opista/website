@@ -1,6 +1,6 @@
 import { Children, HTMLProps, ReactNode } from "react";
-import Link from "next/link";
 import { IconLink } from "@tabler/icons-react";
+import Link from "next/link";
 
 import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";

@@ -1,5 +1,5 @@
-import NextImage, { type ImageProps as NextImageProps } from "next/image";
 import { IconArrowsMaximize } from "@tabler/icons-react";
+import NextImage, { type ImageProps as NextImageProps } from "next/image";
 
 import { cn } from "@/util/cn";
 

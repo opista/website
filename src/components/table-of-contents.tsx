@@ -1,8 +1,8 @@
 "use client";
 
 import { memo, useCallback, useEffect, useMemo, useRef } from "react";
-import { createPortal } from "react-dom";
 import { IconListTree } from "@tabler/icons-react";
+import { createPortal } from "react-dom";
 
 import { useActiveHeading } from "@/hooks/use-active-heading";
 import { useStickyToc } from "@/hooks/use-sticky-toc";
