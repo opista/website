@@ -1,8 +1,8 @@
 "use client";
 
 import { useId } from "react";
-import { Tooltip as ReactTooltip } from "react-tooltip";
 import { IconInfoCircle } from "@tabler/icons-react";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import { cn } from "@/util/cn";
 

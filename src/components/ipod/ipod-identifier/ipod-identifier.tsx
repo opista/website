@@ -209,7 +209,6 @@ export const IpodIdentifier = () => {
               <Button
                 key={`${step.question}-${String(answer.value)}`}
                 onClick={() => onAnswer(step.key, answer.value)}
-                onEnter={() => onAnswer(step.key, answer.value)}
               >
                 {answer.label}
               </Button>

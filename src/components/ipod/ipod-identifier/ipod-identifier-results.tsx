@@ -54,7 +54,7 @@ export const IpodIdentifierResults = ({
               ram={details.ram}
             />
           </div>
-          <Button center onClick={onRestart} onEnter={onRestart}>
+          <Button center onClick={onRestart}>
             Restart
           </Button>
         </div>

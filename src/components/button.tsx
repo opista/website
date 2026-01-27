@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes, KeyboardEvent } from "react";
+import { HTMLAttributes } from "react";
 import Link from "next/link";
 
 import { cn } from "@/util/cn";
@@ -13,7 +13,6 @@ type ButtonProps = {
   center?: boolean;
   href?: string;
   noPadding?: boolean;
-  onEnter?: (event: KeyboardEvent<HTMLElement>) => void;
 };
 
 export const Button = ({
@@ -22,16 +21,8 @@ export const Button = ({
   className,
   href,
   noPadding,
-  onEnter,
   ...props
 }: HTMLAttributes<HTMLElement> & ButtonProps) => {
-  const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (onEnter && (event.key === "Enter" || event.key === " ")) {
-      event.preventDefault();
-      onEnter(event);
-    }
-  };
-
   const Tag = href ? "div" : "button";
 
   const safeHref = sanitizeUrl(href);
@@ -60,7 +51,6 @@ export const Button = ({
             { "px-5 py-2.5 ": !noPadding },
             className
           )}
-          onKeyDown={onEnter ? onKeyDown : undefined}
           {...(href ? {} : { type: "button" })}
           {...props}
         >
