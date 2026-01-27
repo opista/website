@@ -1,5 +1,5 @@
-import { IconAlertCircle, IconAlertTriangle, IconInfoCircle, IconProps } from "@tabler/icons-react";
 import { FC, ReactNode } from "react";
+import { IconAlertCircle, IconAlertTriangle, IconInfoCircle, IconProps } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 

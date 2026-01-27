@@ -1,5 +1,5 @@
-import { IconProps } from "@tabler/icons-react";
 import { FC } from "react";
+import { IconProps } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 

@@ -1,7 +1,7 @@
 "use client";
 
-import { IconCircleCheck, IconCopy } from "@tabler/icons-react";
 import { HTMLAttributes, useEffect, useRef, useState } from "react";
+import { IconCircleCheck, IconCopy } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 
