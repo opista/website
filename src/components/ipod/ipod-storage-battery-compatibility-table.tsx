@@ -264,7 +264,7 @@ const Key = () => (
             className={cn({
               "border-t border-(--tw-prose-td-borders)": index > 0,
             })}
-            key={icon.name}
+            key={icon.displayName}
           >
             <CompatibilityCell level={level} />
             <TableBodyCell>{description}</TableBodyCell>
