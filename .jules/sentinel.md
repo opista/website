@@ -17,3 +17,8 @@
 **Vulnerability:** Next.js `Link` component (and standard anchor tags) does not sanitize `javascript:` URIs by default. User-controlled content or developer oversight can lead to XSS if `href` contains `javascript:alert(1)`.
 **Learning:** Framework navigation components often trust the `href` provided. Explicit sanitization is required when handling potentially untrusted URLs.
 **Prevention:** Implement a `sanitizeUrl` utility that blocks `javascript:` scheme and apply it to all `Link` and `Button` components.
+
+## 2026-02-21 - Missing HTTP Security Headers
+**Vulnerability:** Default server configurations often lack restrictive headers, exposing users to cross-site leaks (Spectre), clickjacking (if X-Frame-Options is missing), and feature abuse (Permissions-Policy).
+**Learning:** `Cross-Origin-Opener-Policy: same-origin` is crucial for isolating the browsing context, preventing cross-window attacks. `X-Permitted-Cross-Domain-Policies: none` prevents Flash/PDF data leaks.
+**Prevention:** Explicitly configure `next.config.js` to send `Cross-Origin-Opener-Policy`, `X-Permitted-Cross-Domain-Policies`, and a strict `Permissions-Policy` (disabling USB, payments, sensors, etc.).
