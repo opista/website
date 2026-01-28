@@ -25,6 +25,13 @@ export const Button = ({
 }: HTMLAttributes<HTMLElement> & ButtonProps) => {
   const Tag = href ? "div" : "button";
 
+  const { "aria-label": ariaLabel, ...restProps } = props;
+  const isInternal = isInternalLink(href);
+  const isExternal = href && !isInternal;
+
+  const linkAriaLabel =
+    isExternal && ariaLabel ? `${ariaLabel} (opens in a new tab)` : ariaLabel;
+
   const safeHref = sanitizeUrl(href);
 
   return (
@@ -37,11 +44,15 @@ export const Button = ({
         condition={!!href}
         wrapper={(children) => (
           <Link
+            aria-label={linkAriaLabel}
             href={safeHref || "#"}
-            rel={isInternalLink(href) ? undefined : "noopener noreferrer"}
-            target={isInternalLink(href) ? undefined : "_blank"}
+            rel={isInternal ? undefined : "noopener noreferrer"}
+            target={isInternal ? undefined : "_blank"}
           >
             {children}
+            {isExternal && !ariaLabel && (
+              <span className="sr-only">&nbsp;(opens in a new tab)</span>
+            )}
           </Link>
         )}
       >
@@ -51,8 +62,10 @@ export const Button = ({
             { "px-5 py-2.5 ": !noPadding },
             className
           )}
-          {...(href ? {} : { type: "button" })}
-          {...props}
+          {...(href
+            ? {}
+            : { "aria-label": ariaLabel, type: "button" })}
+          {...restProps}
         >
           {children}
         </Tag>
