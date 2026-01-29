@@ -167,7 +167,7 @@ const StickyTOCContent = ({ activeSlug, headings }: StickyTOCContentProps) => {
       {/* Active indicator - single div that moves to the active item */}
       <div
         ref={indicatorRef}
-        className="absolute left-[-2px] w-1 bg-pink-400 transition-all duration-150"
+        className="absolute left-[-2px] w-1 bg-pink-500 transition-all duration-150"
         style={{
           opacity: 0,
         }}
