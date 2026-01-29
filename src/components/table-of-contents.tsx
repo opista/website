@@ -202,7 +202,7 @@ const StickyTOCWrapper = ({ activeSlug, headings }: StickyTOCWrapperProps) => {
         />{" "}
         On this page
       </Heading>
-      <div className="overflow-y-auto min-h-0">
+      <div className="overflow-y-auto min-h-0 scrollbar-thin-zinc">
         <StickyTOCContent activeSlug={activeSlug} headings={headings} />
       </div>
     </nav>,
