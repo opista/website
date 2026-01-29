@@ -37,7 +37,7 @@ export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreEle
         {children}
       </pre>
       <button
-        aria-label="Copy code"
+        aria-label={copied ? "Copied successfully" : "Copy code"}
         className={cn(
           "absolute top-2 right-2 p-2 bg-zinc-950 border transition-all duration-200",
           "opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100",
