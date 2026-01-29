@@ -114,11 +114,14 @@ const DEFAULT_ANSWER_STATE: AnswerState = {
 export const IpodIdentifier = () => {
   const [answers, setAnswers] = useState<AnswerState>(DEFAULT_ANSWER_STATE);
 
-  const capacityOptions = generationMap
-    .filter((generation) => filterGeneration(generation, answers))
-    .flatMap(({ capacityOptions }) => capacityOptions)
-    .map(({ capacity }) => capacity)
-    .filter((option, idx, arr) => arr.indexOf(option) == idx)
+  const capacityOptions = Array.from(
+    new Set(
+      generationMap
+        .filter((generation) => filterGeneration(generation, answers))
+        .flatMap(({ capacityOptions }) => capacityOptions)
+        .map(({ capacity }) => capacity)
+    )
+  )
     .sort((a, b) => a - b)
     .map((capacity) => ({ label: `${capacity}GB`, value: capacity }));
 
