@@ -99,7 +99,12 @@ type StickyTOCContentProps = {
 const StickyTOCContent = ({ activeSlug, headings }: StickyTOCContentProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
-  const linkRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
+  const linkRefs = useRef<Map<string, HTMLAnchorElement>>(
+    null as unknown as Map<string, HTMLAnchorElement>
+  );
+  if (linkRefs.current === null) {
+    linkRefs.current = new Map();
+  }
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const registerRef = useCallback(
