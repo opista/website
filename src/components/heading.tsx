@@ -31,7 +31,10 @@ const LinkWrapper = ({
   children: ReactNode;
   href: string;
 }) => (
-  <Link className="inline-block no-underline" href={href}>
+  <Link
+    className="inline-block no-underline focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm"
+    href={href}
+  >
     {children}
   </Link>
 );
