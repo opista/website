@@ -41,11 +41,14 @@ export const SiteLinks = ({ hideContact }: SiteLinksProps) => {
             )}
             <Link
               aria-current={pathname.startsWith(href) ? "page" : undefined}
-              className={cn("p-2 hover:underline decoration-2", {
-                "font-bold underline": pathname.startsWith(href),
-                "font-medium": !pathname.startsWith(href),
-                "pr-0": idx === arr.length - 1,
-              })}
+              className={cn(
+                "p-2 hover:underline decoration-2 focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm",
+                {
+                  "font-bold underline": pathname.startsWith(href),
+                  "font-medium": !pathname.startsWith(href),
+                  "pr-0": idx === arr.length - 1,
+                }
+              )}
               href={href}
             >
               {text}
