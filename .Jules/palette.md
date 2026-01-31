@@ -37,3 +37,8 @@
 
 **Learning:** Icons often convey meaning visually (e.g. checkmark = "Pro", cross = "Con") that is lost to screen readers if the icon just says "check icon". It is better to hide the icon (`aria-hidden`) and provide semantic text (e.g., "Pro: ") via `sr-only` classes. To support this, all icon components must accept and spread `...props` to the underlying `<svg>`.
 **Action:** Ensure all icon components extend standard SVG props and spread them. Replace visual metaphors with semantic text for screen readers.
+
+## 2026-10-25 - Focus State on Wrapped Elements
+
+**Learning:** Wrapping a styled `div` inside a `Link` (anchor) breaks focus visibility because the browser focuses the anchor (which has no styles) while the `div` (which has the styles) is not focused.
+**Action:** Always apply interactive styles (focus rings, cursor, etc.) directly to the interactive element (`<a href>` or `<button>`), not a nested container.
