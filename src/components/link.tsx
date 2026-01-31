@@ -35,7 +35,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         {...props}
         aria-label={finalAriaLabel}
         className={cn(
-          "transition-colors link decoration-wavy no-underline hover:underline text-pink-400 hover:text-pink-500",
+          "transition-colors link decoration-wavy no-underline hover:underline text-pink-400 hover:text-pink-500 focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm",
           props.className,
         )}
         href={safeHref}
