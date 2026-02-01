@@ -55,7 +55,7 @@ export const BackToTop = ({
     >
       <IconArrowUp
         aria-hidden="true"
-        className="size-5"
+        className="size-6"
         stroke={3}
       />
     </Button>
