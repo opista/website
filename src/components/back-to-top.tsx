@@ -1,7 +1,7 @@
 "use client";
 
 import { HTMLProps, useCallback } from "react";
-import { IconArrowUpBar } from "@tabler/icons-react";
+import { IconArrowUp } from "@tabler/icons-react";
 
 import { useScrollSelector } from "@/hooks/use-scroll-selector";
 import { cn } from "@/util/cn";
@@ -43,16 +43,17 @@ export const BackToTop = ({
       aria-label="Back to top"
       className={cn(
         "group fixed bottom-4 right-4 z-10 p-3 transition-all duration-300",
-        showButton
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-4 pointer-events-none",
+        {
+          "opacity-0 translate-y-4 pointer-events-none": !showButton,
+          "opacity-100 translate-y-0": showButton,
+        },
         className
       )}
       noPadding
       onClick={onClick}
       tabIndex={showButton ? 0 : -1}
     >
-      <IconArrowUpBar
+      <IconArrowUp
         aria-hidden="true"
         className="size-4"
         stroke={3}
