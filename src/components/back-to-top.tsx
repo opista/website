@@ -22,9 +22,12 @@ export const BackToTop = ({
 
   const onClick = useCallback(() => {
     const focusableElement = document.querySelector<HTMLAnchorElement>('.logo');
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
     window.scrollTo({
-      behavior: "smooth",
+      behavior: prefersReducedMotion ? "auto" : "smooth",
       left: 0,
       top: 0,
     });
@@ -35,19 +38,25 @@ export const BackToTop = ({
   }, []);
 
   return (
-    showButton && (
-      <Button
-        aria-label="Back to top"
-        className={cn("group fixed bottom-4 right-4 z-10 p-3", className)}
-        noPadding
-        onClick={onClick}
-      >
-        <IconArrowUpBar
-          aria-label="Icon, arrow pointing up"
-          className="size-4"
-          stroke={3}
-        />
-      </Button>
-    )
+    <Button
+      aria-hidden={!showButton}
+      aria-label="Back to top"
+      className={cn(
+        "group fixed bottom-4 right-4 z-10 p-3 transition-all duration-300",
+        showButton
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-4 pointer-events-none",
+        className
+      )}
+      noPadding
+      onClick={onClick}
+      tabIndex={showButton ? 0 : -1}
+    >
+      <IconArrowUpBar
+        aria-hidden="true"
+        className="size-4"
+        stroke={3}
+      />
+    </Button>
   );
 };
