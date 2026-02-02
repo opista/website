@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { Heading } from "@/components/heading";
 import { HorizontalRule } from "@/components/horizontal-rule";
 import { Link } from "@/components/link";
+import { ReadingTime } from "@/components/reading-time";
 import { formatDate } from "@/lib/format-date";
 import { getAllPages } from "@/lib/pages";
 
@@ -34,7 +35,11 @@ export default async function Posts() {
                     {post.title}
                   </Heading>
                   <p className="mb-1 text-sm text-zinc-400">
-                    {formatDate(post.createdAt)}
+                    {formatDate(post.createdAt)} •{" "}
+                    <ReadingTime
+                      className="text-sm text-zinc-400"
+                      minutes={post.readingTime}
+                    />
                   </p>
                   <p className="line-clamp-2">{post.description}</p>
                 </Link>
