@@ -5,10 +5,10 @@ import { BackToTop } from "@/components/back-to-top";
 import { Heading } from "@/components/heading";
 import { ArticleJsonLd } from "@/components/json-ld";
 import { PostBody } from "@/components/post-body";
+import { ReadingTime } from "@/components/reading-time";
 import { BASE_SITE_URL } from "@/constant";
 import { formatDate } from "@/lib/format-date";
 import { getAllPageSlugs, getPageContentBySlug } from "@/lib/pages";
-import { calculateReadingTime } from "@/util/reading-time";
 
 type PostPageParams = {
   slug: string;
@@ -67,7 +67,6 @@ export default async function PostPage({
   }
 
   const pageWasUpdated = page.createdAt.getTime() !== page.modifiedAt.getTime()
-  const readingTime = calculateReadingTime(page.content);
 
   return (
     <article className="prose prose-invert">
@@ -82,7 +81,7 @@ export default async function PostPage({
         {page.title}
       </Heading>
       <p className="text-xs m-0!" title={formatDate(page.createdAt, { time: true })}>
-        First posted: {formatDate(page.createdAt)} • {readingTime} min read
+        First posted: {formatDate(page.createdAt)} • <ReadingTime minutes={page.readingTime} />
       </p>
       {pageWasUpdated && (
         <p className="text-xs mt-0 mb-8" title={formatDate(page.modifiedAt, { time: true })}>
