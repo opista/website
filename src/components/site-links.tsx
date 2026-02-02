@@ -10,7 +10,7 @@ type SiteLinksProps = {
   hideContact?: boolean;
 };
 
-export const siteLinks = [
+const siteLinks = [
   {
     href: "/apps",
     text: "apps",
