@@ -42,3 +42,8 @@
 
 **Learning:** Wrapping a styled `div` inside a `Link` (anchor) breaks focus visibility because the browser focuses the anchor (which has no styles) while the `div` (which has the styles) is not focused.
 **Action:** Always apply interactive styles (focus rings, cursor, etc.) directly to the interactive element (`<a href>` or `<button>`), not a nested container.
+
+## 2026-02-12 - Reading Time Estimates
+
+**Learning:** Providing an estimated reading time helps users gauge the commitment required for an article, improving the decision-making process. Calculating this server-side in Next.js (using a simple words/WPM formula) ensures the data is available immediately without layout shifts or client-side calculation delays.
+**Action:** Include reading time estimates for all long-form text content.

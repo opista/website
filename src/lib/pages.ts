@@ -3,6 +3,8 @@ import { open, readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
 import { join, sep } from "path";
 
+import { calculateReadingTime } from "@/util/reading-time";
+
 import { getBulkTimestamps } from "./bulk-git-timestamps";
 import { pageCreatedAt } from "./page-created-at";
 import { pageModifiedAt } from "./page-modified-at";
@@ -16,6 +18,7 @@ export type PageContent = {
   link?: string;
   modifiedAt: Date;
   price?: string;
+  readingTime: number;
   slug: string;
   title: string;
   url: string;
@@ -82,6 +85,7 @@ const getPageContent = async (
       content,
       createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath) ?? now,
       modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath) ?? now,
+      readingTime: calculateReadingTime(content),
       slug,
       url: `/${directory}/${slug}`,
       ...data,
@@ -104,12 +108,26 @@ const getPage = async (
       return null;
     }
 
-    const data = await readFrontMatter(fullPath);
+    // Optimization: For apps, we can skip reading the full file
+    // For posts, we need the content to calculate reading time
+    let data;
+    let readingTime = 0;
+
+    if (directory === "posts") {
+      const fileContents = await readFile(fullPath, "utf8");
+      const { content, data: frontMatter } = matter(fileContents);
+      data = frontMatter;
+      readingTime = calculateReadingTime(content);
+    } else {
+      data = await readFrontMatter(fullPath);
+    }
+
     const now = new Date();
 
     return {
       createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath) ?? now,
       modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath) ?? now,
+      readingTime,
       slug,
       url: `/${directory}/${slug}`,
       ...data,
