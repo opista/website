@@ -1,10 +1,22 @@
-"use client";
-
 import { IconRss } from "@tabler/icons-react";
 
 import { Link } from "./link";
 import { Logo } from "./logo";
-import { siteLinks } from "./site-links";
+
+const footerLinks = [
+  {
+    href: "/apps",
+    text: "apps",
+  },
+  {
+    href: "/posts",
+    text: "posts",
+  },
+  {
+    href: "mailto:contact@opista.com",
+    text: "contact",
+  },
+];
 
 export const Footer = () => {
   return (
@@ -13,7 +25,7 @@ export const Footer = () => {
         <Logo className="text-xl mb-4" isLink />
 
         <ul className="mt-4 mb-4">
-          {siteLinks.map(({ href, text }) => (
+          {footerLinks.map(({ href, text }) => (
             <li key={text}>
               <Link className="p-1" href={href}>
                 {text}
