@@ -10,10 +10,10 @@ type AlertProps = {
   children: ReactNode;
 };
 
-const iconMap: Record<AlertType, { icon: FC<IconProps>; label: string }> = {
-  error: { icon: IconAlertTriangle, label: "Icon, warning symbol" },
-  info: { icon: IconInfoCircle, label: "Icon, information symbol" },
-  warning: { icon: IconAlertCircle, label: "Icon, circle with an exclamation mark" },
+const iconMap: Record<AlertType, { icon: FC<IconProps>; semanticLabel: string }> = {
+  error: { icon: IconAlertTriangle, semanticLabel: "Error" },
+  info: { icon: IconInfoCircle, semanticLabel: "Info" },
+  warning: { icon: IconAlertCircle, semanticLabel: "Warning" },
 };
 
 const styleMap: Record<AlertType, string> = {
@@ -23,7 +23,7 @@ const styleMap: Record<AlertType, string> = {
 };
 
 export const Alert = ({ children, type = "info" }: AlertProps) => {
-  const { icon: Icon, label } = iconMap[type];
+  const { icon: Icon, semanticLabel } = iconMap[type];
   return (
     <div
       className={cn(
@@ -32,8 +32,11 @@ export const Alert = ({ children, type = "info" }: AlertProps) => {
       )}
       role="note"
     >
-      <Icon aria-label={label} className="mr-3 size-5 shrink-0" />
-      <div>{children}</div>
+      <Icon aria-hidden="true" className="mr-3 size-5 shrink-0" />
+      <div>
+        <span className="sr-only">{semanticLabel}: </span>
+        {children}
+      </div>
     </div>
   );
 };
