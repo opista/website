@@ -52,13 +52,13 @@ export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreEle
       >
         {copied ? (
           <IconCircleCheck
-            aria-label="Icon, circle with a tick"
+            aria-hidden="true"
             className="size-4"
             stroke={1.5}
           />
         ) : (
           <IconCopy
-            aria-label="Icon, copy to clipboard"
+            aria-hidden="true"
             className="size-4"
             stroke={1.5}
           />

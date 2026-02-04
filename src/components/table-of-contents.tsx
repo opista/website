@@ -197,7 +197,7 @@ const StickyTOCWrapper = ({ activeSlug, headings }: StickyTOCWrapperProps) => {
     >
       <Heading className="mt-0 mb-2 shrink-0" level="h2">
         <IconListTree
-          aria-label="Icon, list tree"
+          aria-hidden="true"
           className="w-6 h-6"
         />{" "}
         On this page
