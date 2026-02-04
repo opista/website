@@ -14,12 +14,15 @@
     scrollbar-width: thin;
     scrollbar-color: var(--color-zinc-700) transparent;
   }
+
   .scrollbar-thin-zinc::-webkit-scrollbar {
     width: 4px;
   }
+
   .scrollbar-thin-zinc::-webkit-scrollbar-track {
     background: transparent;
   }
+
   .scrollbar-thin-zinc::-webkit-scrollbar-thumb {
     background-color: var(--color-zinc-700);
     border-radius: 9999px;
@@ -59,5 +62,59 @@ sup+sup a[data-footnote-ref="true"] {
 }
 
 .prose :where(h5 + *):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin-top: 0;
+}
+
+pre {
+  overflow-x: auto;
+}
+
+pre [data-line] {
+  padding: 0 1rem;
+  border-left: 2px solid transparent;
+}
+
+pre code {
+  counter-reset: line;
+}
+
+pre code>[data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1.5rem;
+  text-align: right;
+  color: #6e7681;
+}
+
+code[data-line-numbers-max-digits="2"]>[data-line]::before {
+  width: 1.5rem;
+}
+
+code[data-line-numbers-max-digits="3"]>[data-line]::before {
+  width: 2rem;
+}
+
+[data-highlighted-line] {
+  @apply bg-pink-500/20 !border-l-4 !border-l-pink-500;
+}
+
+[data-highlighted-chars] {
+  @apply bg-pink-500/30 rounded px-1 py-0.5 text-white;
+}
+
+[data-rehype-pretty-code-figure] {
+  margin-bottom: 1.5rem;
+}
+
+[data-rehype-pretty-code-title] {
+  @apply border border-b-0 text-white;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+}
+
+[data-rehype-pretty-code-figure] pre {
   margin-top: 0;
 }
