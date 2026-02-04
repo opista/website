@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef, FC } from "react";
 import { MDXComponents } from "next-mdx-remote-client";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
 
 import { PageContent } from "@/lib/pages";
@@ -110,6 +111,15 @@ export const PostBody = ({ page }: PostBodyProps) => {
       components={components}
       options={{
         mdxOptions: {
+          rehypePlugins: [
+            [
+              rehypePrettyCode,
+              {
+                keepBackground: true,
+                theme: "github-dark-high-contrast",
+              },
+            ],
+          ],
           remarkPlugins: [remarkGfm],
         },
       }}

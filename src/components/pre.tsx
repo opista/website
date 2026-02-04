@@ -31,7 +31,7 @@ export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreEle
     <div className="relative group">
       <pre
         ref={ref}
-        className={cn("overflow-x-auto", className)}
+        className={cn("overflow-x-auto border rounded-none", className)}
         {...props}
       >
         {children}
@@ -39,10 +39,10 @@ export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreEle
       <button
         aria-label={copied ? "Copied successfully" : "Copy code"}
         className={cn(
-          "absolute top-2 right-2 p-2 bg-zinc-950 border transition-all duration-200",
-          "opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100",
+          "text-pink-400 hover:text-pink-500 flex justify-center items-center border border-2 border-current bg-black absolute top-[10px] right-[10px] size-10 p-1",
+          "cursor-pointer sm:opacity-0 sm:group-hover:opacity-100 transition-opacity",
           {
-            "text-green-500 border-green-500": copied,
+            "text-green-500 hover:text-green-500 border-green-500": copied,
           }
         )}
         onClick={() => {
@@ -53,13 +53,13 @@ export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreEle
         {copied ? (
           <IconCircleCheck
             aria-hidden="true"
-            className="size-4"
+            className="size-5"
             stroke={1.5}
           />
         ) : (
           <IconCopy
             aria-hidden="true"
-            className="size-4"
+            className="size-5"
             stroke={1.5}
           />
         )}

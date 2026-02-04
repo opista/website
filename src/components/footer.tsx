@@ -20,7 +20,7 @@ const footerLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col text-center py-6 sm:py-8 text-sm text-gray-400 border-t border-gray-500 sm:text-base">
+    <footer className="flex flex-col text-center py-6 sm:py-8 text-sm text-gray-400 border-t border-gray-500 sm:text-base mt-16">
       <div className="max-w-prose mx-auto w-full">
         <Logo className="text-xl mb-4" isLink />
 
