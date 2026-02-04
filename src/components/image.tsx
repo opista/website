@@ -30,7 +30,7 @@ export const Image = ({
           title="Open image in new tab"
         >
           <IconArrowsMaximize
-            aria-label="Icon, expand arrows pointing outwards"
+            aria-hidden="true"
             className="size-auto"
             stroke={1.5}
           />

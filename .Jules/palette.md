@@ -47,3 +47,8 @@
 
 **Learning:** Providing an estimated reading time helps users gauge the commitment required for an article, improving the decision-making process. Calculating this server-side in Next.js (using a simple words/WPM formula) ensures the data is available immediately without layout shifts or client-side calculation delays.
 **Action:** Include reading time estimates for all long-form text content.
+
+## 2026-02-13 - Redundant Icon Labels
+
+**Learning:** When an interactive element (button, link) has an explicit `aria-label`, any icons inside it should have `aria-hidden="true"` and no `aria-label`. Otherwise, screen readers will announce the icon label as well, creating noise (e.g., "Copy code button. Icon, copy to clipboard.").
+**Action:** Always strip `aria-label` from decorative icons inside labeled controls and use `aria-hidden="true"`.
