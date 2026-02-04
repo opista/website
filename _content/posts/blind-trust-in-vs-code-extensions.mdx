@@ -1,0 +1,224 @@
+---
+title: "Blind Trust in VS Code Extensions"
+description: "I audited a popular VS Code extension with nearly a million downloads. 'Vibe coding' is opening the door to a new wave of supply chain risks."
+---
+
+Recently I've been playing with Google's Antigravity, _another_ VS Code fork. It makes it easy for you to switch between the models available in your Google AI plan: Gemini and Claude.
+
+Antigravity enforces different quota buckets depending on the model you use, but that information isn’t surfaced anywhere in the UI. Users quickly hit rate limits without knowing why and end up searching for answers elsewhere.
+
+If you browse the [r/google_antigravity subreddit](https://www.reddit.com/r/google_antigravity/), you'll see plenty of posts asking about this. The common recommendation is to install one of the many VS Code extensions that promises to visualise usage and limits.
+
+I audited the most popular of these extensions, [Antigravity Cockpit](https://github.com/jlcodes99/vscode-antigravity-cockpit), to understand how it works. With [nearly a million downloads](https://open-vsx.org/extension/jlcodes/antigravity-cockpit), it's the most popular solution. I didn't find an intentional backdoor or obvious malware, but it does request broad system access, handles credentials, and uses local IPC mechanisms which create a significant risk if the extension were ever compromised.
+
+## The "solution"
+
+_Antigravity Cockpit_ is a VS Code extension that visualises your quota data from within the editor itself. It's not the only one - [search "antigravity" in the Open VSX Registry](https://open-vsx.org/?search=antigravity&sortBy=downloadCount&sortOrder=desc) and there's an entire page of extensions claiming to do the same thing. I thought I'd take a look at the source code for this one in particular to get a better idea of what it's actually doing.
+
+### Is this malware?
+
+The extension follows this process to get your quota information:
+
+It runs [system-level commands](https://github.com/jlcodes99/vscode-antigravity-cockpit/blob/main/src/engine/strategies.ts) to scan your computer's active processes. It hunts (the file is literally called `hunter.ts`) for the specific process ID of the editor's language server and extracts the CSRF token and server's port number from the command-line arguments.
+
+```ts title="src/engine/strategies.ts"
+private isAntigravityProcess(commandLine: string): boolean {
+    if (!commandLine.includes('--extension_server_port')) {
+        return false;
+    }
+    if (!commandLine.includes('--csrf_token')) {
+        return false;
+    }
+    return /--app_data_dir\s+antigravity\b/i.test(commandLine);
+}
+```
+
+Now that it has this information, it can impersonate the editor. The CSRF token is stored in memory and passed in the `X-Codeium-Csrf-Token` header.
+
+With that header, it can [make requests to the language server](https://github.com/jlcodes99/vscode-antigravity-cockpit/blob/12546e4199bcbcc8268f15b51674e3f02b657c8e/src/engine/reactor.ts#L984). By communicating directly with the background process via HTTP on localhost, the extension completely bypasses the VS Code extension sandbox. Instead of using the official, restricted `vscode.*` APIs, it creates an unauthorised backchannel to the language server.
+
+```ts title="src/engine/reactor.ts" {13}
+private async transmit <T>(endpoint: string, payload: object): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const data = JSON.stringify(payload);
+    const opts: https.RequestOptions = {
+      hostname: '127.0.0.1',
+      port: this.port,
+      path: endpoint,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(data),
+        'Connect-Protocol-Version': '1',
+        'X-Codeium-Csrf-Token': this.token,
+      },
+      rejectUnauthorized: false,
+      timeout: TIMING.HTTP_TIMEOUT_MS,
+      agent: false,
+    };
+
+    logger.info(`Transmitting signal to ${endpoint}`, JSON.parse(data));
+
+    const req = https.request(opts, res => {
+        // ...
+    });
+
+    // ...
+  });
+}
+```
+
+This is intended as a convenience feature, but the behaviour matches common malware techniques. None of this requires an exploit, and none of it violates the VS Code extension API. The risk emerges if the extension is ever compromised, forked, or the codebase is replaced. The mechanisms are already in place for credential theft.
+
+### Keys to the kingdom
+
+To get your Google credentials, the extension will first try to [dig through your VS Code global storage](https://github.com/jlcodes99/vscode-antigravity-cockpit/blob/12546e4199bcbcc8268f15b51674e3f02b657c8e/src/engine/reactor.ts#L226).
+
+```ts title="src/engine/reactor.ts"
+async function readStateValue(dbPath: string): Promise<string> {
+  // ...
+  const fileBuffer = fs.readFileSync(dbPath);
+  // ...
+  db = new SQL.Database(fileBuffer);
+  const stmt = db.prepare("SELECT value FROM ItemTable WHERE key = ?");
+  stmt.bind([STATE_KEY]); // Key is 'jetskiStateSync.agentManagerInitState'
+  // ...
+}
+```
+
+If the extension is unable to find them that way, you can also verify yourself with OAuth, requesting the ["https://www.googleapis.com/auth/cloud-platform" scope](https://github.com/jlcodes99/vscode-antigravity-cockpit/blob/12546e4199bcbcc8268f15b51674e3f02b657c8e/src/auto_trigger/oauth_service.ts#L18). **This single permission grants access consistent with the user’s IAM permissions.** This is a violation of the Principle of Least Privilege.
+
+The extension relies on a hardcoded client ID and secret to **impersonate the official Google Antigravity application**. The extension starts a local web server, and once authentication has completed, it will redirect back to this server to consume the authorisation code.
+
+```ts title="src/auto_trigger/oauth_service.ts" {3}
+async prepareAuthorizationSession(): Promise <string> {
+  // ...
+  const port = await this.startCallbackServer();
+  const redirectUri = `${this.callbackBaseUrl}:${port}`;
+  const state = this.generateState();
+  const authUrl = this.buildAuthUrl(redirectUri, state);
+  const promise = this.waitForCallback(state, 5 * 60 * 1000);
+  // ...
+  return authUrl;
+}
+```
+
+It then immediately exchanges the authorisation token for an access token and refresh token.
+
+```ts title="src/auto_trigger/oauth_service.ts" {8-10,24-31}
+private async exchangeCodeForToken(code: string, redirectUri: string): Promise <OAuthCredential> {
+  const response = await this.fetchWithTimeout(TOKEN_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({
+      client_id: ANTIGRAVITY_CLIENT_ID,
+      client_secret: ANTIGRAVITY_CLIENT_SECRET,
+      code: code,
+      redirect_uri: redirectUri,
+      grant_type: 'authorization_code',
+    }).toString(),
+  });
+  // ...
+  const data = await response.json() as {
+    access_token: string;
+    refresh_token: string;
+    expires_in: number;
+    scope: string;
+    token_type: string;
+  };
+  // ...
+  return {
+    clientId: ANTIGRAVITY_CLIENT_ID,
+    clientSecret: ANTIGRAVITY_CLIENT_SECRET,
+    accessToken: data.access_token,
+    refreshToken: data.refresh_token,
+    expiresAt: expiresAt,
+    scopes: data.scope.split(' '),
+  };
+}
+```
+
+From a functional perspective, this extension does not need broad access to Google Cloud APIs. Its stated purpose is limited to displaying quota and usage metadata for the Antigravity service. That information could be obtained via a service-specific, read-only scope, or a minimal backend endpoint that returns quota state without granting API access.
+
+Requesting the cloud-platform scope instead grants access to every Google Cloud API the user is already authorised for, including compute, storage, IAM, and billing. This dramatically expands the blast radius of a compromised extension for functionality that is fundamentally observational. The extension **doesn't** call these APIs today, but access is always possible without any further consent by the user.
+
+### Safe storage...ish
+
+Once the extension has decoded and reconstructed your credentials, it stores them in [SecretStorage](https://github.com/jlcodes99/vscode-antigravity-cockpit/blob/12546e4199bcbcc8268f15b51674e3f02b657c8e/src/auto_trigger/credential_storage.ts#L123). SecretStorage uses the Electron safeStorage API, which is a wrapper around Chromium's OSCrypt. The actual encryption keys are managed by the OS's native credential manager. **Brilliant!**
+
+...Unfortunately, that is a wasted effort. In the same method, the extension [writes your credentials to a plaintext JSON file](https://github.com/jlcodes99/vscode-antigravity-cockpit/blob/12546e4199bcbcc8268f15b51674e3f02b657c8e/src/auto_trigger/credential_storage.ts#L304). (`~/.antigravity_cockpit/credentials.json`).
+
+```ts title="src/auto_trigger/credential_storage.ts" {4,6}
+private async saveCredentialsStorage(storage: CredentialsStorage, options ? : { skipNotifyTools ? : boolean }): Promise < void > {
+  // ...
+  const json = JSON.stringify(storage);
+  await this.secretStorage!.store(CREDENTIALS_KEY, json);
+  // ...
+  await this.syncToSharedFile(storage);
+  // ...
+}
+```
+
+```ts title="src/auto_trigger/credential_storage.ts" {16-18}
+private async syncToSharedFile(storage: CredentialsStorage): Promise<void> {
+  // ...
+  const sharedFile = path.join(sharedDir, 'credentials.json');
+  // ...
+  for (const [email, cred] of Object.entries(storage.accounts)) {
+    // ...
+    exportData[email] = {
+      email: cred.email || email,
+      accessToken: cred.accessToken || '',
+      refreshToken: cred.refreshToken || '',
+      expiresAt: cred.expiresAt || '',
+      projectId: cred.projectId,
+    };
+  }
+
+  fs.writeFileSync(sharedFile, JSON.stringify({
+    accounts: exportData
+  }, null, 2));
+  // ...
+}
+```
+
+The credentials file is written to the system without any additional permission hardening. On most systems, this directory is readable by any process running under the same user account. That includes other local applications, development tools, and browser extensions. VS Code's SecretStorage is effectively bypassed, which increases the attack surface by enabling opportunities to harvest credentials without needing any special privileges or access.
+
+### Unauthenticated credential exfiltration
+
+But wait, there's more! The reason that your credentials are saved to disk is so that it can try to connect to `ws://127.0.0.1:19528` and broadcast them to the [Cockpit Tools](https://github.com/jlcodes99/cockpit-tools) application if you have it installed. There's no [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication) or other form of verification to ensure that the connection is secure.
+
+If the _Cockpit Tools_ app isn't running, any malicious process can bind to this port first and capture your credentials. Even if the app _is_ running, the lack of authentication means other local processes (or even malicious browser scripts via localhost) could potentially connect as clients and query the data. This does not require elevated privileges, just the ability to run code under your user account.
+
+```ts title="src/services/cockpitToolsWs.ts"
+private doConnect(): void {
+  // ..
+  this.ws = new WebSocket(wsUrl);
+
+  this.ws.onopen = () => {
+    // ...
+    this.emit('connected');
+    this.startPing();
+  };
+
+  // ...
+}
+```
+
+---
+
+Extensions like this are a great target for malicious actors. Not because they are intentionally malicious, but because they combine broad permissions with poor security practices and implicit trust. I am not suggesting that the author of _Antigravity Cockpit_ is acting in bad faith, but the implementation exposes users to a level of risk that seems disproportionate to the problem it's solving.
+
+This is not purely a "vibe coding" issue. The VS Code extension ecosystem allows for a level of system access that isn't sandboxed and doesn't offer much in the way of transparency of permissions. Forked editors like Antigravity are inheriting this trust model but without necessarily inheriting the security scrutiny.
+
+The barrier to entry is now lower than ever, and AI has helped that to happen. But the floor for the level of understanding is so low that it only increases the number of people who are not aware of the risks they are taking. VS Code has such a permissive API that it's easy to create extensions that can do some pretty dangerous things.
+
+If you're a user of this extension, I recommend uninstalling it, revoking any associated OAuth tokens, and reviewing any other extensions that:
+
+- Execute system commands
+- Request broad OAuth scopes
+- Store your credentials
+
+I also recommend checking your home directory (e.g., `~/.antigravity_cockpit/`) for any unencrypted credential files that may have been left behind, as uninstalling the extension will not remove them.
