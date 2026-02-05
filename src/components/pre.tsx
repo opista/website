@@ -40,7 +40,7 @@ export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreEle
         aria-label={copied ? "Copied successfully" : "Copy code"}
         className={cn(
           "text-pink-400 hover:text-pink-500 flex justify-center items-center border border-2 border-current bg-black absolute top-[10px] right-[10px] size-10 p-1",
-          "cursor-pointer sm:opacity-0 sm:group-hover:opacity-100 transition-opacity",
+          "cursor-pointer sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-opacity focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm",
           {
             "text-green-500 hover:text-green-500 border-green-500": copied,
           }
