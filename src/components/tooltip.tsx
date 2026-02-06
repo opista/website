@@ -51,7 +51,7 @@ export const Tooltip = ({
         type="button"
       >
         <IconInfoCircle
-          aria-label="Icon, information symbol"
+          aria-hidden="true"
           className="size-4"
           stroke={1.5}
         />
