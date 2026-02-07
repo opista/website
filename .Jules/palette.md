@@ -52,3 +52,8 @@
 
 **Learning:** When an interactive element (button, link) has an explicit `aria-label`, any icons inside it should have `aria-hidden="true"` and no `aria-label`. Otherwise, screen readers will announce the icon label as well, creating noise (e.g., "Copy code button. Icon, copy to clipboard.").
 **Action:** Always strip `aria-label` from decorative icons inside labeled controls and use `aria-hidden="true"`.
+
+## 2026-02-14 - Heading Permalink Accessibility
+
+**Learning:** Permalinks inside headings often include an icon. If this icon has an accessible name (e.g. "Icon, link symbol") and is part of the link text, screen readers announce it as part of the heading text (e.g. "Heading Text Icon, link symbol"). This is noisy and redundant.
+**Action:** Ensure permalink icons inside headings are hidden with `aria-hidden="true"` so the link text matches the heading text exactly.
