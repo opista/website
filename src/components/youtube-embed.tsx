@@ -1,5 +1,6 @@
 type YoutubeEmbedProps = {
   start?: number;
+  title?: string;
   videoId: string;
 };
 
@@ -10,7 +11,10 @@ const buildEmbedUrl = ({ start, videoId }: YoutubeEmbedProps) => {
   return [baseUrl, videoId, startParam].filter(Boolean).join("");
 };
 
-export const YoutubeEmbed = (props: YoutubeEmbedProps) => (
+export const YoutubeEmbed = ({
+  title = "YouTube video player",
+  ...props
+}: YoutubeEmbedProps) => (
   <iframe
     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
     allowFullScreen
@@ -19,6 +23,6 @@ export const YoutubeEmbed = (props: YoutubeEmbedProps) => (
     loading="lazy"
     referrerPolicy="strict-origin-when-cross-origin"
     src={buildEmbedUrl(props)}
-    title="YouTube video player"
+    title={title}
   ></iframe>
 );
