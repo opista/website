@@ -1,6 +1,7 @@
 export type VideoEmbedProps = {
   className?: string;
   src: string;
+  title?: string;
   type?: string;
 };
 
@@ -23,9 +24,10 @@ const getFileType = (src: string) => {
 export const VideoEmbed = ({
   className,
   src,
+  title,
   type = getFileType(src),
 }: VideoEmbedProps) => (
-  <video className={className} controls preload="metadata">
+  <video className={className} controls preload="metadata" title={title}>
     <source src={src} type={`video/${type}`} />
   </video>
 );
