@@ -16,7 +16,7 @@ export const RecommendedBadge = ({ className }: RecommendedBadgeProps) => (
     )}
   >
     <IconRosetteDiscountCheck
-      aria-label="Icon, badge with a tick"
+      aria-hidden="true"
       className="mr-1 size-4"
       stroke={1.5}
     />

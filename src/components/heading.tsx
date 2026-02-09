@@ -41,7 +41,7 @@ const LinkWrapper = ({
 
 const Icon = () => (
   <IconLink
-    aria-label="Icon, link symbol"
+    aria-hidden="true"
     className="group-hover:text-pink-500 inline-block ml-1"
     size={16}
     stroke={1.5}

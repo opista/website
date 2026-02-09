@@ -40,7 +40,7 @@ export const Footer = () => {
           href="/feed"
         >
           <IconRss
-            aria-label="Icon, RSS feed"
+            aria-hidden="true"
             className="size-5"
             stroke={3}
           />
