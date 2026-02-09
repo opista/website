@@ -24,6 +24,7 @@ const contentSecurityPolicy = `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    minimumCacheTTL: 2678400,
     qualities: [100, 75],
   },
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
@@ -63,7 +64,8 @@ const nextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value: "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
+            value:
+              "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
           },
           {
             key: "Content-Security-Policy",
