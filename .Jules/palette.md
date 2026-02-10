@@ -61,3 +61,8 @@
 ## 2026-02-14 - Embedded Video Accessibility
 **Learning:** Iframe-based embeds (like YouTube) often lack descriptive titles, which is a WCAG violation (4.1.2). Adding a specific `title` prop allows content authors to provide context that the default "YouTube video player" lacks.
 **Action:** Always expose a `title` prop on embed components and update existing content to use it.
+
+## 2026-05-20 - Semantic Status Messages
+
+**Learning:** Using `div`s with custom styles for status messages (like "Work in Progress") is inaccessible to screen readers as it lacks semantic meaning. Using `role="note"` (or `role="status"` for updates) and `aria-label` provides necessary context.
+**Action:** Replace ad-hoc styled divs with semantic components that use appropriate ARIA roles and labels.
