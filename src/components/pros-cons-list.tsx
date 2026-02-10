@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IconCircleCheck, IconCircleX, IconProps } from "@tabler/icons-react";
+import { IconCircleCheckFilled, IconCircleXFilled, IconProps } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 
@@ -17,12 +17,12 @@ const listConfig: Record<
 > = {
   cons: {
     className: "text-red-600",
-    icon: IconCircleX,
+    icon: IconCircleXFilled,
     prefix: "Con: ",
   },
   pros: {
     className: "text-green-600",
-    icon: IconCircleCheck,
+    icon: IconCircleCheckFilled,
     prefix: "Pro: ",
   },
 };
@@ -39,7 +39,6 @@ export const ProsConsList = ({ className, list, type }: ProsConsListProps) => {
           <Icon
             aria-hidden="true"
             className={cn(iconClassName, "size-4 shrink-0 mt-1 mr-1")}
-            stroke={1.5}
           />
           <span>
             <span className="sr-only">{prefix}</span>

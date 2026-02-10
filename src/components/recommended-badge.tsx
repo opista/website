@@ -1,4 +1,4 @@
-import { IconRosetteDiscountCheck } from "@tabler/icons-react";
+import { IconRosetteDiscountCheckFilled } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 
@@ -15,10 +15,9 @@ export const RecommendedBadge = ({ className }: RecommendedBadgeProps) => (
       className
     )}
   >
-    <IconRosetteDiscountCheck
+    <IconRosetteDiscountCheckFilled
       aria-hidden="true"
       className="mr-1 size-4"
-      stroke={1.5}
     />
     Recommended
   </div>

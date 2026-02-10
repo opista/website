@@ -1,7 +1,7 @@
 "use client";
 
 import { HTMLAttributes, useEffect, useRef, useState } from "react";
-import { IconCircleCheck, IconCopy } from "@tabler/icons-react";
+import { IconCopy, IconCopyCheckFilled } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 
@@ -39,7 +39,7 @@ export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreEle
       <button
         aria-label={copied ? "Copied successfully" : "Copy code"}
         className={cn(
-          "text-pink-400 hover:text-pink-500 flex justify-center items-center border border-2 border-current bg-black absolute top-[10px] right-[10px] size-10 p-1",
+          "text-pink-400 hover:text-pink-500 flex justify-center items-center border border-2 border-current bg-black absolute bottom-[10px] sm:bottom-auto sm:top-[10px] right-[10px] size-10 p-1",
           "cursor-pointer sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-opacity focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm",
           {
             "text-green-500 hover:text-green-500 border-green-500": copied,
@@ -51,10 +51,9 @@ export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreEle
         type="button"
       >
         {copied ? (
-          <IconCircleCheck
+          <IconCopyCheckFilled
             aria-hidden="true"
             className="size-5"
-            stroke={1.5}
           />
         ) : (
           <IconCopy

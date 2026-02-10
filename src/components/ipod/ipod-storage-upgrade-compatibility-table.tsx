@@ -1,5 +1,5 @@
 import { FC, Fragment, ReactNode } from "react";
-import { IconAlertCircle, IconCircleCheck, IconCircleX, IconInfoCircle, IconProps } from "@tabler/icons-react";
+import { IconAlertCircleFilled, IconCircleCheckFilled, IconCircleXFilled, IconInfoCircleFilled, IconProps } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
@@ -150,26 +150,26 @@ const supportLevelMap: Record<
         </Link>
       </>
     ),
-    icon: IconInfoCircle,
+    icon: IconInfoCircleFilled,
     label: "Icon, information symbol",
   },
   full: {
     className: "text-green-600 bg-green-100",
     description: "Supported",
-    icon: IconCircleCheck,
+    icon: IconCircleCheckFilled,
     label: "Icon, circle with a tick",
   },
   none: {
     className: "text-red-600 bg-red-100",
     description: "Unsupported",
-    icon: IconCircleX,
+    icon: IconCircleXFilled,
     label: "Icon, circle with a cross",
   },
   partial: {
     className: "text-yellow-600 bg-yellow-100",
     description:
       "Supported, but you'll probably reach the RAM's item limit before the storage limit",
-    icon: IconAlertCircle,
+    icon: IconAlertCircleFilled,
     label: "Icon, circle with an exclamation mark",
   },
 };

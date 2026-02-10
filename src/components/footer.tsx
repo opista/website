@@ -27,7 +27,7 @@ export const Footer = () => {
         <ul className="mt-4 mb-4">
           {footerLinks.map(({ href, text }) => (
             <li key={text}>
-              <Link className="p-1" href={href}>
+              <Link className="p-1" href={href} hideExternalLinkIcon>
                 {text}
               </Link>
             </li>

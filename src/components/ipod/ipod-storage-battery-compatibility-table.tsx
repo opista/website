@@ -1,5 +1,5 @@
 import { FC, Fragment, ReactNode } from "react";
-import { IconCircleCheck, IconCircleX, IconProps } from "@tabler/icons-react";
+import { IconCircleCheckFilled, IconCircleXFilled, IconProps } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
@@ -233,13 +233,13 @@ const compatibilityMap: Record<
   false: {
     className: "text-red-600 bg-red-100",
     description: "Incompatible",
-    icon: IconCircleX,
+    icon: IconCircleXFilled,
     label: "Icon, circle with a cross",
   },
   true: {
     className: "text-green-600 bg-green-100",
     description: "Compatible",
-    icon: IconCircleCheck,
+    icon: IconCircleCheckFilled,
     label: "Icon, circle with a tick",
   },
 };

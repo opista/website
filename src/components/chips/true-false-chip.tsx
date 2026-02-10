@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IconCircleCheck, IconCircleX, IconProps } from "@tabler/icons-react";
+import { IconCircleCheckFilled, IconCircleXFilled, IconProps } from "@tabler/icons-react";
 
 import { Chip } from "./chip";
 
@@ -11,8 +11,8 @@ type TrueFalseChipProps = {
 };
 
 const iconMap: Record<string, FC<IconProps>> = {
-  false: IconCircleX,
-  true: IconCircleCheck,
+  false: IconCircleXFilled,
+  true: IconCircleCheckFilled,
 };
 
 export const TrueFalseChip = ({
