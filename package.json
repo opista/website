@@ -49,7 +49,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-perfectionist": "^2.10.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-unused-imports": "^4.3.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
     "globals": "^17.3.0",
     "postcss": "^8",
     "tailwindcss": "^4.1.18",
