@@ -28,12 +28,12 @@ export const Chip = ({
   <div className={cn("inline-block mb-5 select-none", containerClassName)}>
     <div
       className={cn(
-        "inline-flex items-center rounded-full pl-1 pr-2 gap-1 text-white text-sm",
+        "inline-flex items-center rounded-full pl-1 pr-3 gap-1 text-white text-sm",
         className,
         color ? chipColorMap[color] : chipColorMap.blue
       )}
     >
-      <div className="rounded-full bg-white bg-white/40 flex items-center justify-center">
+      <div className="flex items-center justify-center p-1">
         <Icon aria-hidden="true" size={16} stroke={1.5} />
       </div>
       <span>{label}</span>

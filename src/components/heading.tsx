@@ -32,7 +32,7 @@ const LinkWrapper = ({
   href: string;
 }) => (
   <Link
-    className="inline-block no-underline focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm"
+    className="group inline-block no-underline focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm"
     href={href}
   >
     {children}
@@ -106,7 +106,7 @@ export const Heading = ({
       className={cn("relative scroll-mt-20", levelClasses[Comp], className)}
       id={slug}
     >
-      <span className={cn("group flex items-center gap-2", spanClassName)}>
+      <span className={cn("group inline-flex items-center gap-2", spanClassName)}>
         <ConditionalWrapper
           condition={!!link}
           wrapper={(children) => formattedChildren(children, href)}

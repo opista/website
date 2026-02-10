@@ -1,4 +1,5 @@
 import { type ComponentPropsWithoutRef, forwardRef } from "react";
+import { IconExternalLink } from "@tabler/icons-react";
 import NextLink from "next/link";
 
 import { cn } from "@/util/cn";
@@ -6,12 +7,14 @@ import { isInternalLink } from "@/util/is-external-link";
 import { sanitizeUrl } from "@/util/sanitize-url";
 
 type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
+  hideExternalLinkIcon?: boolean;
   openInNewTab?: boolean;
 };
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({
     children,
+    hideExternalLinkIcon,
     href,
     openInNewTab,
     ...props
@@ -44,6 +47,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         target={target}
       >
         {children}
+        {shouldOpenInNewTab && !hideExternalLinkIcon && <IconExternalLink className="inline -mt-[2px] ml-1 size-4" aria-hidden="true" />}
         {shouldOpenInNewTab && !ariaLabel && (
           <span className="relative">
             <span className="sr-only">&nbsp;(opens in a new tab)</span>

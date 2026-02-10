@@ -1,7 +1,7 @@
 "use client";
 
 import { useId } from "react";
-import { IconInfoCircle } from "@tabler/icons-react";
+import { IconInfoCircleFilled } from "@tabler/icons-react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import { cn } from "@/util/cn";
@@ -11,18 +11,18 @@ export type TooltipProps = {
   content: string;
   offset?: number;
   position?:
-    | "bottom-end"
-    | "bottom-start"
-    | "bottom"
-    | "left-end"
-    | "left-start"
-    | "left"
-    | "right-end"
-    | "right-start"
-    | "right"
-    | "top-end"
-    | "top-start"
-    | "top";
+  | "bottom-end"
+  | "bottom-start"
+  | "bottom"
+  | "left-end"
+  | "left-start"
+  | "left"
+  | "right-end"
+  | "right-start"
+  | "right"
+  | "top-end"
+  | "top-start"
+  | "top";
   variant?: "dark" | "error" | "info" | "light" | "success" | "warning";
 };
 
@@ -50,10 +50,9 @@ export const Tooltip = ({
         data-tooltip-variant={variant}
         type="button"
       >
-        <IconInfoCircle
+        <IconInfoCircleFilled
           aria-hidden="true"
           className="size-4"
-          stroke={1.5}
         />
       </button>
       <ReactTooltip className="max-w-[250px]" id={id} />

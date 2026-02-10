@@ -26,6 +26,7 @@ export const Image = ({
           aria-label="View full size image"
           className="flex justify-center items-center border border-2 border-current bg-black absolute bottom-[10px] right-[10px] size-10 p-1 max-w-[30%] max-h-[30%] sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-all"
           href={src as string}
+          hideExternalLinkIcon
           openInNewTab
           title="Open image in new tab"
         >
