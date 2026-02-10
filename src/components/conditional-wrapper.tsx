@@ -6,8 +6,5 @@ type ConditionalWrapperProps = {
   wrapper: (children: ReactNode) => ReactNode;
 };
 
-export const ConditionalWrapper = ({
-  children,
-  condition,
-  wrapper,
-}: ConditionalWrapperProps) => (condition ? wrapper(children) : children);
+export const ConditionalWrapper = ({ children, condition, wrapper }: ConditionalWrapperProps) =>
+  condition ? wrapper(children) : children;

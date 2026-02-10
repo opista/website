@@ -14,7 +14,7 @@ export async function GET() {
     title: "OPISTA Blog",
   });
 
-  const posts = await getAllPages("posts")
+  const posts = await getAllPages("posts");
 
   posts.forEach((post) => {
     feed.item({

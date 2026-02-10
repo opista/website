@@ -57,11 +57,7 @@ const upgrades: Upgrade[] = [
     image: "/posts/ipod-modding/storage/iflash-quad.jpg",
     option: "iFlash Quad",
     price: "~£36",
-    pros: [
-      "Reliable and good quality",
-      "Fits 4 MicroSD cards",
-      "Space for maximum mods",
-    ],
+    pros: ["Reliable and good quality", "Fits 4 MicroSD cards", "Space for maximum mods"],
     purchase: {
       label: "iFlash",
       link: "https://www.iflash.xyz/store/iflash-quad/",
@@ -73,11 +69,7 @@ const upgrades: Upgrade[] = [
     image: "/posts/ipod-modding/storage/aliexpress-microsd.jpg",
     option: "Generic MicroSD (imCort Design)",
     price: "~£38",
-    pros: [
-      "Very compact",
-      "Great mechanism for holding cards",
-      "Space for maximum mods",
-    ],
+    pros: ["Very compact", "Great mechanism for holding cards", "Space for maximum mods"],
     purchase: {
       label: "AliExpress",
       link: "https://s.click.aliexpress.com/e/_oC7IDBH",
@@ -144,10 +136,7 @@ const upgrades: Upgrade[] = [
     },
   },
   {
-    cons: [
-      "SSDs consume significantly more power than other options",
-      "Loose fit connector",
-    ],
+    cons: ["SSDs consume significantly more power than other options", "Loose fit connector"],
     description: "m.2 Adaptor. Supports m.2 SSDs",
     image: "/posts/ipod-modding/storage/aliexpress-m2.jpg",
     option: "Generic m.2",
@@ -159,10 +148,7 @@ const upgrades: Upgrade[] = [
     },
   },
   {
-    cons: [
-      "SSDs consume significantly more power than other options",
-      "Loose fit connector",
-    ],
+    cons: ["SSDs consume significantly more power than other options", "Loose fit connector"],
     description: "mSata Adaptor. Supports mSATA SSDs",
     image: "/posts/ipod-modding/storage/aliexpress-msata.jpg",
     option: "Generic mSATA",
@@ -188,10 +174,7 @@ export const IpodStorageAdaptorOptionsTable = () => (
     </thead>
     <tbody>
       {upgrades.map((upgrade) => (
-        <tr
-          className={cn({ [RECOMMENDED_BG_COLOR]: upgrade.recommended })}
-          key={upgrade.option}
-        >
+        <tr className={cn({ [RECOMMENDED_BG_COLOR]: upgrade.recommended })} key={upgrade.option}>
           <TableBodyCell className="align-top">
             <p className="mt-0">{upgrade.option}</p>
             <p>{upgrade.price}</p>

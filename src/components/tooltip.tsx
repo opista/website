@@ -11,18 +11,18 @@ export type TooltipProps = {
   content: string;
   offset?: number;
   position?:
-  | "bottom-end"
-  | "bottom-start"
-  | "bottom"
-  | "left-end"
-  | "left-start"
-  | "left"
-  | "right-end"
-  | "right-start"
-  | "right"
-  | "top-end"
-  | "top-start"
-  | "top";
+    | "bottom-end"
+    | "bottom-start"
+    | "bottom"
+    | "left-end"
+    | "left-start"
+    | "left"
+    | "right-end"
+    | "right-start"
+    | "right"
+    | "top-end"
+    | "top-start"
+    | "top";
   variant?: "dark" | "error" | "info" | "light" | "success" | "warning";
 };
 
@@ -41,7 +41,7 @@ export const Tooltip = ({
         aria-label="More information"
         className={cn(
           "inline-block appearance-none bg-transparent border-none p-0 cursor-help align-middle",
-          className
+          className,
         )}
         data-tooltip-content={content}
         data-tooltip-id={id}
@@ -50,10 +50,7 @@ export const Tooltip = ({
         data-tooltip-variant={variant}
         type="button"
       >
-        <IconInfoCircleFilled
-          aria-hidden="true"
-          className="size-4"
-        />
+        <IconInfoCircleFilled aria-hidden="true" className="size-4" />
       </button>
       <ReactTooltip className="max-w-[250px]" id={id} />
     </>

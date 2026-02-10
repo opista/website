@@ -56,11 +56,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function AppPage({
-  params,
-}: {
-  params: Promise<AppPageParams>;
-}) {
+export default async function AppPage({ params }: { params: Promise<AppPageParams> }) {
   const { slug } = await params;
   const page = await getPageContentBySlug("apps", slug);
 

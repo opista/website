@@ -5,8 +5,8 @@ import tseslint from "typescript-eslint";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import perfectionist from "eslint-plugin-perfectionist";
 import unusedImports from "eslint-plugin-unused-imports";
-import nextVitals from 'eslint-config-next/core-web-vitals'
-import prettier from 'eslint-config-prettier/flat'
+import nextVitals from "eslint-config-next/core-web-vitals";
+import prettier from "eslint-config-prettier/flat";
 
 export default defineConfig([
   {
@@ -49,7 +49,6 @@ export default defineConfig([
           ],
         },
       ],
-      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-floating-promises": "warn",
       "@typescript-eslint/no-unsafe-argument": "warn",
       "@typescript-eslint/no-unsafe-assignment": "off",

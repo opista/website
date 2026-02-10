@@ -37,16 +37,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html className="h-full scroll-smooth" lang="en">
-      <body
-        className={cn("bg-zinc-950 text-white h-full", inter.className)}
-      >
+      <body className={cn("bg-zinc-950 text-white h-full", inter.className)}>
         <OrganizationJsonLd />
         {children}
       </body>
@@ -54,4 +48,3 @@ export default function RootLayout({
     </html>
   );
 }
-

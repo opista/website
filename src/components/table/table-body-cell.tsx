@@ -18,7 +18,7 @@ export const TableBodyCell = ({
       {
         "border-r border-(--tw-prose-td-borders)": border,
       },
-      className
+      className,
     )}
   />
 );

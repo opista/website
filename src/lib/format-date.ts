@@ -28,10 +28,7 @@ const dateTimeFormatter = new Intl.DateTimeFormat("en-GB", {
   timeZone: "UTC",
 });
 
-export const formatDate = (
-  date: Date,
-  { time }: Options = { time: false }
-) => {
+export const formatDate = (date: Date, { time }: Options = { time: false }) => {
   const formatter = time ? dateTimeFormatter : dateFormatter;
 
   return formatter

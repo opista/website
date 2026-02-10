@@ -1,34 +1,17 @@
 {
   "extends": "next/core-web-vitals",
-  "plugins": [
-    "simple-import-sort",
-    "unused-imports"
-  ],
+  "plugins": ["simple-import-sort", "unused-imports"],
   "rules": {
     "simple-import-sort/imports": [
       "error",
       {
         "groups": [
-          [
-            "^\\u0000"
-          ],
-          [
-            "^react$",
-            "^@?\\w"
-          ],
-          [
-            "^@",
-            "^"
-          ],
-          [
-            "^\\./"
-          ],
-          [
-            "^.+\\.(module.css|module.scss)$"
-          ],
-          [
-            "^.+\\.(gif|png|svg|jpg)$"
-          ]
+          ["^\\u0000"],
+          ["^react$", "^@?\\w"],
+          ["^@", "^"],
+          ["^\\./"],
+          ["^.+\\.(module.css|module.scss)$"],
+          ["^.+\\.(gif|png|svg|jpg)$"]
         ]
       }
     ],

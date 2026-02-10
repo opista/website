@@ -67,7 +67,7 @@ const readFrontMatter = async (fullPath: string) => {
 const getPageContent = async (
   directory: Directory,
   slug: string,
-  timestamps?: { createdAt: Date; modifiedAt: Date }
+  timestamps?: { createdAt: Date; modifiedAt: Date },
 ): Promise<PageContent | null> => {
   try {
     const intendedDir = join(contentDirectory, directory);
@@ -98,7 +98,7 @@ const getPageContent = async (
 const getPage = async (
   directory: Directory,
   slug: string,
-  timestamps?: { createdAt: Date; modifiedAt: Date }
+  timestamps?: { createdAt: Date; modifiedAt: Date },
 ): Promise<Page | null> => {
   try {
     const intendedDir = join(contentDirectory, directory);
@@ -137,10 +137,8 @@ const getPage = async (
   }
 };
 
-const getPageContentBySlugImpl = (
-  directory: Directory,
-  slug: string
-) => getPageContent(directory, slug);
+const getPageContentBySlugImpl = (directory: Directory, slug: string) =>
+  getPageContent(directory, slug);
 
 export const getPageContentBySlug = cache(getPageContentBySlugImpl);
 
@@ -160,7 +158,7 @@ export const getAllPagesImpl = async (directory: Directory) => {
     slugs.map(async ({ slug }) => {
       const fullPath = join(contentDirectory, directory, `${slug}.mdx`);
       return getPage(directory, slug, timestamps.get(fullPath));
-    })
+    }),
   );
 
   return pages

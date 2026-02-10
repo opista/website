@@ -13,14 +13,7 @@ type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
 };
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({
-    active,
-    children,
-    hideExternalLinkIcon,
-    href,
-    openInNewTab,
-    ...props
-  }, ref) => {
+  ({ active, children, hideExternalLinkIcon, href, openInNewTab, ...props }, ref) => {
     const isInternal = isInternalLink(href);
     const shouldOpenInNewTab = !isInternal || openInNewTab;
     const target = shouldOpenInNewTab ? "_blank" : undefined;
@@ -29,9 +22,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     const ariaLabel = props["aria-label"];
 
     const finalAriaLabel =
-      shouldOpenInNewTab && ariaLabel
-        ? `${ariaLabel} (opens in a new tab)`
-        : ariaLabel;
+      shouldOpenInNewTab && ariaLabel ? `${ariaLabel} (opens in a new tab)` : ariaLabel;
 
     const safeHref = typeof href === "string" ? sanitizeUrl(href) || "#" : href;
 
@@ -50,7 +41,9 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         target={target}
       >
         {children}
-        {shouldOpenInNewTab && !hideExternalLinkIcon && <IconExternalLink className="inline -mt-[2px] ml-1 size-4" aria-hidden="true" />}
+        {shouldOpenInNewTab && !hideExternalLinkIcon && (
+          <IconExternalLink className="inline -mt-[2px] ml-1 size-4" aria-hidden="true" />
+        )}
         {shouldOpenInNewTab && !ariaLabel && (
           <span className="relative">
             <span className="sr-only">&nbsp;(opens in a new tab)</span>
@@ -58,6 +51,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         )}
       </NextLink>
     );
-  });
+  },
+);
 
 Link.displayName = "Link";

@@ -24,15 +24,10 @@ export const IpodIdentifierResults = ({
   model,
   onRestart,
 }: IpodIdentifierResultsProps) => {
-  const details = model.capacityOptions.find(
-    (option) => option.capacity === capacity
-  );
+  const details = model.capacityOptions.find((option) => option.capacity === capacity);
 
   return (
-    <IpodIdentifierLayout
-      title="Your iPod is"
-      image={ipodImageMap[model.generation]}
-    >
+    <IpodIdentifierLayout title="Your iPod is" image={ipodImageMap[model.generation]}>
       {details ? (
         <div className="flex flex-col justify-between h-full">
           <div className="text-center font-bold text-xl">
@@ -43,16 +38,10 @@ export const IpodIdentifierResults = ({
               </span>
             </p>
             <p className="mt-0 mb-4">
-              <BackplateIndicator
-                backplate={details.backplate}
-                className="inline-block text-xl"
-              />{" "}
+              <BackplateIndicator backplate={details.backplate} className="inline-block text-xl" />{" "}
               backplate
             </p>
-            <RamIndicator
-              className="text-xl mb-8 inline-block"
-              ram={details.ram}
-            />
+            <RamIndicator className="text-xl mb-8 inline-block" ram={details.ram} />
           </div>
           <Button center onClick={onRestart}>
             Restart

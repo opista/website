@@ -16,15 +16,11 @@ export const BackToTop = ({
   className,
   offset = 300,
 }: HTMLProps<HTMLDivElement> & BackToTopProps) => {
-  const showButton = useScrollSelector(
-    useCallback((y: number) => y > offset, [offset])
-  );
+  const showButton = useScrollSelector(useCallback((y: number) => y > offset, [offset]));
 
   const onClick = useCallback(() => {
-    const focusableElement = document.querySelector<HTMLAnchorElement>('.logo');
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const focusableElement = document.querySelector<HTMLAnchorElement>(".logo");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     window.scrollTo({
       behavior: prefersReducedMotion ? "auto" : "smooth",
@@ -47,17 +43,13 @@ export const BackToTop = ({
           "opacity-0 translate-y-4 pointer-events-none": !showButton,
           "opacity-100 translate-y-0": showButton,
         },
-        className
+        className,
       )}
       noPadding
       onClick={onClick}
       tabIndex={showButton ? 0 : -1}
     >
-      <IconArrowUp
-        aria-hidden="true"
-        className="size-6"
-        stroke={3}
-      />
+      <IconArrowUp aria-hidden="true" className="size-6" stroke={3} />
     </Button>
   );
 };

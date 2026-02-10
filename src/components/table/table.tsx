@@ -12,9 +12,6 @@ export const Table = ({
   ...props
 }: HTMLAttributes<HTMLTableElement> & TableProps) => (
   <div className={cn("overflow-auto mb-8", containerClassName)}>
-    <table
-      {...props}
-      className={cn("border w-full table-fixed m-0! min-w-0", className)}
-    />
+    <table {...props} className={cn("border w-full table-fixed m-0! min-w-0", className)} />
   </div>
 );

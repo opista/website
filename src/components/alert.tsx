@@ -1,5 +1,11 @@
 import { FC, ReactNode } from "react";
-import { Icon, IconAlertCircleFilled, IconAlertTriangleFilled, IconInfoCircleFilled, IconProps } from "@tabler/icons-react";
+import {
+  Icon,
+  IconAlertCircleFilled,
+  IconAlertTriangleFilled,
+  IconInfoCircleFilled,
+  IconProps,
+} from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 
@@ -29,10 +35,7 @@ export const Alert = ({ children, icon: OverrideIcon, type = "info" }: AlertProp
 
   return (
     <div
-      className={cn(
-        "alert p-4 mb-5 flex leading-5 not-prose border",
-        styleMap[type]
-      )}
+      className={cn("alert p-4 mb-5 flex leading-5 not-prose border", styleMap[type])}
       role="note"
     >
       <Icon aria-hidden="true" className="mr-2 size-5 shrink-0" />

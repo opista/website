@@ -22,7 +22,8 @@ type TableOfContentsProps = {
   headings: TOCItem[];
 };
 
-const flattenSlugs = (items: TOCItem[]): string[] => items.flatMap((item) => [item.slug, ...flattenSlugs(item.children)]);
+const flattenSlugs = (items: TOCItem[]): string[] =>
+  items.flatMap((item) => [item.slug, ...flattenSlugs(item.children)]);
 
 const TOCContent = ({ headings }: { headings: TOCItem[] }) => (
   <div className="border-l-2 border-gray-700">
@@ -36,32 +37,30 @@ type HeadingItemProps = {
   registerRef?: (slug: string, el: HTMLAnchorElement | null) => void;
 };
 
-const HeadingItem = memo(
-  ({ activeSlug, heading, registerRef }: HeadingItemProps) => {
-    const isActive = activeSlug === heading.slug;
+const HeadingItem = memo(({ activeSlug, heading, registerRef }: HeadingItemProps) => {
+  const isActive = activeSlug === heading.slug;
 
-    return (
-      <li className="m-0!">
-        <Link
-          ref={(el) => registerRef?.(heading.slug, el)}
-          aria-current={isActive ? "location" : undefined}
-          className={cn({ ["text-pink-500"]: isActive })}
-          href={`#${heading.slug}`}
-        >
-          {heading.title}
-        </Link>
+  return (
+    <li className="m-0!">
+      <Link
+        ref={(el) => registerRef?.(heading.slug, el)}
+        aria-current={isActive ? "location" : undefined}
+        className={cn({ ["text-pink-500"]: isActive })}
+        href={`#${heading.slug}`}
+      >
+        {heading.title}
+      </Link>
 
-        {heading.children.length > 0 && (
-          <HeadingGroup
-            activeSlug={activeSlug}
-            headings={heading.children}
-            registerRef={registerRef}
-          />
-        )}
-      </li>
-    );
-  }
-);
+      {heading.children.length > 0 && (
+        <HeadingGroup
+          activeSlug={activeSlug}
+          headings={heading.children}
+          registerRef={registerRef}
+        />
+      )}
+    </li>
+  );
+});
 
 HeadingItem.displayName = "HeadingItem";
 
@@ -71,11 +70,7 @@ type HeadingGroupProps = {
   registerRef?: (slug: string, el: HTMLAnchorElement | null) => void;
 };
 
-const HeadingGroup = ({
-  activeSlug,
-  headings,
-  registerRef,
-}: HeadingGroupProps) => (
+const HeadingGroup = ({ activeSlug, headings, registerRef }: HeadingGroupProps) => (
   <ul className="list-none m-0! pl-4">
     {headings.map((heading) => (
       <HeadingItem
@@ -100,23 +95,20 @@ const StickyTOCContent = ({ activeSlug, headings }: StickyTOCContentProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
   const linkRefs = useRef<Map<string, HTMLAnchorElement>>(
-    null as unknown as Map<string, HTMLAnchorElement>
+    null as unknown as Map<string, HTMLAnchorElement>,
   );
   if (linkRefs.current === null) {
     linkRefs.current = new Map();
   }
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
-  const registerRef = useCallback(
-    (slug: string, el: HTMLAnchorElement | null) => {
-      if (el) {
-        linkRefs.current.set(slug, el);
-      } else {
-        linkRefs.current.delete(slug);
-      }
-    },
-    []
-  );
+  const registerRef = useCallback((slug: string, el: HTMLAnchorElement | null) => {
+    if (el) {
+      linkRefs.current.set(slug, el);
+    } else {
+      linkRefs.current.delete(slug);
+    }
+  }, []);
 
   useEffect(() => {
     const animationFrameId = requestAnimationFrame(() => {
@@ -172,11 +164,7 @@ const StickyTOCContent = ({ activeSlug, headings }: StickyTOCContentProps) => {
           opacity: 0,
         }}
       />
-      <HeadingGroup
-        activeSlug={activeSlug}
-        headings={headings}
-        registerRef={registerRef}
-      />
+      <HeadingGroup activeSlug={activeSlug} headings={headings} registerRef={registerRef} />
     </div>
   );
 };
@@ -196,17 +184,13 @@ const StickyTOCWrapper = ({ activeSlug, headings }: StickyTOCWrapperProps) => {
       style={{ maxWidth: FIXED_TOC_WIDTH }}
     >
       <Heading className="mt-0 mb-2 shrink-0" level="h2">
-        <IconListTree
-          aria-hidden="true"
-          className="w-6 h-6"
-        />{" "}
-        On this page
+        <IconListTree aria-hidden="true" className="w-6 h-6" /> On this page
       </Heading>
       <div className="overflow-y-auto min-h-0 scrollbar-thin-zinc">
         <StickyTOCContent activeSlug={activeSlug} headings={headings} />
       </div>
     </nav>,
-    document.body
+    document.body,
   );
 };
 
@@ -224,9 +208,7 @@ export const TableOfContents = ({
       <div ref={containerRef}>
         <ConditionalWrapper
           condition={!!collapsable}
-          wrapper={(children) => (
-            <Accordion title={COMPONENT_TITLE}>{children}</Accordion>
-          )}
+          wrapper={(children) => <Accordion title={COMPONENT_TITLE}>{children}</Accordion>}
         >
           {!collapsable && (
             <Heading className="mt-0 mb-1" level="h2" link>
@@ -237,9 +219,7 @@ export const TableOfContents = ({
         </ConditionalWrapper>
       </div>
 
-      {isSticky && (
-        <StickyTOCWrapper activeSlug={activeSlug} headings={headings} />
-      )}
+      {isSticky && <StickyTOCWrapper activeSlug={activeSlug} headings={headings} />}
     </>
   );
 };

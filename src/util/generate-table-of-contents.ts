@@ -39,10 +39,7 @@ const stripMarkdown = (text: string): string => {
     .trim();
 };
 
-export const generateTableOfContents = (
-  content: string,
-  maxDepth: number = Infinity
-) => {
+export const generateTableOfContents = (content: string, maxDepth: number = Infinity) => {
   const lines = content.split(/\r?\n/);
   const flatHeadings: TOCItem[] = [];
   let inCodeBlock = false;

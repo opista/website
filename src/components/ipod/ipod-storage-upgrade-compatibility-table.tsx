@@ -1,5 +1,11 @@
 import { FC, Fragment, ReactNode } from "react";
-import { IconAlertCircleFilled, IconCircleCheckFilled, IconCircleXFilled, IconInfoCircleFilled, IconProps } from "@tabler/icons-react";
+import {
+  IconAlertCircleFilled,
+  IconCircleCheckFilled,
+  IconCircleXFilled,
+  IconInfoCircleFilled,
+  IconProps,
+} from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
@@ -189,19 +195,17 @@ const CompatibilityCell = ({ level }: { level: SupportLevel }) => {
 const Key = () => (
   <Table>
     <tbody>
-      {Object.entries(supportLevelMap).map(
-        ([level, { description, icon }], index) => (
-          <tr
-            className={cn({
-              "border-t border-(--tw-prose-td-borders)": index > 0,
-            })}
-            key={icon.displayName}
-          >
-            <CompatibilityCell level={level as SupportLevel} />
-            <TableBodyCell>{description}</TableBodyCell>
-          </tr>
-        )
-      )}
+      {Object.entries(supportLevelMap).map(([level, { description, icon }], index) => (
+        <tr
+          className={cn({
+            "border-t border-(--tw-prose-td-borders)": index > 0,
+          })}
+          key={icon.displayName}
+        >
+          <CompatibilityCell level={level as SupportLevel} />
+          <TableBodyCell>{description}</TableBodyCell>
+        </tr>
+      ))}
     </tbody>
   </Table>
 );
@@ -212,12 +216,7 @@ export const IpodStorageUpgradeCompatibilityTable = () => (
     <Table className="text-center" containerClassName="mb-0!">
       <thead>
         <tr>
-          <TableHeadCell
-            border
-            className="align-middle w-[150px]"
-            colSpan={2}
-            rowSpan={2}
-          >
+          <TableHeadCell border className="align-middle w-[150px]" colSpan={2} rowSpan={2}>
             Generation
           </TableHeadCell>
           <TableHeadCell className="w-[320px]" colSpan={5}>
@@ -243,9 +242,7 @@ export const IpodStorageUpgradeCompatibilityTable = () => (
               >
                 {device.generation}
               </TableBodyCell>
-              <TableBodyCell border>
-                {device.capacityOptions[0].capacity}GB
-              </TableBodyCell>
+              <TableBodyCell border>{device.capacityOptions[0].capacity}GB</TableBodyCell>
               <CompatibilityCell level={device.capacityOptions[0].upgrades["128GB"]} />
               <CompatibilityCell level={device.capacityOptions[0].upgrades["256GB"]} />
               <CompatibilityCell level={device.capacityOptions[0].upgrades["512GB"]} />
@@ -253,12 +250,7 @@ export const IpodStorageUpgradeCompatibilityTable = () => (
               <CompatibilityCell level={device.capacityOptions[0].upgrades["2TB"]} />
             </tr>
             {device.capacityOptions.slice(1).map((option) => (
-              <tr
-                key={toSlug(
-                  device.generation.toString(),
-                  option.capacity.toString()
-                )}
-              >
+              <tr key={toSlug(device.generation.toString(), option.capacity.toString())}>
                 <TableBodyCell border>{option.capacity}GB</TableBodyCell>
                 <CompatibilityCell level={option.upgrades["128GB"]} />
                 <CompatibilityCell level={option.upgrades["256GB"]} />

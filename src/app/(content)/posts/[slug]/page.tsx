@@ -54,11 +54,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage({
-  params,
-}: {
-  params: Promise<PostPageParams>;
-}) {
+export default async function PostPage({ params }: { params: Promise<PostPageParams> }) {
   const { slug } = await params;
   const page = await getPageContentBySlug("posts", slug);
 
@@ -66,7 +62,7 @@ export default async function PostPage({
     return notFound();
   }
 
-  const pageWasUpdated = page.createdAt.getTime() !== page.modifiedAt.getTime()
+  const pageWasUpdated = page.createdAt.getTime() !== page.modifiedAt.getTime();
 
   return (
     <article className="prose prose-invert">

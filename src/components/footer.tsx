@@ -39,11 +39,7 @@ export const Footer = () => {
           className="inline-flex items-center gap-1 text-pink-500 hover:text-pink-400 mb-8"
           href="/feed"
         >
-          <IconRss
-            aria-hidden="true"
-            className="size-5"
-            stroke={3}
-          />
+          <IconRss aria-hidden="true" className="size-5" stroke={3} />
           <span className="text-sm">RSS</span>
         </Link>
 

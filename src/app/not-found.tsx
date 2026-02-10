@@ -13,7 +13,9 @@ export default function NotFoundPage() {
   return (
     <ContentShell>
       <div className="text-center mt-10">
-        <Heading spanClassName="block" level="h1">Page not found</Heading>
+        <Heading spanClassName="block" level="h1">
+          Page not found
+        </Heading>
         <p className="my-4">Perhaps you took a wrong turn somewhere?</p>
         <Button center href="/">
           Head home

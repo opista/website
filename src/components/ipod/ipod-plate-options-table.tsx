@@ -30,10 +30,7 @@ export type IpodPlateOptionsTableProps = {
   generation?: "5th" | "6th/7th";
 };
 
-export const IpodPlateOptionsTable = ({
-  generation,
-  plates,
-}: IpodPlateOptionsTableProps) => (
+export const IpodPlateOptionsTable = ({ generation, plates }: IpodPlateOptionsTableProps) => (
   <Table containerClassName="mb-0!">
     <thead>
       <tr>

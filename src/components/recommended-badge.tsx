@@ -9,16 +9,8 @@ type RecommendedBadgeProps = {
 };
 
 export const RecommendedBadge = ({ className }: RecommendedBadgeProps) => (
-  <div
-    className={cn(
-      "flex items-center text-yellow-600 font-bold mb-5",
-      className
-    )}
-  >
-    <IconRosetteDiscountCheckFilled
-      aria-hidden="true"
-      className="mr-1 size-4"
-    />
+  <div className={cn("flex items-center text-yellow-600 font-bold mb-5", className)}>
+    <IconRosetteDiscountCheckFilled aria-hidden="true" className="mr-1 size-4" />
     Recommended
   </div>
 );
