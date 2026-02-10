@@ -151,7 +151,7 @@ Once the extension has decoded and reconstructed your credentials, it stores the
 ...Unfortunately, that is a wasted effort. In the same method, the extension [writes your credentials to a plaintext JSON file](https://github.com/jlcodes99/vscode-antigravity-cockpit/blob/12546e4199bcbcc8268f15b51674e3f02b657c8e/src/auto_trigger/credential_storage.ts#L304). (`~/.antigravity_cockpit/credentials.json`).
 
 ```ts title="src/auto_trigger/credential_storage.ts" {4,6}
-private async saveCredentialsStorage(storage: CredentialsStorage, options ? : { skipNotifyTools ? : boolean }): Promise < void > {
+private async saveCredentialsStorage(storage: CredentialsStorage, options ? : { skipNotifyTools ? : boolean }): Promise<void> {
   // ...
   const json = JSON.stringify(storage);
   await this.secretStorage!.store(CREDENTIALS_KEY, json);
@@ -192,14 +192,14 @@ But wait, there's more! The reason that your credentials are saved to disk is so
 
 If the _Cockpit Tools_ app isn't running, any malicious process can bind to this port first and capture your credentials. Even if the app _is_ running, the lack of authentication means other local processes (or even malicious browser scripts via localhost) could potentially connect as clients and query the data. This does not require elevated privileges, just the ability to run code under your user account.
 
-```ts title="src/services/cockpitToolsWs.ts"
+```ts title="src/services/cockpitToolsWs.ts" {7}
 private doConnect(): void {
   // ..
   this.ws = new WebSocket(wsUrl);
 
   this.ws.onopen = () => {
     // ...
-    this.emit('connected');
+    this.emit('connected'); // No authentication
     this.startPing();
   };
 
