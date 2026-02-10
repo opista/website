@@ -15,14 +15,8 @@ export const getBulkTimestamps = async (directory: string): Promise<Map<string, 
   try {
     const { stdout } = await execFileAsync(
       "git",
-      [
-        "log",
-        "--name-only",
-        "--pretty=format:COMMIT_DATE_%cI",
-        "--",
-        directory,
-      ],
-      { encoding: "utf8" }
+      ["log", "--name-only", "--pretty=format:COMMIT_DATE_%cI", "--", directory],
+      { encoding: "utf8" },
     );
 
     const lines = stdout.split(/\r?\n/);

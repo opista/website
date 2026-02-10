@@ -16,7 +16,7 @@ const getFileLastUpdated = async (directory: string = "") => {
 
 const getAllPagesInGroup = async (
   directory: Directory,
-  { changeFrequency, priority }: Partial<MetaConfig>
+  { changeFrequency, priority }: Partial<MetaConfig>,
 ) => {
   const pages = await getAllPages(directory);
 
@@ -29,12 +29,11 @@ const getAllPagesInGroup = async (
 };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [homeLastModified, appsLastModified, postsLastModified] =
-    await Promise.all([
-      getFileLastUpdated(),
-      getFileLastUpdated("(content)/apps"),
-      getFileLastUpdated("(content)/posts"),
-    ]);
+  const [homeLastModified, appsLastModified, postsLastModified] = await Promise.all([
+    getFileLastUpdated(),
+    getFileLastUpdated("(content)/apps"),
+    getFileLastUpdated("(content)/posts"),
+  ]);
 
   const apps = await getAllPagesInGroup("apps", {
     changeFrequency: "monthly",

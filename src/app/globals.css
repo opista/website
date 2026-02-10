@@ -33,11 +33,11 @@
   @apply hidden;
 }
 
-.footnotes li>p {
+.footnotes li > p {
   @apply m-0;
 }
 
-sup+sup a[data-footnote-ref="true"] {
+sup + sup a[data-footnote-ref="true"] {
   @apply ml-1;
 }
 
@@ -65,17 +65,17 @@ pre code {
   counter-reset: line;
 }
 
-pre code>[data-line]::before {
+pre code > [data-line]::before {
   @apply inline-block mr-6 w-4 text-right text-gray-500;
   counter-increment: line;
   content: counter(line);
 }
 
-code[data-line-numbers-max-digits="2"]>[data-line]::before {
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
   @apply w-6;
 }
 
-code[data-line-numbers-max-digits="3"]>[data-line]::before {
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
   @apply w-8;
 }
 

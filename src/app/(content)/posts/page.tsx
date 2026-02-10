@@ -27,19 +27,13 @@ export default async function Posts() {
             <Fragment key={post.url}>
               {idx !== 0 && <HorizontalRule className="mb-8" />}
               <li className="mb-8">
-                <Link
-                  className="text-inherit! hover:no-underline!"
-                  href={post.url}
-                >
+                <Link className="text-inherit! hover:no-underline!" href={post.url}>
                   <Heading className="mb-1" level="h2">
                     {post.title}
                   </Heading>
                   <p className="mb-1 text-sm text-zinc-400">
                     {formatDate(post.createdAt)} •{" "}
-                    <ReadingTime
-                      className="text-sm text-zinc-400"
-                      minutes={post.readingTime}
-                    />
+                    <ReadingTime className="text-sm text-zinc-400" minutes={post.readingTime} />
                   </p>
                   <p className="line-clamp-2">{post.description}</p>
                 </Link>

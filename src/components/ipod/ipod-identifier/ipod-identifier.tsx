@@ -70,10 +70,7 @@ type Question = {
   skip: () => boolean;
 };
 
-const filterGeneration = (
-  generation: GenerationConfiguration,
-  answers: AnswerState
-) => {
+const filterGeneration = (generation: GenerationConfiguration, answers: AnswerState) => {
   if (
     answers.hasMetalFaceplate !== null &&
     generation.hasMetalFaceplate !== answers.hasMetalFaceplate
@@ -81,18 +78,13 @@ const filterGeneration = (
     return false;
   }
 
-  if (
-    answers.hasSearch !== null &&
-    generation.hasSearch !== answers.hasSearch
-  ) {
+  if (answers.hasSearch !== null && generation.hasSearch !== answers.hasSearch) {
     return false;
   }
 
   if (
     answers.capacity !== null &&
-    !generation.capacityOptions.find(
-      ({ capacity }) => capacity === answers.capacity
-    )
+    !generation.capacityOptions.find(({ capacity }) => capacity === answers.capacity)
   ) {
     return false;
   }
@@ -119,8 +111,8 @@ export const IpodIdentifier = () => {
       generationMap
         .filter((generation) => filterGeneration(generation, answers))
         .flatMap(({ capacityOptions }) => capacityOptions)
-        .map(({ capacity }) => capacity)
-    )
+        .map(({ capacity }) => capacity),
+    ),
   )
     .sort((a, b) => a - b)
     .map((capacity) => ({ label: `${capacity}GB`, value: capacity }));
@@ -132,7 +124,7 @@ export const IpodIdentifier = () => {
     .map((year) => ({ label: year.toString(), value: year }));
 
   const filteredGenerations = generationMap.filter((generation) =>
-    filterGeneration(generation, answers)
+    filterGeneration(generation, answers),
   );
 
   const steps: Question[] = [
@@ -156,8 +148,7 @@ export const IpodIdentifier = () => {
       answers: capacityOptions,
       image: "/posts/ipod-modding/ipod-identifier/ipod-rear.png",
       key: "capacity",
-      question:
-        "Looking on the back of your iPod, what storage capacity does it have?",
+      question: "Looking on the back of your iPod, what storage capacity does it have?",
       skip: () => capacityOptions.length <= 1,
     },
     {
@@ -176,7 +167,7 @@ export const IpodIdentifier = () => {
       question: 'Does your iPod have a "Search" option in the "Music" menu?',
       skip: () =>
         filteredGenerations.every(
-          ({ hasSearch }) => hasSearch === filteredGenerations[0].hasSearch
+          ({ hasSearch }) => hasSearch === filteredGenerations[0].hasSearch,
         ),
     },
     {
@@ -188,12 +179,10 @@ export const IpodIdentifier = () => {
     },
   ];
 
-  const filteredSteps = steps.filter(
-    ({ key, skip }) => !skip() && answers[key] === null
-  );
+  const filteredSteps = steps.filter(({ key, skip }) => !skip() && answers[key] === null);
   const step = filteredSteps[0];
 
-  const onAnswer = (key: keyof AnswerState, value: any) => {
+  const onAnswer = (key: keyof AnswerState, value: unknown) => {
     setAnswers({ ...answers, [key]: value });
   };
 
@@ -228,8 +217,8 @@ export const IpodIdentifier = () => {
 
       <div className="text-right text-xs">
         <p className="mb-2 mr-2">
-          Thanks to <span className="font-bold">ConiShadow</span> in the iPod
-          Discord server for supplying the graphics!
+          Thanks to <span className="font-bold">ConiShadow</span> in the iPod Discord server for
+          supplying the graphics!
         </p>
       </div>
     </div>

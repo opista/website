@@ -1,7 +1,4 @@
-import {
-  IpodPlateOptionsTable,
-  IpodPlateOptionsTableProps,
-} from "./ipod-plate-options-table";
+import { IpodPlateOptionsTable, IpodPlateOptionsTableProps } from "./ipod-plate-options-table";
 
 const faceplates: IpodPlateOptionsTableProps["plates"] = [
   {
@@ -212,6 +209,4 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
   },
 ];
 
-export const IpodFaceplateOptionsTable67Gen = () => (
-  <IpodPlateOptionsTable plates={faceplates} />
-);
+export const IpodFaceplateOptionsTable67Gen = () => <IpodPlateOptionsTable plates={faceplates} />;

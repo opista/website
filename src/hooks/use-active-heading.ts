@@ -66,7 +66,7 @@ export function useActiveHeading(headingSlugs: string[]): string | null {
         // This focuses on the top ~30% of the screen
         rootMargin: "-80px 0px -70% 0px",
         threshold: 0,
-      }
+      },
     );
 
     headingSlugs.forEach((slug) => {

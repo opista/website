@@ -7,8 +7,5 @@ export const isInternalLink = (url?: string | UrlObject) => {
     return (url.startsWith("/") && !url.startsWith("//")) || url.startsWith("#");
   }
 
-  return (
-    (url.href?.startsWith("/") && !url.href?.startsWith("//")) ||
-    url.href?.startsWith("#")
-  );
+  return (url.href?.startsWith("/") && !url.href?.startsWith("//")) || url.href?.startsWith("#");
 };

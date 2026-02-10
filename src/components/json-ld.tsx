@@ -17,7 +17,7 @@ export const JsonLd = ({ data }: JsonLdProps) => {
           JSON.stringify({
             "@context": "https://schema.org",
             ...data,
-          })
+          }),
         ),
       }}
       type="application/ld+json"

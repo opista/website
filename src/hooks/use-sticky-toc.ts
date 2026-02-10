@@ -18,9 +18,7 @@ type UseStickyTocResult = {
   hasEnoughSpace: boolean;
 };
 
-export function useStickyToc({
-  enabled = true,
-}: UseStickyTocOptions = {}): UseStickyTocResult {
+export function useStickyToc({ enabled = true }: UseStickyTocOptions = {}): UseStickyTocResult {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isOutOfView, setIsOutOfView] = useState(false);
   const [hasEnoughSpace, setHasEnoughSpace] = useState(false);
@@ -30,8 +28,7 @@ export function useStickyToc({
     if (typeof window === "undefined") return false;
 
     // Available space = (viewport width - content width) / 2 - margin
-    const availableSpace =
-      (window.innerWidth - CONTENT_MAX_WIDTH) / 2 - (RIGHT_MARGIN * 2);
+    const availableSpace = (window.innerWidth - CONTENT_MAX_WIDTH) / 2 - RIGHT_MARGIN * 2;
     return availableSpace >= FIXED_TOC_WIDTH;
   }, []);
 
@@ -62,14 +59,12 @@ export function useStickyToc({
       ([entry]) => {
         // When TOC scrolls fully out of view (above viewport), enable sticky
         // We check if it's not intersecting AND the top is above the viewport
-        setIsOutOfView(
-          !entry.isIntersecting && entry.boundingClientRect.top < 0
-        );
+        setIsOutOfView(!entry.isIntersecting && entry.boundingClientRect.top < 0);
       },
       {
         rootMargin: "-80px 0px 0px 0px", // Account for potential header
         threshold: 0,
-      }
+      },
     );
 
     observer.observe(containerRef.current);

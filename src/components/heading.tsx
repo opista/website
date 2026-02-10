@@ -24,13 +24,7 @@ export type HeadingProps = HTMLProps<HTMLHeadingElement> & {
   spanClassName?: string;
 };
 
-const LinkWrapper = ({
-  children,
-  href,
-}: {
-  children: ReactNode;
-  href: string;
-}) => (
+const LinkWrapper = ({ children, href }: { children: ReactNode; href: string }) => (
   <Link
     className="group inline-block no-underline focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm"
     href={href}
@@ -90,12 +84,12 @@ export const Heading = ({
   const slug = toSlug(
     Array.isArray(children)
       ? children
-        .filter((child): child is string => typeof child === "string")
-        .map((child) => child.trim())
-        .join(" ")
+          .filter((child): child is string => typeof child === "string")
+          .map((child) => child.trim())
+          .join(" ")
       : typeof children === "string" || typeof children === "number"
         ? children
-        : ""
+        : "",
   );
 
   const href = `#${slug}`;

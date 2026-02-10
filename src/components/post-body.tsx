@@ -42,19 +42,14 @@ type PostBodyProps = {
 
 const headings = Array(6)
   .fill(null)
-  .reduce<Record<string, FC<HeadingProps>>>(
-    (acc, _curr, idx) => {
-      const num = idx + 1;
-      const level = `h${num}` as HeadingTag;
-      return {
-        ...acc,
-        [level]: (props: HeadingProps) => (
-          <Heading {...props} level={level} link={num <= 4} />
-        ),
-      };
-    },
-    {}
-  );
+  .reduce<Record<string, FC<HeadingProps>>>((acc, _curr, idx) => {
+    const num = idx + 1;
+    const level = `h${num}` as HeadingTag;
+    return {
+      ...acc,
+      [level]: (props: HeadingProps) => <Heading {...props} level={level} link={num <= 4} />,
+    };
+  }, {});
 
 export const PostBody = ({ page }: PostBodyProps) => {
   const tableOfContents = generateTableOfContents(page.content, 3);
@@ -91,9 +86,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     RecommendedBadge,
     SolderingChip,
     table: Table,
-    TableOfContents: (props) => (
-      <TableOfContents {...props} headings={tableOfContents} />
-    ),
+    TableOfContents: (props) => <TableOfContents {...props} headings={tableOfContents} />,
     td: TableBodyCell,
     th: TableHeadCell,
     TrueFalseChip,

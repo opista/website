@@ -51,7 +51,7 @@ export const SiteLinks = ({ hideContact }: SiteLinksProps) => {
                     "font-bold underline": isActive,
                     "font-medium": !pathname.startsWith(href),
                     "pr-0": idx === arr.length - 1,
-                  }
+                  },
                 )}
                 href={href}
                 hideExternalLinkIcon
@@ -59,9 +59,8 @@ export const SiteLinks = ({ hideContact }: SiteLinksProps) => {
                 {text}
               </Link>
             </Fragment>
-          )
-        })
-      }
-    </div >
+          );
+        })}
+    </div>
   );
 };

@@ -38,7 +38,7 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
       if (!ref.current) return false;
       const { top } = ref.current.getBoundingClientRect();
       return top <= 16;
-    }, [])
+    }, []),
   );
 
   if (!link) return;
@@ -47,7 +47,7 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
     <div
       className={cn(
         "sticky top-2 sm:top-4 z-20 flex justify-between items-center p-2 bg-gray-800 rounded-lg text-white",
-        className
+        className,
       )}
       ref={ref}
     >

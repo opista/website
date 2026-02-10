@@ -18,19 +18,13 @@ const chipColorMap: Record<NonNullable<ChipProps["color"]>, string> = {
   yellow: "bg-yellow-700",
 };
 
-export const Chip = ({
-  className,
-  color,
-  containerClassName,
-  icon: Icon,
-  label,
-}: ChipProps) => (
+export const Chip = ({ className, color, containerClassName, icon: Icon, label }: ChipProps) => (
   <div className={cn("inline-block mb-5", containerClassName)}>
     <div
       className={cn(
         "inline-flex items-center rounded-full pl-1 pr-3 gap-1 text-white text-sm",
         className,
-        color ? chipColorMap[color] : chipColorMap.blue
+        color ? chipColorMap[color] : chipColorMap.blue,
       )}
     >
       <div className="flex items-center justify-center p-1">

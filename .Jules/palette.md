@@ -59,6 +59,7 @@
 **Action:** Ensure permalink icons inside headings are hidden with `aria-hidden="true"` so the link text matches the heading text exactly.
 
 ## 2026-02-14 - Embedded Video Accessibility
+
 **Learning:** Iframe-based embeds (like YouTube) often lack descriptive titles, which is a WCAG violation (4.1.2). Adding a specific `title` prop allows content authors to provide context that the default "YouTube video player" lacks.
 **Action:** Always expose a `title` prop on embed components and update existing content to use it.
 

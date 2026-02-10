@@ -6,7 +6,7 @@ description: "LLMs have come a long way, but how far can we get using cloud agen
 I recently came across Riley Walz'[^riley_walz] ["Postal Arbitrage"](https://walzr.com/postal-arbitrage) project, where their whole family were sending each other cheap products via Amazon Prime in place of gifts. It's totally silly, and absolutely my kind of humour. It immediately reminded me of when I bought my friends a personalised slate sign with "Your message here" etched on it as a house-warming gift.
 If you visit Riley's site, you can see a live list of items available on Prime that are cheaper than a US postage stamp. Having no creative bone in my body, I decided that I wanted to make the same thing, but for the UK, and with a slightly more...productised(?) feel to it.
 
-I built [Skip The Stamp](https://skipthestamp.co.uk/) over the weekend. **I never touched a computer, nor wrote any code, and operated everything from my phone.** I achieved this (in part) using Google's [Jules](https://jules.google/) cloud agent, which I'd only used lightly before. 
+I built [Skip The Stamp](https://skipthestamp.co.uk/) over the weekend. **I never touched a computer, nor wrote any code, and operated everything from my phone.** I achieved this (in part) using Google's [Jules](https://jules.google/) cloud agent, which I'd only used lightly before.
 
 Anyway, enough waffle, here's what I learned from the experience:
 
@@ -18,15 +18,15 @@ Tools like Jules are lowering the already-low barrier to entry for web developme
 
 ## You won't save time if...
 
-...you're an experienced developer. Now obviously my project wasn't the intended use case for Jules, (and I'm  probably overestimating my capabilities), but _Skip The Stamp_ isn't exactly complex.
+...you're an experienced developer. Now obviously my project wasn't the intended use case for Jules, (and I'm probably overestimating my capabilities), but _Skip The Stamp_ isn't exactly complex.
 
 I kicked off my first session on Saturday afternoon, and by Sunday night the project was live. But it's not like I left it running in the background for 2 days, I had to keep checking in, review PRs and write follow-ups. My naive dream of having a nice weekend whilst Jules did all the work didn't come to fruition at all.
 
 ## You can't really 'set and forget'
 
-The website claims to send notifications, but I never received them unless I physically opened the webpage. 
+The website claims to send notifications, but I never received them unless I physically opened the webpage.
 
-Sometimes I would write a detailed prompt and run Jules in "Start" mode (a cowboy mode where plans are auto-approved), and it would still pause the session to ask questions, not continuing until I responded. Other times, it would simply get stuck with zero feedback. 
+Sometimes I would write a detailed prompt and run Jules in "Start" mode (a cowboy mode where plans are auto-approved), and it would still pause the session to ask questions, not continuing until I responded. Other times, it would simply get stuck with zero feedback.
 
 You have to keep an eye on it. If you don't, there's a chance that you could come back later and nothing has changed.
 
@@ -34,12 +34,12 @@ You have to keep an eye on it. If you don't, there's a chance that you could com
 
 I could probably write an essay on this alone, but a quick summary:
 
-* **The UI is so slow.** You could be sat staring at a app skeleton for a while before you realise it's not ever going to load.
-* **It loves to give you random files.** There is a 100% chance that Jules will commit screenshots, logs, temporary scripts and other artifacts to your repo. Update your `.gitignore`!
-* **Squirrel!** If you comment on a PR while it's working on something, it will drop the current task and never pick it back up.
-* **Merge conflict? Game over.** I don't know if this has something to do with Jules cloning your code into a VM, but it's incapable of resolving conflicts or rebasing. Handling those from my phone was not fun. I would end the session and start again sometimes.
-* **It lies**. It will say it's made a change when it hasn't. I've looked at session chats and it replies to PR comments **before** committing changes. Why? 
-* **It will revert unrelated commits**. This one's a mind boggler. I checked a PR, added some comments. Checked the changes, and blindly merged. Then I noticed it had rolled back another feature in that commit. More fool me.
+- **The UI is so slow.** You could be sat staring at a app skeleton for a while before you realise it's not ever going to load.
+- **It loves to give you random files.** There is a 100% chance that Jules will commit screenshots, logs, temporary scripts and other artifacts to your repo. Update your `.gitignore`!
+- **Squirrel!** If you comment on a PR while it's working on something, it will drop the current task and never pick it back up.
+- **Merge conflict? Game over.** I don't know if this has something to do with Jules cloning your code into a VM, but it's incapable of resolving conflicts or rebasing. Handling those from my phone was not fun. I would end the session and start again sometimes.
+- **It lies**. It will say it's made a change when it hasn't. I've looked at session chats and it replies to PR comments **before** committing changes. Why?
+- **It will revert unrelated commits**. This one's a mind boggler. I checked a PR, added some comments. Checked the changes, and blindly merged. Then I noticed it had rolled back another feature in that commit. More fool me.
 
 ## Breaking the work down is a skill
 
@@ -57,11 +57,11 @@ It can easily pile up, and get on top of you if you aren't careful. You have the
 
 I'm one of _those_ developers. I like my code neat and tidy, and I want it written in _my_ way.
 
-Building this website was a good lesson in letting that go a little bit for the sake of velocity. However, this is also the key reason why I wouldn't use agents in this way for "real", commercial projects. Building out encapsulated features based on a mature codebase with guard rails would work much better. 
+Building this website was a good lesson in letting that go a little bit for the sake of velocity. However, this is also the key reason why I wouldn't use agents in this way for "real", commercial projects. Building out encapsulated features based on a mature codebase with guard rails would work much better.
 
 ## Disconnect your deployments
 
-I think this one is easy to overlook, but quite important. Saturday I'd gone all guns blazing, throwing tasks at Jules. Every PR was creating a preview deployment in Vercel. Every new commit from there caused a re-deploy. 
+I think this one is easy to overlook, but quite important. Saturday I'd gone all guns blazing, throwing tasks at Jules. Every PR was creating a preview deployment in Vercel. Every new commit from there caused a re-deploy.
 
 By Saturday night, I'd run into a "Resource is limited - try again in 6 hours" message. I could no longer visually preview the agent's changes. I didn't bother to remove the integration, and noticed that after 6 hours, the number went up to 10 hours. Leaving the integration on got me caught in some kind of spam filter.
 
@@ -71,11 +71,11 @@ Now, I'm cheap. I use Vercel's free tier to run a few small-scale websites. But 
 
 So, would I do it again? **Yeah, probably**.
 
-Building _Skip The Stamp_ was a fun experiment, and the idea that I was able to build this from start to finish all from my phone is kind of crazy. Did I save any time? Probably not. Would I use Jules again? Probably not in the same capacity. It feels too much like a prototype right now, and I'd want to give other cloud agents a go for comparison. 
+Building _Skip The Stamp_ was a fun experiment, and the idea that I was able to build this from start to finish all from my phone is kind of crazy. Did I save any time? Probably not. Would I use Jules again? Probably not in the same capacity. It feels too much like a prototype right now, and I'd want to give other cloud agents a go for comparison.
 
 I definitely prefer to write code myself, but I still had that similar feeling of satisfaction you get when taking something from nothing to delivery.
 
-Personally, I think that this method of building is a sign of things to come. I, like many others, have often thought of coding LLMs as interns that need guidance. That's still true, but they're so much better than even a year ago. I can see my role changing dramatically in the next few years, shifting from software engineer into some kind of product coordinator. 
+Personally, I think that this method of building is a sign of things to come. I, like many others, have often thought of coding LLMs as interns that need guidance. That's still true, but they're so much better than even a year ago. I can see my role changing dramatically in the next few years, shifting from software engineer into some kind of product coordinator.
 
 ---
 

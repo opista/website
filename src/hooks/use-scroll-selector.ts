@@ -1,10 +1,7 @@
 import { useCallback, useSyncExternalStore } from "react";
 import { throttle } from "lodash-es";
 
-export function useScrollSelector<T>(
-  selector: (scrollY: number) => T,
-  wait = 100
-): T {
+export function useScrollSelector<T>(selector: (scrollY: number) => T, wait = 100): T {
   const subscribe = useCallback(
     (onStoreChange: () => void) => {
       const handleScroll = throttle(onStoreChange, wait, {
@@ -17,11 +14,10 @@ export function useScrollSelector<T>(
         window.removeEventListener("scroll", handleScroll);
       };
     },
-    [wait]
+    [wait],
   );
 
-  const getSnapshot = () =>
-    selector(typeof window !== "undefined" ? window.scrollY : 0);
+  const getSnapshot = () => selector(typeof window !== "undefined" ? window.scrollY : 0);
   const getServerSnapshot = () => selector(0);
 
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);

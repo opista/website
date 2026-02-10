@@ -11,10 +11,7 @@ type ProsConsListProps = {
   type: ListType;
 };
 
-const listConfig: Record<
-  ListType,
-  { icon: FC<IconProps>; className: string; prefix: string }
-> = {
+const listConfig: Record<ListType, { icon: FC<IconProps>; className: string; prefix: string }> = {
   cons: {
     className: "text-red-600",
     icon: IconCircleXFilled,
@@ -36,10 +33,7 @@ export const ProsConsList = ({ className, list, type }: ProsConsListProps) => {
     <ul className={cn("not-prose list-none mb-5", className)}>
       {list.map((item, idx) => (
         <li className="flex pl-0" key={idx}>
-          <Icon
-            aria-hidden="true"
-            className={cn(iconClassName, "size-4 shrink-0 mt-1 mr-1")}
-          />
+          <Icon aria-hidden="true" className={cn(iconClassName, "size-4 shrink-0 mt-1 mr-1")} />
           <span>
             <span className="sr-only">{prefix}</span>
             {item}

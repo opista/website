@@ -21,12 +21,7 @@ const getFileType = (src: string) => {
   return parts.pop()?.toLowerCase();
 };
 
-export const VideoEmbed = ({
-  className,
-  src,
-  title,
-  type = getFileType(src),
-}: VideoEmbedProps) => (
+export const VideoEmbed = ({ className, src, title, type = getFileType(src) }: VideoEmbedProps) => (
   <video className={className} controls preload="metadata" title={title}>
     <source src={src} type={`video/${type}`} />
   </video>

@@ -1,7 +1,4 @@
-import {
-  IpodPlateOptionsTable,
-  IpodPlateOptionsTableProps,
-} from "./ipod-plate-options-table";
+import { IpodPlateOptionsTable, IpodPlateOptionsTableProps } from "./ipod-plate-options-table";
 
 const faceplates: IpodPlateOptionsTableProps["plates"] = [
   {
@@ -65,8 +62,7 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    image:
-      "/posts/ipod-modding/faceplates/gen5/green-fluorescent-transparent.png",
+    image: "/posts/ipod-modding/faceplates/gen5/green-fluorescent-transparent.png",
     name: "Fluorescent Green (Transparent)",
     purchase: [
       {
@@ -86,8 +82,7 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
     ],
   },
   {
-    image:
-      "/posts/ipod-modding/faceplates/gen5/pink-fluorescent-transparent.png",
+    image: "/posts/ipod-modding/faceplates/gen5/pink-fluorescent-transparent.png",
     name: "Fluorescent Pink (Transparent)",
     purchase: [
       {
@@ -221,6 +216,4 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
   },
 ];
 
-export const IpodFaceplateOptionsTable5Gen = () => (
-  <IpodPlateOptionsTable plates={faceplates} />
-);
+export const IpodFaceplateOptionsTable5Gen = () => <IpodPlateOptionsTable plates={faceplates} />;

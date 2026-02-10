@@ -10,13 +10,7 @@ type ImageProps = NextImageProps & {
   expandable?: boolean;
 };
 
-export const Image = ({
-  alt,
-  className,
-  expandable,
-  src,
-  ...props
-}: ImageProps) => (
+export const Image = ({ alt, className, expandable, src, ...props }: ImageProps) => (
   <ConditionalWrapper
     condition={!!expandable}
     wrapper={(children) => (
@@ -30,11 +24,7 @@ export const Image = ({
           openInNewTab
           title="Open image in new tab"
         >
-          <IconArrowsMaximize
-            aria-hidden="true"
-            className="size-auto"
-            stroke={1.5}
-          />
+          <IconArrowsMaximize aria-hidden="true" className="size-auto" stroke={1.5} />
         </Link>
       </div>
     )}

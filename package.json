@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@next/bundle-analyzer": "16.1.6",
@@ -52,6 +53,7 @@
     "eslint-plugin-unused-imports": "^4.4.1",
     "globals": "^17.3.0",
     "postcss": "^8",
+    "prettier": "^3.8.1",
     "tailwindcss": "^4.1.18",
     "typescript": "^5",
     "typescript-eslint": "^8.55.0"

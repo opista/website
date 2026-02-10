@@ -7,10 +7,7 @@ type BackplateIndicatorProps = {
   backplate: BackplateSize;
 };
 
-export const BackplateIndicator = ({
-  backplate,
-  className,
-}: BackplateIndicatorProps) => (
+export const BackplateIndicator = ({ backplate, className }: BackplateIndicatorProps) => (
   <span
     className={cn(
       "px-2 leading-none text-sm text-white rounded-b-lg uppercase border border-current",
@@ -18,7 +15,7 @@ export const BackplateIndicator = ({
         "font-thin": backplate === "thin",
         "py-1 font-black border-2": backplate === "thick",
       },
-      className
+      className,
     )}
   >
     {backplate}

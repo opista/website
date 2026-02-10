@@ -247,9 +247,7 @@ const compatibilityMap: Record<
 const CompatibilityCell = ({ level }: { level: string }) => {
   const { className, icon: Icon, label } = compatibilityMap[level];
   return (
-    <TableBodyCell
-      className={cn("align-middle text-center w-[60px]", className)}
-    >
+    <TableBodyCell className={cn("align-middle text-center w-[60px]", className)}>
       <Icon aria-label={label} className="inline-block size-6" />
     </TableBodyCell>
   );
@@ -258,19 +256,17 @@ const CompatibilityCell = ({ level }: { level: string }) => {
 const Key = () => (
   <Table>
     <tbody>
-      {Object.entries(compatibilityMap).map(
-        ([level, { description, icon }], index) => (
-          <tr
-            className={cn({
-              "border-t border-(--tw-prose-td-borders)": index > 0,
-            })}
-            key={icon.displayName}
-          >
-            <CompatibilityCell level={level} />
-            <TableBodyCell>{description}</TableBodyCell>
-          </tr>
-        )
-      )}
+      {Object.entries(compatibilityMap).map(([level, { description, icon }], index) => (
+        <tr
+          className={cn({
+            "border-t border-(--tw-prose-td-borders)": index > 0,
+          })}
+          key={icon.displayName}
+        >
+          <CompatibilityCell level={level} />
+          <TableBodyCell>{description}</TableBodyCell>
+        </tr>
+      ))}
     </tbody>
   </Table>
 );
@@ -301,11 +297,7 @@ export const IpodStorageBatteryCompatibilityTable = () => (
       <thead>
         <tr className="text-center">
           {headings.map((heading) => (
-            <TableHeadCell
-              border
-              key={heading.label}
-              style={{ width: heading.width }}
-            >
+            <TableHeadCell border key={heading.label} style={{ width: heading.width }}>
               {heading.component ?? heading.label}
             </TableHeadCell>
           ))}
@@ -332,9 +324,7 @@ export const IpodStorageBatteryCompatibilityTable = () => (
                   </div>
                 )}
               </TableBodyCell>
-              <TableBodyCell border>
-                {battery.storageOptions[0].name}
-              </TableBodyCell>
+              <TableBodyCell border>{battery.storageOptions[0].name}</TableBodyCell>
               <CompatibilityCell level={`${battery.storageOptions[0].thin}`} />
               <CompatibilityCell level={`${battery.storageOptions[0].thick}`} />
             </tr>
