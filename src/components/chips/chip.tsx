@@ -25,7 +25,7 @@ export const Chip = ({
   icon: Icon,
   label,
 }: ChipProps) => (
-  <div className={cn("inline-block mb-5 select-none", containerClassName)}>
+  <div className={cn("inline-block mb-5", containerClassName)}>
     <div
       className={cn(
         "inline-flex items-center rounded-full pl-1 pr-3 gap-1 text-white text-sm",

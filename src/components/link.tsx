@@ -7,12 +7,14 @@ import { isInternalLink } from "@/util/is-external-link";
 import { sanitizeUrl } from "@/util/sanitize-url";
 
 type LinkProps = ComponentPropsWithoutRef<typeof NextLink> & {
+  active?: boolean;
   hideExternalLinkIcon?: boolean;
   openInNewTab?: boolean;
 };
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({
+    active,
     children,
     hideExternalLinkIcon,
     href,
@@ -39,6 +41,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         aria-label={finalAriaLabel}
         className={cn(
           "transition-colors link decoration-wavy no-underline hover:underline text-pink-400 hover:text-pink-500 focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm",
+          { "text-pink-500": active },
           props.className,
         )}
         href={safeHref}
