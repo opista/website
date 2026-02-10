@@ -1,15 +1,18 @@
+import { IconTools } from "@tabler/icons-react";
+
+import { Alert } from "./alert";
 import { Link } from "./link";
 
 export const WorkInProgress = () => (
-  <div className="wip mb-5 px-4 py-px bg-[repeating-linear-gradient(45deg,blue_0,blue_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] bg-fixed border-blue-500">
-    <p>This section is currently a work in progress.</p>
-    <p>
-      If you have experience with this area and would like to contribute, please
-      check out the{" "}
+  <Alert icon={IconTools} type="warning">
+    <p className="font-semibold mb-2">Work in Progress</p>
+    <p className="mb-0">
+      This section is currently under construction. If you have experience with
+      this area and would like to contribute, please check out the{" "}
       <Link href="#corrections-and-contributions">
         Corrections & Contributions
       </Link>{" "}
       section.
     </p>
-  </div>
+  </Alert>
 );
