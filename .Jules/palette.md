@@ -67,3 +67,8 @@
 
 **Learning:** Using `div`s with custom styles for status messages (like "Work in Progress") is inaccessible to screen readers as it lacks semantic meaning. Using `role="note"` (or `role="status"` for updates) and `aria-label` provides necessary context.
 **Action:** Replace ad-hoc styled divs with semantic components that use appropriate ARIA roles and labels.
+
+## 2026-06-15 - Consistent Focus Indicators
+
+**Learning:** Inconsistent focus indicators (e.g., using `ring-blue-300` on buttons but `ring-pink-500` on links) create a disjointed experience for keyboard users and fail to reinforce the brand identity. Also, using `focus:ring` (visible on click) instead of `focus-visible:ring` (visible on keyboard) adds unnecessary visual noise for mouse users.
+**Action:** Standardize focus styles across all interactive elements (`Button`, `Link`, etc.) to use `focus-visible` and the brand's primary color.
