@@ -98,3 +98,8 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 [data-rehype-pretty-code-figure] pre {
   @apply mt-0;
 }
+
+@keyframes hand-scroll {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(12deg); }
+}

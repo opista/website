@@ -183,7 +183,7 @@ const StickyTOCWrapper = ({ activeSlug, headings }: StickyTOCWrapperProps) => {
       className="prose prose-invert bg-zinc-950 fixed top-20 left-[calc(50%+65ch/2+clamp(1.5rem,5vw,8rem))] max-h-[calc(100vh-160px)] z-40 flex flex-col"
       style={{ maxWidth: FIXED_TOC_WIDTH }}
     >
-      <Heading className="mt-0 mb-2 shrink-0" level="h2">
+      <Heading className="mt-0 mb-2 shrink-0" level="h2" spanClassName="flex gap-2">
         <IconListTree aria-hidden="true" className="w-6 h-6" /> On this page
       </Heading>
       <div className="overflow-y-auto min-h-0 scrollbar-thin-zinc">
