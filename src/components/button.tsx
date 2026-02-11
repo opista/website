@@ -24,7 +24,7 @@ export const Button = ({
   const { "aria-label": ariaLabel, ...restProps } = props;
 
   const commonClasses = cn(
-    "not-prose cursor-pointer select-none inline-block text-white no-underline font-medium rounded-lg text-sm bg-blue-600 hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 ring-offset-2",
+    "not-prose cursor-pointer select-none inline-block text-white no-underline font-medium rounded-lg text-sm bg-blue-600 hover:bg-blue-700 focus:outline-0 focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2",
     { "px-5 py-2.5 ": !noPadding },
     className,
   );
