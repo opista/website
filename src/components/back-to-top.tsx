@@ -38,7 +38,7 @@ export const BackToTop = ({
       aria-hidden={!showButton}
       aria-label="Back to top"
       className={cn(
-        "group fixed bottom-4 right-4 z-10 p-3 transition-all duration-300",
+        "group fixed bottom-4 right-4 z-10 p-3 transition-transform duration-300",
         {
           "opacity-0 translate-y-4 pointer-events-none": !showButton,
           "opacity-100 translate-y-0": showButton,
