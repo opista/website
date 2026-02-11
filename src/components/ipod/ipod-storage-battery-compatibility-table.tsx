@@ -55,7 +55,7 @@ type CompatibilityRow = {
 
 const headings: Heading[] = [
   { label: "Battery Mod", width: "235px" },
-  { label: "Storage Adaptor", width: "190px" },
+  { label: "Storage Adaptor", width: "150px" },
   {
     component: <BackplateIndicator backplate="thin" />,
     label: "Thin backplate",
