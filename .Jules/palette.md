@@ -77,3 +77,8 @@
 
 **Learning:** While the primary brand color is Pink, the user explicitly prefers Blue for buttons. This might be to differentiate primary actions from navigation links or simply a stylistic preference.
 **Action:** Respect the user's preference for Blue buttons. Keep the accessibility improvement (`focus-visible`) but align the focus ring color with the button's blue background.
+
+## 2026-06-16 - Universal Pink Focus Ring
+
+**Learning:** User feedback explicitly requested that ALL focus rings be pink (brand color), regardless of the element's background color (e.g., even on blue buttons). Consistency in focus indicators overrides the desire to match the element's specific hue.
+**Action:** Ensure all interactive elements (buttons, links, inputs) use the brand standard pink focus ring.
