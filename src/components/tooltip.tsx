@@ -40,7 +40,7 @@ export const Tooltip = ({
       <button
         aria-label="More information"
         className={cn(
-          "inline-block appearance-none bg-transparent border-none p-0 cursor-help align-middle",
+          "inline-block appearance-none bg-transparent border-none p-0 cursor-help align-middle focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-full",
           className,
         )}
         data-tooltip-content={content}
