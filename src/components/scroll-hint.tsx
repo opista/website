@@ -6,6 +6,7 @@ import { IconHandMove } from "@tabler/icons-react";
 import { cn } from "@/util/cn";
 
 type ScrollHintProps = {
+  ariaLabel?: string;
   children: ReactNode;
   containerClassName?: string;
   className?: string;
@@ -13,6 +14,7 @@ type ScrollHintProps = {
 };
 
 export const ScrollHint = ({
+  ariaLabel = "Scrollable content",
   children,
   className,
   containerClassName,
@@ -20,6 +22,7 @@ export const ScrollHint = ({
 }: ScrollHintProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showScrollHint, setShowScrollHint] = useState(false);
+  const [isScrollable, setIsScrollable] = useState(false);
   const hasTriggeredRef = useRef(false);
   const isVisibleRef = useRef(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
@@ -27,15 +30,17 @@ export const ScrollHint = ({
   useEffect(() => {
     const checkScroll = () => {
       const el = containerRef.current;
-      if (!el) return;
-      return el.scrollWidth > el.clientWidth;
+      if (!el) return false;
+      const scrollable = el.scrollWidth > el.clientWidth;
+      setIsScrollable(scrollable);
+      return scrollable;
     };
 
     const triggerHint = () => {
       if (hasTriggeredRef.current) return;
 
-      const isScrollable = checkScroll();
-      if (isScrollable) {
+      const scrollable = checkScroll();
+      if (scrollable) {
         hasTriggeredRef.current = true;
         setShowScrollHint(true);
         if (timeoutRef.current) {
@@ -56,6 +61,7 @@ export const ScrollHint = ({
     });
 
     const resizeObserver = new ResizeObserver(() => {
+      checkScroll();
       if (isVisibleRef.current && !hasTriggeredRef.current) {
         triggerHint();
       }
@@ -78,9 +84,31 @@ export const ScrollHint = ({
     };
   }, []);
 
+  const handleFocus = () => {
+    if (isScrollable) {
+      setShowScrollHint(true);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        setShowScrollHint(false);
+      }, 6000);
+    }
+  };
+
   return (
     <div className={cn("relative overflow-hidden", containerClassName)}>
-      <div ref={containerRef} className={cn("overflow-auto", className)}>
+      <div
+        aria-label={isScrollable ? ariaLabel : undefined}
+        className={cn(
+          "overflow-auto focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm",
+          className,
+        )}
+        onFocus={handleFocus}
+        ref={containerRef}
+        role={isScrollable ? "region" : undefined}
+        tabIndex={isScrollable ? 0 : undefined}
+      >
         {children}
       </div>
       {showScrollHint && (
