@@ -12,7 +12,10 @@ export const Table = ({
   containerClassName,
   ...props
 }: HTMLAttributes<HTMLTableElement> & TableProps) => (
-  <ScrollHint containerClassName={cn("mb-8", containerClassName)}>
+  <ScrollHint
+    ariaLabel={props["aria-label"] || "Table"}
+    containerClassName={cn("mb-8", containerClassName)}
+  >
     <table
       {...props}
       className={cn("border w-full table-fixed m-0! min-w-0", className)}
