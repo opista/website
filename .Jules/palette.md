@@ -82,3 +82,8 @@
 
 **Learning:** User feedback explicitly requested that ALL focus rings be pink (brand color), regardless of the element's background color (e.g., even on blue buttons). Consistency in focus indicators overrides the desire to match the element's specific hue.
 **Action:** Ensure all interactive elements (buttons, links, inputs) use the brand standard pink focus ring.
+
+## 2026-07-28 - Next.js Link Focus Consistency
+
+**Learning:** When using `next/link` directly (e.g. for custom components like `Logo`) instead of a shared `Link` wrapper, standard focus styles (like `focus-visible:ring-pink-500`) are missing by default. This creates inconsistent keyboard navigation experiences.
+**Action:** Manually apply the project's standard focus utility classes when using `next/link` directly.
