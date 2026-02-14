@@ -3,6 +3,7 @@ import { IconLink } from "@tabler/icons-react";
 import Link from "next/link";
 
 import { cn } from "@/util/cn";
+import { getTextContent } from "@/util/get-text-content";
 import { toSlug } from "@/util/to-slug";
 
 import { ConditionalWrapper } from "./conditional-wrapper";
@@ -81,16 +82,7 @@ export const Heading = ({
   spanClassName,
   ...props
 }: HeadingProps) => {
-  const slug = toSlug(
-    Array.isArray(children)
-      ? children
-          .filter((child): child is string => typeof child === "string")
-          .map((child) => child.trim())
-          .join(" ")
-      : typeof children === "string" || typeof children === "number"
-        ? children
-        : "",
-  );
+  const slug = toSlug(getTextContent(children, { excludeTags: ["sup"] }));
 
   const href = `#${slug}`;
 
