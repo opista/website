@@ -82,3 +82,8 @@
 
 **Learning:** User feedback explicitly requested that ALL focus rings be pink (brand color), regardless of the element's background color (e.g., even on blue buttons). Consistency in focus indicators overrides the desire to match the element's specific hue.
 **Action:** Ensure all interactive elements (buttons, links, inputs) use the brand standard pink focus ring.
+
+## 2026-06-17 - Broken Heading Slugs
+
+**Learning:** Generating slugs for anchor links by only checking for top-level string children fails when headings contain rich text (e.g., `<strong>Bold</strong>`). React components need to be recursively traversed to extract the full text content.
+**Action:** Use a recursive `getTextContent` utility to ensure slugs match the visible heading text, regardless of formatting.
