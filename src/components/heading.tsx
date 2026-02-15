@@ -1,8 +1,9 @@
-import { Children, HTMLProps, ReactNode } from "react";
+import { HTMLProps, isValidElement, ReactNode } from "react";
 import { IconLink } from "@tabler/icons-react";
 import Link from "next/link";
 
 import { cn } from "@/util/cn";
+import { getTextContent } from "@/util/get-text-content";
 import { toSlug } from "@/util/to-slug";
 
 import { ConditionalWrapper } from "./conditional-wrapper";
@@ -42,34 +43,57 @@ const Icon = () => (
   />
 );
 
+const hasInteractive = (children: ReactNode): boolean => {
+  if (Array.isArray(children)) {
+    return children.some(hasInteractive);
+  }
+
+  if (isValidElement(children)) {
+    const type = children.type;
+
+    // Check for standard interactive elements
+    if (typeof type === "string") {
+      if (["a", "button", "input", "select", "textarea"].includes(type)) {
+        return true;
+      }
+    }
+
+    // Check for component names (Link, Button, AppLinkButton)
+    // We check displayName or name property of the component function/object
+    const componentType = type as { displayName?: string; name?: string };
+    const name = componentType.displayName || componentType.name;
+    if (name === "Link" || name === "Button" || name === "AppLinkButton") {
+      return true;
+    }
+
+    const props = children.props as { children?: ReactNode };
+    if (props.children) {
+      return hasInteractive(props.children);
+    }
+  }
+
+  return false;
+};
+
 const formattedChildren = (children: ReactNode, href: string) => {
-  if (Children.count(children) <= 1) {
+  // If children contain interactive elements, we cannot wrap them in a Link.
+  // Instead, we render children as is and append the anchor link icon.
+  if (hasInteractive(children)) {
     return (
-      <LinkWrapper href={href}>
-        {children} <Icon />
-      </LinkWrapper>
+      <>
+        {children}
+        <LinkWrapper href={href}>
+          <Icon />
+        </LinkWrapper>
+      </>
     );
   }
 
-  const mapped = Children.map(children, (child) => {
-    if (typeof child === "string") {
-      return (
-        <LinkWrapper href={href} key={child}>
-          {child}
-        </LinkWrapper>
-      );
-    }
-
-    return child;
-  });
-
+  // Otherwise, wrap everything in a single link for better UX/a11y
   return (
-    <>
-      {mapped}
-      <LinkWrapper href={href}>
-        <Icon />
-      </LinkWrapper>
-    </>
+    <LinkWrapper href={href}>
+      {children} <Icon />
+    </LinkWrapper>
   );
 };
 
@@ -81,17 +105,8 @@ export const Heading = ({
   spanClassName,
   ...props
 }: HeadingProps) => {
-  const slug = toSlug(
-    Array.isArray(children)
-      ? children
-          .filter((child): child is string => typeof child === "string")
-          .map((child) => child.trim())
-          .join(" ")
-      : typeof children === "string" || typeof children === "number"
-        ? children
-        : "",
-  );
-
+  const textContent = getTextContent(children);
+  const slug = toSlug(textContent);
   const href = `#${slug}`;
 
   return (
