@@ -87,3 +87,8 @@
 
 **Learning:** Generating slugs for anchor links by only checking for top-level string children fails when headings contain rich text (e.g., `<strong>Bold</strong>`). React components need to be recursively traversed to extract the full text content.
 **Action:** Use a recursive `getTextContent` utility to ensure slugs match the visible heading text, regardless of formatting.
+
+## 2026-07-28 - Next.js Link Focus Consistency
+
+**Learning:** When using `next/link` directly (e.g. for custom components like `Logo`) instead of a shared `Link` wrapper, standard focus styles (like `focus-visible:ring-pink-500`) are missing by default. This creates inconsistent keyboard navigation experiences.
+**Action:** Manually apply the project's standard focus utility classes when using `next/link` directly.

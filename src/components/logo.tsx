@@ -16,7 +16,10 @@ export const Logo = ({
   <ConditionalWrapper
     condition={isLink}
     wrapper={(children) => (
-      <Link className="logo" href="/">
+      <Link
+        className="logo focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm"
+        href="/"
+      >
         {children}
       </Link>
     )}
