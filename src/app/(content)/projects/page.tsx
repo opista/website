@@ -7,16 +7,16 @@ import { getAllPages, Page } from "@/lib/pages";
 
 const MAX_IMAGE_WIDTH = 300;
 
-type AppCellProps = {
-  app: Page;
+type ProjectCellProps = {
+  project: Page;
 };
 
 export const metadata: Metadata = {
-  title: "Our Apps - OPISTA",
+  title: "Projects - OPISTA",
 };
 
-const AppCell = ({ app }: AppCellProps) => {
-  const { slug, title, url } = app;
+const ProjectCell = ({ project }: ProjectCellProps) => {
+  const { slug, title, url } = project;
 
   return (
     <Link href={url}>
@@ -24,7 +24,7 @@ const AppCell = ({ app }: AppCellProps) => {
         alt={`${title} logo`}
         className="hover:scale-105 transition-transform rounded-[25%]"
         height={MAX_IMAGE_WIDTH}
-        src={`/apps/${slug}/logo.png`}
+        src={`/projects/${slug}/logo.png`}
         width={MAX_IMAGE_WIDTH}
       />
       <p className="text-center mt-2 sm:mt-4 font-bold">{title}</p>
@@ -32,15 +32,15 @@ const AppCell = ({ app }: AppCellProps) => {
   );
 };
 
-export default async function Apps() {
-  const apps = await getAllPages("apps");
+export default async function Projects() {
+  const projects = await getAllPages("projects");
 
   return (
     <>
-      <Heading level="h1">Our Apps</Heading>
+      <Heading level="h1">Projects</Heading>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 sm:mt-16">
-        {apps.map((app) => (
-          <AppCell key={app.slug} app={app} />
+        {projects.map((project) => (
+          <ProjectCell key={project.slug} project={project} />
         ))}
       </div>
     </>

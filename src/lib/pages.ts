@@ -9,7 +9,7 @@ import { getBulkTimestamps } from "./bulk-git-timestamps";
 import { pageCreatedAt } from "./page-created-at";
 import { pageModifiedAt } from "./page-modified-at";
 
-export type Directory = "apps" | "posts";
+export type Directory = "posts" | "projects";
 
 export type PageContent = {
   content: string;
@@ -108,7 +108,7 @@ const getPage = async (
       return null;
     }
 
-    // Optimization: For apps, we can skip reading the full file
+    // Optimization: For projects, we can skip reading the full file
     // For posts, we need the content to calculate reading time
     let data;
     let readingTime = 0;

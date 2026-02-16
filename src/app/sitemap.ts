@@ -29,13 +29,13 @@ const getAllPagesInGroup = async (
 };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [homeLastModified, appsLastModified, postsLastModified] = await Promise.all([
+  const [homeLastModified, projectsLastModified, postsLastModified] = await Promise.all([
     getFileLastUpdated(),
-    getFileLastUpdated("(content)/apps"),
+    getFileLastUpdated("(content)/projects"),
     getFileLastUpdated("(content)/posts"),
   ]);
 
-  const apps = await getAllPagesInGroup("apps", {
+  const projects = await getAllPagesInGroup("projects", {
     changeFrequency: "monthly",
     priority: 0.8,
   });
@@ -54,11 +54,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       changeFrequency: "monthly",
-      lastModified: appsLastModified,
+      lastModified: projectsLastModified,
       priority: 0.8,
-      url: `${BASE_SITE_URL}/apps`,
+      url: `${BASE_SITE_URL}/projects`,
     },
-    ...apps,
+    ...projects,
     {
       changeFrequency: "monthly",
       lastModified: postsLastModified,

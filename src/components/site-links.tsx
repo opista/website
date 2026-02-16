@@ -13,8 +13,8 @@ type SiteLinksProps = {
 
 const siteLinks = [
   {
-    href: "/apps",
-    text: "apps",
+    href: "/projects",
+    text: "projects",
   },
   {
     href: "/posts",

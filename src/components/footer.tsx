@@ -5,8 +5,8 @@ import { Logo } from "./logo";
 
 const footerLinks = [
   {
-    href: "/apps",
-    text: "apps",
+    href: "/projects",
+    text: "projects",
   },
   {
     href: "/posts",

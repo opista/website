@@ -8,7 +8,7 @@ import { PageContent } from "@/lib/pages";
 import { cn } from "@/util/cn";
 import { Button } from "../button";
 
-type AppDetailsBarProps = {
+type ProjectDetailsBarProps = {
   className?: string;
   page: PageContent;
 };
@@ -29,7 +29,7 @@ const Price = ({ price }: { price?: string }) => {
   );
 };
 
-export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
+export const ProjectDetailsBar = ({ className, page }: ProjectDetailsBarProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { link, price, title } = page;
 
@@ -60,7 +60,7 @@ export const AppDetailsBar = ({ className, page }: AppDetailsBarProps) => {
                 className="!my-0"
                 fill
                 sizes="(max-width: 640px) 40px, 70px"
-                src={`/apps/${page.slug}/logo.png`}
+                src={`/projects/${page.slug}/logo.png`}
               />
             </div>
             <span className="font-bold truncate shrink">{title}</span>

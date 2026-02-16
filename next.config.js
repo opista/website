@@ -79,7 +79,12 @@ const nextConfig = {
     return [
       {
         source: "/apps/avios-reminder",
-        destination: "/apps/airmiles-reminder",
+        destination: "/projects/airmiles-reminder",
+        permanent: true,
+      },
+      {
+        source: "/apps/:path*",
+        destination: "/projects/:path*",
         permanent: true,
       },
     ];
