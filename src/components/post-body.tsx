@@ -57,7 +57,9 @@ export const PostBody = ({ page }: PostBodyProps) => {
     a: Link,
     Accordion,
     Alert,
-    AppLinkButton: (props: ComponentPropsWithoutRef<typeof Button>) =>
+    BackplateIndicator,
+    Button,
+    ProjectLinkButton: (props: ComponentPropsWithoutRef<typeof Button>) =>
       !!page.link && (
         <Button
           {...props}
@@ -69,8 +71,6 @@ export const PostBody = ({ page }: PostBodyProps) => {
           {props.children || `Try ${page.title}`}
         </Button>
       ),
-    BackplateIndicator,
-    Button,
     ...headings,
     Image,
     IpodFaceplateOptionsTable5Gen,
