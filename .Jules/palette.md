@@ -87,3 +87,8 @@
 
 **Learning:** When using `next/link` directly (e.g. for custom components like `Logo`) instead of a shared `Link` wrapper, standard focus styles (like `focus-visible:ring-pink-500`) are missing by default. This creates inconsistent keyboard navigation experiences.
 **Action:** Manually apply the project's standard focus utility classes when using `next/link` directly.
+
+## 2026-08-01 - Button Loading & Disabled States
+
+**Learning:** When a component is polymorphic (rendering as `<a>` or `<button>`), disabled states must be handled differently. `<button>` supports the `disabled` attribute, but `<a>` does not. For links, use `aria-disabled="true"`, `tabIndex={-1}`, and CSS (`pointer-events-none`) to simulate a disabled state.
+**Action:** Always implement robust disabled logic for polymorphic components, ensuring accessibility parity between semantic elements.
