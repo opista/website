@@ -1,0 +1,65 @@
+---
+title: Electron IPC Bridge
+description: A type-safe, class-based IPC framework for Electron. Inspired by NestJS. Define controllers in main, automatically get fully typed APIs in the renderer.
+link: https://metacurb.github.io/electron-ipc-bridge/
+---
+
+## Type-safe IPC for Electron
+
+[Electron](https://www.electronjs.org/)'s `ipcMain` and `ipcRenderer` rely on string channels and any-typed payloads. You can get mitigate this slightly by sharing type contracts, but there is a lot of boilerplate, refactoring is cumbersome, and it puts a strain on maintainability.
+
+**Electron IPC Bridge** solves this by bringing a Controller-based architecture (like [NestJS](https://nestjs.com/)) to Electron. Define your logic in classes, and let the library handle the wiring.
+
+## At a Glance
+
+**Controller** (Main Process):
+
+```ts title="src/main/users/user.controller.ts" {3, 5}
+import { IpcController, IpcHandle } from "@electron-ipc-bridge/core";
+
+@IpcController("users")
+export class UserController {
+  @IpcHandle()
+  async getUser(id: string) {
+    return { id, name: "Alice" };
+  }
+}
+```
+
+**Renderer**:
+
+```ts
+// Fully typed API with autocomplete
+const user = await window.ipc.users.getUser("123");
+console.log(user.name); // "Alice"
+```
+
+## Key Benefits
+
+- **End-to-End Type Safety**: Changes in your backend code immediately break the frontend build if they are incompatible. No more runtime errors from mismatched arguments.
+- **Automatic Wiring**: No more manual `preload.ts` exposure or matching string constants. The library handles the bridge for you.
+- **Dependency Injection**: Designed to work with your existing DI container (such as [TypeDI](https://github.com/typestack/typedi), [InversifyJS](https://inversify.io/), [Tsyringe](https://github.com/microsoft/tsyringe), or [NestJS](https://nestjs.com/)) or as a standalone solution with a simple factory.
+
+## The Ecosystem
+
+The framework consists of two complementary packages:
+
+### `@electron-ipc-bridge/core`
+
+[`@electron-ipc-bridge/core`](https://www.npmjs.com/package/@electron-ipc-bridge/core) is the runtime library containing all the decorators (`@IpcController`, `@IpcHandle`), the `createIpcApp` bootstrapping function, and the preload script setup. It is designed to be lightweight and performant.
+
+### `@electron-ipc-bridge/vite-plugin`
+
+[`@electron-ipc-bridge/vite-plugin`](https://www.npmjs.com/package/@electron-ipc-bridge/vite-plugin) is an **opt-in** build-time tool for [Vite](https://vitejs.dev/) that analyses your controllers and automatically generates `d.ts` declaration files for the renderer. This ensures your frontend type definitions are always perfectly in sync with your backend logic.
+
+## Advanced Features
+
+Beyond basic IPC calls, the library provides powerful tools for real-world applications:
+
+- **Context Injection**: Access `event.sender`, `BrowserWindow`, or the raw `IPCMainInvokeEvent` cleanly using parameter decorators like `@Sender()`, `@Window()`, and `@RawEvent()`.
+- **Custom Decorators**: create your own parameter decorators to inject user sessions, database connections, or other context-specific data.
+- **Zero Boilerplate**: Channels are generated deterministically (e.g., `users:getUser`). You never type a channel name string manually.
+
+## Documentation
+
+For full setup instructions, API references, and advanced guides, check out the [official documentation](https://metacurb.github.io/electron-ipc-bridge/).
