@@ -92,3 +92,8 @@
 
 **Learning:** When using `next/link` directly (e.g. for custom components like `Logo`) instead of a shared `Link` wrapper, standard focus styles (like `focus-visible:ring-pink-500`) are missing by default. This creates inconsistent keyboard navigation experiences.
 **Action:** Manually apply the project's standard focus utility classes when using `next/link` directly.
+
+## 2026-08-01 - Interactive State Completeness
+
+**Learning:** Base components (like Button) often lack `disabled` or `loading` states if not immediately needed, leading to ad-hoc, inconsistent implementations later (e.g., manual `pointer-events-none`). Implementing these states upfront ensures consistent visual feedback (opacity, cursor) and accessibility (aria-disabled) across the app.
+**Action:** Include `isLoading` and `disabled` props in all interactive base components, ensuring they handle both `<button>` and polymorphic `<a>` rendering correctly.
