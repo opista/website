@@ -1,9 +1,10 @@
-import { Children, HTMLProps, ReactNode } from "react";
+import { HTMLProps, ReactNode } from "react";
 import { IconLink } from "@tabler/icons-react";
 import Link from "next/link";
 
 import { cn } from "@/util/cn";
 import { getTextContent } from "@/util/get-text-content";
+import { hasInteractive } from "@/util/has-interactive";
 import { toSlug } from "@/util/to-slug";
 
 import { ConditionalWrapper } from "./conditional-wrapper";
@@ -44,7 +45,7 @@ const Icon = () => (
 );
 
 const formattedChildren = (children: ReactNode, href: string) => {
-  if (Children.count(children) <= 1) {
+  if (!hasInteractive(children)) {
     return (
       <LinkWrapper href={href}>
         {children} <Icon />
@@ -52,21 +53,9 @@ const formattedChildren = (children: ReactNode, href: string) => {
     );
   }
 
-  const mapped = Children.map(children, (child) => {
-    if (typeof child === "string") {
-      return (
-        <LinkWrapper href={href} key={child}>
-          {child}
-        </LinkWrapper>
-      );
-    }
-
-    return child;
-  });
-
   return (
     <>
-      {mapped}
+      {children}
       <LinkWrapper href={href}>
         <Icon />
       </LinkWrapper>
