@@ -18,12 +18,12 @@ export const Image = ({ alt, className, expandable, src, ...props }: ImageProps)
       <div className={cn("mx-auto relative group", className)}>
         {children}
         <Tooltip
-          className="absolute bottom-[10px] right-[10px]"
+          className="absolute bottom-[10px] right-[10px] size-10 max-w-[30%] max-h-[30%] sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-all"
           content="Open image in new tab"
         >
           <Link
             aria-label="View full size image"
-            className="flex justify-center items-center border border-2 border-current bg-black size-10 p-1 max-w-[30%] max-h-[30%] sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-all"
+            className="flex justify-center items-center p-1 h-full w-full border border-2 border-pink-400 hover:border-pink-500 bg-black"
             href={src as string}
             hideExternalLinkIcon
             openInNewTab
