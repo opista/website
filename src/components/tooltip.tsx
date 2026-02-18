@@ -1,12 +1,13 @@
 "use client";
 
-import { useId } from "react";
+import { ReactNode, useId } from "react";
 import { IconInfoCircleFilled } from "@tabler/icons-react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import { cn } from "@/util/cn";
 
 export type TooltipProps = {
+  children?: ReactNode;
   className?: string;
   content: string;
   offset?: number;
@@ -27,6 +28,7 @@ export type TooltipProps = {
 };
 
 export const Tooltip = ({
+  children,
   className,
   content,
   offset = 10,
@@ -34,6 +36,24 @@ export const Tooltip = ({
   variant = "dark",
 }: TooltipProps) => {
   const id = useId();
+
+  if (children) {
+    return (
+      <>
+        <span
+          className={cn("inline-block", className)}
+          data-tooltip-content={content}
+          data-tooltip-id={id}
+          data-tooltip-offset={offset}
+          data-tooltip-place={position}
+          data-tooltip-variant={variant}
+        >
+          {children}
+        </span>
+        <ReactTooltip className="max-w-[250px]" id={id} />
+      </>
+    );
+  }
 
   return (
     <>
