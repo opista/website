@@ -1,0 +1,70 @@
+---
+title: Vue Whiteboard Composable
+description: A headless Vue 3 composable for building custom whiteboard applications with SVG and D3.
+link: https://www.npmjs.com/package/vue-whiteboard-composable
+---
+
+## Demo
+
+<VueWhiteboardComposableDemo />
+
+This is a live demonstration of the `vue-whiteboard-composable` package. Although this website is built with Next.js (React), we're using a lightweight bridge to render the Vue component seamlessly.
+
+## What is it?
+
+`vue-whiteboard-composable` is a **headless** Vue 3 composable that handles the complex logic of a whiteboard drawing, history management, and exporting - while giving you complete control over the UI.
+
+It's built on top of the powerful [d3](https://d3js.org/) library for smooth, performant SVG manipulations.
+
+## Key Features
+
+- **Headless & Unstyled**: You bring the UI, we handle the logic. No fighting with default styles.
+- **Reactive Options**: Fully reactive bindings for brush color, stroke size, and background.
+- **Touch & Pointer Support**: Works great on mobile and desktop devices.
+- **History Management**: Built-in Undo and Redo functionality with state checks.
+- **Export Ready**: Simple helper to save your drawings as PNGs.
+- **Lightweight**: Zero bloat, focused purely on the whiteboard logic.
+
+## Installation
+
+```bash
+pnpm add vue-whiteboard-composable
+# or
+npm i vue-whiteboard-composable
+# or
+yarn add vue-whiteboard-composable
+```
+
+## Quick Start
+
+Simply pass a template ref to your SVG element into the `useWhiteboard` composable.
+
+```vue
+<script setup lang="ts">
+import { ref } from "vue";
+import { useWhiteboard } from "vue-whiteboard-composable";
+
+const svgRef = ref<SVGSVGElement | null>(null);
+
+const { undo, redo, clear, save, canUndo, canRedo } = useWhiteboard(svgRef, {
+  color: "#333333",
+  size: "5px",
+});
+</script>
+
+<template>
+  <svg ref="svgRef" style="width: 100%; height: 500px; border: 1px solid #ddd;" />
+
+  <div class="controls">
+    <button :disabled="!canUndo" @click="undo">Undo</button>
+    <button :disabled="!canRedo" @click="redo">Redo</button>
+    <button @click="save">Save Image</button>
+  </div>
+</template>
+```
+
+## Contributing
+
+We welcome contributions! Whether it's reporting a bug, suggesting a feature, or submitting a pull request, your help is appreciated.
+
+[View on GitHub](https://github.com/metacurb/vue-whiteboard-composable)

@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote-client/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
 
+import { LazyVueWhiteboardComposableDemo } from "@/components/vue-whiteboard-composable/lazy-vue-whiteboard-composable-demo";
 import { PageContent } from "@/lib/pages";
 import { cn } from "@/util/cn";
 import { generateTableOfContents } from "@/util/generate-table-of-contents";
@@ -92,6 +93,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     TrueFalseChip,
     ul: UnorderedList,
     VideoEmbed,
+    VueWhiteboardComposableDemo: LazyVueWhiteboardComposableDemo,
     WorkInProgress,
     wrapper: ({ children }: ComponentPropsWithoutRef<"div">) => (
       <div className="snap-y markdown">{children}</div>
