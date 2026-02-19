@@ -7,6 +7,7 @@ import { useScrollSelector } from "@/hooks/use-scroll-selector";
 import { cn } from "@/util/cn";
 
 import { Button } from "./button";
+import { Tooltip } from "./tooltip";
 
 type BackToTopProps = {
   offset?: number;
@@ -34,22 +35,24 @@ export const BackToTop = ({
   }, []);
 
   return (
-    <Button
-      aria-hidden={!showButton}
-      aria-label="Back to top"
-      className={cn(
-        "group fixed bottom-4 right-4 z-10 p-3 transition-transform duration-300",
-        {
-          "opacity-0 translate-y-4 pointer-events-none": !showButton,
-          "opacity-100 translate-y-0": showButton,
-        },
-        className,
-      )}
-      noPadding
-      onClick={onClick}
-      tabIndex={showButton ? 0 : -1}
-    >
-      <IconArrowUp aria-hidden="true" className="size-6" stroke={3} />
-    </Button>
+    <Tooltip asChild content="Back to top" position="left">
+      <Button
+        aria-hidden={!showButton}
+        aria-label="Back to top"
+        className={cn(
+          "group fixed bottom-4 right-4 z-10 p-3 transition-transform duration-300",
+          {
+            "opacity-0 translate-y-4 pointer-events-none": !showButton,
+            "opacity-100 translate-y-0": showButton,
+          },
+          className,
+        )}
+        noPadding
+        onClick={onClick}
+        tabIndex={showButton ? 0 : -1}
+      >
+        <IconArrowUp aria-hidden="true" className="size-6" stroke={3} />
+      </Button>
+    </Tooltip>
   );
 };
