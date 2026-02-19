@@ -1,4 +1,4 @@
-import { ComponentProps, HTMLProps } from "react";
+import { Children, ComponentProps, Fragment, HTMLProps, ReactNode } from "react";
 import { IconLink } from "@tabler/icons-react";
 import Link from "next/link";
 
@@ -61,15 +61,48 @@ export const Heading = ({
   const slug = toSlug(text);
   const href = `#${slug}`;
 
-  const isInteractive = hasInteractive(children);
-
   let content;
 
   if (link) {
-    if (isInteractive) {
+    const childrenArray = Children.toArray(children);
+    const hasInteractiveChild = childrenArray.some((child) =>
+      hasInteractive(child),
+    );
+
+    if (hasInteractiveChild) {
+      const groups: {
+        content: ReactNode[];
+        type: "interactive" | "non-interactive";
+      }[] = [];
+      let currentGroup: ReactNode[] = [];
+
+      childrenArray.forEach((child) => {
+        if (hasInteractive(child)) {
+          if (currentGroup.length > 0) {
+            groups.push({ content: currentGroup, type: "non-interactive" });
+            currentGroup = [];
+          }
+          groups.push({ content: [child], type: "interactive" });
+        } else {
+          currentGroup.push(child);
+        }
+      });
+
+      if (currentGroup.length > 0) {
+        groups.push({ content: currentGroup, type: "non-interactive" });
+      }
+
       content = (
         <>
-          {children}
+          {groups.map((group, i) =>
+            group.type === "non-interactive" ? (
+              <LinkWrapper key={i} href={href}>
+                {group.content}
+              </LinkWrapper>
+            ) : (
+              <Fragment key={i}>{group.content}</Fragment>
+            ),
+          )}
           <LinkWrapper aria-label={`Permalink to ${text}`} href={href}>
             <Icon />
           </LinkWrapper>
@@ -78,7 +111,8 @@ export const Heading = ({
     } else {
       content = (
         <LinkWrapper href={href}>
-          {children}<Icon />
+          {children}
+          <Icon />
         </LinkWrapper>
       );
     }
