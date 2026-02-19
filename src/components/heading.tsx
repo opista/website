@@ -1,12 +1,11 @@
-import { Children, HTMLProps, ReactNode } from "react";
+import { ComponentProps, HTMLProps } from "react";
 import { IconLink } from "@tabler/icons-react";
 import Link from "next/link";
 
 import { cn } from "@/util/cn";
 import { getTextContent } from "@/util/get-text-content";
+import { hasInteractive } from "@/util/has-interactive";
 import { toSlug } from "@/util/to-slug";
-
-import { ConditionalWrapper } from "./conditional-wrapper";
 
 export type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
@@ -25,10 +24,17 @@ export type HeadingProps = HTMLProps<HTMLHeadingElement> & {
   spanClassName?: string;
 };
 
-const LinkWrapper = ({ children, href }: { children: ReactNode; href: string }) => (
+const LinkWrapper = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<typeof Link>) => (
   <Link
-    className="group inline-block no-underline focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm"
-    href={href}
+    className={cn(
+      "group inline-block no-underline focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm",
+      className,
+    )}
+    {...props}
   >
     {children}
   </Link>
@@ -43,37 +49,6 @@ const Icon = () => (
   />
 );
 
-const formattedChildren = (children: ReactNode, href: string) => {
-  if (Children.count(children) <= 1) {
-    return (
-      <LinkWrapper href={href}>
-        {children} <Icon />
-      </LinkWrapper>
-    );
-  }
-
-  const mapped = Children.map(children, (child) => {
-    if (typeof child === "string") {
-      return (
-        <LinkWrapper href={href} key={child}>
-          {child}
-        </LinkWrapper>
-      );
-    }
-
-    return child;
-  });
-
-  return (
-    <>
-      {mapped}
-      <LinkWrapper href={href}>
-        <Icon />
-      </LinkWrapper>
-    </>
-  );
-};
-
 export const Heading = ({
   children,
   className,
@@ -82,9 +57,34 @@ export const Heading = ({
   spanClassName,
   ...props
 }: HeadingProps) => {
-  const slug = toSlug(getTextContent(children, { excludeTags: ["sup"] }));
-
+  const text = getTextContent(children, { excludeTags: ["sup"] });
+  const slug = toSlug(text);
   const href = `#${slug}`;
+
+  const isInteractive = hasInteractive(children);
+
+  let content;
+
+  if (link) {
+    if (isInteractive) {
+      content = (
+        <>
+          {children}
+          <LinkWrapper aria-label={`Permalink to ${text}`} href={href}>
+            <Icon />
+          </LinkWrapper>
+        </>
+      );
+    } else {
+      content = (
+        <LinkWrapper href={href}>
+          {children}<Icon />
+        </LinkWrapper>
+      );
+    }
+  } else {
+    content = children;
+  }
 
   return (
     <Comp
@@ -93,12 +93,7 @@ export const Heading = ({
       id={slug}
     >
       <span className={cn("group inline-flex items-center", spanClassName)}>
-        <ConditionalWrapper
-          condition={!!link}
-          wrapper={(children) => formattedChildren(children, href)}
-        >
-          {children}
-        </ConditionalWrapper>
+        {content}
       </span>
     </Comp>
   );

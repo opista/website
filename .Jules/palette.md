@@ -97,3 +97,8 @@
 
 **Learning:** Base components (like Button) often lack `disabled` or `loading` states if not immediately needed, leading to ad-hoc, inconsistent implementations later (e.g., manual `pointer-events-none`). Implementing these states upfront ensures consistent visual feedback (opacity, cursor) and accessibility (aria-disabled) across the app.
 **Action:** Include `isLoading` and `disabled` props in all interactive base components, ensuring they handle both `<button>` and polymorphic `<a>` rendering correctly.
+
+## 2026-02-19 - Interactive Elements in Headings
+
+**Learning:** Headings containing interactive elements (like links) cannot be wrapped in a parent link (permalink) as this creates invalid HTML (nested interactive elements). This breaks accessibility and hydration.
+**Action:** Detect interactive children recursively. If present, render the permalink as a separate icon-only link with an accessible name, instead of wrapping the entire heading.
