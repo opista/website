@@ -1,33 +1,35 @@
 "use client";
 
-import { ReactNode, useId } from "react";
+import { cloneElement, HTMLAttributes, isValidElement, ReactElement, ReactNode, useId } from "react";
 import { IconInfoCircleFilled } from "@tabler/icons-react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import { cn } from "@/util/cn";
 
 export type TooltipProps = {
+  asChild?: boolean;
   children?: ReactNode;
   className?: string;
   content: string;
   offset?: number;
   position?:
-  | "bottom-end"
-  | "bottom-start"
-  | "bottom"
-  | "left-end"
-  | "left-start"
-  | "left"
-  | "right-end"
-  | "right-start"
-  | "right"
-  | "top-end"
-  | "top-start"
-  | "top";
+    | "bottom-end"
+    | "bottom-start"
+    | "bottom"
+    | "left-end"
+    | "left-start"
+    | "left"
+    | "right-end"
+    | "right-start"
+    | "right"
+    | "top-end"
+    | "top-start"
+    | "top";
   variant?: "dark" | "error" | "info" | "light" | "success" | "warning";
 };
 
 export const Tooltip = ({
+  asChild,
   children,
   className,
   content,
@@ -36,6 +38,23 @@ export const Tooltip = ({
   variant = "dark",
 }: TooltipProps) => {
   const id = useId();
+
+  if (asChild && isValidElement(children)) {
+    const child = children as ReactElement<HTMLAttributes<HTMLElement>>;
+    return (
+      <>
+        {cloneElement(child, {
+          className: cn(child.props.className, className),
+          "data-tooltip-content": content,
+          "data-tooltip-id": id,
+          "data-tooltip-offset": offset,
+          "data-tooltip-place": position,
+          "data-tooltip-variant": variant,
+        })}
+        <ReactTooltip className="max-w-[250px] z-50" id={id} />
+      </>
+    );
+  }
 
   if (children) {
     return (
