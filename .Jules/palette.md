@@ -102,3 +102,8 @@
 
 **Learning:** Headings containing interactive elements (like links) cannot be wrapped in a parent link (permalink) as this creates invalid HTML (nested interactive elements). This breaks accessibility and hydration.
 **Action:** Detect interactive children recursively. If present, render the permalink as a separate icon-only link with an accessible name, instead of wrapping the entire heading.
+
+## 2026-10-25 - Skip Link Focus Management
+
+**Learning:** A "Skip to content" link must point to a target with `tabIndex="-1"` to ensure focus is programmatically moved to the main content area in all browsers. Without it, the link might only scroll the page but leave focus on the link itself, forcing the user to tab through the navigation again.
+**Action:** Always add `tabIndex={-1}` and `focus:outline-none` to the target element of a skip link (usually `<main>`).
