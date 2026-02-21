@@ -19,10 +19,13 @@ const ProjectCell = ({ project }: ProjectCellProps) => {
   const { slug, title, url } = project;
 
   return (
-    <Link href={url}>
+    <Link
+      className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-4 focus-visible:ring-offset-zinc-950"
+      href={url}
+    >
       <Image
         alt={`${title} logo`}
-        className="hover:scale-105 transition-transform rounded-[25%]"
+        className="group-hover:scale-105 group-focus-visible:scale-105 transition-transform rounded-[25%]"
         height={MAX_IMAGE_WIDTH}
         src={`/projects/${slug}/logo.png`}
         width={MAX_IMAGE_WIDTH}
