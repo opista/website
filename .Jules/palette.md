@@ -107,3 +107,8 @@
 
 **Learning:** Wrapping an interactive element (like a `Link` or `Button`) in a `Tooltip` that applies visibility styles (like `opacity-0`) to the wrapper creates an accessibility trap. The inner element receives focus, but the wrapper remains invisible (unless `focus-within` is used), causing users to focus on an invisible element.
 **Action:** Always use the `asChild` prop on `Tooltip` when the trigger is an interactive element. This merges the tooltip's styles and attributes directly onto the trigger, ensuring visibility states like `focus:opacity-100` work correctly.
+
+## 2026-10-25 - Skip Link Focus Management
+
+**Learning:** A "Skip to content" link must point to a target with `tabIndex="-1"` to ensure focus is programmatically moved to the main content area in all browsers. Without it, the link might only scroll the page but leave focus on the link itself, forcing the user to tab through the navigation again.
+**Action:** Always add `tabIndex={-1}` and `focus:outline-none` to the target element of a skip link (usually `<main>`).
