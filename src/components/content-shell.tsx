@@ -17,7 +17,11 @@ export const ContentShell = ({ children }: ContentShellProps) => (
     </a>
     <div className="w-full min-h-full flex flex-col px-4">
       <Header />
-      <main className="py-4 sm:py-8 max-w-prose w-full mx-auto main grow" id="main-content">
+      <main
+        className="py-4 sm:py-8 max-w-prose w-full mx-auto main grow focus:outline-none"
+        id="main-content"
+        tabIndex={-1}
+      >
         {children}
       </main>
       <Footer />
