@@ -103,6 +103,11 @@
 **Learning:** Headings containing interactive elements (like links) cannot be wrapped in a parent link (permalink) as this creates invalid HTML (nested interactive elements). This breaks accessibility and hydration.
 **Action:** Detect interactive children recursively. If present, render the permalink as a separate icon-only link with an accessible name, instead of wrapping the entire heading.
 
+## 2026-02-19 - Invisible Focus on Tooltip Wrappers
+
+**Learning:** Wrapping an interactive element (like a `Link` or `Button`) in a `Tooltip` that applies visibility styles (like `opacity-0`) to the wrapper creates an accessibility trap. The inner element receives focus, but the wrapper remains invisible (unless `focus-within` is used), causing users to focus on an invisible element.
+**Action:** Always use the `asChild` prop on `Tooltip` when the trigger is an interactive element. This merges the tooltip's styles and attributes directly onto the trigger, ensuring visibility states like `focus:opacity-100` work correctly.
+
 ## 2026-10-25 - Skip Link Focus Management
 
 **Learning:** A "Skip to content" link must point to a target with `tabIndex="-1"` to ensure focus is programmatically moved to the main content area in all browsers. Without it, the link might only scroll the page but leave focus on the link itself, forcing the user to tab through the navigation again.
