@@ -35,9 +35,10 @@ export const Pre = ({ children, className, ...props }: HTMLAttributes<HTMLPreEle
         {children}
       </pre>
       <Tooltip
+        asChild
         className={cn(
           "absolute bottom-[10px] sm:bottom-auto sm:top-[10px] right-[10px]",
-          "sm:opacity-0 sm:group-hover:opacity-100 focus-within:opacity-100 transition-opacity",
+          "sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-opacity",
         )}
         content={copied ? "Copied!" : "Copy code"}
         position="left"
