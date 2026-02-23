@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { BackToTop } from "@/components/back-to-top";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Heading } from "@/components/heading";
 import { PostBody } from "@/components/post-body";
 import { ProjectDetailsBar } from "@/components/project/project-details-bar";
@@ -66,6 +67,7 @@ export default async function ProjectPage({ params }: { params: Promise<ProjectP
 
   return (
     <article className="prose prose-invert">
+      <Breadcrumbs items={[{ href: "/projects", label: "Projects" }, { label: page.title }]} />
       <div className="flex flex-col sm:flex-row items-center">
         <div className="relative my-0 mb-2 sm:mb-0 sm:mr-2 rounded-[25%] overflow-hidden w-[40px] h-[40px] sm:w-[70px] sm:h-[70px] shrink-0">
           <Image

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BackToTop } from "@/components/back-to-top";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Heading } from "@/components/heading";
 import { ArticleJsonLd } from "@/components/json-ld";
 import { PostBody } from "@/components/post-body";
@@ -73,6 +74,7 @@ export default async function PostPage({ params }: { params: Promise<PostPagePar
         title={page.title}
         url={`${BASE_SITE_URL}/posts/${page.slug}`}
       />
+      <Breadcrumbs items={[{ href: "/posts", label: "Posts" }, { label: page.title }]} />
       <Heading className="mb-0" level="h1">
         {page.title}
       </Heading>
