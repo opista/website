@@ -19,6 +19,14 @@ const ipodImageMap: Record<Generation, string> = {
   7: "/posts/ipod-modding/ipod-identifier/ipod-7-gen.png",
 };
 
+const ipodAltMap: Record<Generation, string> = {
+  5: "iPod 5th Generation (Video)",
+  5.5: "iPod 5.5 Generation (Video Enhanced)",
+  6: "iPod Classic 6th Generation",
+  6.5: "iPod Classic 6.5 Generation",
+  7: "iPod Classic 7th Generation",
+};
+
 export const IpodIdentifierResults = ({
   capacity,
   model,
@@ -27,7 +35,11 @@ export const IpodIdentifierResults = ({
   const details = model.capacityOptions.find((option) => option.capacity === capacity);
 
   return (
-    <IpodIdentifierLayout title="Your iPod is" image={ipodImageMap[model.generation]}>
+    <IpodIdentifierLayout
+      image={ipodImageMap[model.generation]}
+      imageAlt={ipodAltMap[model.generation]}
+      title="Your iPod is"
+    >
       {details ? (
         <div className="flex flex-col justify-between h-full">
           <div className="text-center font-bold text-xl">

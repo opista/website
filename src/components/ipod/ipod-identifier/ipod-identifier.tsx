@@ -65,6 +65,7 @@ type AnswerState = {
 type Question = {
   key: keyof AnswerState;
   image: string;
+  imageAlt: string;
   question: string;
   answers: { label: string; value: unknown }[];
   skip: () => boolean;
@@ -140,6 +141,7 @@ export const IpodIdentifier = () => {
         },
       ],
       image: "/posts/ipod-modding/ipod-identifier/ipod-7-gen.png",
+      imageAlt: "Close up of an iPod with a metal faceplate",
       key: "hasMetalFaceplate",
       question: "Does your iPod have a metal faceplate?",
       skip: () => false,
@@ -147,6 +149,7 @@ export const IpodIdentifier = () => {
     {
       answers: capacityOptions,
       image: "/posts/ipod-modding/ipod-identifier/ipod-rear.png",
+      imageAlt: "Back of an iPod showing capacity text",
       key: "capacity",
       question: "Looking on the back of your iPod, what storage capacity does it have?",
       skip: () => capacityOptions.length <= 1,
@@ -163,6 +166,7 @@ export const IpodIdentifier = () => {
         },
       ],
       image: "/posts/ipod-modding/ipod-identifier/ipod-5-gen-search.png",
+      imageAlt: "iPod menu showing the Search option",
       key: "hasSearch",
       question: 'Does your iPod have a "Search" option in the "Music" menu?',
       skip: () =>
@@ -173,6 +177,7 @@ export const IpodIdentifier = () => {
     {
       answers: yearOptions,
       image: "/posts/ipod-modding/ipod-identifier/ipod-rear.png",
+      imageAlt: "Back of an iPod showing the copyright year",
       key: "year",
       question: "Looking on the back of your iPod, what year does it say?",
       skip: () => yearOptions.length <= 1,
@@ -196,7 +201,7 @@ export const IpodIdentifier = () => {
         <h3 className="text-center mt-0 mb-2">iPod Identifier</h3>
 
         {step ? (
-          <IpodIdentifierLayout title={step.question} image={step.image}>
+          <IpodIdentifierLayout imageAlt={step.imageAlt} title={step.question} image={step.image}>
             {step.answers.map((answer) => (
               <Button
                 key={`${step.question}-${String(answer.value)}`}
