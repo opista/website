@@ -114,6 +114,7 @@ export const ScrollHint = ({
       {showScrollHint && (
         <div className="absolute top-px right-0 z-10 p-4 pointer-events-none transition-opacity duration-500 bg-zinc-950">
           <IconHandMove
+            aria-hidden="true"
             size={23}
             stroke={1.5}
             className={cn("text-white drop-shadow-md origin-bottom", iconClassName)}
