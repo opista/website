@@ -23,7 +23,7 @@
     "lodash-es": "^4.17.23",
     "next": "^16.1.6",
     "next-compose-plugins": "^2.2.1",
-    "next-mdx-remote-client": "^2.1.7",
+    "next-mdx-remote-client": "^2.1.9",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-tooltip": "^5.30.0",
