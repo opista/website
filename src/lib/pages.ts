@@ -17,6 +17,7 @@ export type PageContent = {
   description: string;
   link?: string;
   modifiedAt: Date;
+  popular?: boolean;
   price?: string;
   readingTime: number;
   slug: string;
