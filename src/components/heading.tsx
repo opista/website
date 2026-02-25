@@ -43,7 +43,7 @@ const LinkWrapper = ({
 const Icon = () => (
   <IconLink
     aria-hidden="true"
-    className="group-hover:text-pink-500 inline-block ml-1"
+    className="ml-1 inline-block transition-opacity duration-200 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100"
     size={16}
     stroke={1.5}
   />
