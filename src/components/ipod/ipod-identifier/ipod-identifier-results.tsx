@@ -8,6 +8,7 @@ import { IpodIdentifierLayout } from "./ipod-identifier-layout";
 type IpodIdentifierResultsProps = {
   capacity: Capacity | null;
   model: GenerationConfiguration;
+  onBack?: () => void;
   onRestart?: () => void;
 };
 
@@ -30,6 +31,7 @@ const ipodAltMap: Record<Generation, string> = {
 export const IpodIdentifierResults = ({
   capacity,
   model,
+  onBack,
   onRestart,
 }: IpodIdentifierResultsProps) => {
   const details = model.capacityOptions.find((option) => option.capacity === capacity);
@@ -55,9 +57,17 @@ export const IpodIdentifierResults = ({
             </p>
             <RamIndicator className="text-xl mb-8 inline-block" ram={details.ram} />
           </div>
-          <Button center onClick={onRestart}>
-            Restart
-          </Button>
+          <div className="flex gap-2 justify-center">
+            {onBack && (
+              <Button
+                className="bg-zinc-500 hover:bg-zinc-600"
+                onClick={onBack}
+              >
+                Back
+              </Button>
+            )}
+            <Button onClick={onRestart}>Restart</Button>
+          </div>
         </div>
       ) : (
         "Something went wrong"
