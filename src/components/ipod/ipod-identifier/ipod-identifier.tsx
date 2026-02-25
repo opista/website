@@ -195,6 +195,16 @@ export const IpodIdentifier = () => {
     setAnswers(DEFAULT_ANSWER_STATE);
   };
 
+  const onBack = () => {
+    const reversedSteps = [...steps].reverse();
+    const lastAnsweredStep = reversedSteps.find((step) => answers[step.key] !== null);
+    if (lastAnsweredStep) {
+      setAnswers({ ...answers, [lastAnsweredStep.key]: null });
+    }
+  };
+
+  const canGoBack = Object.values(answers).some((v) => v !== null);
+
   return (
     <div className="border">
       <div className="p-8 pb-0">
@@ -210,11 +220,19 @@ export const IpodIdentifier = () => {
                 {answer.label}
               </Button>
             ))}
+            {canGoBack && (
+              <div className="flex w-full justify-center mt-4">
+                <Button className="bg-zinc-500 hover:bg-zinc-600" onClick={onBack}>
+                  Back
+                </Button>
+              </div>
+            )}
           </IpodIdentifierLayout>
         ) : (
           <IpodIdentifierResults
             capacity={answers.capacity}
             model={filteredGenerations[0]}
+            onBack={onBack}
             onRestart={onRestart}
           />
         )}
