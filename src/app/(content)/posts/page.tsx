@@ -19,8 +19,11 @@ const PostList = ({ posts }: { posts: Page[] }) => (
       <Fragment key={post.url}>
         {idx !== 0 && <HorizontalRule className="mb-8" />}
         <li className="mb-8">
-          <Link className="text-inherit! hover:no-underline!" href={post.url}>
-            <Heading className="mb-1" level="h2">
+          <Link className="text-inherit! hover:no-underline! group" href={post.url}>
+            <Heading
+              className="mb-1 group-hover:text-pink-500 transition-colors"
+              level="h2"
+            >
               {post.title}
             </Heading>
             <p className="mb-1 text-sm text-zinc-400">
