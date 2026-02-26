@@ -1,7 +1,15 @@
 export type VideoEmbedProps = {
   className?: string;
+  poster?: string;
   src: string;
   title?: string;
+  tracks?: {
+    default?: boolean;
+    kind?: "captions" | "chapters" | "descriptions" | "metadata" | "subtitles";
+    label: string;
+    src: string;
+    srcLang: string;
+  }[];
   type?: string;
 };
 
@@ -21,8 +29,16 @@ const getFileType = (src: string) => {
   return parts.pop()?.toLowerCase();
 };
 
-export const VideoEmbed = ({ className, src, title, type = getFileType(src) }: VideoEmbedProps) => (
-  <video className={className} controls preload="metadata" title={title}>
+export const VideoEmbed = ({
+  className,
+  poster,
+  src,
+  title,
+  tracks,
+  type = getFileType(src),
+}: VideoEmbedProps) => (
+  <video className={className} controls poster={poster} preload="metadata" title={title}>
     <source src={src} type={`video/${type}`} />
+    {tracks?.map((track) => <track key={track.src} {...track} />)}
   </video>
 );

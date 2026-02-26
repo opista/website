@@ -112,3 +112,8 @@
 
 **Learning:** A "Skip to content" link must point to a target with `tabIndex="-1"` to ensure focus is programmatically moved to the main content area in all browsers. Without it, the link might only scroll the page but leave focus on the link itself, forcing the user to tab through the navigation again.
 **Action:** Always add `tabIndex={-1}` and `focus:outline-none` to the target element of a skip link (usually `<main>`).
+
+## 2026-06-25 - Video Accessibility
+
+**Learning:** Videos must have captions or descriptions to be accessible (WCAG 1.2.2). The `<track>` element provides this functionality for native `<video>` elements. Also, adding a `poster` image improves perceived performance and avoids a blank player state before loading.
+**Action:** Ensure all `VideoEmbed` components support and use `tracks` and `poster` props.
