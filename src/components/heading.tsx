@@ -1,11 +1,12 @@
 import { Children, ComponentProps, Fragment, HTMLProps, ReactNode } from "react";
-import { IconLink } from "@tabler/icons-react";
 import Link from "next/link";
 
 import { cn } from "@/util/cn";
 import { getTextContent } from "@/util/get-text-content";
 import { hasInteractive } from "@/util/has-interactive";
 import { toSlug } from "@/util/to-slug";
+
+import { HeadingPermalink } from "./heading-permalink";
 
 export type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
@@ -38,15 +39,6 @@ const LinkWrapper = ({
   >
     {children}
   </Link>
-);
-
-const Icon = () => (
-  <IconLink
-    aria-hidden="true"
-    className="ml-1 inline-block transition-opacity duration-200 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100"
-    size={16}
-    stroke={1.5}
-  />
 );
 
 export const Heading = ({
@@ -103,17 +95,17 @@ export const Heading = ({
               <Fragment key={i}>{group.content}</Fragment>
             ),
           )}
-          <LinkWrapper aria-label={`Permalink to ${text}`} href={href}>
-            <Icon />
-          </LinkWrapper>
+          <HeadingPermalink slug={slug} title={text} />
         </>
       );
     } else {
       content = (
-        <LinkWrapper href={href}>
-          {children}
-          <Icon />
-        </LinkWrapper>
+        <>
+          <LinkWrapper href={href}>
+            {children}
+          </LinkWrapper>
+          <HeadingPermalink slug={slug} title={text} />
+        </>
       );
     }
   } else {
