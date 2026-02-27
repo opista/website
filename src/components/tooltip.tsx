@@ -51,7 +51,7 @@ export const Tooltip = ({
           "data-tooltip-place": position,
           "data-tooltip-variant": variant,
         })}
-        <ReactTooltip className="max-w-[250px] z-50" id={id} />
+        <ReactTooltip className="max-w-[250px] z-50 text-base! font-normal!" id={id} style={{ fontSize: "1rem", fontWeight: "400" }} />
       </>
     );
   }
@@ -69,7 +69,7 @@ export const Tooltip = ({
         >
           {children}
         </span>
-        <ReactTooltip className="max-w-[250px] z-50" id={id} />
+        <ReactTooltip className="max-w-[250px] z-50 text-base! font-normal!" id={id} style={{ fontSize: "1rem", fontWeight: "400" }} />
       </>
     );
   }
@@ -91,7 +91,7 @@ export const Tooltip = ({
       >
         <IconInfoCircleFilled aria-hidden="true" className="size-4" />
       </button>
-      <ReactTooltip className="max-w-[250px] z-50" id={id} />
+      <ReactTooltip className="max-w-[250px] z-50 text-base! font-normal!" id={id} style={{ fontSize: "1rem", fontWeight: "400" }} />
     </>
   );
 };
