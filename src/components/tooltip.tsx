@@ -13,18 +13,18 @@ export type TooltipProps = {
   content: string;
   offset?: number;
   position?:
-    | "bottom-end"
-    | "bottom-start"
-    | "bottom"
-    | "left-end"
-    | "left-start"
-    | "left"
-    | "right-end"
-    | "right-start"
-    | "right"
-    | "top-end"
-    | "top-start"
-    | "top";
+  | "bottom-end"
+  | "bottom-start"
+  | "bottom"
+  | "left-end"
+  | "left-start"
+  | "left"
+  | "right-end"
+  | "right-start"
+  | "right"
+  | "top-end"
+  | "top-start"
+  | "top";
   variant?: "dark" | "error" | "info" | "light" | "success" | "warning";
 };
 
@@ -51,7 +51,7 @@ export const Tooltip = ({
           "data-tooltip-place": position,
           "data-tooltip-variant": variant,
         })}
-        <ReactTooltip className="max-w-[250px] z-50" id={id} />
+        <ReactTooltip className="max-w-[250px] z-50 !text-sm !font-normal" id={id} />
       </>
     );
   }
@@ -69,7 +69,7 @@ export const Tooltip = ({
         >
           {children}
         </span>
-        <ReactTooltip className="max-w-[250px] z-50" id={id} />
+        <ReactTooltip className="max-w-[250px] z-50 !text-sm !font-normal" id={id} />
       </>
     );
   }
@@ -91,7 +91,7 @@ export const Tooltip = ({
       >
         <IconInfoCircleFilled aria-hidden="true" className="size-4" />
       </button>
-      <ReactTooltip className="max-w-[250px] z-50" id={id} />
+      <ReactTooltip className="max-w-[250px] z-50 !text-sm !font-normal" id={id} />
     </>
   );
 };
