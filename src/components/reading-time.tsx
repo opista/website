@@ -8,7 +8,8 @@ type ReadingTimeProps = ComponentPropsWithoutRef<"span"> & {
 
 export const ReadingTime = ({ className, minutes, ...props }: ReadingTimeProps) => {
   return (
-    <span className={cn("text-xs", className)} {...props}>
+    <span className={cn("text-xs", className)} title={`${minutes} minute read`} {...props}>
+      <span className="sr-only">Estimated reading time: </span>
       {minutes} min read
     </span>
   );

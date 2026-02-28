@@ -9,3 +9,7 @@
 
 **Learning:** Using SVG icons as visual status indicators (e.g., checkmarks for "Supported", crosses for "Incompatible") inside data tables creates an accessibility barrier if the icons only have visual `aria-label`s (like "Icon, circle with a tick"). Screen readers will announce the visual description instead of the data's meaning, making the table's information difficult to understand.
 **Action:** When using icons to convey data, hide the SVG entirely with `aria-hidden="true"` and provide the semantic meaning using visually hidden text (`<span className="sr-only">Supported</span>`).
+## 2026-02-28 - Reading Time Context
+
+**Learning:** Simple text spans like "5 min read" lack context for screen readers when out of visual context, and their brevity might be confusing. Adding an `sr-only` prefix like "Estimated reading time: " provides clarity without affecting the visual design.
+**Action:** Always include an `sr-only` prefix describing the context for compact data displays like reading time estimates. Add `title` attribute for native tooltips.
