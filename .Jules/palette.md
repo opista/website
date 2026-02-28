@@ -117,3 +117,8 @@
 
 **Learning:** Videos must have captions or descriptions to be accessible (WCAG 1.2.2). The `<track>` element provides this functionality for native `<video>` elements. Also, adding a `poster` image improves perceived performance and avoids a blank player state before loading.
 **Action:** Ensure all `VideoEmbed` components support and use `tracks` and `poster` props.
+
+## 2026-02-28 - Reading Time Context
+
+**Learning:** Simple text spans like "5 min read" lack context for screen readers when out of visual context, and their brevity might be confusing. Adding an `sr-only` prefix like "Estimated reading time: " provides clarity without affecting the visual design.
+**Action:** Always include an `sr-only` prefix describing the context for compact data displays like reading time estimates. Add `title` attribute for native tooltips.
