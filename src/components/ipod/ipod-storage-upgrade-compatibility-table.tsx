@@ -157,37 +157,35 @@ const supportLevelMap: Record<
       </>
     ),
     icon: IconInfoCircleFilled,
-    label: "Icon, information symbol",
+    label: "Requires custom firmware",
   },
   full: {
     className: "text-green-600 bg-green-100",
     description: "Supported",
     icon: IconCircleCheckFilled,
-    label: "Icon, circle with a tick",
+    label: "Supported",
   },
   none: {
     className: "text-red-600 bg-red-100",
     description: "Unsupported",
     icon: IconCircleXFilled,
-    label: "Icon, circle with a cross",
+    label: "Unsupported",
   },
   partial: {
     className: "text-yellow-600 bg-yellow-100",
     description:
       "Supported, but you'll probably reach the RAM's item limit before the storage limit",
     icon: IconAlertCircleFilled,
-    label: "Icon, circle with an exclamation mark",
+    label: "Partially supported",
   },
 };
 
 const CompatibilityCell = ({ level }: { level: SupportLevel }) => {
   const { className, icon: Icon, label } = supportLevelMap[level];
   return (
-    <TableBodyCell
-      className={cn("align-middle text-center w-[60px]", className)}
-      aria-label={level}
-    >
-      <Icon aria-label={label} className="inline-block size-6" />
+    <TableBodyCell className={cn("align-middle text-center w-[60px]", className)}>
+      <span className="sr-only">{label}</span>
+      <Icon aria-hidden="true" className="inline-block size-6" />
     </TableBodyCell>
   );
 };
