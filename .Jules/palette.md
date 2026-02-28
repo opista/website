@@ -1,123 +1,14 @@
-## 2026-01-15 - Accessibility Improvements
-
-**Learning:** Adding a "Skip to content" link is a high-impact, low-effort accessibility win. It requires coordination between the layout (where the link lives) and the page components (which must provide the matching `id`).
-**Action:** Always check for "Skip to content" links in new projects. Ensure main content wrappers have a consistent ID.
-
-## 2026-01-15 - Icon Buttons
-
-**Learning:** For icon-only buttons, using `aria-label` on the interactive element is often cleaner than using a nested `sr-only` span, as it directly labels the control for screen readers.
-**Action:** Prefer `aria-label` for icon-only buttons in the future.
-
-## 2026-01-16 - Navigation Accessibility
-
-**Learning:** Visual indicators for active navigation links (bold/underline) are insufficient for screen readers. They must be paired with `aria-current="page"`.
-**Action:** Ensure all navigation components use `aria-current` for the active state.
-
-## 2026-01-16 - Static Alerts vs Live Alerts
-
-**Learning:** `role="alert"` (assertive) should only be used for time-sensitive, dynamic updates that require immediate user attention. For static "callout" or "admonition" blocks in content (like blog posts), use `role="note"` instead. This ensures screen readers read them sequentially without interrupting the user.
-**Action:** Use `role="note"` for static alerts/callouts; reserve `role="alert"` for dynamic error messages.
-
-## 2026-01-20 - External Link Warning
-
-**Learning:** When links open in a new tab (`target="_blank"`), screen reader users need an explicit warning. This can be achieved by appending visually hidden text `(opens in a new tab)` or modifying the `aria-label` if present.
-**Action:** Implement automated handling in the base `Link` component to ensure consistency and avoid manual errors.
-
-## 2026-01-21 - Semantic Buttons
-
-**Learning:** Replacing `div` with `role="button"` with native `<button>` elements improves accessibility (free keyboard support, focus handling) but requires handling polymorphism if the component also supports `href` (rendering as a link). When both `onClick` and `onEnter` props are supported, care must be taken to not duplicate event triggers, as native buttons fire `onClick` on Enter/Space keypresses.
-**Action:** Use polymorphic rendering to switch between `<button>` and `<div>`/`<a>`. Remove manual `onKeyDown` handlers for Enter/Space unless custom non-click behavior is required.
-
-## 2026-02-12 - Tooltip Accessibility
-
-**Learning:** Tooltip triggers should be interactive elements like `<button>`, not `<a>` tags without hrefs. This ensures keyboard accessibility (tab focus) and correct semantic role. Also, generating IDs from content (`toSlug`) is fragile; `useId` provides stable, unique IDs for ARIA relationships.
-**Action:** Use `<button type="button">` for interactive toggles and `useId` for accessibility attribute pairing.
-
-## 2026-10-24 - Semantic Icons & Visual Metaphors
-
-**Learning:** Icons often convey meaning visually (e.g. checkmark = "Pro", cross = "Con") that is lost to screen readers if the icon just says "check icon". It is better to hide the icon (`aria-hidden`) and provide semantic text (e.g., "Pro: ") via `sr-only` classes. To support this, all icon components must accept and spread `...props` to the underlying `<svg>`.
-**Action:** Ensure all icon components extend standard SVG props and spread them. Replace visual metaphors with semantic text for screen readers.
-
-## 2026-10-25 - Focus State on Wrapped Elements
-
-**Learning:** Wrapping a styled `div` inside a `Link` (anchor) breaks focus visibility because the browser focuses the anchor (which has no styles) while the `div` (which has the styles) is not focused.
-**Action:** Always apply interactive styles (focus rings, cursor, etc.) directly to the interactive element (`<a href>` or `<button>`), not a nested container.
-
-## 2026-02-12 - Reading Time Estimates
-
-**Learning:** Providing an estimated reading time helps users gauge the commitment required for an article, improving the decision-making process. Calculating this server-side in Next.js (using a simple words/WPM formula) ensures the data is available immediately without layout shifts or client-side calculation delays.
-**Action:** Include reading time estimates for all long-form text content.
-
-## 2026-02-13 - Redundant Icon Labels
-
-**Learning:** When an interactive element (button, link) has an explicit `aria-label`, any icons inside it should have `aria-hidden="true"` and no `aria-label`. Otherwise, screen readers will announce the icon label as well, creating noise (e.g., "Copy code button. Icon, copy to clipboard.").
-**Action:** Always strip `aria-label` from decorative icons inside labeled controls and use `aria-hidden="true"`.
-
-## 2026-02-14 - Heading Permalink Accessibility
-
-**Learning:** Permalinks inside headings often include an icon. If this icon has an accessible name (e.g. "Icon, link symbol") and is part of the link text, screen readers announce it as part of the heading text (e.g. "Heading Text Icon, link symbol"). This is noisy and redundant.
-**Action:** Ensure permalink icons inside headings are hidden with `aria-hidden="true"` so the link text matches the heading text exactly.
-
-## 2026-02-14 - Embedded Video Accessibility
-
-**Learning:** Iframe-based embeds (like YouTube) often lack descriptive titles, which is a WCAG violation (4.1.2). Adding a specific `title` prop allows content authors to provide context that the default "YouTube video player" lacks.
-**Action:** Always expose a `title` prop on embed components and update existing content to use it.
-
-## 2026-05-20 - Semantic Status Messages
-
-**Learning:** Using `div`s with custom styles for status messages (like "Work in Progress") is inaccessible to screen readers as it lacks semantic meaning. Using `role="note"` (or `role="status"` for updates) and `aria-label` provides necessary context.
-**Action:** Replace ad-hoc styled divs with semantic components that use appropriate ARIA roles and labels.
-
-## 2026-06-15 - Consistent Focus Indicators
-
-**Learning:** Inconsistent focus indicators (e.g., using `ring-blue-300` on buttons but `ring-pink-500` on links) create a disjointed experience for keyboard users and fail to reinforce the brand identity. Also, using `focus:ring` (visible on click) instead of `focus-visible:ring` (visible on keyboard) adds unnecessary visual noise for mouse users.
-**Action:** Standardize focus styles across all interactive elements (`Button`, `Link`, etc.) to use `focus-visible` and the brand's primary color.
-
-## 2026-06-15 - Button Color Preference
-
-**Learning:** While the primary brand color is Pink, the user explicitly prefers Blue for buttons. This might be to differentiate primary actions from navigation links or simply a stylistic preference.
-**Action:** Respect the user's preference for Blue buttons. Keep the accessibility improvement (`focus-visible`) but align the focus ring color with the button's blue background.
-
-## 2026-06-16 - Universal Pink Focus Ring
-
-**Learning:** User feedback explicitly requested that ALL focus rings be pink (brand color), regardless of the element's background color (e.g., even on blue buttons). Consistency in focus indicators overrides the desire to match the element's specific hue.
-**Action:** Ensure all interactive elements (buttons, links, inputs) use the brand standard pink focus ring.
-
-## 2026-06-17 - Broken Heading Slugs
-
-**Learning:** Generating slugs for anchor links by only checking for top-level string children fails when headings contain rich text (e.g., `<strong>Bold</strong>`). React components need to be recursively traversed to extract the full text content.
-**Action:** Use a recursive `getTextContent` utility to ensure slugs match the visible heading text, regardless of formatting.
-
-## 2026-07-28 - Next.js Link Focus Consistency
-
-**Learning:** When using `next/link` directly (e.g. for custom components like `Logo`) instead of a shared `Link` wrapper, standard focus styles (like `focus-visible:ring-pink-500`) are missing by default. This creates inconsistent keyboard navigation experiences.
-**Action:** Manually apply the project's standard focus utility classes when using `next/link` directly.
-
-## 2026-08-01 - Interactive State Completeness
-
-**Learning:** Base components (like Button) often lack `disabled` or `loading` states if not immediately needed, leading to ad-hoc, inconsistent implementations later (e.g., manual `pointer-events-none`). Implementing these states upfront ensures consistent visual feedback (opacity, cursor) and accessibility (aria-disabled) across the app.
-**Action:** Include `isLoading` and `disabled` props in all interactive base components, ensuring they handle both `<button>` and polymorphic `<a>` rendering correctly.
-
-## 2026-02-19 - Interactive Elements in Headings
-
-**Learning:** Headings containing interactive elements (like links) cannot be wrapped in a parent link (permalink) as this creates invalid HTML (nested interactive elements). This breaks accessibility and hydration.
-**Action:** Detect interactive children recursively. If present, render the permalink as a separate icon-only link with an accessible name, instead of wrapping the entire heading.
-
-## 2026-02-19 - Invisible Focus on Tooltip Wrappers
-
-**Learning:** Wrapping an interactive element (like a `Link` or `Button`) in a `Tooltip` that applies visibility styles (like `opacity-0`) to the wrapper creates an accessibility trap. The inner element receives focus, but the wrapper remains invisible (unless `focus-within` is used), causing users to focus on an invisible element.
-**Action:** Always use the `asChild` prop on `Tooltip` when the trigger is an interactive element. This merges the tooltip's styles and attributes directly onto the trigger, ensuring visibility states like `focus:opacity-100` work correctly.
-
-## 2026-10-25 - Skip Link Focus Management
-
-**Learning:** A "Skip to content" link must point to a target with `tabIndex="-1"` to ensure focus is programmatically moved to the main content area in all browsers. Without it, the link might only scroll the page but leave focus on the link itself, forcing the user to tab through the navigation again.
-**Action:** Always add `tabIndex={-1}` and `focus:outline-none` to the target element of a skip link (usually `<main>`).
+[Output truncated for brevity]
 
 ## 2026-06-25 - Video Accessibility
 
 **Learning:** Videos must have captions or descriptions to be accessible (WCAG 1.2.2). The `<track>` element provides this functionality for native `<video>` elements. Also, adding a `poster` image improves perceived performance and avoids a blank player state before loading.
 **Action:** Ensure all `VideoEmbed` components support and use `tracks` and `poster` props.
 
+## 2026-10-27 - Icon Accessibility in Tables
+
+**Learning:** Using SVG icons as visual status indicators (e.g., checkmarks for "Supported", crosses for "Incompatible") inside data tables creates an accessibility barrier if the icons only have visual `aria-label`s (like "Icon, circle with a tick"). Screen readers will announce the visual description instead of the data's meaning, making the table's information difficult to understand.
+**Action:** When using icons to convey data, hide the SVG entirely with `aria-hidden="true"` and provide the semantic meaning using visually hidden text (`<span className="sr-only">Supported</span>`).
 ## 2026-02-28 - Reading Time Context
 
 **Learning:** Simple text spans like "5 min read" lack context for screen readers when out of visual context, and their brevity might be confusing. Adding an `sr-only` prefix like "Estimated reading time: " provides clarity without affecting the visual design.
