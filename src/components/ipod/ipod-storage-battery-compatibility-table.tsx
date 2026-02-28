@@ -234,13 +234,13 @@ const compatibilityMap: Record<
     className: "text-red-600 bg-red-100",
     description: "Incompatible",
     icon: IconCircleXFilled,
-    label: "Icon, circle with a cross",
+    label: "Incompatible",
   },
   true: {
     className: "text-green-600 bg-green-100",
     description: "Compatible",
     icon: IconCircleCheckFilled,
-    label: "Icon, circle with a tick",
+    label: "Compatible",
   },
 };
 
@@ -248,7 +248,8 @@ const CompatibilityCell = ({ level }: { level: string }) => {
   const { className, icon: Icon, label } = compatibilityMap[level];
   return (
     <TableBodyCell className={cn("align-middle text-center w-[60px]", className)}>
-      <Icon aria-label={label} className="inline-block size-6" />
+      <span className="sr-only">{label}</span>
+      <Icon aria-hidden="true" className="inline-block size-6" />
     </TableBodyCell>
   );
 };
