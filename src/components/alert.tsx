@@ -29,6 +29,12 @@ const styleMap: Record<AlertType, string> = {
   warning: "bg-yellow-100 text-yellow-700 border-yellow-700",
 };
 
+const roleMap: Record<AlertType, "alert" | "note" | "status"> = {
+  error: "alert",
+  info: "note",
+  warning: "status",
+};
+
 export const Alert = ({ children, icon: OverrideIcon, type = "info" }: AlertProps) => {
   const { icon: DefaultIcon, semanticLabel } = iconMap[type];
   const Icon = OverrideIcon ?? DefaultIcon;
@@ -36,7 +42,7 @@ export const Alert = ({ children, icon: OverrideIcon, type = "info" }: AlertProp
   return (
     <div
       className={cn("alert p-4 mb-5 flex leading-5 not-prose border", styleMap[type])}
-      role="note"
+      role={roleMap[type]}
     >
       <Icon aria-hidden="true" className="mr-2 size-5 shrink-0" />
       <div>
