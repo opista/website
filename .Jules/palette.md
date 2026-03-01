@@ -16,5 +16,5 @@
 
 ## 2026-03-01 - Alert Component Accessibility
 
-**Learning:** Using `role="note"` for all alert types (info, warning, error) makes critical alerts inaccessible for screen readers. Screen readers need `role="alert"` for errors and `role="status"` for warnings to announce them properly and prioritize them.
-**Action:** Ensure the `Alert` component dynamically sets the appropriate ARIA role (`alert`, `status`, or `note`) based on its semantic type.
+**Learning:** Using `role="alert"` or `role="status"` changes the order in which content is read by screen readers. If the alert colours are just used for visual hierarchy and not to denote actual errors or status changes that need immediate attention, using `role="note"` is correct to maintain the natural reading order.
+**Action:** Do not automatically assign `role="alert"` or `role="status"` based on visual style (like "error" or "warning") unless the content truly represents an urgent system state or validation error that needs to interrupt the user.
