@@ -13,3 +13,8 @@
 
 **Learning:** Simple text spans like "5 min read" lack context for screen readers when out of visual context, and their brevity might be confusing. Adding an `sr-only` prefix like "Estimated reading time: " provides clarity without affecting the visual design.
 **Action:** Always include an `sr-only` prefix describing the context for compact data displays like reading time estimates. Add `title` attribute for native tooltips.
+
+## 2026-03-01 - Alert Component Accessibility
+
+**Learning:** Using `role="alert"` or `role="status"` changes the order in which content is read by screen readers. If the alert colours are just used for visual hierarchy and not to denote actual errors or status changes that need immediate attention, using `role="note"` is correct to maintain the natural reading order.
+**Action:** Do not automatically assign `role="alert"` or `role="status"` based on visual style (like "error" or "warning") unless the content truly represents an urgent system state or validation error that needs to interrupt the user.
