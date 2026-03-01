@@ -18,3 +18,8 @@
 
 **Learning:** Using `role="alert"` or `role="status"` changes the order in which content is read by screen readers. If the alert colours are just used for visual hierarchy and not to denote actual errors or status changes that need immediate attention, using `role="note"` is correct to maintain the natural reading order.
 **Action:** Do not automatically assign `role="alert"` or `role="status"` based on visual style (like "error" or "warning") unless the content truly represents an urgent system state or validation error that needs to interrupt the user.
+
+## 2024-05-18 - Loading Button Accessibility
+
+**Learning:** When a button handles asynchronous operations and displays a loading spinner, its accessibility can be further improved by applying the `aria-busy` attribute. Setting `aria-busy={true}` informs screen readers that the element (and its contents) are currently being updated or are in a loading state, providing crucial context for assistive technologies.
+**Action:** Always add `aria-busy={isLoading}` to buttons (and link-buttons) that have an `isLoading` prop and display a loading state.
