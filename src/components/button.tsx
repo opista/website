@@ -49,6 +49,7 @@ export const Button = ({
 
     content = (
       <Link
+        aria-busy={isLoading}
         aria-disabled={isDisabled}
         aria-label={linkAriaLabel}
         className={commonClasses}
@@ -67,6 +68,7 @@ export const Button = ({
   } else {
     content = (
       <button
+        aria-busy={isLoading}
         aria-label={ariaLabel}
         className={commonClasses}
         disabled={isDisabled}
