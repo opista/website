@@ -18,7 +18,7 @@ export const Breadcrumbs = ({ items }: BreadcrumbsProps) => (
       {items.map((item, index) => (
         <Fragment key={item.label + index}>
           <li aria-hidden="true" className="flex items-center mx-2 select-none m-0 shrink-0">
-            <IconChevronRight className="text-zinc-400" size={14} />
+            <IconChevronRight aria-hidden="true" className="text-zinc-400" size={14} />
           </li>
           <li
             className={`flex items-center m-0 ${item.href ? "shrink-0" : "min-w-0 flex-1 overflow-hidden"}`}
