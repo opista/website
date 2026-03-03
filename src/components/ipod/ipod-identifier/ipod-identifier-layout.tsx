@@ -16,8 +16,14 @@ export const IpodIdentifierLayout = ({
   title,
 }: IpodIdentifierLayoutProps) => {
   const titleRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
     titleRef.current?.focus();
   }, [title]);
 
