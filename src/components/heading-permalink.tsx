@@ -26,11 +26,7 @@ export const HeadingPermalink = ({ slug }: HeadingPermalinkProps) => {
   };
 
   return (
-    <Tooltip
-      asChild
-      content={copied ? "Copied!" : "Copy permalink"}
-      position="top"
-    >
+    <Tooltip asChild content={copied ? "Copied!" : "Copy permalink"} position="top">
       <button
         aria-label={copied ? "Copied permalink to clipboard" : "Copy permalink to clipboard"}
         className={cn(

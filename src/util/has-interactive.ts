@@ -19,15 +19,7 @@ export const hasInteractive = (children: ReactNode): boolean => {
       // Check for standard interactive tags
       if (typeof type === "string") {
         if (
-          [
-            "a",
-            "button",
-            "input",
-            "select",
-            "textarea",
-            "details",
-            "summary",
-          ].includes(type) ||
+          ["a", "button", "input", "select", "textarea", "details", "summary"].includes(type) ||
           props.href ||
           props.onClick
         ) {

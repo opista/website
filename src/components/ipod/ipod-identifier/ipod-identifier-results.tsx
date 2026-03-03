@@ -59,10 +59,7 @@ export const IpodIdentifierResults = ({
           </div>
           <div className="flex gap-2 justify-center">
             {onBack && (
-              <Button
-                className="bg-zinc-500 hover:bg-zinc-600"
-                onClick={onBack}
-              >
+              <Button className="bg-zinc-500 hover:bg-zinc-600" onClick={onBack}>
                 Back
               </Button>
             )}

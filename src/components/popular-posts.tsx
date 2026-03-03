@@ -25,15 +25,15 @@ export const PopularPosts = ({ posts }: PopularPostsProps) => {
         {displayedPosts.map((post) => (
           <li key={post.url}>
             <Link className="text-inherit! hover:no-underline! group block h-full" href={post.url}>
-              <Heading className="mb-2 text-lg group-hover:text-pink-500 transition-colors" level="h3">
+              <Heading
+                className="mb-2 text-lg group-hover:text-pink-500 transition-colors"
+                level="h3"
+              >
                 {post.title}
               </Heading>
               <p className="text-xs text-zinc-500 mb-2">
                 {formatDate(post.createdAt)} •{" "}
-                <ReadingTime
-                  className="text-xs text-zinc-500"
-                  minutes={post.readingTime}
-                />
+                <ReadingTime className="text-xs text-zinc-500" minutes={post.readingTime} />
               </p>
               <p className="text-sm text-zinc-400 line-clamp-2">{post.description}</p>
             </Link>

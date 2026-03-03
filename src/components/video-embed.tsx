@@ -39,6 +39,8 @@ export const VideoEmbed = ({
 }: VideoEmbedProps) => (
   <video className={className} controls poster={poster} preload="metadata" title={title}>
     <source src={src} type={`video/${type}`} />
-    {tracks?.map((track) => <track key={track.src} {...track} />)}
+    {tracks?.map((track) => (
+      <track key={track.src} {...track} />
+    ))}
   </video>
 );
