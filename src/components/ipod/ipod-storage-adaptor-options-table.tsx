@@ -64,6 +64,18 @@ const upgrades: Upgrade[] = [
     },
   },
   {
+    cons: ["Loose fit connector"],
+    description: "Dual MicroSD Adaptor. Supports up to 2 MicroSD cards",
+    image: "/posts/ipod-modding/storage/aliexpress-speedier-microsd.jpg",
+    option: 'Generic MicroSD "Speedier"',
+    price: "~£9",
+    pros: ["Incredibly cheap", "Fits 2 MicroSD cards", "Small form factor"],
+    purchase: {
+      label: "AliExpress",
+      link: "https://s.click.aliexpress.com/e/_c4bAJGqJ",
+    },
+  },
+  {
     cons: ["Most expensive"],
     description: "Dual MicroSD Adaptor. Supports up to 2 MicroSD cards",
     image: "/posts/ipod-modding/storage/aliexpress-microsd.jpg",
