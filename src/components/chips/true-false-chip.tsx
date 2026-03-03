@@ -26,6 +26,11 @@ export const TrueFalseChip = ({
     color={isTrue ? "green" : "red"}
     containerClassName={containerClassName}
     icon={iconMap[isTrue.toString()]}
-    label={label}
+    label={
+      <>
+        <span className="sr-only">{isTrue ? "Yes: " : "No: "}</span>
+        {label}
+      </>
+    }
   />
 );

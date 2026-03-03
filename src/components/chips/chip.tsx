@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { IconProps } from "@tabler/icons-react";
 
 import { cn } from "@/util/cn";
@@ -8,7 +8,7 @@ type ChipProps = {
   color?: "blue" | "green" | "red" | "yellow";
   containerClassName?: string;
   icon: FC<IconProps>;
-  label: string;
+  label: ReactNode;
 };
 
 const chipColorMap: Record<NonNullable<ChipProps["color"]>, string> = {
