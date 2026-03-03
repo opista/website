@@ -3,6 +3,7 @@ import { IconCircleCheckFilled, IconCircleXFilled, IconProps } from "@tabler/ico
 
 import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
+import { ConditionalWrapper } from "../conditional-wrapper";
 import { Link } from "../link";
 import { Table } from "../table/table";
 import { TableBodyCell } from "../table/table-body-cell";
@@ -24,7 +25,8 @@ type StorageMod =
   | "iFlash Quad"
   | "iFlash uDUAL"
   | "iFlash Sata"
-  | "Generic MicroSD (imCort Design)";
+  | 'Generic MicroSD "imCort Design"'
+  | 'Generic MicroSD "Speedier"';
 
 type BatteryMod =
   | "650mAh (OEM)"
@@ -39,6 +41,7 @@ type StorageOption = {
   name: StorageMod;
   thick: boolean;
   thin: boolean;
+  note?: string;
 };
 
 type DimensionsOption = {
@@ -92,7 +95,8 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash uDUAL", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: true },
-      { name: "Generic MicroSD (imCort Design)", thick: true, thin: true },
+      { name: 'Generic MicroSD "imCort Design"', thick: true, thin: true },
+      { name: 'Generic MicroSD "Speedier"', thick: true, thin: true },
     ],
   },
   {
@@ -118,7 +122,8 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash uDUAL", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: true },
-      { name: "Generic MicroSD (imCort Design)", thick: true, thin: true },
+      { name: 'Generic MicroSD "imCort Design"', thick: true, thin: true },
+      { name: 'Generic MicroSD "Speedier"', thick: true, thin: true },
     ],
   },
   {
@@ -145,7 +150,8 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash uDUAL", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD (imCort Design)", thick: true, thin: true },
+      { name: 'Generic MicroSD "imCort Design"', thick: true, thin: true },
+      { name: 'Generic MicroSD "Speedier"', thick: true, thin: true },
     ],
   },
   {
@@ -161,7 +167,8 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash uDUAL", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD (imCort Design)", thick: true, thin: false },
+      { name: 'Generic MicroSD "imCort Design"', thick: true, thin: false },
+      { name: 'Generic MicroSD "Speedier"', thick: true, thin: true },
     ],
   },
   {
@@ -177,7 +184,8 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash uDUAL", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD (imCort Design)", thick: true, thin: false },
+      { name: 'Generic MicroSD "imCort Design"', thick: true, thin: false },
+      { name: 'Generic MicroSD "Speedier"', thick: true, thin: true },
     ],
   },
   {
@@ -205,7 +213,13 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Quad", thick: true, thin: true },
       { name: "iFlash uDUAL", thick: true, thin: true },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD (imCort Design)", thick: true, thin: false },
+      { name: 'Generic MicroSD "imCort Design"', thick: true, thin: false },
+      {
+        name: 'Generic MicroSD "Speedier"',
+        note: "Reportedly fits in a thin back, but is very tight",
+        thick: true,
+        thin: true,
+      },
     ],
   },
   {
@@ -221,7 +235,8 @@ const batteryMap: CompatibilityRow[] = [
       { name: "iFlash Quad", thick: true, thin: false },
       { name: "iFlash uDUAL", thick: true, thin: false },
       { name: "iFlash Sata", thick: true, thin: false },
-      { name: "Generic MicroSD (imCort Design)", thick: true, thin: false },
+      { name: 'Generic MicroSD "imCort Design"', thick: true, thin: false },
+      { name: 'Generic MicroSD "Speedier"', thick: true, thin: false },
     ],
   },
 ];
@@ -340,7 +355,18 @@ export const IpodStorageBatteryCompatibilityTable = () => (
             </tr>
             {battery.storageOptions.slice(1).map((option) => (
               <tr key={toSlug(battery.name, option.name)}>
-                <TableBodyCell border>{option.name}</TableBodyCell>
+                <TableBodyCell border>
+                  <ConditionalWrapper
+                    condition={!!option.note}
+                    wrapper={(children) => (
+                      <>
+                        {children} <Tooltip content={option.note!} />
+                      </>
+                    )}
+                  >
+                    {option.name}
+                  </ConditionalWrapper>
+                </TableBodyCell>
                 <CompatibilityCell level={`${option.thin}`} />
                 <CompatibilityCell level={`${option.thick}`} />
               </tr>
