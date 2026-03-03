@@ -280,9 +280,18 @@ const BatteryDimensions = ({
   <div className="block text-xs">
     <hr className="my-1" />
     <div>
-      <span className="font-bold">H</span> {measurements[0].toFixed(1)}mm x{" "}
-      <span className="font-bold">W</span> {measurements[1].toFixed(1)}mm x{" "}
-      <span className="font-bold">D</span> {measurements[2].toFixed(1)}mm
+      <abbr className="font-bold no-underline cursor-help" title="Height">
+        H
+      </abbr>{" "}
+      {measurements[0].toFixed(1)}mm x{" "}
+      <abbr className="font-bold no-underline cursor-help" title="Width">
+        W
+      </abbr>{" "}
+      {measurements[1].toFixed(1)}mm x{" "}
+      <abbr className="font-bold no-underline cursor-help" title="Depth">
+        D
+      </abbr>{" "}
+      {measurements[2].toFixed(1)}mm
     </div>
     <div>
       <Link href={link!}>Purchase</Link>

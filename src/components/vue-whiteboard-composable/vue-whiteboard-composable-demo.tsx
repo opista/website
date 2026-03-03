@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { createApp, defineComponent, h, ref, watch } from "vue";
 import { SerializableRecord, useWhiteboard } from "vue-whiteboard-composable";
 
-import defaultState from "./default-state.json"
+import defaultState from "./default-state.json";
 
 const VueWhiteboard = defineComponent({
   setup() {
@@ -17,18 +17,18 @@ const VueWhiteboard = defineComponent({
     const STORAGE_KEY = "whiteboard-demo-state";
 
     const getInitialState = (): SerializableRecord[] => {
-      const typedDefaultState = defaultState as SerializableRecord[]
+      const typedDefaultState = defaultState as SerializableRecord[];
       try {
-        const saved = localStorage.getItem(STORAGE_KEY)
-        if (!saved) return typedDefaultState
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) return typedDefaultState;
 
-        const parsed: SerializableRecord[] = JSON.parse(saved)
-        return parsed?.length ? parsed : typedDefaultState
+        const parsed: SerializableRecord[] = JSON.parse(saved);
+        return parsed?.length ? parsed : typedDefaultState;
       } catch (e) {
-        console.error('Failed to load state', e)
-        return typedDefaultState
+        console.error("Failed to load state", e);
+        return typedDefaultState;
       }
-    }
+    };
 
     const {
       canRedo,
@@ -70,20 +70,20 @@ const VueWhiteboard = defineComponent({
     };
 
     const highlightRecord = (index: number) => {
-      const record = history.value[index]
-      if (record?.type === 'line' && record.data) {
-        const el = record.data
-        el.classList.add('drop-shadow-sm/100')
+      const record = history.value[index];
+      if (record?.type === "line" && record.data) {
+        const el = record.data;
+        el.classList.add("drop-shadow-sm/100");
       }
-    }
+    };
 
     const unhighlightRecord = (index: number) => {
-      const record = history.value[index]
-      if (record?.type === 'line' && record.data) {
-        const el = record.data
-        el.classList.remove('drop-shadow-sm/100')
+      const record = history.value[index];
+      if (record?.type === "line" && record.data) {
+        const el = record.data;
+        el.classList.remove("drop-shadow-sm/100");
       }
-    }
+    };
 
     const colors = [
       { name: "Blue", value: "#3b82f6" },
@@ -121,7 +121,11 @@ const VueWhiteboard = defineComponent({
         paths.map((d) => h("path", { d })),
       );
 
-    const iconDownload = ["M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2", "M7 11l5 5l5 -5", "M12 4l0 12"];
+    const iconDownload = [
+      "M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2",
+      "M7 11l5 5l5 -5",
+      "M12 4l0 12",
+    ];
     const iconUndo = ["M9 14l-4 -4l4 -4", "M5 10h11a4 4 0 1 1 0 8h-1"];
     const iconRedo = ["M15 14l4 -4l-4 -4", "M19 10h-11a4 4 0 1 0 0 8h1"];
     const iconX = ["M18 6l-12 12", "M6 6l12 12"];
@@ -238,15 +242,15 @@ const VueWhiteboard = defineComponent({
                   },
                   [
                     isHovering.value &&
-                    h("circle", {
-                      cx: mouseX.value,
-                      cy: mouseY.value,
-                      fill: color.value,
-                      "pointer-events": "none",
-                      r: parseInt(size.value) / 2,
-                      stroke: "rgba(0,0,0,0.1)",
-                      "stroke-width": "0.5",
-                    }),
+                      h("circle", {
+                        cx: mouseX.value,
+                        cy: mouseY.value,
+                        fill: color.value,
+                        "pointer-events": "none",
+                        r: parseInt(size.value) / 2,
+                        stroke: "rgba(0,0,0,0.1)",
+                        "stroke-width": "0.5",
+                      }),
                   ],
                 ),
               ],
@@ -256,8 +260,7 @@ const VueWhiteboard = defineComponent({
           h(
             "div",
             {
-              class:
-                "sm:w-[220px] flex-shrink-0 flex flex-col border p-4 sm:h-[504px] h-[300px]",
+              class: "sm:w-[220px] flex-shrink-0 flex flex-col border p-4 sm:h-[504px] h-[300px]",
             },
             [
               h("div", { class: "flex items-center justify-between mb-4 pb-4 border-b" }, [
@@ -265,84 +268,91 @@ const VueWhiteboard = defineComponent({
                 h(
                   "button",
                   {
-                    class: "text-[10px] font-bold uppercase tracking-wider text-red-500 hover:text-red-400 disabled:opacity-0 transition-all cursor-pointer",
+                    class:
+                      "text-[10px] font-bold uppercase tracking-wider text-red-500 hover:text-red-400 disabled:opacity-0 transition-all cursor-pointer",
                     disabled: history.value.length === 0,
                     onClick: clear,
                   },
-                  "Clear"
+                  "Clear",
                 ),
               ]),
 
               history.value.length > 0
                 ? h(
-                  "div",
-                  {
-                    class: "flex flex-col gap-2 overflow-y-auto custom-scrollbar flex-1",
-                  },
-                  history.value.map((item, index) =>
-                    h(
-                      "div",
-                      {
-                        class: [
-                          "flex items-center justify-between p-2 transition-all group cursor-pointer border border-transparent",
-                          index === currentIndex.value
-                            ? "bg-zinc-800 shadow-sm"
-                            : index > currentIndex.value
-                              ? "opacity-40 grayscale hover:grayscale-0 hover:opacity-100 hover:bg-zinc-700"
-                              : "hover:bg-zinc-700",
-                        ],
-                        onClick: () => jumpTo(index),
-                        onMouseenter: () => highlightRecord(index),
-                        onMouseleave: () => unhighlightRecord(index),
-                      },
-                      [
-                        h("div", { class: "flex flex-col gap-1 flex-1 min-w-0" }, [
-                          h("div", { class: "flex items-center gap-2" }, [
-                            h("div", {
-                              class: "w-2.5 h-2.5 rounded-full border border-white/20 shadow-inner flex-shrink-0",
-                              style: { backgroundColor: item.brush.color },
-                            }),
-                            h(
-                              "span",
-                              {
-                                class: [
-                                  "text-[11px] font-semibold truncate",
-                                  index === currentIndex.value ? "text-blue-400" : "text-zinc-200",
-                                ],
+                    "div",
+                    {
+                      class: "flex flex-col gap-2 overflow-y-auto custom-scrollbar flex-1",
+                    },
+                    history.value.map((item, index) =>
+                      h(
+                        "div",
+                        {
+                          class: [
+                            "flex items-center justify-between p-2 transition-all group cursor-pointer border border-transparent",
+                            index === currentIndex.value
+                              ? "bg-zinc-800 shadow-sm"
+                              : index > currentIndex.value
+                                ? "opacity-40 grayscale hover:grayscale-0 hover:opacity-100 hover:bg-zinc-700"
+                                : "hover:bg-zinc-700",
+                          ],
+                          onClick: () => jumpTo(index),
+                          onMouseenter: () => highlightRecord(index),
+                          onMouseleave: () => unhighlightRecord(index),
+                        },
+                        [
+                          h("div", { class: "flex flex-col gap-1 flex-1 min-w-0" }, [
+                            h("div", { class: "flex items-center gap-2" }, [
+                              h("div", {
+                                class:
+                                  "w-2.5 h-2.5 rounded-full border border-white/20 shadow-inner flex-shrink-0",
+                                style: { backgroundColor: item.brush.color },
+                              }),
+                              h(
+                                "span",
+                                {
+                                  class: [
+                                    "text-[11px] font-semibold truncate",
+                                    index === currentIndex.value
+                                      ? "text-blue-400"
+                                      : "text-zinc-200",
+                                  ],
+                                },
+                                `Line #${index + 1}`,
+                              ),
+                            ]),
+                            h("div", { class: "flex items-center gap-1.5" }, [
+                              h("span", { class: "text-[9px]" }, getSizeLabel(item.brush.size)),
+                              h("span", { class: "text-[9px]" }, "•"),
+                              h(
+                                "span",
+                                { class: "text-[9px]" },
+                                new Date(item.timestamp).toLocaleTimeString([], {
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                }),
+                              ),
+                            ]),
+                          ]),
+                          h(
+                            "button",
+                            {
+                              class:
+                                "p-1.5 text-zinc-500 hover:text-red-400 hover:bg-red-400/10 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer",
+                              onClick: (e: MouseEvent) => {
+                                e.stopPropagation();
+                                removeFromHistory(index);
                               },
-                              `Line #${index + 1}`,
-                            ),
-                          ]),
-                          h("div", { class: "flex items-center gap-1.5" }, [
-                            h("span", { class: "text-[9px]" }, getSizeLabel(item.brush.size)),
-                            h("span", { class: "text-[9px]" }, "•"),
-                            h(
-                              "span",
-                              { class: "text-[9px]" },
-                              new Date(item.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-                            ),
-                          ]),
-                        ]),
-                        h(
-                          "button",
-                          {
-                            class:
-                              "p-1.5 text-zinc-500 hover:text-red-400 hover:bg-red-400/10 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer",
-                            onClick: (e: MouseEvent) => {
-                              e.stopPropagation();
-                              removeFromHistory(index);
+                              title: "Remove from history",
                             },
-                            title: "Remove from history",
-                          },
-                          [renderIcon(iconX)],
-                        ),
-                      ],
+                            [renderIcon(iconX)],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                )
+                  )
                 : h("div", { class: "flex-1 flex items-center justify-center" }, [
-                  h("span", { class: "text-xs font-medium" }, "Start drawing to see history")
-                ]),
+                    h("span", { class: "text-xs font-medium" }, "Start drawing to see history"),
+                  ]),
             ],
           ),
         ]),
