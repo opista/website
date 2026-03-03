@@ -1,6 +1,13 @@
 "use client";
 
-import { cloneElement, HTMLAttributes, isValidElement, ReactElement, ReactNode, useId } from "react";
+import {
+  cloneElement,
+  HTMLAttributes,
+  isValidElement,
+  ReactElement,
+  ReactNode,
+  useId,
+} from "react";
 import { IconInfoCircleFilled } from "@tabler/icons-react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
@@ -13,18 +20,18 @@ export type TooltipProps = {
   content: string;
   offset?: number;
   position?:
-  | "bottom-end"
-  | "bottom-start"
-  | "bottom"
-  | "left-end"
-  | "left-start"
-  | "left"
-  | "right-end"
-  | "right-start"
-  | "right"
-  | "top-end"
-  | "top-start"
-  | "top";
+    | "bottom-end"
+    | "bottom-start"
+    | "bottom"
+    | "left-end"
+    | "left-start"
+    | "left"
+    | "right-end"
+    | "right-start"
+    | "right"
+    | "top-end"
+    | "top-start"
+    | "top";
   variant?: "dark" | "error" | "info" | "light" | "success" | "warning";
 };
 

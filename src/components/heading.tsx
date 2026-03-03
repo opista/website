@@ -25,11 +25,7 @@ export type HeadingProps = HTMLProps<HTMLHeadingElement> & {
   spanClassName?: string;
 };
 
-const LinkWrapper = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<typeof Link>) => (
+const LinkWrapper = ({ children, className, ...props }: ComponentProps<typeof Link>) => (
   <Link
     className={cn(
       "group inline-block no-underline focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:outline-none focus-visible:rounded-sm",
@@ -57,9 +53,7 @@ export const Heading = ({
 
   if (link) {
     const childrenArray = Children.toArray(children);
-    const hasInteractiveChild = childrenArray.some((child) =>
-      hasInteractive(child),
-    );
+    const hasInteractiveChild = childrenArray.some((child) => hasInteractive(child));
 
     if (hasInteractiveChild) {
       const groups: {
@@ -116,9 +110,7 @@ export const Heading = ({
       className={cn("relative scroll-mt-20", levelClasses[Comp], className)}
       id={slug}
     >
-      <span className={cn("group inline-flex items-center", spanClassName)}>
-        {content}
-      </span>
+      <span className={cn("group inline-flex items-center", spanClassName)}>{content}</span>
     </Comp>
   );
 };
