@@ -51,6 +51,50 @@ type ArticleJsonLdProps = {
 /**
  * Article schema for blog posts
  */
+export type FaqJsonLdProps = {
+  items: { question: string; answer: string }[];
+};
+
+/**
+ * FAQPage schema for FAQs
+ */
+export const FaqJsonLd = ({ items }: FaqJsonLdProps) => (
+  <JsonLd
+    data={{
+      "@type": "FAQPage",
+      mainEntity: items.map((item) => ({
+        "@type": "Question",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+        name: item.question,
+      })),
+    }}
+  />
+);
+
+export type BreadcrumbListJsonLdProps = {
+  items: { label: string; url?: string }[];
+};
+
+/**
+ * BreadcrumbList schema for navigation
+ */
+export const BreadcrumbListJsonLd = ({ items }: BreadcrumbListJsonLdProps) => (
+  <JsonLd
+    data={{
+      "@type": "BreadcrumbList",
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        name: item.label,
+        position: index + 1,
+        ...(item.url ? { item: item.url } : {}),
+      })),
+    }}
+  />
+);
+
 export const ArticleJsonLd = ({
   dateModified,
   datePublished,
