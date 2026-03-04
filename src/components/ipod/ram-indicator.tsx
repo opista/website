@@ -14,6 +14,7 @@ export const RamIndicator = ({ className, ram }: RamIndicatorProps) => (
       "bg-green-400 text-green-950": ram === 64,
     })}
   >
+    <span className="sr-only">Memory: </span>
     {ram}MB RAM
   </span>
 );

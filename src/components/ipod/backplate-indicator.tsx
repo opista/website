@@ -18,6 +18,7 @@ export const BackplateIndicator = ({ backplate, className }: BackplateIndicatorP
       className,
     )}
   >
+    <span className="sr-only">Backplate: </span>
     {backplate}
   </span>
 );

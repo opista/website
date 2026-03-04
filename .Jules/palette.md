@@ -34,3 +34,8 @@
 
 **Learning:** When using components like `Chip` to display a true/false status via color (e.g., green for true, red for false) and icons alongside a label (e.g., "Supported"), the visual meaning is easily understood by sighted users. However, for users relying on screen readers, if the icon is hidden (`aria-hidden="true"`) and the color isn't announced, the screen reader only reads the label (e.g., "Supported"). This can be confusing or misleading when the status is actually false (i.e., meaning "Not Supported" visually).
 **Action:** Always add an `sr-only` span containing a clarifying prefix (like "Yes: ", "No: ", or "Status: ") to the label when the component's status is conveyed purely through color and icons, ensuring the meaning is fully communicated to assistive technologies.
+
+## 2026-11-05 - Indicator Context for Screen Readers
+
+**Learning:** Compact visual indicators (like "thin" for a backplate or "64MB RAM" for memory) are easily understood by sighted users within the context of a table or device breakdown. However, for screen reader users, encountering these raw values without context can be confusing.
+**Action:** Always include an `sr-only` descriptive prefix (like "Backplate: " or "Memory: ") inside visual indicator components to provide necessary context to assistive technologies.
