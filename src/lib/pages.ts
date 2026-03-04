@@ -82,10 +82,15 @@ const getPageContent = async (
     const { content, data } = matter(fileContents);
     const now = new Date();
 
+    const [createdAt, modifiedAt] = await Promise.all([
+      timestamps?.createdAt ?? pageCreatedAt(fullPath).then(res => res ?? now),
+      timestamps?.modifiedAt ?? pageModifiedAt(fullPath).then(res => res ?? now),
+    ]);
+
     return {
       content,
-      createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath) ?? now,
-      modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath) ?? now,
+      createdAt,
+      modifiedAt,
       readingTime: calculateReadingTime(content),
       slug,
       url: `/${directory}/${slug}`,
@@ -124,10 +129,14 @@ const getPage = async (
     }
 
     const now = new Date();
+    const [createdAt, modifiedAt] = await Promise.all([
+      timestamps?.createdAt ?? pageCreatedAt(fullPath).then(res => res ?? now),
+      timestamps?.modifiedAt ?? pageModifiedAt(fullPath).then(res => res ?? now),
+    ]);
 
     return {
-      createdAt: timestamps?.createdAt ?? pageCreatedAt(fullPath) ?? now,
-      modifiedAt: timestamps?.modifiedAt ?? pageModifiedAt(fullPath) ?? now,
+      createdAt,
+      modifiedAt,
       readingTime,
       slug,
       url: `/${directory}/${slug}`,
