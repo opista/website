@@ -8,8 +8,8 @@ export type FaqProps = {
   children: ReactNode;
 };
 
-export const Faq = ({ children }: FaqProps) => {
-  const items: { question: string; answer: string }[] = [];
+const extractFaqItems = (children: ReactNode) => {
+  const items: { answer: string; question: string }[] = [];
 
   Children.forEach(children, (child) => {
     if (isValidElement(child)) {
@@ -22,6 +22,12 @@ export const Faq = ({ children }: FaqProps) => {
       }
     }
   });
+
+  return items;
+};
+
+export const Faq = ({ children }: FaqProps) => {
+  const items = extractFaqItems(children);
 
   return (
     <>

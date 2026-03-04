@@ -8,8 +8,10 @@ export type FaqItemProps = {
 };
 
 export const FaqItem = ({ children, question }: FaqItemProps) => (
-  <div>
-    <Heading level="h4">{question}</Heading>
+  <>
+    <Heading level="h4" link>
+      {question}
+    </Heading>
     {children}
-  </div>
+  </>
 );
