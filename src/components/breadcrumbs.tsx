@@ -1,6 +1,9 @@
 import { Fragment } from "react";
 import { IconChevronRight } from "@tabler/icons-react";
 
+import { BASE_SITE_URL } from "@/constant";
+
+import { BreadcrumbListJsonLd } from "./json-ld";
 import { Link } from "./link";
 
 export type BreadcrumbsProps = {
@@ -9,6 +12,15 @@ export type BreadcrumbsProps = {
 
 export const Breadcrumbs = ({ items }: BreadcrumbsProps) => (
   <nav aria-label="Breadcrumb" className="not-prose mb-4 flex items-center text-sm text-zinc-500">
+    <BreadcrumbListJsonLd
+      items={[
+        { label: "Home", url: BASE_SITE_URL },
+        ...items.map((item) => ({
+          label: item.label,
+          ...(item.href ? { url: `${BASE_SITE_URL}${item.href}` } : {}),
+        })),
+      ]}
+    />
     <ol className="flex items-center flex-nowrap m-0 p-0 list-none whitespace-nowrap min-w-0 w-full">
       <li className="flex items-center m-0 shrink-0">
         <Link className="text-zinc-500 hover:text-pink-500 font-medium" href="/">

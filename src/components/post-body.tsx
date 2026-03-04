@@ -14,6 +14,8 @@ import { Alert } from "./alert";
 import { Button } from "./button";
 import { SolderingChip } from "./chips/soldering-chip";
 import { TrueFalseChip } from "./chips/true-false-chip";
+import { Faq } from "./faq";
+import { FaqItem } from "./faq-item";
 import { Heading, HeadingProps, HeadingTag } from "./heading";
 import { Image } from "./image";
 import { BackplateIndicator } from "./ipod/backplate-indicator";
@@ -73,6 +75,8 @@ export const PostBody = ({ page }: PostBodyProps) => {
         </Button>
       ),
     ...headings,
+    Faq,
+    FaqItem,
     Image,
     IpodFaceplateOptionsTable5Gen,
     IpodFaceplateOptionsTable67Gen,
