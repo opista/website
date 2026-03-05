@@ -3,6 +3,6 @@ export const calculateReadingTime = (text: string): number => {
     return 0;
   }
 
-  const words = text.trim().split(/\s+/).length;
+  const words = text.trim().match(/\S+/g)?.length ?? 0;
   return Math.ceil(words / 300);
 };
