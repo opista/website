@@ -116,7 +116,7 @@ const faceplates: IpodPlateOptionsTableProps["plates"] = [
       {
         label: "AliExpress",
         link: "https://s.click.aliexpress.com/e/_c2J8wuyn",
-      }
+      },
     ],
   },
 
