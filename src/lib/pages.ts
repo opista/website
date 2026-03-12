@@ -83,8 +83,8 @@ const getPageContent = async (
     const now = new Date();
 
     const [createdAt, modifiedAt] = await Promise.all([
-      timestamps?.createdAt ?? pageCreatedAt(fullPath).then(res => res ?? now),
-      timestamps?.modifiedAt ?? pageModifiedAt(fullPath).then(res => res ?? now),
+      timestamps?.createdAt ?? pageCreatedAt(fullPath).then((res) => res ?? now),
+      timestamps?.modifiedAt ?? pageModifiedAt(fullPath).then((res) => res ?? now),
     ]);
 
     return {
@@ -130,8 +130,8 @@ const getPage = async (
 
     const now = new Date();
     const [createdAt, modifiedAt] = await Promise.all([
-      timestamps?.createdAt ?? pageCreatedAt(fullPath).then(res => res ?? now),
-      timestamps?.modifiedAt ?? pageModifiedAt(fullPath).then(res => res ?? now),
+      timestamps?.createdAt ?? pageCreatedAt(fullPath).then((res) => res ?? now),
+      timestamps?.modifiedAt ?? pageModifiedAt(fullPath).then((res) => res ?? now),
     ]);
 
     return {

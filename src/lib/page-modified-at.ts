@@ -5,9 +5,13 @@ const execFileAsync = promisify(execFile);
 
 export const pageModifiedAt = async (filePath: string): Promise<Date | null> => {
   try {
-    const { stdout } = await execFileAsync("git", ["log", "-1", "--pretty=format:%cI", "--", filePath], {
-      encoding: "utf8",
-    });
+    const { stdout } = await execFileAsync(
+      "git",
+      ["log", "-1", "--pretty=format:%cI", "--", filePath],
+      {
+        encoding: "utf8",
+      },
+    );
 
     const result = stdout.trim();
     if (!result) return null;
