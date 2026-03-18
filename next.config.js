@@ -13,7 +13,6 @@ const contentSecurityPolicy = `
   object-src 'none';
   base-uri 'self';
   form-action 'self';
-  frame-ancestors 'self';
   frame-src 'self' https://www.youtube-nocookie.com;
   block-all-mixed-content;
   upgrade-insecure-requests;
@@ -41,10 +40,6 @@ const nextConfig = {
           {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "SAMEORIGIN",
           },
           {
             key: "X-Content-Type-Options",
