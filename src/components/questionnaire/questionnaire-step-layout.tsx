@@ -1,20 +1,20 @@
 import { ReactNode, useEffect, useRef } from "react";
 
-import { Image } from "../../image";
+import { Image } from "@/components/image";
 
-export type IpodIdentifierLayoutProps = {
+export type QuestionnaireStepLayoutProps = {
   children: ReactNode;
   image: string;
   imageAlt: string;
   title: string;
 };
 
-export const IpodIdentifierLayout = ({
+export const QuestionnaireStepLayout = ({
   children,
   image,
   imageAlt,
   title,
-}: IpodIdentifierLayoutProps) => {
+}: QuestionnaireStepLayoutProps) => {
   const titleRef = useRef<HTMLDivElement>(null);
   const isFirstRender = useRef(true);
 

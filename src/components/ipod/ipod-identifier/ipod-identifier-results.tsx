@@ -1,15 +1,13 @@
-import { Button } from "@/components/button";
-import { BackplateIndicator } from "@/components/ipod/backplate-indicator";
-import { RamIndicator } from "@/components/ipod/ram-indicator";
-import { Capacity, Generation, GenerationConfiguration } from "../ipod.types";
+import { Capacity, Generation, GenerationConfiguration } from "@/components/ipod/ipod.types";
+import { QuestionnaireResultLayout } from "@/components/questionnaire/questionnaire-result-layout";
 
-import { IpodIdentifierLayout } from "./ipod-identifier-layout";
+import { IpodIdentifierResultsBody } from "./ipod-identifier-results-body";
 
 type IpodIdentifierResultsProps = {
   capacity: Capacity | null;
   model: GenerationConfiguration;
-  onBack?: () => void;
-  onRestart?: () => void;
+  onBack: () => void;
+  onRestart: () => void;
 };
 
 const ipodImageMap: Record<Generation, string> = {
@@ -33,42 +31,17 @@ export const IpodIdentifierResults = ({
   model,
   onBack,
   onRestart,
-}: IpodIdentifierResultsProps) => {
-  const details = model.capacityOptions.find((option) => option.capacity === capacity);
-
-  return (
-    <IpodIdentifierLayout
-      image={ipodImageMap[model.generation]}
-      imageAlt={ipodAltMap[model.generation]}
-      title="Your iPod is"
-    >
-      {details ? (
-        <div className="flex flex-col justify-between h-full">
-          <div className="text-center font-bold text-xl">
-            <p className="mt-0 mb-2 text-xl flex items-center gap-2 justify-center">
-              Generation
-              <span className="px-2 py-1 text-2xl bg-white text-black inline-block rounded-lg">
-                {model.generation}
-              </span>
-            </p>
-            <p className="mt-0 mb-4">
-              <BackplateIndicator backplate={details.backplate} className="inline-block text-xl" />{" "}
-              backplate
-            </p>
-            <RamIndicator className="text-xl mb-8 inline-block" ram={details.ram} />
-          </div>
-          <div className="flex gap-2 justify-center">
-            {onBack && (
-              <Button className="bg-zinc-500 hover:bg-zinc-600" onClick={onBack}>
-                Back
-              </Button>
-            )}
-            <Button onClick={onRestart}>Restart</Button>
-          </div>
-        </div>
-      ) : (
-        "Something went wrong"
-      )}
-    </IpodIdentifierLayout>
-  );
-};
+}: IpodIdentifierResultsProps) => (
+  <QuestionnaireResultLayout
+    image={ipodImageMap[model.generation]}
+    imageAlt={ipodAltMap[model.generation]}
+    title="Your iPod is"
+  >
+    <IpodIdentifierResultsBody
+      capacity={capacity}
+      model={model}
+      onBack={onBack}
+      onRestart={onRestart}
+    />
+  </QuestionnaireResultLayout>
+);
