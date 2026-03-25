@@ -1,10 +1,8 @@
 import { cn } from "@/util/cn";
 
-import { Ram } from "./ipod.types";
-
 type RamIndicatorProps = {
   className?: string;
-  ram: Ram;
+  ram: 32 | 64;
 };
 
 export const RamIndicator = ({ className, ram }: RamIndicatorProps) => (

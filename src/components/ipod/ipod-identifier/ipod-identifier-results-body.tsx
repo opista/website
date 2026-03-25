@@ -1,7 +1,7 @@
 import { Button } from "@/components/button";
 import { BackplateIndicator } from "@/components/ipod/backplate-indicator";
 import { Capacity, GenerationConfiguration } from "@/components/ipod/ipod.types";
-import { RamIndicator } from "@/components/ipod/ram-indicator";
+import { RamIndicator } from "@/components/ram-indicator";
 
 type IpodIdentifierResultsBodyProps = {
   capacity: Capacity | null;

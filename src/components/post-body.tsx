@@ -12,6 +12,7 @@ import { generateTableOfContents } from "@/util/generate-table-of-contents";
 import { Accordion } from "./accordion";
 import { Alert } from "./alert";
 import { Button } from "./button";
+import { Chip } from "./chips/chip";
 import { SolderingChip } from "./chips/soldering-chip";
 import { TrueFalseChip } from "./chips/true-false-chip";
 import { Faq } from "./faq";
@@ -25,10 +26,11 @@ import { IpodIdentifier } from "./ipod/ipod-identifier/ipod-identifier";
 import { IpodStorageAdaptorOptionsTable } from "./ipod/ipod-storage-adaptor-options-table";
 import { IpodStorageBatteryCompatibilityTable } from "./ipod/ipod-storage-battery-compatibility-table";
 import { IpodStorageUpgradeCompatibilityTable } from "./ipod/ipod-storage-upgrade-compatibility-table";
-import { RamIndicator } from "./ipod/ram-indicator";
 import { Link } from "./link";
 import { Pre } from "./pre";
 import { ProsConsList } from "./pros-cons-list";
+import { PspIdentifier } from "./psp/psp-identifier/psp-identifier";
+import { RamIndicator } from "./ram-indicator";
 import { RecommendedBadge } from "./recommended-badge";
 import { Table } from "./table/table";
 import { TableBodyCell } from "./table/table-body-cell";
@@ -62,6 +64,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     Alert,
     BackplateIndicator,
     Button,
+    Chip,
     ProjectLinkButton: (props: ComponentPropsWithoutRef<typeof Button>) =>
       !!page.link && (
         <Button
@@ -87,6 +90,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     Link,
     pre: Pre,
     ProsConsList,
+    PspIdentifier,
     RamIndicator,
     RecommendedBadge,
     SolderingChip,

@@ -1,0 +1,462 @@
+---
+title: PSP Modding Guide
+description: The PSP (1000, 2000, 3000) modding guide. Everything you need to upgrade your PSP with IPS screens, big batteries, custom firmware, shell swaps, and more.
+popular: true
+---
+
+<TableOfContents collapsable />
+
+## Introduction
+
+This guide focuses specifically on the PSP-1000, PSP-2000, and PSP-3000 models. Every recommendation here is written around those three systems, with an emphasis on practical compatibility and realistic upgrade paths.
+
+<Alert type="info">
+  Sources are referenced wherever possible, and often offer deeper insight into the topics covered in this guide.
+</Alert>
+
+---
+
+## Identify your PSP model
+
+The quickest way to identify your PSP is to check the model code on the barcode sticker along the bottom edge (look for `PSP-1000`, `PSP-2000`, or `PSP-3000`). If that sticker is worn or missing, remove the battery and check the printed label inside the battery compartment, where the model number is also listed.
+
+Getting this right is important before you buy anything: shells, screens, battery doors, and many internal parts are not interchangeable between generations, so a wrong model match usually means wasted money and a part that will not fit.
+
+If you are still unsure after checking the labels, use the identifier tool below for a quick confirmation.
+
+<PspIdentifier />
+
+---
+
+## Buying parts
+
+Because the PSP has been out of production for over a decade, sourcing **quality** replacement parts is difficult. True OEM parts are rare (usually salvaged from broken consoles), which means you will likely have to rely on the aftermarket. The market is flooded with components of highly variable quality, and your options for truly high-quality replacements are severely limited. 
+
+A good example of this is batteries; Ostent is currently the only widely trusted aftermarket brand. The generic gold "3600mAh" batteries frequently found online are universally fake, often dangerously defective, and should be avoided at all costs.
+
+Shells and cosmetic parts are a mixed bag. You can find some decent quality shells, but they are often not as good as the original, with issues like poor fitment, incorrect screw hole alignment, and cheap-feeling plastic. 
+
+---
+
+### Popular sellers
+
+Here are the most popular retailers for sourcing PSP components. While this directory covers the main suppliers, plenty of other independent vendors exist in the market.
+
+#### AliExpress
+
+<RecommendedBadge className="mb-2" />
+
+<TrueFalseChip containerClassName="mb-0" label="Returns" isTrue />
+<TrueFalseChip containerClassName="mb-0" label="Warranty" isTrue />
+
+Opting for AliExpress is the most budget-friendly method for acquiring these parts. The trade-off is longer delivery times in exchange for heavy discounts.
+
+Note that regional [returns policies](https://www.aliexpress.com/ssr/300000437/PinKTaDpEb) range between 14 and 90 days. Warranties vary by seller, so verify the coverage in the product listing before making a purchase.
+
+#### Everything PSP
+
+<TrueFalseChip containerClassName="mb-0" label="Returns" />
+<TrueFalseChip containerClassName="mb-0" label="Warranty" />
+
+[Everything PSP](https://everythingpsp.com?ref=opista) is US-based. They have limited but highly positive reputation[^reddit_everythingpsp_positive_1]. They sell refurbished consoles, genuine OEM components, and IPS upgrade kits. They have a [YouTube channel](https://www.youtube.com/@EverythingPSPOfficial) too.
+
+It's not clear what returns or warranty they offer, as it's not explicitly stated on their website.
+
+#### ZedLabz
+
+<TrueFalseChip containerClassName="mb-0" label="Returns" isTrue />
+<TrueFalseChip containerClassName="mb-0" label="Warranty" isTrue />
+
+[ZedLabz](https://www.zedlabz.com?ref=opista) is UK-based. They have a mixed reputation[^reddit_zedlabs_positive_1][^reddit_zedlabs_negative_1]. They sell a wide variety of retro console spare parts, including screens, shells, and aftermarket batteries. 
+
+ZedLabz offer an extended [100-day return policy](https://www.zedlabz.com/pages/returns) for unused items, and most products are covered by a 2-year warranty.
+
+#### egamephone
+
+<TrueFalseChip containerClassName="mb-0" label="Returns" isTrue />
+<TrueFalseChip containerClassName="mb-0" label="Warranty" isTrue />
+
+[egamephone](https://egamephone.com?ref=opista) is China-based. They have a mixed reputation, with users warning about a lack of communication regarding faulty parts[^reddit_egamephone_negative_1][^reddit_egamephone_negative_2]. They sell replacement parts and custom modification kits, such as USB-C ports.
+
+egamephone offers a strict [30-day return policy](https://egamephone.com/returns-refunds-and-exchanges/) that carries a mandatory 15% restocking fee, and parts cannot be returned once installed. They offer a 30-day limited exchange warranty, but it is voided if the part is damaged during installation or if the warranty sticker is removed.
+
+#### Amazon/eBay
+
+Because these are open platforms with countless vendors, part quality can fluctuate. I have specifically vetted the AliExpress links provided here, but you can absolutely find reliable components on these other sites. Always scrutinise the seller history and customer reviews before committing to a purchase.
+
+---
+
+### Navigating AliExpress
+
+Pinpointing the exact replacement parts you need can be frustrating. Keep these pointers in mind:
+
+- Don't rely on the **Best Match** default. Instead, filter by **Orders** to see what others are actually buying, falling back to **Best Match** if necessary.
+- Product graphics frequently clash with the written description. Reach out to the seller, or look for an alternative if you need any clarification.
+- Look for genuine feedback, particularly reviews containing customer photos. Avoid products with no ratings or suspicious, automated-sounding text.
+---
+
+## Opening your PSP
+
+Getting inside the PSP is relatively straightforward, and relies almost entirely on unscrewing parts. Check out the video guides below for the step-by-step process.
+
+<Alert type="warning">
+  Be careful with delicate ribbon cables and clamps when removing parts from your device.
+</Alert>
+
+<Accordion title="Shopping list">
+
+- [iFixit Essential Electronics
+  Toolkit](https://www.ifixit.com/en-gb/products/essential-electronics-toolkit) or similar. You'll need a screwdriver, opening tool.
+- [T2 torx bit](https://www.ifixit.com/en-gb/products/ifixit-precision-4-mm-screwdriver-bit?variant=31646497865777) (If you have a Japanese PSP-2000 or PSP-3000) 
+
+</Accordion>
+
+<Accordion title="Video guide - PSP 1000">
+  <YoutubeEmbed title="Video guide on how to open a PSP 1000" videoId="Mf_Rv5oPwJc" />
+</Accordion>
+
+<Accordion title="Video guide - PSP 2000/3000">
+  <YoutubeEmbed title="Video guide on how to open a PSP 2000/3000" videoId="eD-TUkjCjxU" />
+</Accordion>
+
+---
+
+## Core hardware upgrades
+
+### Storage upgrade
+
+<SolderingChip /> <Chip color="white" label="PSP-1000" /> <Chip color="white" label="PSP-2000" /> <Chip color="white" label="PSP-3000" />
+
+The PSP storage mod is very straightforward, and amounts to buying an adaptor and micro SD card. Thanks to [Total Kommando](https://www.youtube.com/@TotalKommando) and others in the community, the general consensus is that a single slot adaptor with no more than 128GB micro SD care is the best combination[^total_kommando_storage_testing_spreadsheet].
+
+Whilst the PSP should _theoretically_ be able to support 2TB (the limit enforced by the FAT32 file-system), the PSP enforces a software limit of 500GB. In reality, things start to show as corrupt on the device at ~100GB. People have reported using 256GB+[^reddit_support_over_128GB], but the general consensus is that 128GB is the sweet spot.
+
+It's also recommended to by a **single slot** adaptor, as the dual slot adaptors are known to be slower and less reliable[^total_kommando_storage_testing_video].
+
+<Accordion title="Shopping list">
+
+- [MicroSD to Memory Stick Pro Duo adapter](https://s.click.aliexpress.com/e/_c40KMPhH)
+- [MicroSD card](https://s.click.aliexpress.com/e/_c3v5F827)
+- [MicroSD card adaptor](https://s.click.aliexpress.com/e/_c3H9hbtl) (optional, but useful for connecting to PC)
+
+</Accordion>
+
+#### Storage formatting
+
+Using your preferred formatting tool ([Rufus](https://rufus.ie/en/) for example), ensure you configure the following settings:
+
+* File system: `FAT32`
+* Cluster Size: `64 kilobytes`
+
+---
+
+### Battery replacement
+
+<SolderingChip /> <Chip color="white" label="PSP-1000" /> <Chip color="white" label="PSP-2000" /> <Chip color="white" label="PSP-3000" />
+
+Batteries degrade over time. The PSP was discontinued in 2014, meaning that your OEM[^OEM_definition] battery is (at least!) 10 years old. As it's housed in a plastic shell, it's also quite difficult to tell if the battery is swollen or not. 
+
+<Alert type="error">
+  **Stop using your PSP and don't charge it anymore if you think you have a bulging battery.** It is
+  a potential hazard and the battery needs to be disposed of properly!
+</Alert>
+
+There are lots of battery options out there, but the recurring recommended brand is **OSTENT**. Total Kommando[^total_kommando_shoutout] (yes, again!) has done a lot of research into this, and so have a number of Redditors[^reddit_verify_ostent_battery_1][^reddit_verify_ostent_battery_2].
+
+<Alert type="info">
+  It's important you select the correct battery for your device. The PSP-1000 is larger and has capacity for a larger battery than the 2000 and 3000 models. Make sure you select the **copper colour branded** battery. 
+</Alert>
+
+<Accordion title="Shopping list">
+
+- [OSTENT 2200mAh battery](https://www.aliexpress.com/item/32960994701.html) (PSP-1000)
+- [OSTENT 1400mAh battery](https://www.aliexpress.com/item/32959648748.html) (PSP-2000 & PSP-3000)
+
+</Accordion>
+
+---
+
+### IPS Screen Upgrade
+
+<SolderingChip /> <Chip color="white" label="PSP-1000" /> <Chip color="white" label="PSP-3000" />
+
+<Alert typ="warning">
+  You cannot perform this mod on a PSP-2000
+</Alert>
+
+The IPS screen upgrade is an essential mod. It eliminates ghosting, improves brightness, and allows for more viewing angles. If you're starting to get yellowed edges around the screen, it's time to replace it.
+
+There are 2 routes you can take with installing a display: **laminated** or **non-laminated**. Tests say that non-laminated screens are better quality[^komstation_ips_screen_test].
+
+<Accordion title="Shopping list">
+
+**PSP-1000**
+
+- [IPS Display](https://s.click.aliexpress.com/e/_c34cHDJD) - **Laminated**, or
+- [IPS Display](https://s.click.aliexpress.com/e/_c3I6a07l) - **Non-Laminated**
+- [Solder paste](https://s.click.aliexpress.com/e/_c4WdOO5Z)
+
+**PSP-3000**
+
+- [IPS Display](https://s.click.aliexpress.com/e/_c3sozyI7) - **Laminated**, or
+- [IPS Display](https://s.click.aliexpress.com/e/_c32RS43N) - **Non-Laminated**
+
+</Accordion>
+
+<Accordion title="Video guide - PSP-1000">
+  People who replace to the IPS display often 
+  <YoutubeEmbed title="Video guide on how to install an IPS display on a PSP 1000" videoId="ABLWYI9Xlqs" />
+</Accordion>
+
+<Accordion title="Video guide - PSP-3000">
+  <YoutubeEmbed title="Video guide on how to install an IPS display on a PSP 3000" videoId="w7s5J-hCXqI" />
+</Accordion>
+
+---
+
+### Standard screen replacement
+
+<SolderingChip /> <Chip color="white" label="PSP-1000" /> <Chip color="white" label="PSP-2000" /> <Chip color="white" label="PSP-3000" />
+
+If you just want a like-for-like screen replacement (or have a PSP-2000 and don't have a choice), you can source an OEM-style LCD screen.
+
+<Accordion title="Shopping list">
+
+- [Dust blower](https://s.click.aliexpress.com/e/_c42YYXHz) - Optional, but recommended to ensure there is no dust trapped between the faceplate and the display.
+- [LCD screen](https://s.click.aliexpress.com/e/_c2zbjAwx) (PSP-1000)
+- [LCD screen](https://www.aliexpress.com/item/1005011919323943.html) (PSP-2000)
+- [LCD screen](https://www.aliexpress.com/item/1005010362113218.html) (PSP-3000)
+
+</Accordion>
+
+<Accordion title="Video guide - PSP-1000">
+  <YoutubeEmbed title="Video guide on how to replace the screen on a PSP 1000" videoId="o39V5d6b4Vo" />
+</Accordion>
+
+<Accordion title="Video guide - PSP-2000/PSP-3000">
+  <YoutubeEmbed title="Video guide on how to replace the screen on a PSP 2000/3000" videoId="AH1crK3Lvdc" />
+</Accordion>
+
+---
+
+## Cosmetic mods
+
+### Full shell replacement
+
+The reality of aftermarket shells is that their quality is highly variable, and fitment is often a mixed bag. When performing a full shell replacement, you should be prepared for the following common issues:
+
+* **Poor Fitment and Alignment:** You may experience misaligned seams, gaps between the faceplate and back half, and screws that go in crooked. You will often need to trim edges or file down plastic parts to achieve a proper fit.
+* **Low Material Quality:** The plastic used is generally thinner and feels cheaper than original OEM shells. Clear shells in particular can be brittle, hazy, or have a slight tint that mutes screen colors. They are also prone to cracking if screws are overtightened.
+* **Subpar Buttons:** Aftermarket buttons are frequently a point of contention, often feeling cheap, hollow, and less tactile. They can get stuck or feel stiff due to poor fitment. It is highly recommended to reuse your original OEM buttons and rubber membranes if they are still in good condition.
+* **Installation Difficulties:** Transferring the delicate UMD door mechanism, power switch, and fragile ribbon cables can be very challenging, as aftermarket housings often lack the precise tolerances of the original parts. Unthreaded screw holes may also require you to carefully self-tap screws.
+
+If you decide to proceed with a full shell replacement, you should temper your expectations. Sourcing from reputable sellers with positive user reviews (especially those with customer photos) can increase your chances of getting a decent shell. Alternatively, seeking out original shells salvaged from broken, "for parts" PSPs is the best way to guarantee true OEM quality and fitment.
+
+<Accordion title="Shopping list">
+
+- [Small file set](https://s.click.aliexpress.com/e/_c38zGtSn)
+- [High-grit sandpaper](https://s.click.aliexpress.com/e/_c2R45Bo7)
+- Replacement shell (see [shell options](#shell-options) below)
+
+</Accordion>
+
+<Accordion title="Video guide">
+  <YoutubeEmbed title="How to replace the shell on a PSP 3000" videoId="sI1yBLPP4Sg" />
+</Accordion>
+
+---
+
+### Faceplate swap
+
+If you want to customize your PSP's appearance but are wary of the risks and frustrations associated with a full shell replacement, a simple faceplate swap is highly recommended. It requires removing only a few screws to take off the front cover, completely avoiding the need to fully disassemble the console or transfer delicate components like the motherboard and UMD drive. It's a low-risk modification that still completely transforms the look of your device.
+
+<WorkInProgress />
+
+---
+
+### Analog stick replacement
+
+<WorkInProgress />
+
+---
+
+### Glass lens mod
+
+<SolderingChip /> <Chip color="yellow" label="PSP-1000" /> <Chip color="white" label="PSP-2000" /> <Chip color="white" label="PSP-3000" />
+
+The glass lens is an easy win. The OEM lens is made of plastic and is easily scratched. If you don't plan on (or can't) perform [IPS screen upgrade](#ips-screen-upgrade), the glass lens mod is an easy win. It's a simple mod that can make a big difference in the look and feel of your PSP.
+
+<Alert type="info">
+  You can't just "swap" the lens on a PSP-1000, because it's baked into the OEM faceplate. If you want to perform this mod on a PSP-1000, you'll need to perform a [faceplate swap](#faceplate-swap) first, or buy one with a glass lens already supplied. 
+</Alert>
+
+<Accordion title="Shopping list">
+
+- [Metal prying tool](https://s.click.aliexpress.com/e/_c3JY66nN)
+- [Flush cutters](https://s.click.aliexpress.com/e/_c2wUjnTv)
+- [Isopropyl alcohol](https://www.amazon.co.uk/Isopropanol-Alcohol-Disinfectant-Household-Hospitals/dp/B0DJ7Z556S)
+- [B-7000 glue](https://s.click.aliexpress.com/e/_c4084vFZ)
+- [Glass lens](https://s.click.aliexpress.com/e/_c3SgU80X)
+- [Dust blower](https://s.click.aliexpress.com/e/_c42YYXHz) - Optional, but recommended to ensure there is no dust trapped between the faceplate and the display.
+
+</Accordion>
+
+<Accordion title="Video guide">
+  <YoutubeEmbed title="Video guide on how to install a glass lens on a PSP" videoId="6PcjY-QAnvk" />
+</Accordion>
+
+---
+
+## Advanced mods
+
+### Big Battery mod
+
+<SolderingChip requiresSoldering /> <Chip color="white" label="PSP-1000" /> <Chip color="white" label="PSP-2000" /> <Chip color="white" label="PSP-3000" />
+
+<WorkInProgress />
+
+---
+
+### USB-C mod
+
+<SolderingChip requiresSoldering /> <Chip color="white" label="PSP-1000" /> <Chip color="white" label="PSP-2000" /> <Chip color="white" label="PSP-3000" />
+
+<WorkInProgress />
+
+---
+
+### Bluetooth audio mod
+
+<SolderingChip requiresSoldering /> <Chip color="white" label="PSP-1000" /> <Chip color="white" label="PSP-2000" /> <Chip color="white" label="PSP-3000" />
+
+<Alert type="warning">
+  There is a "destructive" element to this mod. You will need to install a button/switch somewhere to turn the Bluetooth on and off. 
+</Alert>
+
+There are few examples of the Bluetooth audio mod. YouTuber [Mundo Yakara](https://www.youtube.com/@MundoYakara) has produced a video guide and helpful wiring diagram[^mundo_yakara_bt_guide] to help you get through it.
+
+<Accordion title="Shopping list">
+
+- Soldering iron (I use a [Pinecil](https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/))
+- [Solder](https://s.click.aliexpress.com/e/_c4rZNUnz)
+- [Kapton tape](https://s.click.aliexpress.com/e/_c2yVBF0j) to prevent shorts/hold wires into position
+- [Tinned wire](https://s.click.aliexpress.com/e/_c3YaaBOB)
+- [KCX_BT_EMITTER](https://s.click.aliexpress.com/e/_c4n2OPc3)
+
+</Accordion>
+
+<Accordion title="Wiring diagram">
+
+<Image
+  alt="Wiring diagram for the bluetooth audo mod with the KCX_BT_EMITTER"
+  className="mb-0"
+  expandable
+  height={3300}
+  src="/posts/psp-modding/bluetooth/wiring-diagram.jpg"
+  width={3500}
+/>
+</Accordion>
+
+<Accordion title="Video guide">
+The video is in Spanish, but YouTube can auto-dub into English.
+
+ <YoutubeEmbed title="Video guide on how to install a Bluetooth audio mod on a PSP" videoId="63KEZnvFhjg" />
+</Accordion>
+
+---
+
+### LED mods
+
+<WorkInProgress />
+
+---
+
+## Software mod
+
+### Installing Custom Firmware (CFW)
+
+Before you begin, ensure your PSP is updated to the latest firmware, version 6.60 or 6.61, and ensure your battery is fully charged so that you don't brick your device.
+
+While older CFWs like PRO or ME still exist, **[ARK-4](https://github.com/PSP-Archive/ARK-4)** is the most popular choice because it is actively maintained.
+
+There are two routes you can go down with installing CFW:
+
+* **Temporary:** The CFW runs from RAM. If you hard-reboot the console, you'll return to official firmware and must run a "launcher" app to re-enable the CFW.
+* **Permanent:** The CFW loads automatically at boot. This is the recommended "set it and forget it" method for most users.
+
+Follow [PSPunk's CFW Guide](https://www.pspunk.com/psp-cfw/) to install ARK-4.
+
+---
+
+### Backing up UMDs & Installing games
+
+<WorkInProgress />
+
+---
+
+### Essential Plugins
+
+<WorkInProgress />
+
+---
+
+### Custom Themes
+
+<WorkInProgress />
+
+---
+
+## Troubleshooting & Support
+
+### Debugging
+
+<WorkInProgress />
+
+---
+
+### FAQ
+
+<WorkInProgress />
+
+---
+
+### Communities
+
+- [PSPx forums](https://pspx.ru/forum/)
+
+#### Reddit
+
+- [r/PSP](https://www.reddit.com/r/PSP/)
+- [r/PSP Wiki](https://www.reddit.com/r/PSP/wiki/index/)
+- [r/psphacks](https://www.reddit.com/r/psphacks/)
+
+#### Discord
+
+- [Playstation Homebrew](https://discord.gg/BVp9Rka)
+- [PSP Homebrew](https://discord.gg/bePrj9W)
+
+---
+
+### Corrections & Contributions
+
+This guide is a community effort. It is compiled from a markdown document on [Github](https://github.com/opista/website). If you've spotted an error or would like to contribute to the guide, feel free to [raise an issue](https://github.com/opista/website/issues) or create a [pull request](https://github.com/opista/website/pulls).
+
+---
+
+### Reference
+
+[^reddit_everythingpsp_positive_1]: [Reddit - Positive EverythingPSP comment (1)](https://www.reddit.com/r/PSP/comments/1eqmowu/comment/m1yebi1/)
+[^reddit_zedlabs_positive_1]: [Reddit - Positive Zedlabs comment (1)](https://www.reddit.com/r/PSP/comments/17fxufy/comment/k6dyzkw/)
+[^reddit_zedlabs_negative_1]: [Reddit - Negative Zedlabs comment (1)](https://www.reddit.com/r/PSP/comments/14m6rq3/is_this_a_good_battery_for_psp_1000/)
+[^reddit_egamephone_negative_1]: [Reddit - Negative Egamephone comment (1)](https://www.reddit.com/r/consolerepair/comments/1chz5m0/comment/l28i8wv/)
+[^reddit_egamephone_negative_2]: [Reddit - Negative Egamephone comment (2)](https://www.reddit.com/r/consolerepair/comments/1o1o2il/comment/njlvpgd/)
+[^total_kommando_storage_testing_spreadsheet]: [Total Kommando Storage Testing Spreadsheet](https://docs.google.com/spreadsheets/d/1PJH87w-2Rn7Xk15KIuWYOKhmGYnk6tHr5BX3VOFBjWQ)
+[^total_kommando_storage_testing_video]: [Total Kommando Storage Testing Video](https://www.youtube.com/watch?v=k76EmFxnYWo&t=253s)
+[^total_kommando_battery_testing_spreadsheet]: [Total Kommando Battery Testing Spreadsheet](https://docs.google.com/spreadsheets/d/1vemXNVact5ftftxo81HfBz3q3H0IFF04TG89z6DVXFs/preview)
+[^total_kommando_shoutout]: Seriously, if you haven't already you should go and subscribe to [Total Kommando on YouTube](https://www.youtube.com/@TotalKommando). The research done there is incredible.
+[^reddit_support_over_128GB]: [Reddit - User with 256GB storage installed](https://www.reddit.com/r/PSP/comments/tn92nv/comment/i20ueq1/)
+[^OEM_definition]: Original Equipment Manufacturer
+[^reddit_verify_ostent_battery_1]: [Reddit - u/KSAnnihilation's battery test](https://www.reddit.com/r/PSP/comments/116sh91/psp_battery_brand_test_and_review_for_ostent_1800/)
+[^reddit_verify_ostent_battery_2]: [Reddit - u/valtmiato's OSTENT battery test](https://www.reddit.com/r/PSP/comments/yszn50/ostent_2200mah_battery_over_8_hours_of_battery/)
+[^mundo_yakara_bt_guide]: [Mundo Yakara's wiring diagram](https://www.mundoyakara.com/2022/08/mod-audio-bluetooth-en-psp-3000.html)
+[^komstation_ips_screen_test]: [Komstation's "Non-Laminated PSP Screen Review"](https://www.komstation.com/reviews/non-laminated-psp-3000-ips-screen-hispeedido/)
