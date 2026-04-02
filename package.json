@@ -30,7 +30,7 @@
     "rehype-pretty-code": "^0.14.3",
     "remark-gfm": "^4.0.1",
     "rss": "^1.2.2",
-    "shiki": "^3.23.0",
+    "shiki": "^4.0.2",
     "slugify": "^1.6.9",
     "tailwind-merge": "^3.5.0",
     "typescript-eslint": "^8.56.1",
