@@ -108,3 +108,11 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
     transform: rotate(12deg);
   }
 }
+
+@supports selector(details::details-content) {
+  @media print {
+    details::details-content {
+      content-visibility: visible;
+    }
+  }
+}
