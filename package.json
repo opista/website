@@ -33,7 +33,7 @@
     "shiki": "^4.0.2",
     "slugify": "^1.6.9",
     "tailwind-merge": "^3.5.0",
-    "typescript-eslint": "^8.58.0",
+    "typescript-eslint": "^8.59.1",
     "vue": "^3.5.28",
     "vue-whiteboard-composable": "^0.1.2"
   },
@@ -58,7 +58,7 @@
     "prettier": "^3.8.1",
     "tailwindcss": "^4.2.2",
     "typescript": "^5",
-    "typescript-eslint": "^8.58.0"
+    "typescript-eslint": "^8.59.1"
   },
   "overrides": {
     "@types/react": "19.2.2",
