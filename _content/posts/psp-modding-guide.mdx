@@ -276,7 +276,60 @@ If you want to customize your PSP's appearance but are wary of the risks and fru
 
 ### Analog stick replacement
 
-<WorkInProgress />
+<SolderingChip /> <Chip color="white" label="PSP-1000" /> <Chip color="white" label="PSP-2000" /> <Chip color="yellow" label="PSP-3000" />
+
+The PSP analog stick is a common failure point, but replacement isn't always the first thing you should try. Drift can be caused by a worn stick, but it can also be caused by dirty contacts, poor shell fitment, missing pressure pieces, or the console simply needing the analog range recalibrated.
+
+Start with calibration. Sony's own manual recommends opening **Settings** > **System Settings** > **System Information**, then rotating the analog stick in a circle to adjust its range of movement[^sony_psp_manual_analog_calibration]. This won't fix a physically broken stick, but it's quick, free, and worth doing before you open the console.
+
+<Alert type="warning">
+  Don't try to pull the analog stick out from the front of the assembled PSP. Open the console
+  properly and remove the stick from inside.
+</Alert>
+
+If calibration doesn't help, open the PSP and inspect the contacts before ordering parts. Clean the analog contact area with a cotton bud and isopropyl alcohol, reseat the stick, and make sure the faceplate screws are snug. Don't overtighten them, especially if you're using an aftermarket shell.
+
+Model differences matter here:
+
+* **PSP-1000:** The stick is fairly easy to reach, but it relies on a small rectangular conductive rubber piece in the midframe. If that piece is missing, dirty, misaligned, or not being pressed firmly enough against the motherboard pads, the stick can drift or stop working entirely[^ifixit_psp1000_motherboard_conductive_piece]. If you're repairing drift on a PSP-1000, I would buy the stick and conductive rubber together.
+* **PSP-2000:** The stick assembly is still a contact-pressure design. There is a small clear silicone/rubber strip that sits between the analog assembly and motherboard. Some replacement sticks don't include it, so transfer the original strip across if it's still present[^richspsxparts_psp2000_analog_replacement][^zedlabz_psp2000_analog_stick]. If you lose it, the new stick may behave exactly like the broken one.
+* **PSP-3000:** This is more involved. The stick connects with a ribbon cable and the iFixit guide goes deep enough to remove the LCD, home bar, triggers, and ribbon locks before the analog stick comes out[^ifixit_psp3000_analog_stick_replacement]. It's still not a soldering job, but treat it more like a real teardown than a quick faceplate-off repair.
+
+<Accordion title="Shopping list">
+
+- [iFixit Essential Electronics Toolkit](https://www.ifixit.com/en-gb/products/essential-electronics-toolkit) or similar.
+- [Isopropyl alcohol](https://www.amazon.co.uk/Isopropanol-Alcohol-Disinfectant-Household-Hospitals/dp/B0DJ7Z556S)
+- Cotton buds
+- [Replacement analog stick](https://s.click.aliexpress.com/e/_c3KbK9xB) (Select the correct option)
+- [Conductive rubber pad](https://s.click.aliexpress.com/e/_c30zrpNb) (PSP-1000)
+
+</Accordion>
+
+<Accordion title="Video guide - PSP-1000">
+
+  <YoutubeEmbed title="Video guide on how to repair or replace an analog stick on a PSP 1000" videoId="4O-Vl1bQzF4" />
+
+- [iFixit PSP-1000 buttons guide](https://www.ifixit.com/Guide/PSP+1000+Buttons+Replacement/1784) - useful for opening the console and getting the faceplate off.
+- [iFixit PSP-1000 motherboard guide](https://www.ifixit.com/Guide/PSP+1000+Motherboard+Replacement/142801) - useful for understanding the rectangular conductive piece that sits in the midframe.
+
+</Accordion>
+
+<Accordion title="Video guide - PSP-2000">
+
+  <YoutubeEmbed title="Video guide on how to replace an analog stick on a PSP 2000" videoId="QP6_VPTABM8" />
+
+- [iFixit PSP-2000 analog stick, D-pad, and action keys guide](https://www.ifixit.com/Guide/PSP+2000+Analog+Stick+D-pad+and+Action+Keys+Replacement/1275) - useful for opening the console and cleaning the stick contact points.
+- [Rich's PSX Parts PSP-2000 analog replacement guide](https://store.richspsxparts.com/howtoreanjoo.html) - useful for the clear silicone pressure strip and replacement assembly notes.
+
+</Accordion>
+
+<Accordion title="Video guide - PSP-3000">
+
+  <YoutubeEmbed title="Video guide on how to replace an analog stick on a PSP 3000" videoId="chqxA-oljQs" />
+
+- [iFixit PSP-3000 analog stick replacement guide](https://www.ifixit.com/Guide/PSP+300x+Analog+Stick+Replacement/1581)
+
+</Accordion>
 
 ---
 
@@ -494,9 +547,9 @@ Be wary of listings that look like they promise a PSP-2000 IPS display. In pract
 
 Maybe, but don't start there unless the stick is obviously damaged. PSP analog drift can be caused by dirt, poor contact pressure, a badly seated rubber contact, or an aftermarket stick that doesn't quite sit correctly.
 
-Open the PSP, clean the contact area with isopropyl alcohol, reseat the rubber contact, and make sure the faceplate screws are snug. Don't overtighten them; you're working with old plastic and tiny screws.
+Start with the calibration step in [analog stick replacement](#analog-stick-replacement). If that doesn't fix it, open the PSP, clean the contact area with isopropyl alcohol, reseat the rubber contact or pressure strip, and make sure the faceplate screws are snug. Don't overtighten them; you're working with old plastic and tiny screws.
 
-If it still drifts after cleaning and reseating, replace the analog stick. Make sure you buy the correct part for your model, as the PSP-1000 stick is not the same as the PSP-2000/3000 stick.
+If it still drifts after cleaning and reseating, replace the analog stick. Make sure you buy the correct part for your model, as the PSP-1000, PSP-2000, and PSP-3000 sticks are all model-specific.
 
 </FaqItem>
 
@@ -558,3 +611,8 @@ This guide is a community effort. It is compiled from a markdown document on [Gi
 [^komstation_ips_screen_test]: [Komstation's "Non-Laminated PSP Screen Review"](https://www.komstation.com/reviews/non-laminated-psp-3000-ips-screen-hispeedido/)
 [^github_ark4]: [GitHub - PSP-Archive/ARK-4](https://github.com/PSP-Archive/ARK-4)
 [^github_ark4_cipl]: [GitHub - PSP-Archive/ARK-4 cIPL wiki](https://github.com/PSP-Archive/ARK-4/wiki/cIPL)
+[^sony_psp_manual_analog_calibration]: [Sony PSP Safety and Support manual](https://www.sony.co.in/microsite/playstation/product/psp/psp.pdf)
+[^ifixit_psp1000_motherboard_conductive_piece]: [iFixit - PSP 1000 Motherboard Replacement](https://www.ifixit.com/Guide/PSP+1000+Motherboard+Replacement/142801)
+[^richspsxparts_psp2000_analog_replacement]: [Rich's PSX Parts - How to Replace Analog Joystick on PSP-2001 PSP-2000](https://store.richspsxparts.com/howtoreanjoo.html)
+[^zedlabz_psp2000_analog_stick]: [ZedLabz - Replacement 3D Analog Stick For Sony PSP 2000](https://www.zedlabz.com/products/zedlabz-replacement-3d-analog-joystick-button-control-stick-for-sony-psp-2000)
+[^ifixit_psp3000_analog_stick_replacement]: [iFixit - PSP 300x Analog Stick Replacement](https://www.ifixit.com/Guide/PSP+300x+Analog+Stick+Replacement/1581)
