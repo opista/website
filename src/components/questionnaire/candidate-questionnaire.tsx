@@ -74,7 +74,7 @@ export const CandidateQuestionnaire = <TCandidate, TAnswers extends Questionnair
     key: TKey,
     value: NonNullable<TAnswers[TKey]>,
   ) => {
-    setAnswers((current) => ({ ...current, [key]: value }) as TAnswers);
+    setAnswers((current) => ({ ...current, [key]: value }));
   };
 
   const onRestart = () => {
@@ -90,7 +90,7 @@ export const CandidateQuestionnaire = <TCandidate, TAnswers extends Questionnair
         return current;
       }
 
-      return { ...current, [lastAnsweredQuestion.key]: null } as TAnswers;
+      return { ...current, [lastAnsweredQuestion.key]: null };
     });
   };
 

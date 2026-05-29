@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import clsx from "clsx";
 
 import { Image } from "@/components/image";
 import { cn } from "@/util/cn";
