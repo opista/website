@@ -18,8 +18,7 @@ export const Image = ({ alt, className, expandable, src, ...props }: ImageProps)
       <div className={cn("mx-auto relative group", className)}>
         {children}
         <Tooltip
-          asChild
-          className="absolute bottom-[10px] right-[10px] size-10 max-w-[30%] max-h-[30%] sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-all"
+          className="absolute bottom-[10px] right-[10px] size-10 max-w-[30%] max-h-[30%] sm:opacity-0 sm:group-hover:opacity-100 focus-within:opacity-100 transition-all"
           content="Open image in new tab"
         >
           <Link
