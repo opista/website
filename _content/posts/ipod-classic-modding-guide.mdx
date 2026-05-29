@@ -580,6 +580,18 @@ The [Parts Plus Pods](https://www.youtube.com/@partspluspods3689) YouTube channe
   <YoutubeEmbed title="Video guide for Parts Plus Pods Bluetooth mod" videoId="KnRa2Zu7v64" />
 </Accordion>
 
+#### Rockbox-controlled Bluetooth menus
+
+<Alert type="warning">
+  This is not an official Rockbox feature. It relies on a third-party Rockbox build and custom
+  microcontroller firmware, so I would only recommend looking into this if you're already
+  comfortable with soldering and flashing firmware.
+</Alert>
+
+[loafbrad has demonstrated a Bluetooth mod](https://www.youtube.com/watch?v=qkP3ryGW8Bc)[^youtube_rockbox_bluetooth_menu] that adds Bluetooth controls directly to the Rockbox menus. Their custom Rockbox build adds a `Settings -> Bluetooth` menu with options to pair, power on, and power off a Bluetooth board[^github_loafbrad_rockbox_bluetooth_release].
+
+The Rockbox menu sends serial commands to an ATtiny85 microcontroller, which then controls a Twelve South AirFly Pro Bluetooth adaptor. The matching microcontroller firmware is available on GitHub[^github_loafbrad_ipod_bluetooth_arduino]. This is a really interesting direction if you want Bluetooth control from software, but you should expect to adapt the hardware side to your own Bluetooth board.
+
 ---
 
 ### Taptic mod
@@ -758,6 +770,51 @@ Once you've done this, you can begin customising your device, such as by [instal
 ### Installing games
 
 Reddit user [Olsro](https://www.reddit.com/user/OlsroFR/)[^reddit_user_olsro_donate] (again!) has managed [to preserve ALL iPod Classic games](https://github.com/Olsro/ipodclickwheelgamespreservationproject). Follow the guide there to install all of the original iPod games on your device.
+
+---
+
+### Legacy multiboot and iPodLinux
+
+<Alert type="warning">
+  This is legacy, advanced software modding. It is mostly relevant to 5th/5.5th generation and
+  earlier iPods. Make sure you back up your boot partition before changing any bootloader.
+</Alert>
+
+If you want to experiment with iPodLinux, emulators, or a multiboot menu, [crozone's iPodLoader2 repository](https://github.com/crozone/ipodloader2)[^github_crozone_ipodloader2] is the best starting point I have found. It documents installing the bootloader with Rockbox's `ipodpatcher`, including backing up the original boot partition first[^github_crozone_ipodloader2_install].
+
+The iPodLoader2 docs recommend [Project ZeroSlackr](https://github.com/ProjectZeroSlackr/ProjectZeroSlackr-SVN)[^github_project_zeroslackr] as a more practical route for iPodLinux than the original old installers. ZeroSlackr can be copied to the iPod's FAT32 data partition and booted through iPodLoader2, avoiding the older setup that involved repartitioning your iPod[^github_crozone_ipodloader2_ipodlinux_install].
+
+This is also where some of the old emulator ecosystem fits in. ZeroSlackr includes launch paths for projects like iBoy, igpSP, iDarcNES, iGameGear, iPodMAME, and Podzilla. iPodLoader2 can boot straight into some of these using `autoexec`, which may help with memory limitations on older devices.
+
+<Accordion title="Further reading">
+
+- [iPodLoader2 on GitHub](https://github.com/crozone/ipodloader2)
+- [iPodLoader2 install docs](https://github.com/crozone/ipodloader2/blob/master/docs/INSTALL.md)
+- [iPodLinux install docs for iPodLoader2](https://github.com/crozone/ipodloader2/blob/master/docs/IPOD_LINUX_INSTALL.md)
+- [Archived iPodLinux Loader 2 page](https://web.archive.org/web/20080516055011/http://ipodlinux.org/Loader_2)[^wayback_ipodlinux_loader2]
+- [Project ZeroSlackr on SourceForge](https://sourceforge.net/projects/zeroslackr/)[^sourceforge_zeroslackr]
+
+</Accordion>
+
+---
+
+### iPodWizard
+
+<Alert type="warning">
+  iPodWizard is legacy Windows software for modifying stock iPod firmware. The archived
+  documentation lists the iPod classic 6th generation as unsupported, so this is mainly relevant to
+  older compatible models such as the 5th/5.5th generation.
+</Alert>
+
+iPodWizard was used for cosmetic firmware edits on the original Apple interface: graphics, fonts, strings, layouts, boot images, and similar UI resources[^wayback_ipodwizard_article]. There was a small iPodWizard forum revival around 2022, but it is offline again; the archived forum and older wiki are still useful for tutorials and background[^wayback_ipodhaven_ipodwizard][^wayback_ipodwizard_wiki_main].
+
+There is not much current discussion or maintained documentation for iPodWizard, so I would treat it as an experimentation topic rather than a recommended mod. If you do explore it, make sure your firmware matches your exact iPod model and keep a recovery path handy.
+
+<Alert type="info">
+  The Internet Archive hosts an iPod Firmware Archive that may be useful for research and recovery
+  context[^archive_ipod_firmware_archive], but you should not flash random firmware files unless you
+  understand exactly what they are for and how to recover your device.
+</Alert>
 
 ---
 
@@ -1080,9 +1137,23 @@ This guide is a community effort. It is compiled from a markdown document on [Gi
 
 [^apple_wiki_dfu_mode]: [The Apple Wiki - DFU Mode](https://theapplewiki.com/wiki/DFU_Mode#iPod_classic_.286th_generation.29.2C_iPod_nano_.282nd.2C_3rd.2C_4th.2C_and_5th_generation.29.2C_iPod_shuffle_.282nd.2C_4th_generation.29)
 
+[^archive_ipod_firmware_archive]: [Internet Archive - iPod Firmware Archive](https://archive.org/details/ipoddities_firmware_archive)
+
 [^dcg_capacity_guide]: [DCG iPod - Compatible capacities](https://dcg-ipod.affinityco.net/blogs/help-2/kb-40011-flash-modding-ipod-classics-compatible-capacities)
 
 [^discord_ipod_community_faq_rockbox]: Perfect summary lifted from the FAQs of the iPod Discord community
+
+[^github_crozone_ipodloader2_install]: [GitHub - iPodLoader2 install docs](https://github.com/crozone/ipodloader2/blob/master/docs/INSTALL.md)
+
+[^github_crozone_ipodloader2_ipodlinux_install]: [GitHub - iPodLinux install docs for iPodLoader2](https://github.com/crozone/ipodloader2/blob/master/docs/IPOD_LINUX_INSTALL.md)
+
+[^github_crozone_ipodloader2]: [GitHub - crozone/ipodloader2](https://github.com/crozone/ipodloader2)
+
+[^github_loafbrad_ipod_bluetooth_arduino]: [GitHub - loafbrad/ipod_bluetooth_arduino](https://github.com/loafbrad/ipod_bluetooth_arduino)
+
+[^github_loafbrad_rockbox_bluetooth_release]: [GitHub - loafbrad Rockbox Bluetooth release](https://github.com/loafbrad/rockbox/releases/tag/Release)
+
+[^github_project_zeroslackr]: [GitHub - ProjectZeroSlackr/ProjectZeroSlackr-SVN](https://github.com/ProjectZeroSlackr/ProjectZeroSlackr-SVN)
 
 [^ifixit_debug_mode]: [iFixit - How to put an iPod Classic into Debug mode](https://www.ifixit.com/Guide/How+to+put+an+iPod+Classic+into+Debug+mode/139818)
 
@@ -1174,11 +1245,23 @@ This guide is a community effort. It is compiled from a markdown document on [Gi
 
 [^reputation_playermods_positive_2]: [Reddit - Positive PlayerMods comment (2)](https://www.reddit.com/r/ipod/comments/192mmsl/comment/kh3iouk/)
 
+[^sourceforge_zeroslackr]: [SourceForge - Project ZeroSlackr](https://sourceforge.net/projects/zeroslackr/)
+
+[^wayback_ipodhaven_ipodwizard]: [Wayback Machine - iPodHaven iPodWizard forum](https://web.archive.org/web/20220827160639/https://ipodhaven.com/ipodwizard/index.php)
+
+[^wayback_ipodlinux_loader2]: [Wayback Machine - iPodLinux Loader 2](https://web.archive.org/web/20080516055011/http://ipodlinux.org/Loader_2)
+
+[^wayback_ipodwizard_article]: [Wayback Machine - iPodWizard article](https://web.archive.org/web/20130117225239/http://www.ipodwizard.net/wiki/index.php/IPodWizard)
+
+[^wayback_ipodwizard_wiki_main]: [Wayback Machine - iPodWizard wiki main page](https://web.archive.org/web/20130115054321/http://www.ipodwizard.net/wiki/index.php/Main_Page)
+
 [^youtube_battery_iflash_guide]: [YouTube - iFlash & battery guide](https://www.youtube.com/watch?v=K9m0tfSus14)
 
 [^youtube_bluetooth_keep_hold_switch]: [YouTube - Bluetooth keeping hold switch](https://www.youtube.com/watch?v=GV9-NCiqayc)
 
 [^youtube_clickwheel_not_working]: [YouTube - Replace foam pads](https://youtu.be/LN3TuIAYDgY?t=159) (skip to 2:39)
+
+[^youtube_rockbox_bluetooth_menu]: [YouTube - iPod Bluetooth mod controlled with Rockbox in menus](https://www.youtube.com/watch?v=qkP3ryGW8Bc)
 
 [^youtube_storage_adaptors_ranked]: [YouTube - Storage adaptors ranked](https://www.youtube.com/watch?v=73az70S5lsc)
 
