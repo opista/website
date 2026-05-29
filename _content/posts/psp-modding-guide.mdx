@@ -416,7 +416,103 @@ Follow [PSPunk's CFW Guide](https://www.pspunk.com/psp-cfw/) to install ARK-4.
 
 ### FAQ
 
-<WorkInProgress />
+<Faq>
+
+<FaqItem question="Which PSP model should I buy for modding?">
+
+If you're buying one specifically to mod, I would lean towards a **PSP-3000**. It's slimmer than the PSP-1000, has the best stock screen of the three, and still has a path to an [IPS screen upgrade](#ips-screen-upgrade) if you want to go further later.
+
+The **PSP-1000** is still a good choice if you like the chunkier feel, want the larger standard battery, or want a console that's a bit more forgiving to work inside. The trade-off is the worse stock screen, which makes the IPS upgrade feel more necessary.
+
+The **PSP-2000** is the awkward middle child. It's a perfectly good PSP, and you should absolutely keep one if you already have it, but I wouldn't go out of my way to buy one for hardware mods because it doesn't have the same IPS upgrade route.
+
+</FaqItem>
+
+---
+
+<FaqItem question="Is 128GB really the storage sweet spot?">
+
+Yes, for most people. You can go smaller, and some people do go larger, but 128GB is where the PSP storage mod tends to be useful without becoming annoying[^total_kommando_storage_testing_spreadsheet][^reddit_support_over_128GB].
+
+Above that, you're more likely to run into slow scanning, corrupt-looking data, awkward formatting issues, or adaptor weirdness. If you just want a PSP that works reliably, buy a decent 128GB microSD card, use a **single-slot** Memory Stick Pro Duo adaptor, and format it as `FAT32` with a `64 kilobyte` cluster size.
+
+</FaqItem>
+
+---
+
+<FaqItem question="Why does my PSP say the Memory Stick is corrupt?">
+
+If this happens immediately after upgrading the storage, the most likely causes are formatting, a bad adaptor, or a fake/failing microSD card.
+
+Start with the boring checks:
+
+1. Format the card as `FAT32` with a `64 kilobyte` cluster size.
+1. Try formatting it from the PSP itself after the PC format.
+1. Make sure you're using a single-slot adaptor.
+1. Test the microSD card on your computer if you bought it from a marketplace seller.
+1. Try another adaptor if the card looks fine on your computer but not in the PSP.
+
+If only some files show as corrupt, the card might be fine and the files may just be in the wrong place. ISO backups go in `/ISO` once you have CFW installed. Homebrew usually goes in `/PSP/GAME`.
+
+</FaqItem>
+
+---
+
+<FaqItem question="Can I use a PSP-1000 battery in a PSP-2000 or PSP-3000?">
+
+Not with the standard battery door. The PSP-1000 battery is physically larger, so it won't close cleanly in a PSP-2000 or PSP-3000 without an extended battery cover.
+
+Those extended covers do exist, but they're not where I would start. Aftermarket fitment can be poor, the console becomes bulkier, and it adds another variable if you're troubleshooting power issues. For a normal battery replacement, buy the correct OSTENT battery for your model and avoid the generic gold "3600mAh" batteries.
+
+</FaqItem>
+
+---
+
+<FaqItem question="Should I install ARK-4 permanently or temporarily?">
+
+If you just want to test CFW, temporary is fine. You can run ARK-4, play around with it, and if you fully power the PSP off you'll return to official firmware until you run the loader again.
+
+For a PSP you actually use, I would install it permanently. It removes the extra step after every full reboot, which is the whole point of doing the software mod properly. Current ARK-4 supports a permanent cIPL install on retail PSP models running 6.60 or 6.61[^github_ark4][^github_ark4_cipl].
+
+Follow the guide you're using carefully and don't mix old PRO/ME/Infinity instructions into an ARK-4 install unless the guide explicitly tells you to. That's where people tend to create confusing problems for themselves.
+
+</FaqItem>
+
+---
+
+<FaqItem question="Can I do an IPS screen mod on a PSP-2000?">
+
+No. The IPS screen upgrade is for the **PSP-1000** and **PSP-3000**. If you have a PSP-2000, your realistic option is a [standard screen replacement](#standard-screen-replacement).
+
+Be wary of listings that look like they promise a PSP-2000 IPS display. In practice, those listings are usually mislabelled, vague, or selling a normal replacement LCD. Match the screen to your exact model before buying anything.
+
+</FaqItem>
+
+---
+
+<FaqItem question="My analog stick drifts. Do I need to replace it?">
+
+Maybe, but don't start there unless the stick is obviously damaged. PSP analog drift can be caused by dirt, poor contact pressure, a badly seated rubber contact, or an aftermarket stick that doesn't quite sit correctly.
+
+Open the PSP, clean the contact area with isopropyl alcohol, reseat the rubber contact, and make sure the faceplate screws are snug. Don't overtighten them; you're working with old plastic and tiny screws.
+
+If it still drifts after cleaning and reseating, replace the analog stick. Make sure you buy the correct part for your model, as the PSP-1000 stick is not the same as the PSP-2000/3000 stick.
+
+</FaqItem>
+
+---
+
+<FaqItem question="Are aftermarket shells worth it?">
+
+Only if the cosmetic change matters enough to justify the hassle. Aftermarket PSP shells can look great, but the fitment is inconsistent and you should expect some filing, trimming, or screw-hole persuasion.
+
+If your original shell is in decent condition, a [faceplate swap](#faceplate-swap) or [glass lens mod](#glass-lens-mod) is a much safer first cosmetic mod. You get most of the visible improvement without transferring the whole console into a new housing.
+
+If you do go for a full shell, reuse your original buttons and rubber membranes where possible. They usually feel better than the aftermarket ones.
+
+</FaqItem>
+
+</Faq>
 
 ---
 
@@ -460,3 +556,5 @@ This guide is a community effort. It is compiled from a markdown document on [Gi
 [^reddit_verify_ostent_battery_2]: [Reddit - u/valtmiato's OSTENT battery test](https://www.reddit.com/r/PSP/comments/yszn50/ostent_2200mah_battery_over_8_hours_of_battery/)
 [^mundo_yakara_bt_guide]: [Mundo Yakara's wiring diagram](https://www.mundoyakara.com/2022/08/mod-audio-bluetooth-en-psp-3000.html)
 [^komstation_ips_screen_test]: [Komstation's "Non-Laminated PSP Screen Review"](https://www.komstation.com/reviews/non-laminated-psp-3000-ips-screen-hispeedido/)
+[^github_ark4]: [GitHub - PSP-Archive/ARK-4](https://github.com/PSP-Archive/ARK-4)
+[^github_ark4_cipl]: [GitHub - PSP-Archive/ARK-4 cIPL wiki](https://github.com/PSP-Archive/ARK-4/wiki/cIPL)
