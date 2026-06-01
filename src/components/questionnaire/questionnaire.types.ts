@@ -25,6 +25,7 @@ export type QuestionDefinition<
   answers: (
     context: QuestionContext<TCandidate, TAnswers>,
   ) => AnswerOption<NonNullable<TAnswers[TKey]>>[];
+  description?: string;
   image: string;
   imageAlt: string;
   key: TKey;

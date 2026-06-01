@@ -107,6 +107,7 @@ export const CandidateQuestionnaire = <TCandidate, TAnswers extends Questionnair
   if (activeQuestion) {
     return (
       <QuestionnaireStepLayout
+        description={activeQuestion.description}
         image={activeQuestion.image}
         imageAlt={activeQuestion.imageAlt}
         title={activeQuestion.question}
