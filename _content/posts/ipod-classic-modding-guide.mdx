@@ -622,6 +622,46 @@ The Rockbox menu sends serial commands to an ATtiny85 microcontroller, which the
 
 ---
 
+### Faster charging mod
+
+<SolderingChip requiresSoldering />
+
+<Alert type="warning">
+  This is not USB PD, Qualcomm QuickCharge, or any other multi-voltage charging standard. It is just
+  an additional lithium battery charging board that helps the battery charge faster from 5V USB
+  power.
+</Alert>
+
+[Oxyll has documented a faster charging mod](https://oxyllmods.square.site/tc4056) using a TC4056/TP4056 charging board. The iPod already has its own charging controller, so this board is installed alongside it rather than replacing the stock circuit. The idea is to add more charging current to the battery, which is most useful when you're using one of the larger battery upgrades.
+
+<Alert type="error">
+  I would not bother with this on a stock 650mAh or 850mAh battery. Faster charging is generally
+  harder on lithium batteries, and the extra current makes more sense when you have a larger cell
+  fitted. If you do attempt this, make sure you understand lithium battery charging current first.
+</Alert>
+
+On the common TC4056/TP4056 modules, the `OUT` pads are not useful for this mod. You are using USB 5V/ground for input, and the `B+`/`B-` pads for the battery side. Ground can be shared, which is why some examples only use three wires.
+
+[Oxyll's Reddit write-up](https://www.reddit.com/r/IpodClassic/comments/iygoj5/faster_charging_for_the_ipod_video_featuring_the/) suggests using a board with additional battery protection ICs where possible, and lowering the charge current if you want to keep heat down. Their example was configured to 500mA rather than the board's default 1A.
+
+<Alert type="info">
+  You'll need space inside the case for the extra board, so this only really makes sense alongside a
+  storage mod where the original hard drive has been removed.
+</Alert>
+
+<Accordion title="Shopping list">
+
+- Soldering iron (I use a [Pinecil](https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/))
+- [Solder](https://s.click.aliexpress.com/e/_opIXZUl)
+- [Kapton tape](https://s.click.aliexpress.com/e/_oE3tjPx) to prevent shorts/hold wires into position
+- [Wire](https://s.click.aliexpress.com/e/_oFnZYuv)
+- [TC4056](https://s.click.aliexpress.com/e/_c3UtM2pP)/[TP4056](https://s.click.aliexpress.com/e/_c379mld7) charging board, ideally one with protection circuitry
+- A resistor for setting the charge current, if you plan to tune the board
+
+</Accordion>
+
+---
+
 ## Pre-built mod kits
 
 If you're looking for a more comprehensive upgrade without sourcing individual parts or doing complex soldering, "all-in-one" kits are a great option. These kits often combine cosmetic changes with modern features like USB-C and Bluetooth.
@@ -802,7 +842,7 @@ This is also where some of the old emulator ecosystem fits in. ZeroSlackr includ
 
 <Alert type="warning">
   iPodWizard is legacy Windows software for modifying stock iPod firmware. The archived
-  documentation lists the iPod classic 6th generation as unsupported, so this is mainly relevant to
+  documentation lists the **iPod classic 6th generation as unsupported**, so this is mainly relevant to
   older compatible models such as the 5th/5.5th generation.
 </Alert>
 
