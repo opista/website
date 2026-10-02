@@ -27,7 +27,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-tooltip": "^5.30.0",
-    "rehype-pretty-code": "^0.14.3",
+    "rehype-pretty-code": "^0.14.5",
     "remark-gfm": "^4.0.1",
     "rss": "^1.2.2",
     "shiki": "^4.2.0",
