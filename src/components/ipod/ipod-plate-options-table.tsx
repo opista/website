@@ -1,6 +1,7 @@
 import { Heading } from "../heading";
 import { Image } from "../image";
 import { Link } from "../link";
+import { MerchantLink } from "../merchant-link";
 import { Table } from "../table/table";
 import { TableBodyCell } from "../table/table-body-cell";
 import { TableHeadCell } from "../table/table-head-cell";
@@ -48,11 +49,25 @@ export const IpodPlateOptionsTable = ({ generation, plates }: IpodPlateOptionsTa
             <p className="mt-0">{name}</p>
             <div>
               <p className="mb-0">Purchase:</p>
-              {purchase.map((option) => (
-                <Link className="block" href={option.link} key={option.link}>
-                  {option.label}
-                </Link>
-              ))}
+              {purchase.map((option) =>
+                option.label === "AliExpress" ? (
+                  <MerchantLink
+                    className="block"
+                    href={option.link}
+                    key={option.link}
+                    merchant="AliExpress"
+                    product={`${name} faceplate`}
+                    section="faceplate_options"
+                    placement="comparison_table"
+                  >
+                    {option.label}
+                  </MerchantLink>
+                ) : (
+                  <Link className="block" href={option.link} key={option.link}>
+                    {option.label}
+                  </Link>
+                ),
+              )}
             </div>
           </TableBodyCell>
           <TableBodyCell>

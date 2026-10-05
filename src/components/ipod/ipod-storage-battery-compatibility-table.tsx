@@ -1,6 +1,7 @@
 import { FC, Fragment, ReactNode } from "react";
 import { IconCircleCheckFilled, IconCircleXFilled, IconProps } from "@tabler/icons-react";
 
+import { MerchantLink } from "@/components/merchant-link";
 import { cn } from "@/util/cn";
 import { toSlug } from "@/util/to-slug";
 import { ConditionalWrapper } from "../conditional-wrapper";
@@ -289,7 +290,9 @@ const Key = () => (
 
 const BatteryDimensions = ({
   dimensions: { link, measurements, note },
+  product,
 }: {
+  product: string;
   dimensions: DimensionsOption;
 }) => (
   <div className="block text-xs">
@@ -309,7 +312,19 @@ const BatteryDimensions = ({
       {measurements[2].toFixed(1)}mm
     </div>
     <div>
-      <Link href={link!}>Purchase</Link>
+      {link?.includes("aliexpress.com") ? (
+        <MerchantLink
+          href={link}
+          merchant="AliExpress"
+          product={product}
+          section="battery_compatibility"
+          placement="compatibility_table"
+        >
+          Purchase
+        </MerchantLink>
+      ) : (
+        <Link href={link!}>Purchase</Link>
+      )}
       {note && <Tooltip className="ml-[2px]" content={note} />}
     </div>
   </div>
@@ -344,6 +359,7 @@ export const IpodStorageBatteryCompatibilityTable = () => (
                       <BatteryDimensions
                         dimensions={dimensions}
                         key={toSlug(battery.name, ...dimensions.measurements)}
+                        product={battery.name}
                       />
                     ))}
                   </div>

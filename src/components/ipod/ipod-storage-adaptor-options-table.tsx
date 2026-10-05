@@ -1,3 +1,4 @@
+import { MerchantLink } from "@/components/merchant-link";
 import { cn } from "@/util/cn";
 import { ConditionalWrapper } from "../conditional-wrapper";
 import { Image } from "../image";
@@ -194,9 +195,21 @@ export const IpodStorageAdaptorOptionsTable = () => (
               <p className="mb-0">Purchase:</p>
               <ConditionalWrapper
                 condition={!!upgrade.purchase.link}
-                wrapper={(children) => (
-                  <Link href={upgrade.purchase.link as string}>{children}</Link>
-                )}
+                wrapper={(children) =>
+                  upgrade.purchase.label === "AliExpress" ? (
+                    <MerchantLink
+                      href={upgrade.purchase.link as string}
+                      merchant="AliExpress"
+                      product={upgrade.option}
+                      section="storage_adaptor_options"
+                      placement="comparison_table"
+                    >
+                      {children}
+                    </MerchantLink>
+                  ) : (
+                    <Link href={upgrade.purchase.link as string}>{children}</Link>
+                  )
+                }
               >
                 {upgrade.purchase.label}
               </ConditionalWrapper>

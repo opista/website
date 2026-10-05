@@ -27,6 +27,7 @@ import { IpodStorageAdaptorOptionsTable } from "./ipod/ipod-storage-adaptor-opti
 import { IpodStorageBatteryCompatibilityTable } from "./ipod/ipod-storage-battery-compatibility-table";
 import { IpodStorageUpgradeCompatibilityTable } from "./ipod/ipod-storage-upgrade-compatibility-table";
 import { Link } from "./link";
+import { MerchantLink } from "./merchant-link";
 import { Pre } from "./pre";
 import { ProsConsList } from "./pros-cons-list";
 import { PspIdentifier } from "./psp/psp-identifier/psp-identifier";
@@ -65,6 +66,7 @@ export const PostBody = ({ page }: PostBodyProps) => {
     BackplateIndicator,
     Button,
     Chip,
+    MerchantLink,
     ProjectLinkButton: (props: ComponentPropsWithoutRef<typeof Button>) =>
       !!page.link && (
         <Button
