@@ -18,6 +18,42 @@ This guide collects insights into modding the iPod Classic **(5th, 6th, and 7th 
 
 ---
 
+## What should I buy?
+
+**TL;DR**[^tldr]: Everything is optional. For a first mod, I would start with **storage and battery** for the quickest gains. The main choice is the storage adaptor: lower cost or better build quality. [Identify your iPod](#identify-your-ipod-model) and check its [storage limits](#device-storage-limits) before ordering.
+
+<div className="my-5 grid gap-4 sm:grid-cols-2">
+<div className="rounded-lg border border-zinc-700 p-4 [&_h3]:mt-0 [&_p]:mb-0">
+
+### Cheapest sensible mod
+
+Use the <MerchantLink href="https://s.click.aliexpress.com/e/_c4bAJGqJ" merchant="AliExpress" product={'Generic MicroSD "Speedier"'} section="mod_tldr" placement="mod_tldr">Generic MicroSD "Speedier" adaptor</MerchantLink> for a low-cost option. It takes up to two microSD cards. The trade-off is its loose-fitting connector, so take care when fitting the ribbon cable.
+
+</div>
+<div className="rounded-lg border border-yellow-600/40 p-4 [&_h3]:mt-0 [&_p]:mb-0">
+<div className="flex flex-wrap items-center justify-between gap-2 [&_h3]:mb-0">
+
+### My choice
+
+<RecommendedBadge className="mb-0 rounded-full bg-yellow-600/10 px-2 py-1 text-xs whitespace-nowrap" />
+
+</div>
+
+I would choose the <Link href="https://www.iflash.xyz/store/iflash-udual/" id="mod-tldr-recommended-adaptor">iFlash uDUAL</Link>. It costs more, but has a connector designed for the iPod's ribbon cable. It takes up to two microSD cards. Its slim design also leaves more room for other mods.
+
+</div>
+</div>
+
+**Parts to consider for either build:**
+
+- **Storage media:** One or two genuine microSD cards, sized for your library and your iPod's limits. For iFlash, check the exact model against its [reported working card list](https://www.iflash.xyz/store/iflash-udual/).
+- **Battery:** Replacing the hard drive with either adaptor frees space for a larger battery. Consider a <MerchantLink href="https://s.click.aliexpress.com/e/_oC2MEt5" merchant="AliExpress" product="2000mAh (square)" section="mod_tldr" placement="mod_tldr">2000mAh square battery</MerchantLink> to leave room for other larger internal mods, or a <MerchantLink href="https://s.click.aliexpress.com/e/_oCNvre3" merchant="AliExpress" product="3000mAh (thin)" section="mod_tldr" placement="mod_tldr">3000mAh thin battery</MerchantLink> if you don't need much room for other mods. Check the [battery fit table](#battery-and-storage-compatibility) for your adaptor and backplate, and allow space for any extra hardware before ordering.
+- **Case:** Reuse your faceplate and backplate if they are sound. Buy replacements for damage, appearance, or extra space. See [faceplate options](#faceplate-mod) and [backplate options](#backplate-mod) before ordering.
+
+If you open your iPod, you'll need [opening tools](#opening-your-ipod). The [adaptor comparison table](#storage-adaptor-options) explains the alternatives in more detail.
+
+---
+
 ## Identify your iPod model
 
 Information gathered from various sources[^yuuiko_guide][^apple_support_identify_model] around the web. Answer the questions to identify your iPod.
@@ -189,7 +225,7 @@ If you're not sure how much RAM your device has, use the [iPod identifier](#iden
 
 All iPod Classics have a 2TB storage limit enforced by the FAT32 file-system[^dcg_capacity_guide].
 
-The 6/6.5 generations have a 160GB hard storage limit. However, you can [flash newer firmware](#bypassing-6th-generation-storage-limits) to bypass this.
+The 6/6.5 generations have a 128GB flash-storage limit with their original firmware[^iflash_storage_limits]. However, you can [flash newer firmware](#bypassing-6th-generation-storage-limits) to bypass this.
 
 Check out the compatibility table below for more details.
 
@@ -1210,6 +1246,8 @@ This guide is a community effort. It is compiled from a markdown document on [Gi
 
 [^iflash_sd_card_compatibility]: [iFlash maintain a compatibility list](https://www.iflash.xyz/store/iflash-quad/) under the "SD Cards" tab for each adaptor
 
+[^iflash_storage_limits]: [iFlash uDUAL - iPod compatibility and storage limits](https://www.iflash.xyz/store/iflash-udual/)
+
 [^imgur_ugreen_cm672_wiring_diagram]: https://imgur.com/a/90BnP5n
 
 [^ipod_lcd_connector_replacement_tip]: [Reddit - Replacement LCD ZIF connector part number for 5th gen](https://www.reddit.com/r/IpodClassic/comments/qlwmil/replacement_lcd_zif_connector_part_number_for/)
@@ -1295,6 +1333,8 @@ This guide is a community effort. It is compiled from a markdown document on [Gi
 [^reputation_playermods_positive_2]: [Reddit - Positive PlayerMods comment (2)](https://www.reddit.com/r/ipod/comments/192mmsl/comment/kh3iouk/)
 
 [^sourceforge_zeroslackr]: [SourceForge - Project ZeroSlackr](https://sourceforge.net/projects/zeroslackr/)
+
+[^tldr]: TL;DR means "too long; didn't read". It marks a short summary.
 
 [^wayback_ipodhaven_ipodwizard]: [Wayback Machine - iPodHaven iPodWizard forum](https://web.archive.org/web/20220827160639/https://ipodhaven.com/ipodwizard/index.php)
 
