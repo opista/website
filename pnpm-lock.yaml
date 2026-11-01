@@ -15,8 +15,8 @@ importers:
         specifier: ^16.3.6
         version: 16.3.6(eslint@9.39.2(jiti@2.6.1)(supports-color@7.2.0))
       '@next/third-parties':
-        specifier: 16.3.6
-        version: 16.3.6(next@16.3.8(@babel/core@7.29.7(supports-color@7.2.0))(@types/node@25.3.3)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
+        specifier: 16.4.3
+        version: 16.4.3(next@16.3.8(@babel/core@7.29.7(supports-color@7.2.0))(@types/node@25.3.3)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
       '@tabler/icons-react':
         specifier: ^3.48.0
         version: 3.48.0(react@19.2.4)
@@ -564,10 +564,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@next/third-parties@16.3.6':
-    resolution: {integrity: sha512-fYLwo7M3cPW78Va4lIrqDioDmgZK6I+ODXiNIJ+kg6NuoLYQl2RtZ9Sxe1+Jz0yB26hdDxuEIt3TQYQ8vlAFTg==}
+  '@next/third-parties@16.4.3':
+    resolution: {integrity: sha512-sBjXxFRJtW1UAnQT24vcevIvlvce6bOGXroL6+NVqoTMrb8bQvUgXkxACjbEO2rGKfFOzbq5CYjYQTBNK3vFiA==}
     peerDependencies:
-      next: ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0-beta.0
+      next: ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
       react: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
 
   '@nodelib/fs.scandir@2.1.5':
@@ -3562,7 +3562,7 @@ snapshots:
   '@next/swc-win32-x64-msvc@16.3.8':
     optional: true
 
-  '@next/third-parties@16.3.6(next@16.3.8(@babel/core@7.29.7(supports-color@7.2.0))(@types/node@25.3.3)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)':
+  '@next/third-parties@16.4.3(next@16.3.8(@babel/core@7.29.7(supports-color@7.2.0))(@types/node@25.3.3)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)':
     dependencies:
       next: 16.3.8(@babel/core@7.29.7(supports-color@7.2.0))(@types/node@25.3.3)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react: 19.2.4
