@@ -11,7 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@next/bundle-analyzer": "16.2.4",
+    "@next/bundle-analyzer": "16.4.3",
     "@next/eslint-plugin-next": "^16.3.6",
     "@next/third-parties": "16.4.3",
     "@tabler/icons-react": "^3.48.0",
